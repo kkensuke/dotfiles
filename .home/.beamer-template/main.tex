@@ -1,0 +1,149 @@
+\documentclass[dvipdfmx,10pt,aspectratio=169]{beamer}
+
+
+\input{beamer-preamble.tex}
+\input{preamble.tex}
+
+
+\title{Title}
+%\subtitle{Subtitle}
+% \author{Kensuke Kamisoyama}
+% \institute[ICEPP]{Dept. of Phys., The University of Tokyo}
+
+\author{上曽山 健介\inst{1} \and asdf asdf\inst{2}}
+\institute[東京大学]{\inst{1} 東京大学 理学系研究科 物理学専攻 \quad \inst{2} asdf asdf}
+
+\date{\today}
+%\logo{\includegraphics[width=2cm]{icepp-logo.png}}
+
+\begin{document}
+
+\frame{\titlepage}
+
+
+
+
+\begin{frame}{Table of Contents}
+    \tableofcontents
+\end{frame}
+
+
+
+
+\section{abcd}
+
+\begin{frame}{Motivation}
+    \begin{itemize}
+        \item a
+        \item b
+    \end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+    \begin{columns}
+        \column{0.5\textwidth}
+            This is a first column. This is a first column. This is a first column. This is a first column. This is a first column. This is a first column. This is a first column.
+        \column{0.5\textwidth}
+            This is a second column. This is a second column. This is a second column. This is a second column. This is a second column. This is a second column.
+    \end{columns}
+\end{frame}
+
+
+
+
+
+\section{efgh}
+
+\begin{frame}{VQA}
+    \begin{center}
+        \begin{tikzpicture}
+            \node[scale=1.6]{
+            \begin{quantikz}
+                \lstick{$\ket{0}$} & \gate[3,bundle={2}][3cm]{U(\bth)} & \meter{} \\
+                & & \qwbundle[alternate]{}  \\
+                \lstick{$\ket{0}$} & \qw & \meter{} \\
+            \end{quantikz}};
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \begin{definition}Barren plateaus\cite{mcclean2018barren}
+        $$ \mathbb{E}_{\boldsymbol{\theta}}\left[\frac{\partial C(\boldsymbol{\theta})}{\partial \theta_\nu}\right] = 0, \,\,\mathbb{V}_{\boldsymbol{\theta}}\left[\frac{\partial C(\boldsymbol{\theta})}{\partial \theta_\nu}\right] = \mathcal{O}(e^{-\alpha n}), \,\,\alpha > 0 $$
+    \end{definition}
+\end{frame}
+
+
+
+
+\begin{frame}
+    \begin{theorem}
+        $$ a^2 + b^2 = c^2 $$
+    \end{theorem}
+
+    \begin{proof}<2>
+        asdf asdf asdf.
+    \end{proof}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \begin{warning}
+        asdf asdf asdf.
+    \end{warning}
+
+    \begin{example}
+        asdf asdf asdf.
+    \end{example}
+
+    \begin{important}
+        asdf asdf asdf.
+    \end{important}
+
+    \begin{remark}
+        asdf asdf asdf.
+    \end{remark}
+\end{frame}
+
+
+
+
+
+\section{ijkl}
+
+\begin{frame}{Table}
+    \begin{table}[]
+        \begin{tabular}{|l|c|c|}
+        \hline
+        a & b & c \\ \hline
+        d & e & f \\ \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+
+
+
+\begin{frame}{Reference}
+    \scriptsize
+    \beamertemplatetextbibitems
+    \bibliographystyle{abbrv}
+    \bibliography{ref}
+\end{frame}
+
+
+
+
+\end{document}
+

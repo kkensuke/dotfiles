@@ -1,0 +1,200 @@
+% set margins
+\usepackage[top=15truemm,bottom=15truemm,left=15truemm,right=15truemm]{geometry}
+\usepackage[dvipdfmx]{graphicx,hyperref,xcolor}
+% math
+\usepackage{amsmath,amsthm,amssymb,mathtools,mathrsfs}
+% physics
+\usepackage{physics}
+% itembox
+\usepackage{ascmac}
+% algorithm
+\usepackage{algorithm,algorithmic}
+% vector graphics
+\usepackage{tikz}
+% comment
+\usepackage{comment}
+% image position
+\usepackage{here}
+% Align table columns on decimal point
+\usepackage{dcolumn}
+
+
+% style setting
+% ---------------------------------------------------------------------------- %
+\allowdisplaybreaks[1]
+\renewcommand{\baselinestretch}{1}
+\renewcommand{\abstractname}{\vspace{-\baselineskip}}
+% ---------------------------------------------------------------------------- %
+
+
+% number figures, tables and equations within the sections
+% ---------------------------------------------------------------------------- %
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+% ---------------------------------------------------------------------------- %
+
+
+% Logic and proofs
+% ---------------------------------------------------------------------------- %
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+% ---------------------------------------------------------------------------- %
+
+
+% Latin abbreviations
+% ---------------------------------------------------------------------------- %
+\newcommand{\etal}{\textit{et al.}}
+\newcommand{\eg}{\textit{e.g.}}
+\newcommand{\cf}{\textit{c.f.}}
+\newcommand{\ie}{\textit{i.e.}}
+\newcommand{\etc}{\textit{etc.}}
+% ---------------------------------------------------------------------------- %
+
+
+% math
+% ---------------------------------------------------------------------------- %
+% limit type
+\DeclareMathOperator*{\argmin}{arg~min}
+\DeclareMathOperator*{\argmax}{arg~max}
+
+% \boldsymbol
+\newcommand{\bx}{\vb*{x}}
+\newcommand{\bth}{\vb*{\theta}}
+
+% mathbb
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+% \mathcal
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calW}{\mathcal{W}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
+
+% multiplicative group
+\newcommand{\Zx}{\Z^\times}
+\newcommand{\Qx}{\Q^\times}
+\newcommand{\Rx}{\R^\times}
+\newcommand{\Cx}{\C^\times}
+
+% non-negative
+\newcommand{\Znn}{\Z_{\ge0}}
+\newcommand{\Qnn}{\Q_{\ge0}}
+\newcommand{\Rnn}{\R_{\ge0}}
+
+% positive
+\newcommand{\Zpo}{\Z_{>0}}
+\newcommand{\Qpo}{\Q_{>0}}
+\newcommand{\Rpo}{\R_{>0}}
+
+% mathrm
+\newcommand{\haar}{\mathrm{Haar}}
+
+% MathOperator
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\E}{E}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\poly}{poly}
+\DeclareMathOperator{\SWAP}{SWAP}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+
+% others
+\renewcommand{\bar}[1]{\overline{#1}}
+\newcommand{\combi}[2]{{}_{#1}\text{C}_{#2}}
+\newcommand{\dg}{^\dagger}
+\newcommand{\fa}{{}^\forall}
+\newcommand{\ex}{{}^\exists}
+\newcommand{\pd}{\partial}
+\newcommand{\then}{\;\Longrightarrow\;}
+% ---------------------------------------------------------------------------- %
+
+
+% physics
+% ---------------------------------------------------------------------------- %
+% matrix
+\newcommand{\paulix}{ \mqty(\pmat{1}) }
+\newcommand{\pauliy}{ \mqty(\pmat{2}) }
+\newcommand{\pauliz}{ \mqty(\pmat{3}) }
+
+\newcommand{\rx}[1]{ \mqty( \cos \frac{#1}{2} & -\sin\frac{#1}{2}  \\ \sin \frac{#1}{2}  & \cos\frac{#1}{2} ) }
+\newcommand{\ry}[1]{ \mqty( \cos \frac{#1}{2} & -i\sin\frac{#1}{2} \\ i\sin \frac{#1}{2} & \cos\frac{#1}{2} ) }
+\newcommand{\rz}[1]{ \mqty( \exp -i{#1}/2      & 0                  \\ 0                 & \exp i{#1}/2     ) }
+\newcommand{\rot}[1]{ \mqty( \cos {#1} & -\sin {#1} \\ \sin {#1} & \cos {#1} ) }
+
+% sin cos
+\newcommand{\sif}[2]{\sin\qty(\frac{#1}{#2})}
+\newcommand{\cof}[2]{\cos\qty(\frac{#1}{#2})}
+
+% others
+\newcommand{\up}{\uparrow} %spin up
+\newcommand{\down}{\downarrow} %spin down
+\newcommand{\szero}{\mqty( 1 \\ 0 )} %spin zero
+\newcommand{\sone}{\mqty( 0 \\ 1 )} %spin one
+\newcommand{\kten}[2]{\ket{#1}\otimes\ket{#2}}
+\newcommand{\bten}[2]{\bra{#1}\otimes\bra{#2}}
+% ---------------------------------------------------------------------------- %
+
+% ref; https://github.com/SSoelvsten/latex-preamble-and-examples/tree/main/documents
