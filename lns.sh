@@ -4,23 +4,24 @@ set -e
 set -u
 
 # dotfiles
-cd ~/My\ Drive/app/github/programming/setting/.home/
+cd ~/My\ Drive/app/github/programming/setting/home/
 
 for i in .*
 do
 	if [[ ! -f ~/"$i" ]] && [[ ! -d ~/"$i" ]]; then
-		ln -s ~/My\ Drive/app/github/programming/setting/.home/"$i" ~/"$i"
+		ln -s ~/My\ Drive/app/github/programming/setting/home/"$i" ~/"$i"
 	else
 		echo "~/$i already exists."
 	fi
 done
 
 if [[ ! -f ~/.zshenv ]]; then
-	ln -s ~/My\ Drive/app/github/programming/setting/.zsh/.zshenv ~/.zshenv
+	ln -s ~/My\ Drive/app/github/programming/setting/zsh/.zshenv ~/.zshenv
 else
 	echo "~/.zshenv already exists."
 fi
 
+ln -s ~/My\ Drive/app/github/programming/setting/zsh/aliases/latex.sh ~/My\ Drive/app/github/programming/latex-template
 
 # firefox
 if [[ -d ~/Library/Application\ Support/Firefox ]] && [[ ! -f ~/Library/Application\ Support/Firefox/Profiles/ozg3hll2.default-release/chrome/userChrome.css ]]; then

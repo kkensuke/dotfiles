@@ -6,4 +6,4 @@ export LC_COLLATE="C"
 export LC_ALL="C"
 export PATH="$PATH:/Users/kensuke/Library/Python/3.9/bin"
 
-export ZDOTDIR="/Users/kensuke/My Drive/app/github/programming/setting/.zsh"
+export ZDOTDIR="/Users/kensuke/My Drive/app/github/programming/setting/zsh"
