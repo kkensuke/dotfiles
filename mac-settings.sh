@@ -134,7 +134,7 @@ defaults write com.apple.screencapture include-date -bool false
 defaults write com.apple.screencapture disable-shadow -bool true
 defaults write com.apple.screencapture showsCursor -bool true
 defaults write com.apple.screencapture location ~/Desktop/
-defaults write com.apple.screencapture type jpg # png, gif, jpeg, pdf, bmp, tiff, psd, jpeg 2000, etc.
+defaults write com.apple.screencapture type png # png, gif, jpeg, pdf, bmp, tiff, psd, jpeg 2000, etc.
 # defaults read com.apple.screencapture # See all settings about screenshot
 
 
