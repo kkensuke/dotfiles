@@ -7,4 +7,3 @@ export LC_ALL="C"
 export PATH="$PATH:/Users/kensuke/Library/Python/3.9/bin"
 
 export ZDOTDIR="/Users/kensuke/My Drive/app/github/programming/setting/.zsh"
-export MACPREFS_BACKUP_DIR="/Users/kensuke/My Drive/app/github/programming/setting/backup"
