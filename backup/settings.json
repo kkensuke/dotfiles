@@ -12,17 +12,11 @@
         "）": true,
         "　": true
     },
+    "editor.wordWrap": "on",
 
 
-    // Controls the sizing of editor tabs.
-    //  - fit: Always keep tabs large enough to show the full editor label.
-    //  - shrink: Allow tabs to get smaller when the available space is not enough to show all tabs at once.
-    "workbench.editor.tabSizing": "shrink",
-    "workbench.colorTheme": "Monokai",
-    "workbench.editor.enablePreview": false,
-    "workbench.iconTheme": "material-icon-theme",
-
-    "security.workspace.trust.untrustedFiles": "open",
+    "files.autoSave": "onFocusChange",
+    "files.autoSaveDelay": 0,
     "files.exclude": {
         "**/.DS_Store": false,
         "**/.git": false,
@@ -31,6 +25,17 @@
         "**/CVS": false,
         "**/Thumbs.db": false
     },
+
+    "security.workspace.trust.untrustedFiles": "open",
+
+    // Controls the sizing of editor tabs.
+    //  - fit: Always keep tabs large enough to show the full editor label.
+    //  - shrink: Allow tabs to get smaller when the available space is not enough to show all tabs at once.
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.colorTheme": "Monokai",
+    "workbench.editor.enablePreview": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "window.zoomLevel": -1,
 
 
     // cSpell
@@ -155,5 +160,4 @@
     "latex-workshop.synctex.afterBuild.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.view.pdf.invert": 0.9,
-    "window.zoomLevel": -1,
 }
