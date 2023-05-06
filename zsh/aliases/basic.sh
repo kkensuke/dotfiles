@@ -8,9 +8,6 @@ alias pwd='sed "s/ /\\\ /g" <<< ${PWD/#$HOME/"~"}'
 alias p='pwd'
 alias path='echo -e ${PATH//:/\\n}'
 
-# `tre` with hidden files and color enabled, ignoring the `.git` directory, listing directories first.
-# The output gets piped into `less` with options to preserve color and line numbers, unless the output is
-# small enough for one screen.
 tre() { tree -ahC -L "$2" -I '.git|venv|.DS_Store' --dirsfirst "$1"}
 
 # change directory
@@ -29,7 +26,7 @@ alias gj='cd ~/My\ Drive/app/github/programming/jupyterbook/myjb'
 alias gq='cd ~/My\ Drive/app/github/physics/qc'
 alias s='cd ~/My\ Drive/app/github/programming/setting; open .'
 
-# Change working directory to the top-most Finder window location. cdf short for `cd finder`
+# Change working directory to the top-most Finder window location.
 cdf() { cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" }
 
 # edit

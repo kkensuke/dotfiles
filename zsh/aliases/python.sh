@@ -31,6 +31,6 @@ jbg(){
 
 mkpc(){
 	mkc "$1"
-	mkdir -p {src,data,notebooks,tests,results,docs,refs}
+	mkdir -p {src,data,notebooks,tests,results,docs}
 	touch {README.md,.gitignore}
 }
