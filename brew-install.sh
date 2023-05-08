@@ -11,7 +11,6 @@ set -u
 brew install gh
 brew install git
 brew install imagemagick ffmpeg
-brew install mackup
 brew install mas
 brew install tree
 brew install zsh-autosuggestions
@@ -30,7 +29,6 @@ brew install firefox
 brew install google-drive
 brew install grammarly
 brew install imageoptim
-brew install caskformula/caskformula/inkscape
 brew install mathpix
 brew install notion
 brew install rectangle
@@ -57,8 +55,8 @@ mas install 1502839586 # Hand Mirror
 gh alias set repo-delete 'api -X DELETE "repos/$1"'
 gh auth refresh -h github.com -s delete_repo
 
-# usage (WARNING: no confirmation!)
-# gh repo-delete user/myrepo
 # comfirm
 # gh alias list
+# usage (WARNING: no confirmation!)
+# gh repo-delete user/myrepo
 ----------------------------------------------------
