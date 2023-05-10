@@ -30,6 +30,7 @@ brew install google-drive
 brew install grammarly
 brew install imageoptim
 brew install mathpix
+brew install MonitorControl
 brew install notion
 brew install rectangle
 brew install shotcut
