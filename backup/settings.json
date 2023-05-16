@@ -5,7 +5,7 @@
     "editor.guides.bracketPairs": true,
     "editor.inlineSuggest.enabled": true,
     "editor.trimAutoWhitespace": false,
-    "files.trimTrailingWhitespace": true,
+    "files.trimTrailingWhitespace": false,
     "editor.unicodeHighlight.allowedCharacters": {
         "：": true,
         "（": true,
@@ -34,9 +34,14 @@
     "workbench.editor.tabSizing": "shrink",
     "workbench.colorTheme": "Monokai",
     "workbench.editor.enablePreview": false,
+    "workbench.colorCustomizations": {
+        "editor.findMatchBackground": "#04ff32", //Current SEARCH MATCH
+        "editor.findMatchHighlightBackground": "#ff00b3" //Other SEARCH MATCHES
+    },
     "workbench.iconTheme": "material-icon-theme",
-    "window.zoomLevel": -1,
-
+    
+    // indent-rainbow
+    "indentRainbow.ignoreErrorLanguages": ["*"],
 
     // cSpell
     "cSpell.ignoreRegExpList": ["[０-９Ａ-Ｚａ-ｚぁ-んァ-ノ-ヶ亜-熙纊-黑]+"],
@@ -159,5 +164,6 @@
     "latex-workshop.latex.autoBuild.run": "onFileChange",
     "latex-workshop.synctex.afterBuild.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.view.pdf.invert": 0.9,
+    "latex-workshop.view.pdf.invert": 0,
+    "window.zoomLevel": -1,
 }
