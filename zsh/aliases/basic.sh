@@ -57,7 +57,7 @@ alias here='open .'
 alias c='open /Applications/CotEditor.app'
 alias vs='code .'
 alias vj='code ~/Library/Application\ Support/Code/User/settings.json'
-alias cpvj='cp -fv ~/Library/Application\ Support/Code/User/settings.json ~/My\ Drive/app/github/programming/setting/backup/settings.json;
+alias cpvj='cp -fv ~/Library/Application\ Support/Code/User/settings.json ~/My\ Drive/app/github/programming/setting/vscode/settings.json;
 			cp -fv ~/Library/Application\ Support/Code/User/settings.json ~/My\ Drive/app/github/programming/latex-template/latex-template/settings.json'
 alias opjb='gj; open /Applications/Firefox.app _build/html/index.html'
 alias fire='open /Applications/Firefox.app'
