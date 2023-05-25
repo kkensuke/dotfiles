@@ -9,8 +9,6 @@ set -u
 
 # CLI
 brew install gh
-brew install git
-brew install imagemagick ffmpeg
 brew install mas
 brew install tree
 brew install zsh-autosuggestions
@@ -38,7 +36,6 @@ brew install shottr
 brew install slack
 brew install visual-studio-code
 brew install vlc
-brew install wezterm
 brew install zoom
 brew install zotero
 
