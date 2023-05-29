@@ -28,12 +28,26 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
 
 
+
 ## Dock ##
 # delete an array of items located on the Applications side of the Dock
 defaults delete com.apple.dock persistent-apps
 
 # delete an array of items located on the Documents side of the Dock
 defaults delete com.apple.dock persistent-others
+
+# change the size of icons in the dock
+defaults write com.apple.dock "tilesize" -int 43
+
+# put favorite apps in the dock
+apps=("/System/Applications/System Settings" "/System/Applications/Utilities/Terminal" "/Applications/CotEditor" "/Applications/Visual Studio Code" "/Applications/Firefox" "/Applications/Zotero" "/Applications/Kindle" "/Applications/Slack" "/System/Applications/Mail")
+
+for app in "${apps[@]}"
+do
+	defaults write com.apple.dock\
+				  persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$app.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+done
+
 
 
 ## Finder ##
@@ -54,6 +68,9 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Disable the warning when opening unconfirmed apps
+defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Use column view in all Finder windows by default
 # View modes:
@@ -128,6 +145,7 @@ defaults write com.apple.Mail DisableSendAnimations -bool true
 defaults write com.apple.Mail DisableReplyAnimations -bool true
 
 
+
 ## Screenshot ##
 defaults write com.apple.screencapture name "screenshot"
 defaults write com.apple.screencapture include-date -bool false
@@ -136,6 +154,7 @@ defaults write com.apple.screencapture showsCursor -bool true
 defaults write com.apple.screencapture location ~/Desktop/
 defaults write com.apple.screencapture type png # png, gif, jpeg, pdf, bmp, tiff, psd, jpeg 2000, etc.
 # defaults read com.apple.screencapture # See all settings about screenshot
+
 
 
 ## Restarting apps ##
