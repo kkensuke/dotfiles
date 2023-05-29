@@ -51,6 +51,7 @@ alias rl='exec ${SHELL} -l' #reload
 alias ne='2>|/dev/null'
 alias no='&>|/dev/null'
 alias eo='>|/dev/null'
+alias du1='du -d 1 -h 2>/dev/null | sort -h'
 
 # open apps
 alias here='open .'
