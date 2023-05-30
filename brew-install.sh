@@ -9,7 +9,6 @@ set -u
 
 # CLI
 brew install gh
-brew install mas
 brew install tree
 brew install zsh-autosuggestions
 brew install zsh-completions
@@ -26,6 +25,7 @@ brew install drowio
 brew install firefox
 brew install google-drive
 brew install grammarly
+brew install hand-mirror
 brew install imageoptim
 brew install mathpix
 brew install MonitorControl
@@ -40,9 +40,8 @@ brew install zoom
 brew install zotero
 
 # AppStore
-mas install 539883307 # LINE
-mas install 931571202 # QuickShade
-mas install 1502839586 # Hand Mirror
+# LINE
+# Hoxx VPN
 
 # Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
 # brew install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize suspicious-package apparency quicklookase qlvideo
