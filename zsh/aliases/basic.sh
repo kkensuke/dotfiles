@@ -47,14 +47,13 @@ alias grep='grep --color'
 # others
 alias b='brew'
 alias his='history'
-alias lns='ln -s'
 alias rl='exec ${SHELL} -l' #reload
 alias ne='2>|/dev/null'
 alias no='&>|/dev/null'
 alias eo='>|/dev/null'
 
 # open apps
-alias here='open .'
+alias hr='open .'
 alias c='open /Applications/CotEditor.app'
 alias vs='code .'
 alias vj='code ~/Library/Application\ Support/Code/User/settings.json'
