@@ -1,6 +1,6 @@
 # show files
 #alias ls='ls -F'
-alias ls='gls --color -F'
+alias ls='gls --color --group-directories-first -F'
 alias l='ls'
 alias la='ls -A'
 alias ll='ls -AhlS'
