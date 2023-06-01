@@ -40,7 +40,7 @@ defaults delete com.apple.dock persistent-others
 defaults write com.apple.dock "tilesize" -int 43
 
 # put favorite apps in the dock
-apps=("/System/Applications/System Settings" "/System/Applications/Utilities/Terminal" "/Applications/CotEditor" "/Applications/Visual Studio Code" "/Applications/Firefox" "/Applications/Zotero" "/Applications/Kindle" "/Applications/Slack" "/System/Applications/Mail")
+apps=("/System/Applications/System Settings" "/System/Applications/Utilities/Terminal" "/Applications/CotEditor" "/Applications/Visual Studio Code" "/Applications/Firefox" "/Applications/Zotero" "/System/Applications/Mail")
 
 for app in "${apps[@]}"
 do
