@@ -62,8 +62,6 @@ $GREEN gsec$NORMAL — 👮 SECURITY"
 }
 
 
-eval "$(gh completion -s zsh)"
-
 # make a new repository based on the current directory
 # $1 = private or public
 ginit() {
