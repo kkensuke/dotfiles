@@ -19,7 +19,6 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias cb='cd -'
 alias d='cd ~/Desktop'
-alias dl='cd ~/Downloads'
 alias h='cd ~'
 alias /='cd /'
 alias github='cd ~/My\ Drive/app/github'
@@ -45,7 +44,6 @@ alias imgopt='open -a ImageOptim .'
 alias grep='grep --color'
 
 # others
-alias b='brew'
 alias his='history'
 alias rl='exec ${SHELL} -l' #reload
 alias ne='2>|/dev/null'
