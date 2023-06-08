@@ -87,19 +87,20 @@
 
 
     // python
-    "python.formatting.provider": "black",
-    "python.formatting.blackPath": "/Users/kensuke/venv/bin/black",
-    "python.formatting.blackArgs": [
-        "--line-length=120"
-    ],
+    // "python.formatting.provider": "black",
+    // "python.formatting.blackPath": "/Users/kensuke/venv/bin/black",
+    // "python.formatting.blackArgs": [
+    //     "--line-length=120"
+    // ],
     "python.linting.flake8Path": "/Users/kensuke/venv/bin/flake8",
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [
-        "--ignore=W293, W504",
+        "--ignore=W293, E226, E228, E241, E501, W504",
         "--max-line-length=120",
         "--max-complexity=20"
     ],
     "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.codeActionsOnSave": {
         "source.organizeImports": true
         }
@@ -168,5 +169,4 @@
     "latex-workshop.synctex.afterBuild.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.view.pdf.invert": 0,
-    "window.zoomLevel": -1,
 }

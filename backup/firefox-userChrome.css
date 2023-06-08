@@ -3,3 +3,7 @@
   max-width: none !important;
   min-width: 0px !important;
 }
+
+
+#personal-bookmarks .bookmark-item,
+#bookmarksMenuPopup .bookmark-item { max-width: 200px !important; }
