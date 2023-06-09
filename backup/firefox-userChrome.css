@@ -5,26 +5,25 @@
 }
 
 
-/* bookmarks popup panel */
+/* bookmarks popup panel in toolbar */
 #personal-bookmarks .bookmark-item,
 #bookmarksMenuPopup .bookmark-item { max-width: 200px !important; }
 
-
-/* "Show tabs from other devices" panelview */
+/* "Show tabs from other devices" view in toolbar*/
 #PanelUI-remotetabs[mainview]{
   height: flex !important;
   min-width: 100px !important;
   max-width: 220px !important;
 }
 
-/* extensions panelview in toolbar */
+/* extensions panel view in toolbar */
 #unified-extensions-panel panelview
 {
   width: 300px !important;
   max-height: 500px !important;
 }
 
-/* 3-bar icon panelview */
+/* 3-bar icon panel view in toolbar */
 #appMenu-popup panelview,
 #PanelUI-fxa
 {
