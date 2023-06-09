@@ -1,9 +1,32 @@
 /* remove maximum/minimum width restriction of sidebar */
 #sidebar-box {
-  max-width: none !important;
   min-width: 0px !important;
+  max-width: none !important;
 }
 
 
+/* bookmarks popup panel */
 #personal-bookmarks .bookmark-item,
 #bookmarksMenuPopup .bookmark-item { max-width: 200px !important; }
+
+
+/* "Show tabs from other devices" panelview */
+#PanelUI-remotetabs[mainview]{
+  height: flex !important;
+  min-width: 100px !important;
+  max-width: 220px !important;
+}
+
+/* extensions panelview in toolbar */
+#unified-extensions-panel panelview
+{
+  width: 300px !important;
+  max-height: 500px !important;
+}
+
+/* 3-bar icon panelview */
+#appMenu-popup panelview,
+#PanelUI-fxa
+{
+  width: 210px !important;
+}
