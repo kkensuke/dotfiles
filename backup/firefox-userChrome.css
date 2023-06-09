@@ -4,7 +4,6 @@
   max-width: none !important;
 }
 
-
 /* bookmarks popup panel in toolbar */
 #personal-bookmarks .bookmark-item,
 #bookmarksMenuPopup .bookmark-item { max-width: 200px !important; }
@@ -28,4 +27,14 @@
 #PanelUI-fxa
 {
   width: 210px !important;
+}
+
+/* hide "close, minimize, fullscreen button" */
+#TabsToolbar .titlebar-buttonbox-container {
+  display: none !important;
+}
+
+/* bring tabs below search bar (order:1) */
+#titlebar {
+  order: 0 !important;
 }
