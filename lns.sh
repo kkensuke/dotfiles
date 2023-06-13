@@ -21,7 +21,7 @@ else
 	echo "~/.zshenv already exists."
 fi
 
-ln -s ~/My\ Drive/app/github/programming/setting/zsh/aliases/latex.sh ~/My\ Drive/app/github/programming/latex-template
+ln -s ~/My\ Drive/app/github/programming/setting/zsh/aliases/latex.sh ~/My\ Drive/app/github/latex-template
 
 # firefox
 if [[ -d ~/Library/Application\ Support/Firefox ]] && [[ ! -f ~/Library/Application\ Support/Firefox/Profiles/ozg3hll2.default-release/chrome/userChrome.css ]]; then

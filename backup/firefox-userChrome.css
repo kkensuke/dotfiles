@@ -1,3 +1,18 @@
+/* hide close, minimize, fullscreen buttons at top left corner */
+#TabsToolbar .titlebar-buttonbox-container {
+  display: none !important;
+}
+
+/* hide tabs */
+/* #TabsToolbar {
+  display: none !important;
+} */
+
+/* bring tabs below search bar (order:1) */
+/* #titlebar {
+  order: 1 !important;
+} */
+
 /* remove maximum/minimum width restriction of sidebar */
 #sidebar-box {
   min-width: 0px !important;
@@ -6,35 +21,40 @@
 
 /* bookmarks popup panel in toolbar */
 #personal-bookmarks .bookmark-item,
-#bookmarksMenuPopup .bookmark-item { max-width: 200px !important; }
+#bookmarksMenuPopup .bookmark-item { max-width: 210px !important; }
 
 /* "Show tabs from other devices" view in toolbar*/
-#PanelUI-remotetabs[mainview]{
+#PanelUI-remotetabs,
+#PanelUI-remotetabs-tabslist{
   height: flex !important;
   min-width: 100px !important;
-  max-width: 220px !important;
+  max-width: 210px !important;
+}
+
+/* library panel view in toolbar */
+#appMenu-libraryView,
+#PanelUI-history,
+#PanelUI-bookmarks {
+  min-width: 210px !important;
+  max-width: 210px !important;
+  max-height: 400px !important;
 }
 
 /* extensions panel view in toolbar */
 #unified-extensions-panel panelview
 {
-  width: 300px !important;
+  width: 210px !important;
   max-height: 500px !important;
 }
 
 /* 3-bar icon panel view in toolbar */
 #appMenu-popup panelview,
-#PanelUI-fxa
-{
+#PanelUI-fxa {
   width: 210px !important;
 }
 
-/* hide "close, minimize, fullscreen button" */
-#TabsToolbar .titlebar-buttonbox-container {
-  display: none !important;
-}
-
-/* bring tabs below search bar (order:1) */
-#titlebar {
-  order: 0 !important;
+/* alltabs button at top right corner */
+#allTabsMenu-allTabsView {
+  min-width: 100px !important;
+  max-width: 210px !important;
 }
