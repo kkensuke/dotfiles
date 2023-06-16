@@ -3,15 +3,10 @@
   display: none !important;
 } */
 
-/* hide tabs */
-/* #TabsToolbar {
-  display: none !important;
-} */
-
 /* bring tabs below search bar (order:1) */
-/* #titlebar {
+#titlebar {
   order: 1 !important;
-} */
+}
 
 /* remove maximum/minimum width restriction of sidebar */
 #sidebar-box {
