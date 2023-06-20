@@ -46,9 +46,6 @@ alias grep='grep --color'
 # others
 alias his='history'
 alias rl='exec ${SHELL} -l' #reload
-alias ne='2>|/dev/null'
-alias no='&>|/dev/null'
-alias eo='>|/dev/null'
 
 # open apps
 alias hr='open .'
