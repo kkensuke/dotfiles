@@ -15,22 +15,8 @@ do
 	fi
 done
 
-if [[ ! -f ~/.zshenv ]]; then
-	ln -s ~/My\ Drive/app/github/programming/dotfiles/zsh/.zshenv ~/.zshenv
-else
-	echo "~/.zshenv already exists."
-fi
+# .zshenv
+ln -sf ~/My\ Drive/app/github/programming/dotfiles/zsh/.zshenv ~/.zshenv
 
 # firefox
-if [[ -d ~/Library/Application\ Support/Firefox ]] && [[ ! -f ~/Library/Application\ Support/Firefox/Profiles/ozg3hll2.default-release/chrome/userChrome.css ]]; then
-	ln -s ~/My\ Drive/app/github/programming/dotfiles/backup/firefox-userChrome.css ~/Library/Application\ Support/Firefox/Profiles/ozg3hll2.default-release/chrome/userChrome.css
-else
-	echo "firefox-userChrome.css already exists."
-fi
-
-## zotero
-# if [[ -d ~/Library/Application\ Support/Zotero ]] && [[ ! -f ~/Library/Application\ Support/Firefox/Profiles/ozg3hll2.default-release/chrome/userChrome.css ]]; then
-# 	ln -s ~/My\ Drive/app/github/programming/dotfiles/backup/zotero-userChrome.css ~/Library/Application\ Support/Zotero/Profiles/rcymn1zx.default/chrome/userChrome.css
-# else
-# 	echo "zotero-userChrome.css already exists."
-# fi
+ln -sf ~/My\ Drive/app/github/programming/dotfiles/backup/firefox-userChrome.css ~/Library/Application\ Support/Firefox/Profiles/ozg3hll2.default-release/chrome/userChrome.css
