@@ -1,3 +1,3 @@
 # Dotfiles
 
-![zsh-dir](./img/zsh.png)
+![zsh-dir](./img/dotfiles.png)
