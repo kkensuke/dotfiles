@@ -39,13 +39,6 @@ brew install vlc
 brew install zoom
 brew install zotero
 
-# AppStore
-# LINE
-# Hoxx VPN
-
-# Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
-# brew install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize suspicious-package apparency quicklookase qlvideo
-
 
 # register gh alias
 ----------------------------------------------------
