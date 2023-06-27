@@ -1,5 +1,6 @@
-# show files and directories
-#alias ls='ls -F'
+## show files and directories ##
+# alias ls='ls -F'
+# use gls to use the same color as `tree`
 alias ls='gls --color --group-directories-first -F'
 alias l='ls'
 alias la='ls -A'
@@ -11,7 +12,7 @@ alias path='echo -e ${PATH//:/\\n}'
 
 tre() { tree -ahC -L "$2" -I '.git|venv|.DS_Store' --dirsfirst "$1"}
 
-# change directory
+## change directory ##
 cs() { cd $@ && la }
 alias cd='cs'
 alias ..='cd ..'
@@ -29,13 +30,13 @@ alias s='cd ~/My\ Drive/app/github/programming/setting; open .'
 # Change working directory to the top-most Finder window location.
 cdf() { cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" }
 
-# edit
+## edit ##
 alias mv='mv -iv'
 alias rm='rm -iv'
 alias rf='rm -rf'
 alias v='vi'
 
-# search
+## search ##
 fb() { find . -size +$2M -type f -name $1 -exec ls -lhS "{}" \; | awk '{print $5,$9}' }
 fd() { find . -name "*.$1" -type f -delete }
 rn() { for filename in *.$1; do mv -f "$filename" $(echo "$filename" | sed -e "s/$2//g"); done }
@@ -43,11 +44,12 @@ dif(){ diff --color -u $1 $2 }
 alias imgopt='open -a ImageOptim .'
 alias grep='grep --color'
 
-# others
+## others ##
+alias pb='pbcopy'
 alias his='history'
 alias rl='exec ${SHELL} -l' #reload
 
-# open apps
+## open apps ##
 alias hr='open .'
 alias c='open /Applications/CotEditor.app'
 alias vs='code .'
