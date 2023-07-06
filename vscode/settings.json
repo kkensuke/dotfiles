@@ -87,12 +87,11 @@
 
 
     // python
-    // "python.formatting.provider": "black",
-    // "python.formatting.blackPath": "/Users/kensuke/venv/bin/black",
-    // "python.formatting.blackArgs": [
-    //     "--line-length=120"
-    // ],
-    "python.linting.flake8Path": "/Users/kensuke/venv/bin/flake8",
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "/Users/kensuke/venv/bin/black",
+    "python.formatting.blackArgs": [
+        "--line-length=120"
+    ],
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [
         "--ignore=W293, E226, E228, E241, E501, W504",
@@ -100,7 +99,7 @@
         "--max-complexity=20"
     ],
     "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "ms-python.python",
     "editor.codeActionsOnSave": {
         "source.organizeImports": true
         }
