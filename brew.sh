@@ -22,6 +22,7 @@ brew install coconutbattery
 brew install cot
 brew install clipy
 brew install drowio
+brew install db-browser-for-sqlite
 brew install firefox
 brew install google-drive
 brew install grammarly
@@ -34,6 +35,7 @@ brew install rectangle
 brew install shotcut
 brew install shottr
 brew install slack
+brew install syntax-highlight
 brew install visual-studio-code
 brew install vlc
 brew install zoom
