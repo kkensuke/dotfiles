@@ -16,9 +16,9 @@ alias deac='deactivate'
 
 # jupyterlab
 alias jl='jupyter-lab'
-# build and publish jupyter-book
 alias opj='fire ~/My\ Drive/app/github/programming/jupyterbook/myjb/_build/html/index.html'
 
+# build and publish jupyter-book
 jbg(){
 	cd ~/My\ Drive/app/github/programming/jupyterbook/"$1"/
 	jb build --all .

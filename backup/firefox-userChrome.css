@@ -16,7 +16,9 @@
 
 /* compact bookmarks popup panel in toolbar */
 #personal-bookmarks .bookmark-item,
-#bookmarksMenuPopup .bookmark-item { max-width: 210px !important; }
+#bookmarksMenuPopup .bookmark-item {
+max-width: 210px !important;
+}
 
 /* compact "Show tabs from other devices" view in toolbar*/
 #PanelUI-remotetabs,
