@@ -1,6 +1,7 @@
 {
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
+    "editor.autoClosingBrackets": "beforeWhitespace",
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
     "editor.inlineSuggest.enabled": true,
@@ -74,6 +75,7 @@
 
 
     // git
+    "git.openRepositoryInParentFolders": "always",
     "git.confirmSync": false,
     "github.copilot.enable": {
         "*": true,
