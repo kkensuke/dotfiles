@@ -8,11 +8,7 @@ cd ~/My\ Drive/app/github/programming/dotfiles/home/
 
 for i in .*
 do
-	if [[ ! -f ~/"$i" ]] && [[ ! -d ~/"$i" ]]; then
-		ln -s ~/My\ Drive/app/github/programming/dotfiles/home/"$i" ~/"$i"
-	else
-		echo "~/$i already exists."
-	fi
+	ln -sf ~/My\ Drive/app/github/programming/dotfiles/home/"$i" ~/"$i"
 done
 
 # .zshenv
