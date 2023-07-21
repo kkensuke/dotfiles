@@ -21,7 +21,7 @@ export ZDOTDIR="$HOME/path/to/zsh"
 And make the alias of `.zshenv` in your home directory.
 
 ```zsh
-ln -s ~/path/to/zsh/.zshenv ~/.zshenv
+ln -s ~/path/to/dotfiles/zsh/.zshenv ~/.zshenv
 ```
 
 ---

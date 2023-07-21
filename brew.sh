@@ -8,7 +8,9 @@ set -u
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # CLI
+brew install coreutils
 brew install gh
+brew install git-filter-repo
 brew install tree
 brew install zsh-autosuggestions
 brew install zsh-completions
@@ -47,8 +49,8 @@ brew install zotero
 gh alias set repo-delete 'api -X DELETE "repos/$1"'
 gh auth refresh -h github.com -s delete_repo
 
-# comfirm
+## check alias
 # gh alias list
-# usage (WARNING: no confirmation!)
+## usage (WARNING: no confirmation!)
 # gh repo-delete user/myrepo
 ----------------------------------------------------
