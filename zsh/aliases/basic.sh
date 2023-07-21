@@ -36,6 +36,14 @@ alias rm='rm -iv'
 alias rf='rm -rf'
 alias v='vi'
 
+## global aliases
+alias -g G='| grep'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g EO='>/dev/null'
+alias -g NE='2>/dev/null'
+alias -g NO='&>/dev/null'
+
 ## search ##
 fb() { find . -size +$2M -type f -name $1 -exec ls -lhS "{}" \; | awk '{print $5,$9}' }
 fd() { find . -name "*.$1" -type f -delete }
