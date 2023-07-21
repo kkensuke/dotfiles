@@ -9,7 +9,7 @@
 
 ## Zsh settings
 - Set zsh as your login shell:
-    ```bash
+    ```zsh
     chsh -s $(which zsh)
     ```
 
@@ -32,7 +32,8 @@
 
 ## Other Homebrew packages
 - Install `coreutils`, `gh` and `tree`.
-    ```bash
+
+    ```zsh
     brew install coreutils
     brew install gh
     brew install tree
