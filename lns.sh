@@ -5,7 +5,6 @@ set -u
 
 # dotfiles
 cd ~/My\ Drive/app/github/programming/dotfiles/home/
-
 for i in .*
 do
 	ln -sf ~/My\ Drive/app/github/programming/dotfiles/home/"$i" ~/"$i"

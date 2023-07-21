@@ -1,6 +1,17 @@
 # Dotfiles
 
+## Appearance
+
+![terminal](./img/terminal.png)
+
+## Structure
 ![zsh-dir](./img/dotfiles.png)
+
+## Settings
+Set zsh as your login shell:
+```bash
+chsh -s $(which zsh)
+```
 
 In `.zshenv`, set `zsh/` as `ZDOTDIR`.
 ```zsh
