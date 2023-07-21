@@ -170,5 +170,7 @@
     "latex-workshop.synctex.afterBuild.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.view.pdf.invert": 0,
+    "redhat.telemetry.enabled": false,
     "window.zoomLevel": -1,
+    "markdown.extension.list.indentationSize": "inherit",
 }

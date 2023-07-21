@@ -15,7 +15,7 @@ chsh -s $(which zsh)
 
 In `.zshenv`, set `zsh/` as `ZDOTDIR`.
 ```zsh
-export ZDOTDIR="$HOME/path/to/zsh"
+export ZDOTDIR="$HOME/path/to/dotfiles/zsh"
 ```
 
 And make the alias of `.zshenv` in your home directory.
