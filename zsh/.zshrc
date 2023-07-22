@@ -1,6 +1,6 @@
 
 [[ -f $ZDOTDIR/settings/prompt.sh ]]         && . $ZDOTDIR/settings/prompt.sh
-[[ -f $ZDOTDIR/settings/zsh-extensions.sh ]] && . $ZDOTDIR/settings/zsh-extensions.sh
+[[ -f $ZDOTDIR/settings/extensions.sh ]] && . $ZDOTDIR/settings/extensions.sh
 [[ -f $ZDOTDIR/aliases/basic.sh ]]           && . $ZDOTDIR/aliases/basic.sh
 [[ -f $ZDOTDIR/aliases/mac.sh ]]             && . $ZDOTDIR/aliases/mac.sh
 [[ -f $ZDOTDIR/aliases/git.sh ]]             && . $ZDOTDIR/aliases/git.sh
