@@ -60,6 +60,7 @@ alias rl='exec ${SHELL} -l' #reload
 ## open apps ##
 alias hr='open .'
 alias c='open /Applications/CotEditor.app'
+tc() { touch $1 && c $1 }
 alias vs='code .'
 alias vj='code ~/Library/Application\ Support/Code/User/settings.json'
 alias cpvj='cp -fv ~/Library/Application\ Support/Code/User/settings.json ~/My\ Drive/app/github/programming/dotfiles/vscode/settings.json;

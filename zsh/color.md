@@ -1,4 +1,4 @@
-## Appearance
+# Appearance
 ![terminal](../img/terminal.png)
 
 You can edit prompt settings in `zsh/settings/prompt.sh`.
