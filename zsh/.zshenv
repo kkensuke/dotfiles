@@ -5,5 +5,4 @@ export LS_COLORS='no=00:fi=00:di=00;96:ln=01;35:*.tar=01;31:*.tgz=01;31:*.arj=01
 export LC_COLLATE="C"
 export LC_ALL="C"
 
-# export PATH="$PATH:$HOME/Library/Python/3.9/bin"
-export ZDOTDIR="$HOME/My Drive/app/github/programming/dotfiles/zsh"
+export ZDOTDIR="$HOME/My Drive/app/github/dotfiles/zsh"

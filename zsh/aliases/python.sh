@@ -16,13 +16,12 @@ alias deac='deactivate'
 
 # jupyterlab
 alias jl='jupyter-lab'
-alias opj='fire ~/My\ Drive/app/github/programming/jupyterbook/myjb/_build/html/index.html'
+alias opj='fire ~/My\ Drive/app/github/jupyterbook/myjb/_build/html/index.html'
 
 # build and publish jupyter-book
 jbg(){
-	cd ~/My\ Drive/app/github/programming/jupyterbook/"$1"/
+	cd ~/My\ Drive/app/github/jupyterbook/"$1"/
 	jb build --all .
-	opj
 	gacpm add
 	ghp-import -n -p -f _build/html
 }

@@ -23,9 +23,9 @@ alias d='cd ~/Desktop'
 alias h='cd ~'
 alias /='cd /'
 alias github='cd ~/My\ Drive/app/github'
-alias gj='cd ~/My\ Drive/app/github/programming/jupyterbook/myjb'
+alias gj='cd ~/My\ Drive/app/github/jupyterbook/myjb'
 alias gq='cd ~/My\ Drive/app/github/physics/qc'
-alias s='cd ~/My\ Drive/app/github/programming/dotfiles; open .'
+alias s='cd ~/My\ Drive/app/github/dotfiles; open .'
 
 # Change working directory to the top-most Finder window location.
 cdf() { cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" }
@@ -56,15 +56,16 @@ alias grep='grep --color'
 alias pb='pbcopy'
 alias his='history'
 alias rl='exec ${SHELL} -l' #reload
+tc() { touch $1 && c $1 }
+mkc() { mkdir $1 && cd $1}
 
 ## open apps ##
 alias hr='open .'
 alias c='open /Applications/CotEditor.app'
-tc() { touch $1 && c $1 }
 alias vs='code .'
 alias vj='code ~/Library/Application\ Support/Code/User/settings.json'
-alias cpvj='cp -fv ~/Library/Application\ Support/Code/User/settings.json ~/My\ Drive/app/github/programming/dotfiles/vscode/settings.json;
+alias cpvj='cp -fv ~/Library/Application\ Support/Code/User/settings.json ~/My\ Drive/app/github/dotfiles/vscode/settings.json;
 			cp -fv ~/Library/Application\ Support/Code/User/settings.json ~/My\ Drive/app/github//latex-template/settings.json;
-			cp -fv ~/.vscode/extensions/extensions.json ~/My\ Drive/app/github/programming/dotfiles/vscode/extensions.json'
+			cp -fv ~/.vscode/extensions/extensions.json ~/My\ Drive/app/github/dotfiles/vscode/extensions.json'
 alias opjb='gj; open /Applications/Firefox.app _build/html/index.html'
 alias fire='open /Applications/Firefox.app'
