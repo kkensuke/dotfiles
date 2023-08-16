@@ -40,7 +40,7 @@ max-width: 210px !important;
 /* compact extensions panel view in toolbar */
 #unified-extensions-panel panelview
 {
-  width: 210px !important;
+  width: 310px !important;
   max-height: 500px !important;
 }
 

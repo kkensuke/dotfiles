@@ -34,8 +34,8 @@
     //  - shrink: Allow tabs to get smaller when the available space is not enough to show all tabs at once.
     "workbench.editor.tabSizing": "shrink",
     "workbench.colorTheme": "Monokai",
-    "workbench.editor.enablePreview": false,
     "workbench.colorCustomizations": {
+        // "textBlockQuote.background":"#016362", //Blockquote
         "editor.findMatchBackground": "#04ff32", //Current SEARCH MATCH
         "editor.findMatchHighlightBackground": "#ff00b3" //Other SEARCH MATCHES
     },
@@ -48,13 +48,15 @@
     "cSpell.ignoreRegExpList": ["[０-９Ａ-Ｚａ-ｚぁ-んァ-ノ-ヶ亜-熙纊-黑]+"],
     "cSpell.userWords": [
         "Ansatz",
+        "biggl",
         "CNOT",
-        "NAND",
         "Deutsch",
         "eigensolver",
         "Frobenius",
         "Hadamard",
         "Ising",
+        "mathcal",
+        "NAND",
         "Neumann",
         "NISQ",
         "pennylane",
@@ -63,15 +65,31 @@
         "qubit",
         "qubits",
         "Rényi",
-        "unitarity",
+        "unitarity"
     ],
 
 
     // code-runner
     "code-runner.runInTerminal": true,
 
-
+    
+    // google-translate
+    "vscodeGoogleTranslate.preferredLanguage": "Japanese",
+    
+    
     // grammarly
+    
+    
+    // markdown
+    "markdown.extension.preview.autoShowPreviewToSide": true,
+    "markdown.extension.list.indentationSize": "inherit",
+    // MyST markdown
+    "myst.preview.extensions": [
+        "amsmath",
+        "deflist",
+        "dollarmath", // on by default
+        "tasklist",
+    ],
 
 
     // git
@@ -170,7 +188,11 @@
     "latex-workshop.synctex.afterBuild.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.view.pdf.invert": 0,
-    "redhat.telemetry.enabled": false,
-    "window.zoomLevel": -1,
-    "markdown.extension.list.indentationSize": "inherit",
+    "latex-workshop.hover.preview.mathjax.extensions": [
+        "physics",
+        "boldsymbol",
+        "braket",
+        "cases"
+    ],
+    "window.zoomLevel": 1,
 }
