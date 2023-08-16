@@ -22,7 +22,7 @@ alias d='cd ~/Desktop'
 alias h='cd ~'
 alias /='cd /'
 alias github='cd ~/My\ Drive/app/github'
-alias gj='cd ~/My\ Drive/app/github/jupyterbook/myjb'
+alias gj='cd ~/My\ Drive/app/github/jupyterbook/myjb-en'
 alias gq='cd ~/My\ Drive/app/github/physics/qc'
 alias s='cd ~/My\ Drive/app/github/dotfiles; open .'
 
@@ -71,4 +71,4 @@ alias his='history'
 alias rl='exec ${SHELL} -l' #reload
 alias imgopt='open -a ImageOptim .'
 alias -s py=python
-alias -s html=fire
+alias -s {html,pdf}=fire
