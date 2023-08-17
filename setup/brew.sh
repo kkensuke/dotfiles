@@ -7,6 +7,9 @@ set -u
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# reload
+exec ${SHELL} -l
+
 # CLI
 brew install coreutils
 brew install gh
@@ -21,9 +24,9 @@ brew install appcleaner
 brew install bitwarden
 brew install cheatsheet
 brew install coconutbattery
-brew install cot
+brew install coteditor
 brew install clipy
-brew install drowio
+brew install --cask drawio
 brew install db-browser-for-sqlite
 brew install firefox
 brew install google-drive

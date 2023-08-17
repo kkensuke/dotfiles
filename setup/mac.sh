@@ -44,7 +44,7 @@ apps=("/System/Applications/System Settings" "/System/Applications/Utilities/Ter
 
 for app in "${apps[@]}"
 do
-	defaults write com.apple.dock　persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$app.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+	defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$app.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
 done
 
 
@@ -90,8 +90,8 @@ defaults write com.apple.LaunchServices LSHandlers -array-add '{LSHandlerContent
 chflags nohidden ~/Library
 
 # Stop using default folders
-chflags hidden ~/{Downloads,Documents,Movies,Music,Pictures}
-chmod 000 ~/{Downloads,Documents,Movies,Music,Pictures}
+chflags hidden ~/{Documents,Movies,Music,Pictures}
+chmod 000 ~/{Documents,Movies,Music,Pictures}
 
 
 
