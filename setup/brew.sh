@@ -7,9 +7,6 @@ set -u
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# reload
-exec ${SHELL} -l
-
 # CLI
 brew install coreutils
 brew install gh
@@ -57,3 +54,6 @@ gh auth refresh -h github.com -s delete_repo
 ## usage (WARNING: no confirmation!)
 # gh repo-delete user/myrepo
 ----------------------------------------------------
+
+# Authenticate Git
+gh auth login
