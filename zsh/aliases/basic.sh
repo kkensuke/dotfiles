@@ -50,10 +50,6 @@ fd() { find . -name "*.$1" -type f -delete }
 rn() { for filename in *.$1; do mv -f "$filename" $(echo "$filename" | sed -e "s/$2//g"); done }
 dif(){ diff --color -u $1 $2 }
 
-## make ##
-tc() { touch $1 && c $1 }
-mkc() { mkdir $1 && cd $1}
-
 ## open apps ##
 alias hr='open .'
 alias c='open /Applications/CotEditor.app'
@@ -64,6 +60,10 @@ alias cpvj='cp -fv ~/Library/Application\ Support/Code/User/settings.json ~/My\ 
 			cp -fv ~/.vscode/extensions/extensions.json ~/My\ Drive/app/github/dotfiles/vscode/extensions.json'
 alias opjb='gj; open /Applications/Firefox.app _build/html/index.html'
 alias fire='open /Applications/Firefox.app'
+
+## make ##
+tc() { touch $1 && c $1 }
+mkc() { mkdir $1 && cd $1}
 
 ## others ##
 alias pb='pbcopy'

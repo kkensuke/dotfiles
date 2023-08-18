@@ -14,5 +14,7 @@ done
 # .zshenv
 ln -sf ~/My\ Drive/app/github/dotfiles/zsh/.zshenv ~/.zshenv
 
-# firefox
-ln -sf ~/My\ Drive/app/github/dotfiles/backup/firefox-userChrome.css ~/Library/Application\ Support/Firefox/Profiles/ozg3hll2.default-release/chrome/userChrome.css
+# others
+ln -s ~/My\ Drive/tmp ~/Desktop/tmp
+ln -s ~/My\ Drive/app/github ~/github
+ln -s ~/My\ Drive/app/github/dotfiles ~/dotfiles
