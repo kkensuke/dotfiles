@@ -62,7 +62,7 @@ gh auth refresh -h github.com -s delete_repo
 # gh repo-delete user/myrepo
 
 # Authenticate Git
-gh auth login
+gh auth login -s delete_repo
 ----------------------------------------------------
 
 # reload
