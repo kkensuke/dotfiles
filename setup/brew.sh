@@ -7,6 +7,12 @@ set -u
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# reload
+exec ${SHELL} -l
+
+# install to use git
+xcode-select --install
+
 # CLI
 brew install coreutils
 brew install gh
@@ -17,32 +23,33 @@ brew install zsh-completions
 brew install zsh-git-prompt
 
 # GUI
-brew install appcleaner
-brew install bitwarden
-brew install cheatsheet
-brew install coconutbattery
-brew install coteditor
-brew install clipy
+brew install --cask appcleaner
+brew install --cask bitwarden
+brew install --cask cheatsheet
+brew install --cask coconutbattery
+brew install --cask coteditor
+brew install --cask clipy
 brew install --cask drawio
-brew install db-browser-for-sqlite
-brew install firefox
-brew install google-drive
-brew install grammarly
-brew install hand-mirror
-brew install imageoptim
-brew install mathpix
-brew install MonitorControl
-brew install notion
-brew install rectangle
-brew install shotcut
-brew install shottr
-brew install slack
-brew install syntax-highlight
-brew install visual-studio-code
-brew install vlc
-brew install zoom
-brew install zotero
+brew install --cask db-browser-for-sqlite
+brew install --cask firefox
+brew install --cask google-drive
+brew install --cask grammarly
+brew install --cask imageoptim
+brew install --cask mathpix-snipping-tool
+brew install --cask MonitorControl
+brew install --cask notion
+brew install --cask rectangle
+brew install --cask shotcut
+brew install --cask shottr
+brew install --cask syntax-highlight
+brew install --cask visual-studio-code
+brew install --cask vlc
+brew install --cask zotero
 
+
+# app store
+# hand-mirror
+# unsplash
 
 # register gh alias
 ----------------------------------------------------
@@ -53,7 +60,10 @@ gh auth refresh -h github.com -s delete_repo
 # gh alias list
 ## usage (WARNING: no confirmation!)
 # gh repo-delete user/myrepo
-----------------------------------------------------
 
 # Authenticate Git
 gh auth login
+----------------------------------------------------
+
+# reload
+exec ${SHELL} -l
