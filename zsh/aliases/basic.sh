@@ -35,6 +35,13 @@ alias rm='rm -iv'
 alias rf='rm -rf'
 alias v='vi'
 
+## search ##
+alias grep='grep --color'
+fb() { find . -size +$2M -type f -name $1 -exec ls -lhS "{}" \; | awk '{print $5,$9}' }
+fd() { find . -name "*.$1" -type f -delete }
+rn() { for filename in *.$1; do mv -f "$filename" $(echo "$filename" | sed -e "s/$2//g"); done }
+dif(){ diff --color -u $1 $2 }
+
 ## global aliases ##
 alias -g G='| grep'
 alias -g H='| head'
@@ -42,13 +49,6 @@ alias -g T='| tail'
 alias -g EO='>/dev/null'
 alias -g NE='2>/dev/null'
 alias -g NO='&>/dev/null'
-
-## search ##
-alias grep='grep --color'
-fb() { find . -size +$2M -type f -name $1 -exec ls -lhS "{}" \; | awk '{print $5,$9}' }
-fd() { find . -name "*.$1" -type f -delete }
-rn() { for filename in *.$1; do mv -f "$filename" $(echo "$filename" | sed -e "s/$2//g"); done }
-dif(){ diff --color -u $1 $2 }
 
 ## open apps ##
 alias hr='open .'
