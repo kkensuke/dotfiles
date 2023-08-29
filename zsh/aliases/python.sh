@@ -11,7 +11,7 @@ alias pfr='pip list --format=freeze > requirements.txt'
 
 # venv
 alias mkv='python3 -m venv venv; acv; pup'
-alias acv='source venv/bin/activate'
+alias acv='source ~/venv/bin/activate'
 alias deac='deactivate'
 
 # jupyterlab

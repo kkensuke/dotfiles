@@ -2,9 +2,11 @@
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "editor.autoClosingBrackets": "beforeWhitespace",
+    "editor.autoClosingQuotes": "never",
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
     "editor.inlineSuggest.enabled": true,
+    "editor.tabSize": 4,
     "editor.trimAutoWhitespace": false,
     "files.trimTrailingWhitespace": false,
     "editor.unicodeHighlight.allowedCharacters": {
@@ -39,6 +41,7 @@
         "editor.findMatchBackground": "#04ff32", //Current SEARCH MATCH
         "editor.findMatchHighlightBackground": "#ff00b3" //Other SEARCH MATCHES
     },
+
     "workbench.iconTheme": "material-icon-theme",
     
     // indent-rainbow
@@ -81,6 +84,9 @@
     
     
     // markdown
+    "markdown.math.enabled": false,
+    "markdown.validate.enabled": true, // link check
+    "markdown.updateLinksOnFileMove.enabled": "always",
     "markdown.extension.list.indentationSize": "inherit",
     "markdown.extension.katex.macros": {
         "\\bbA"             : "\\mathbb{A}",
@@ -184,27 +190,53 @@
         "\\ot"              : "^{\\otimes {#1}}",
         "\\kten"            : "\\ket{#1}\\otimes\\ket{#2}",
         "\\bten"            : "\\bra{#1}\\otimes\\bra{#2}",
-        "\\ev"              : "\\left\\langle{#1}\\right\\rangle",
-        "\\dyad"            : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#1}\\right|",
-        "\\ketbra"          : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#2}\\right|",
-        // "\\dyada"           : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#1}\\right|",
-        // "\\dyadb"           : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#2}\\right|",
-        // "\\dyad"            : "\\def\\dyad{#1}{\\@ifnextchar{{\\dyadb{#1}}{\\dyada{#1}}}",
-        "\\abs"             : "\\left|{#1}\\right|",
-        "\\norm"            : "\\left\\|{#1}\\right\\|",
         "\\pqty"            : "\\left({#1}\\right)",
         "\\bqty"            : "\\left[{#1}\\right]",
+        "\\vqty"            : "\\left\\lvert{#1}\\right\\rvert",
         "\\Bqty"            : "\\left\\{{#1}\\right\\}",
+        "\\abs"             : "\\left|{#1}\\right|",
+        "\\norm"            : "\\left\\|{#1}\\right\\|",
+        "\\eval"            : "\\left.{#1}\\right|_{#2}",
+        "\\order"           : "\\mathcal{O}\\left({#1}\\right)",
+        "\\comm"            : "\\left[{#1},{#2}\\right]",
+        "\\acomm"           : "\\left\\{{#1},{#2}\\right\\}",
+        "\\pb"              : "\\left\\{{#1},{#2}\\right\\}",
+        "\\grad"            : "\\nabla",
+        "\\lap"             : "\\nabla^2",
+        "\\div"             : "\\nabla\\cdot",
+        "\\curl"            : "\\nabla\\times",
+        
         "\\Tr"              : "\\operatorname{Tr}",
+        "\\tr"              : "\\operatorname{tr}",
+        "\\rank"            : "\\operatorname{rank}",
+        "\\erf"             : "\\operatorname{erf}",
+        "\\Res"             : "\\operatorname{Res}",
+        "\\Re"              : "\\operatorname{Re}",
+        "\\Im"              : "\\operatorname{Im}",
         "\\dv"              : "\\frac{\\mathrm{d}{#1}}{\\mathrm{d}{#2}}",
         "\\pd"              : "\\partial",
         "\\pdv"             : "\\frac{\\partial{#1}}{\\partial{#2}}",
+        
+        "\\braket"          : "\\left\\langle{#1}|{#2}\\right\\rangle",
+        "\\ketbra"          : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#2}\\right|",
+        "\\dyad"            : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#1}\\right|",
+        // "\\dyada"           : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#1}\\right|",
+        // "\\dyadb"           : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#2}\\right|",
+        // "\\dyad"            : "\\def\\dyad{#1}{\\@ifnextchar{{\\dyadb{#1}}{\\dyada{#1}}}",
+        "\\ev"              : "\\left\\langle{#1}\\right\\rangle",
+        "\\expval"          : "\\left\\langle{#2}|{#1}|{#2}\\right\\rangle",
+        "\\mel"             : "\\left\\langle{#1}\\middle|{#2}\\middle|{#3}\\right\\rangle",
+        
+        "\\pmqty"         : "\\begin{pmatrix}#1\\end{pmatrix}",
+        "\\bmqty"           : "\\begin{bmatrix}#1\\end{bmatrix}",
+        "\\vmqty"           : "\\begin{vmatrix}#1\\end{vmatrix}",
     },
     // MyST markdown
     "myst.preview.extensions": [
         "amsmath",
+        "colon_fence",
         "deflist",
-        "dollarmath", // on by default
+        "dollarmath",
         "tasklist",
     ],
 
@@ -311,6 +343,4 @@
         "braket",
         "cases"
     ],
-    "git.ignoreMissingGitWarning": true,
-    "workbench.preferredDarkColorTheme": "Monokai",
 }
