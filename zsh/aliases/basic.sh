@@ -68,7 +68,7 @@ mkc() { mkdir $1 && cd $1}
 ## others ##
 alias pb='pbcopy'
 alias his='history'
-alias rl='exec ${SHELL} -l' #reload
+alias rl='echo ""; exec ${SHELL} -l' #reload
 alias imgopt='open -a ImageOptim .'
 alias -s py=python
 alias -s {html,pdf}=fire
