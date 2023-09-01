@@ -27,7 +27,7 @@
     brew install zsh-git-prompt
     ```
 
-## Other Homebrew packages
+## Others
 - Install `coreutils`, `gh` and `tree`.
 
     ```zsh
@@ -36,5 +36,7 @@
     brew install tree
     ```
 
+- Change language setting in `.zshenv`. You can check available locale with `locale -a`
+        export LANG=ja_JP.UTF-8
 ---
 The details of my `zsh/` are described in [Zsh](https://kkensuke.github.io/myjb/pages/basic/zsh.html) and [Alias](https://kkensuke.github.io/myjb/pages/basic/alias.html).
