@@ -37,6 +37,7 @@
     ```
 
 - Change language setting in `.zshenv`. You can check available locale with `locale -a`
+
         ```zsh
         export LANG=ja_JP.UTF-8
         ```
