@@ -10,9 +10,6 @@ if type brew &>/dev/null; then
 fi
 
 
-autoload -U zmv
-
-
 setopt auto_cd
 setopt inc_append_history
 setopt share_history
