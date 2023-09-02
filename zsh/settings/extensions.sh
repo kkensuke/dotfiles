@@ -1,5 +1,5 @@
 # zsh-git-prompt
-source "/opt/homebrew/opt/zsh-git-prompt/zshrc.sh"
+source /opt/homebrew/opt/zsh-git-prompt/zshrc.sh
 # zsh-syntax-highlighting
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
