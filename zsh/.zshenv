@@ -6,3 +6,7 @@ export LS_COLORS='no=00:fi=00:di=00;96:ln=01;35:*.tar=01;31:*.tgz=01;31:*.arj=01
 export LANG=ja_JP.UTF-8
 
 export ZDOTDIR="$HOME/My Drive/app/github/dotfiles/zsh"
+
+# ref: https://github.com/mathiasbynens/dotfiles/blob/main
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

@@ -21,6 +21,7 @@ brew install tree
 brew install zsh-autosuggestions
 brew install zsh-completions
 brew install zsh-git-prompt
+brew install zsh-syntax-highlighting
 
 # GUI
 brew install --cask appcleaner

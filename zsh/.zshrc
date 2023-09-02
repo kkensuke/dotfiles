@@ -8,5 +8,3 @@
 [[ -f $ZDOTDIR/aliases/latex.sh ]]           && . $ZDOTDIR/aliases/latex.sh
 [[ -f $ZDOTDIR/aliases/encryption.sh ]]      && . $ZDOTDIR/aliases/encryption.sh
 [[ -f $ZDOTDIR/aliases/others.sh ]]          && . $ZDOTDIR/aliases/others.sh
-
-## ref: https://github.com/mathiasbynens/dotfiles/blob/main

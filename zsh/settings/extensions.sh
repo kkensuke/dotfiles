@@ -1,5 +1,7 @@
 # zsh-git-prompt
-. "/opt/homebrew/opt/zsh-git-prompt/zshrc.sh"
+source "/opt/homebrew/opt/zsh-git-prompt/zshrc.sh"
+# zsh-syntax-highlighting
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # zsh-completions, zsh-autosuggestions
 if type brew &>/dev/null; then
