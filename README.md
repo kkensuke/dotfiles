@@ -43,4 +43,4 @@
     ```
 
 ---
-The details of my `zsh/` are described in [Zsh](https://kkensuke.github.io/myjb/pages/basic/zsh.html) and [Alias](https://kkensuke.github.io/myjb/pages/basic/alias.html).
+The details of my `zsh/` are described in [Zsh](https://kkensuke.github.io/myjb-en/pages/basic/zsh.html) and [Alias](https://kkensuke.github.io/myjb-en/pages/basic/alias.html).
