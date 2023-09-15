@@ -1,3 +1,5 @@
+# ref: https://github.com/mathiasbynens/dotfiles/blob/main
+
 # https://www.cyberciti.biz/faq/apple-mac-osx-terminal-color-ls-output-option/
 export CLICOLOR=true
 # export LSCOLORS=GxFxCxDxBxegedabagaced
@@ -7,6 +9,5 @@ export LANG=ja_JP.UTF-8
 
 export ZDOTDIR="$HOME/My Drive/app/github/dotfiles/zsh"
 
-# ref: https://github.com/mathiasbynens/dotfiles/blob/main
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
