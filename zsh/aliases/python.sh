@@ -10,7 +10,7 @@ alias pf='pip list --format=freeze'
 alias pfr='pip list --format=freeze > requirements.txt'
 
 # venv
-alias mkv='python3 -m venv venv; acv; pup'
+alias mkv='python3 -m venv venv; source ./venv/bin/activate; pup'
 alias acv='source ~/venv/bin/activate'
 alias deac='deactivate'
 

@@ -1,4 +1,4 @@
-Sometimes, the following error happens.
+Sometimes, the following error occurs.
 
 zsh compinit: insecure directories, run compaudit for list.
 Ignore insecure directories and continue [y] or abort compinit [n]? compauditcompinit: initialization aborted
