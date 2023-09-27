@@ -27,6 +27,7 @@ brew install zsh-syntax-highlighting
 brew install --cask appcleaner
 brew install --cask bitwarden
 brew install --cask cheatsheet
+brew install --cask cloudflare-warp
 brew install --cask coconutbattery
 brew install --cask coteditor
 brew install --cask clipy
