@@ -46,6 +46,7 @@ brew install --cask shottr
 brew install --cask syntax-highlight
 brew install --cask visual-studio-code
 brew install --cask vlc
+brew install --cask zoom
 brew install --cask zotero
 
 
