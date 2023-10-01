@@ -2,7 +2,7 @@
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "editor.autoClosingBrackets": "beforeWhitespace",
-    "editor.autoClosingQuotes": "never",
+    "editor.autoClosingQuotes": "beforeWhitespace",
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
     "editor.inlineSuggest.enabled": true,
@@ -43,7 +43,7 @@
     },
 
     "workbench.iconTheme": "material-icon-theme",
-    
+
     // indent-rainbow
     "indentRainbow.ignoreErrorLanguages": ["*"],
 
@@ -75,14 +75,14 @@
     // code-runner
     "code-runner.runInTerminal": true,
 
-    
+
     // google-translate
     "vscodeGoogleTranslate.preferredLanguage": "Japanese",
-    
-    
+
+
     // grammarly
-    
-    
+
+
     // markdown
     "markdown.math.enabled": false,
     "markdown.validate.enabled": true, // link check
@@ -167,7 +167,7 @@
         "\\rmX"             : "\\mathrm{X}",
         "\\rmY"             : "\\mathrm{Y}",
         "\\rmZ"             : "\\mathrm{Z}",
-        
+
         "\\const"           : "\\mathrm{const}",
         "\\hc"              : "\\mathrm{h.c.}",
         "\\lhs"             : "\\mathrm{(LHS)}",
@@ -175,11 +175,11 @@
         "\\Haar"            : "\\mathrm{Haar}",
         "\\poly"            : "\\mathrm{poly}",
         "\\SWAP"            : "\\mathrm{SWAP}",
-        
+
         "\\E"               : "\\operatorname{E}",
         "\\Var"             : "\\operatorname{Var}",
         "\\Cov"             : "\\operatorname{Cov}",
-        
+
         "\\combi"           : "{}_{#1}\\mathrm{C}_{#2}",
         "\\fa"              : "{}^\\forall}",
         "\\ex"              : "{}^\\exists",
@@ -205,7 +205,7 @@
         "\\lap"             : "\\nabla^2",
         "\\div"             : "\\nabla\\cdot",
         "\\curl"            : "\\nabla\\times",
-        
+
         "\\Tr"              : "\\operatorname{Tr}",
         "\\tr"              : "\\operatorname{tr}",
         "\\rank"            : "\\operatorname{rank}",
@@ -216,21 +216,20 @@
         "\\dv"              : "\\frac{\\mathrm{d}{#1}}{\\mathrm{d}{#2}}",
         "\\pd"              : "\\partial",
         "\\pdv"             : "\\frac{\\partial{#1}}{\\partial{#2}}",
-        
+
         "\\braket"          : "\\left\\langle{#1}|{#2}\\right\\rangle",
         "\\ketbra"          : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#2}\\right|",
         "\\dyad"            : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#1}\\right|",
-        // "\\dyada"           : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#1}\\right|",
-        // "\\dyadb"           : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#2}\\right|",
-        // "\\dyad"            : "\\def\\dyad{#1}{\\@ifnextchar{{\\dyadb{#1}}{\\dyada{#1}}}",
         "\\ev"              : "\\left\\langle{#1}\\right\\rangle",
         "\\expval"          : "\\left\\langle{#2}|{#1}|{#2}\\right\\rangle",
         "\\mel"             : "\\left\\langle{#1}\\middle|{#2}\\middle|{#3}\\right\\rangle",
-        
+
         "\\pmqty"         : "\\begin{pmatrix}#1\\end{pmatrix}",
         "\\bmqty"           : "\\begin{bmatrix}#1\\end{bmatrix}",
         "\\vmqty"           : "\\begin{vmatrix}#1\\end{vmatrix}",
     },
+
+
     // MyST markdown
     "myst.preview.extensions": [
         "amsmath",
@@ -336,11 +335,10 @@
     "latex-workshop.latex.autoBuild.run": "onFileChange",
     "latex-workshop.synctex.afterBuild.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.view.pdf.invert": 0,
+    "latex-workshop.view.pdf.invert": 0.9,
     "latex-workshop.hover.preview.mathjax.extensions": [
         "physics",
         "boldsymbol",
-        "braket",
         "cases"
     ],
 }
