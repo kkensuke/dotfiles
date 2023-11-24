@@ -29,7 +29,9 @@
         "**/Thumbs.db": false
     },
 
+
     "security.workspace.trust.untrustedFiles": "open",
+
 
     // Controls the sizing of editor tabs.
     //  - fit: Always keep tabs large enough to show the full editor label.
@@ -41,11 +43,12 @@
         "editor.findMatchBackground": "#04ff32", //Current SEARCH MATCH
         "editor.findMatchHighlightBackground": "#ff00b3" //Other SEARCH MATCHES
     },
-
     "workbench.iconTheme": "material-icon-theme",
+
 
     // indent-rainbow
     "indentRainbow.ignoreErrorLanguages": ["*"],
+
 
     // cSpell
     "cSpell.ignoreRegExpList": ["[０-９Ａ-Ｚａ-ｚぁ-んァ-ノ-ヶ亜-熙纊-黑]+"],
@@ -70,6 +73,14 @@
         "Rényi",
         "unitarity"
     ],
+
+
+    // japanese-proofreading
+    "japanese-proofreading.textlint.ハイフン(-)": false,
+    "japanese-proofreading.textlint.丸かっこ（）": false,
+    "japanese-proofreading.textlint.全角文字と半角文字の間": false,
+    "japanese-proofreading.textlint.助詞の連続": true,
+    "japanese-proofreading.textlint.ひらく漢字": false,
 
 
     // code-runner
@@ -255,30 +266,11 @@
 
 
     // python
-    "python.formatting.provider": "black",
-    "python.formatting.blackPath": "/Users/kensuke/venv/bin/black",
-    "python.formatting.blackArgs": [
-        "--line-length=120"
-    ],
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8Args": [
-        "--ignore=W293, E226, E228, E241, E501, W504",
-        "--max-line-length=120",
-        "--max-complexity=20"
-    ],
-    "[python]": {
-    "editor.defaultFormatter": "ms-python.python",
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": true
-        }
-    },
     "python.defaultInterpreterPath": "/Users/kensuke/venv/bin/python",
     "python.venvPath": "/Users/kensuke/venv/",
     "python.venvFolders": [
         "venv"
     ],
-
-
     // jupyter
     "jupyter.askForKernelRestart": false,
 
@@ -335,10 +327,14 @@
     "latex-workshop.latex.autoBuild.run": "onFileChange",
     "latex-workshop.synctex.afterBuild.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.view.pdf.invert": 0.9,
+    "latex-workshop.view.pdf.invert": 0.1,
     "latex-workshop.hover.preview.mathjax.extensions": [
         "physics",
         "boldsymbol",
         "cases"
     ],
+
+
+    // Ltex
+    "ltex.Language": "ja-JP",
 }

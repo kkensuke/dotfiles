@@ -17,3 +17,5 @@ mkvlt(){
 mkbt(){
 	cp -r ~/.latex-template/beamer ./"$1"
 }
+
+alias tbuild="cp ../main.pdf main.pdf; jb build .; gmtn; ghp-import -n -p -f _build/html"
