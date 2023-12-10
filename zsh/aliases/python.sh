@@ -20,7 +20,7 @@ alias opj='fire ~/My\ Drive/app/github/jupyterbook/myjb/_build/html/index.html'
 
 # build and publish jupyter-book
 jbg(){
-	cd ~/My\ Drive/app/github/jupyterbook/"$1"/
+	cd ~/My\ Drive/app/github/jb-public/"$1"/
 	jb build --all .
 	gacpm add
 	ghp-import -n -p -f _build/html
