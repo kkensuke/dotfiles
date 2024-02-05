@@ -37,11 +37,12 @@
     //  - fit: Always keep tabs large enough to show the full editor label.
     //  - shrink: Allow tabs to get smaller when the available space is not enough to show all tabs at once.
     "workbench.editor.tabSizing": "shrink",
+    // "workbench.editor.enablePreview": false,
     "workbench.colorTheme": "Monokai",
     "workbench.colorCustomizations": {
         // "textBlockQuote.background":"#016362", //Blockquote
-        "editor.findMatchBackground": "#04ff32", //Current SEARCH MATCH
-        "editor.findMatchHighlightBackground": "#ff00b3" //Other SEARCH MATCHES
+        "editor.findMatchHighlightBackground": "#04ff32", //Other SEARCH MATCHES
+        "editor.findMatchBorder": "#04ff32",
     },
     "workbench.iconTheme": "material-icon-theme",
 
@@ -295,7 +296,18 @@
                 "-kanji=utf8",
                 "%DOCFILE%"
             ]
-        }
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "--bblencoding=utf8",
+                "-u",
+                "-U",
+                "--output_safechars",
+                "%DOCFILE%"
+            ]
+        },
     ],
     "latex-workshop.latex.recipes": [
         {
@@ -306,11 +318,21 @@
                 "ptex2pdf",
             ]
         },
+        // {
+        //     "name": "ptex2pdf -> pbibtex -> ptex2pdf * 2",
+        //     "tools":[
+        //         "ptex2pdf",
+        //         "pbibtex",
+        //         "ptex2pdf",
+        //         "ptex2pdf",
+
+        //     ]
+        // },
         {
-            "name": "ptex2pdf -> pbibtex -> ptex2pdf * 2",
+            "name": "ptex2pdf -> biber -> ptex2pdf * 2",
             "tools":[
                 "ptex2pdf",
-                "pbibtex",
+                "biber",
                 "ptex2pdf",
                 "ptex2pdf",
 
@@ -327,7 +349,7 @@
     "latex-workshop.latex.autoBuild.run": "onFileChange",
     "latex-workshop.synctex.afterBuild.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.view.pdf.invert": 0.1,
+    "latex-workshop.view.pdf.invert": 0,
     "latex-workshop.hover.preview.mathjax.extensions": [
         "physics",
         "boldsymbol",
@@ -337,4 +359,5 @@
 
     // Ltex
     "ltex.Language": "ja-JP",
+    "workbench.activityBar.location": "top",
 }
