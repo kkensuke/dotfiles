@@ -3,18 +3,8 @@ inoremap jj <Esc>
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 
-" Show line number
-set number
-" Show current position
-set ruler
-" Emphasize the current line
-set cursorline
-
 " Set to auto read when a file is changed from the outside
 set autoread
-" Move cursor to the adjacent line
-set whichwrap=b,s,h,l,<,>,[,],~
-
 " Turn backup off
 set nowritebackup
 set nobackup
@@ -27,9 +17,16 @@ set incsearch
 " Highlight search
 set hlsearch
 
+" Show line number
+set number
+" Show current position
+set ruler
+" Emphasize the current line
+set cursorline
 " Tab completion
 set wildmenu
-
+" Move cursor to the adjacent line
+set whichwrap=b,s,h,l,<,>,[,],~
 
 " Expand tab
 set expandtab
