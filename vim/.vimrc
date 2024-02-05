@@ -18,7 +18,7 @@ set noswapfile
 
 " Ignore case when searching
 set ignorecase
-" Incsearch shows the search matches as you type
+" Shows the search matches as you type
 set incsearch
 " Highlight search
 set hlsearch
