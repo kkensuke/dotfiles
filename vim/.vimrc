@@ -1,7 +1,15 @@
 inoremap jj <Esc>
 
+" Ctrl+t to use NERDTree
 nnoremap <C-t> :NERDTreeToggle<CR>
-
+" Spacebar to type ':' in normal mode
+nnoremap <space> :
+" You can split the window in Vim by typing :split or :vsplit.
+" Move between windows
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -16,6 +24,22 @@ set ignorecase
 set incsearch
 " Highlight search
 set hlsearch
+" Enable regular expressions in search
+set magic
+
+" Set colorscheme
+" mkdir -p ~/.vim/colors; cd ~/.vim/colors; git clone https://github.com/tomasr/molokai
+colorscheme molokai
+" Show the mode you are on the last line.
+set showmode
+" Clear status line when vimrc is reloaded
+set statusline=
+" Status line left side
+set statusline+=\ %F\ %M\ %Y\ %R
+" Status line right side.
+set statusline+=%=row:\ %l\ col:\ %c\ percent:\ %p%%\ \ 
+" Show the status on the second to last line
+set laststatus=2
 
 " Show line number
 set number
@@ -23,6 +47,9 @@ set number
 set ruler
 " Emphasize the current line
 set cursorline
+set cursorcolumn
+" Set spell check
+set spell
 " Tab completion
 set wildmenu
 " Move cursor to the adjacent line
