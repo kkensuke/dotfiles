@@ -1,7 +1,54 @@
 inoremap jj <Esc>
 
 nnoremap <C-t> :NERDTreeToggle<CR>
+
+" Show line number
+set number
+" Show current position
+set ruler
+
 set whichwrap=b,s,h,l,<,>,[,],~
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" Turn backup off
+set nowritebackup
+set nobackup
+set noswapfile
+
+" Ignore case when searching
+set ignorecase
+" Incsearch shows the search matches as you type
+set incsearch
+" Highlight search
+set hlsearch
+
+" Expand tab
+set expandtab
+" Set tab width
+set tabstop=4
+set softtabstop=4
+" Keep indent
+set autoindent
+" Smart indent 
+set smartindent
+" Set smartindent width
+set shiftwidth=4
+
+" Remove scrollbar
+set guioptions+=R
+" buffer scroll
+set mouse=a
+" Syntax highlight
+syntax on
+" No error bell
+set noerrorbells
+" Show matching brackets
+set showmatch matchtime=1
+" Show trailing whitespace
+set listchars=tab:^\ ,trail:~
+" add to clipboard when yanking
+set guioptions+=a
 
 
 call plug#begin()
