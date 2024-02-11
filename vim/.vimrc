@@ -11,6 +11,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+
 " Set to auto read when a file is changed from the outside
 set autoread
 " Turn backup off
@@ -30,16 +31,24 @@ set magic
 " Set colorscheme
 " mkdir -p ~/.vim/colors; cd ~/.vim/colors; git clone https://github.com/tomasr/molokai
 colorscheme molokai
-" Show the mode you are on the last line.
-set showmode
-" Clear status line when vimrc is reloaded
-set statusline=
-" Status line left side
-set statusline+=\ %F\ %M\ %Y\ %R
-" Status line right side.
-set statusline+=%=row:\ %l\ col:\ %c\ percent:\ %p%%\ \ 
 " Show the status on the second to last line
 set laststatus=2
+" Clear status line when vimrc is reloaded
+set statusline=
+" put the following highlight in ~/.vim/colors/molokai.vim
+" https://stackoverflow.com/questions/48271865/vim-whats-the-best-way-to-set-statusline-color-to-change-based-on-mode
+" hi MyColor      ctermbg=233 ctermfg=46
+" hi NormalColor  guifg=Black guibg=Green ctermbg=46 ctermfg=0
+" hi InsertColor  guifg=Black guibg=Cyan ctermbg=51 ctermfg=0
+" hi ReplaceColor guifg=Black guibg=maroon1 ctermbg=165 ctermfg=0
+set statusline+=%#NormalColor#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#InsertColor#%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#ReplaceColor#%{(mode()=='R')?'\ \ REPLACE\ ':''}
+set statusline+=%#VisualColor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+" Status line left side
+set statusline+=%#MyColor#%{''}\ %F\ %M\ %R
+" Status line right side.
+set statusline+=%=row:\ %l\ col:\ %c\ \ %p%%\ \ 
 
 " Show line number
 set number
@@ -81,7 +90,6 @@ set showmatch matchtime=1
 set listchars=tab:^\ ,trail:~
 " add to clipboard when yanking
 set guioptions+=a
-
 
 call plug#begin()
 " The default plugin directory will be as follows:
