@@ -38,9 +38,10 @@ set statusline=
 " put the following highlight in ~/.vim/colors/molokai.vim
 " https://stackoverflow.com/questions/48271865/vim-whats-the-best-way-to-set-statusline-color-to-change-based-on-mode
 " hi MyColor      ctermbg=233 ctermfg=46
-" hi NormalColor  guifg=Black guibg=Green ctermbg=46 ctermfg=0
-" hi InsertColor  guifg=Black guibg=Cyan ctermbg=51 ctermfg=0
-" hi ReplaceColor guifg=Black guibg=maroon1 ctermbg=165 ctermfg=0
+" hi NormalColor  ctermbg=46  ctermfg=0
+" hi InsertColor  ctermbg=51  ctermfg=0
+" hi ReplaceColor ctermbg=208 ctermfg=0
+" hi VisualColor  ctermbg=15  ctermfg=0
 set statusline+=%#NormalColor#%{(mode()=='n')?'\ \ NORMAL\ ':''}
 set statusline+=%#InsertColor#%{(mode()=='i')?'\ \ INSERT\ ':''}
 set statusline+=%#ReplaceColor#%{(mode()=='R')?'\ \ REPLACE\ ':''}
