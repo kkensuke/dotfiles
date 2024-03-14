@@ -8,9 +8,9 @@ alias ll='ls -AhlS'
 alias lg='ls | grep -i'
 alias ds='du -d 1 -h 2>/dev/null | sort -h'
 alias pwd='sed "s/ /\\\ /g" <<< ${PWD/#$HOME/"~"}'
-alias p='pwd'
+alias p='pwd | pbcopy'
 alias path='echo -e ${PATH//:/\\n}'
-tre() { tree -ahC -L "$2" -I '.git|venv|.DS_Store' --dirsfirst "$1"}
+tre() { tree -ahC -L "$2" -I '.git|venv|node_modules|.DS_Store' --dirsfirst "$1"}
 
 ## change directory ##
 cs() { cd $@ && la }
@@ -44,6 +44,7 @@ rn() { for filename in *.$1; do mv -f "$filename" $(echo "$filename" | sed -e "s
 dif(){ diff --color -u $1 $2 }
 
 ## global aliases ##
+alias -g C='| pbcopy'
 alias -g G='| grep'
 alias -g H='| head'
 alias -g T='| tail'
@@ -52,6 +53,7 @@ alias -g NE='2>/dev/null'
 alias -g NO='&>/dev/null'
 
 ## open apps ##
+alias o='open'
 alias hr='open .'
 alias c='open /Applications/CotEditor.app'
 alias vs='code .'
@@ -61,11 +63,11 @@ alias opjb='gj; open /Applications/Firefox.app _build/html/index.html'
 alias fire='open /Applications/Firefox.app'
 
 ## make ##
+alias m='mkdir'
 tc() { touch $1 && c $1 }
 mkc() { mkdir $1 && cd $1}
 
 ## others ##
-alias pb='pbcopy'
 alias his='history'
 alias rl='echo ""; exec ${SHELL} -l' #reload
 alias imgopt='open -a ImageOptim .'
