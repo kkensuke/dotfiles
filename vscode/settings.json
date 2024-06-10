@@ -4,9 +4,28 @@
     "editor.autoClosingBrackets": "beforeWhitespace",
     "editor.autoClosingQuotes": "beforeWhitespace",
     "editor.bracketPairColorization.enabled": true,
+    // "editor.fontFamily": "UDEV Gothic",
     "editor.guides.bracketPairs": true,
     "editor.inlineSuggest.enabled": true,
     "editor.tabSize": 4,
+    "[tex]": {
+        "editor.tabSize": 4,
+    },
+    "[html]": {
+        "editor.tabSize": 2,
+    },
+    "[javascript]": {
+        "editor.tabSize": 2,
+    },
+    "[typescript]": {
+        "editor.tabSize": 2,
+    },
+    "[typescriptreact]": {
+        "editor.tabSize": 2,
+    },
+    "[python]": {
+        "editor.tabSize": 4,
+    },
     "editor.trimAutoWhitespace": false,
     "files.trimTrailingWhitespace": false,
     "editor.unicodeHighlight.allowedCharacters": {
@@ -28,6 +47,15 @@
         "**/CVS": false,
         "**/Thumbs.db": false
     },
+    
+    
+    // tailwindcss
+    "files.associations": {
+        "*.css": "tailwindcss"
+        },
+    "editor.quickSuggestions": {
+    "strings": "on"
+    },
 
 
     "security.workspace.trust.untrustedFiles": "open",
@@ -37,8 +65,6 @@
     //  - fit: Always keep tabs large enough to show the full editor label.
     //  - shrink: Allow tabs to get smaller when the available space is not enough to show all tabs at once.
     "workbench.editor.tabSizing": "shrink",
-    // "workbench.editor.enablePreview": false,
-    "workbench.colorTheme": "Monokai",
     "workbench.colorCustomizations": {
         // "textBlockQuote.background":"#016362", //Blockquote
         "editor.findMatchHighlightBackground": "#04ff32", //Other SEARCH MATCHES
@@ -90,9 +116,6 @@
 
     // google-translate
     "vscodeGoogleTranslate.preferredLanguage": "Japanese",
-
-
-    // grammarly
 
 
     // markdown
@@ -279,6 +302,17 @@
     // latex
     "latex-workshop.latex.tools": [
         {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "%DOC%"
+            ],
+            "env": {}
+        },
+        {
             "name":"ptex2pdf",
             "command": "ptex2pdf",
             "args": [
@@ -318,16 +352,16 @@
                 "ptex2pdf",
             ]
         },
-        // {
-        //     "name": "ptex2pdf -> pbibtex -> ptex2pdf * 2",
-        //     "tools":[
-        //         "ptex2pdf",
-        //         "pbibtex",
-        //         "ptex2pdf",
-        //         "ptex2pdf",
+        {
+            "name": "ptex2pdf -> pbibtex -> ptex2pdf * 2",
+            "tools":[
+                "ptex2pdf",
+                "pbibtex",
+                "ptex2pdf",
+                "ptex2pdf",
 
-        //     ]
-        // },
+            ]
+        },
         {
             "name": "ptex2pdf -> biber -> ptex2pdf * 2",
             "tools":[
@@ -336,6 +370,15 @@
                 "ptex2pdf",
                 "ptex2pdf",
 
+            ]
+        },
+        {
+            "name": "pdflatex -> bibtex -> pdflatex * 2",
+            "tools": [
+              "pdflatex",
+              "pbibtex",
+              "pdflatex",
+              "pdflatex"
             ]
         },
     ],
@@ -359,5 +402,9 @@
 
     // Ltex
     "ltex.Language": "ja-JP",
-    "workbench.activityBar.location": "top",
+    "go.toolsManagement.autoUpdate": true,
+    "window.titleBarStyle": "custom",
+    "vscode_vibrancy.theme": "Default Dark",
+    "workbench.colorTheme": "Monokai",
+    "editor.linkedEditing": true,
 }
