@@ -8,7 +8,7 @@ alias ll='ls -AhlS'
 alias lg='ls | grep -i'
 alias ds='du -d 1 -h 2>/dev/null | sort -h'
 alias pwd='sed "s/ /\\\ /g" <<< ${PWD/#$HOME/"~"}'
-alias p='pwd | pbcopy'
+alias p='pwd; pwd | pbcopy'
 alias path='echo -e ${PATH//:/\\n}'
 tre() { tree -ahC -L "$2" -I '.git|venv|node_modules|.DS_Store' --dirsfirst "$1"}
 
@@ -60,8 +60,10 @@ alias hr='open .'
 alias c='open /Applications/CotEditor.app'
 alias vs='code .'
 alias vj='code ~/Library/Application\ Support/Code/User/settings.json'
+alias espn='c  ~/Library/Application\ Support/espanso/'
+alias espnb='c  ~/Library/Application\ Support/espanso/match/base.yml'
+alias espnd='c  ~/Library/Application\ Support/espanso/config/default.yml'
 alias cpvj='cp -fv ~/myLibrary/Application\ Support/Code/User/settings.json ~/My\ Drive/app/github/dotfiles/vscode/settings.json'
-alias opjb='gj; open /Applications/Firefox.app _build/html/index.html'
 alias fire='open /Applications/Firefox.app'
 
 ## make ##

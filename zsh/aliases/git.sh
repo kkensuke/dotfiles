@@ -14,7 +14,7 @@ alias gpl='git pull'
 alias gps='git push'
 alias gpo='git push origin'
 alias gpom='git push origin main'
-alias gs='git status'
+alias gss='git status'
 
 # EMOJI-LOG (https://github.com/ahmadawais/Emoji-Log)
 # See more in .gitmessage
