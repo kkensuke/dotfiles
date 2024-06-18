@@ -16,5 +16,4 @@ ln -sf ~/My\ Drive/app/github/dotfiles/zsh/.zshenv ~/.zshenv
 
 # others
 ln -sf ~/My\ Drive/app/github ~/github
-ln -sf ~/My\ Drive/app/github/dotfiles ~/dotfiles
 ln -sf ~/My\ Drive/app/github/latex-template ~/.latex-template

@@ -11,3 +11,10 @@ export ZDOTDIR="$HOME/My Drive/app/github/dotfiles/zsh"
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+
+# fzf
+# https://github.com/junegunn/fzf#respecting-gitignore
+# https://zenn.dev/megeton/articles/c408511c66f45d
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow'
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border --preview "head -100 {}"'

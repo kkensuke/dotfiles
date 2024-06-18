@@ -68,6 +68,7 @@ alias fire='open /Applications/Firefox.app'
 
 ## make ##
 alias m='mkdir'
+alias test='touch ~/Desktop/asdf.ipynb; code ~/Desktop/asdf.ipynb'
 tc() { touch $1 && c $1 }
 mkc() { mkdir $1 && cd $1}
 
