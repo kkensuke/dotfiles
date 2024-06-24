@@ -40,6 +40,7 @@ resizepdf43() {gs -o "resized_$1" -sDEVICE=pdfwrite -dDEVICEWIDTHPOINTS=1024 -dD
 
 ## search ##
 alias grep='grep --color'
+alias fu='fzf'
 fb() { find . -size +$2M -type f -name $1 -exec ls -lhS "{}" \; | awk '{print $5,$9}' }
 fd() { find . -name "*.$1" -type f -delete }
 rn() { for filename in *.$1; do mv -f "$filename" $(echo "$filename" | sed -e "s/$2//g"); done }
