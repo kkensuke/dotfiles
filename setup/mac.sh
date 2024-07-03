@@ -21,6 +21,9 @@ osascript -e 'tell application "System Preferences" to quit'
 sudo nvram SystemAudioVolume=" "
 sudo nvram StartupMute=%01
 
+# deactivate the CapsLockDelay
+hidutil property --set '{"CapsLockDelayOverride":0}'
+
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
