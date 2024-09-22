@@ -43,20 +43,6 @@ matches:
     replace: "  - trigger: \"\"\n  replace: \"\"$|$"
 
 
-# 挨拶
-  - trigger: ";osewa"
-    replace: "お世話になっております。"
-
-  - trigger: ";ariga"
-    replace: "ありがとうございます。"
-
-  - trigger: ";yoro"
-    replace: "よろしくお願いいたします。"
-
-  - trigger: ";otu"
-    replace: "お疲れ様です。"
-
-
 # Private
   - trigger: ";name"
     replace: "{{name}}"
@@ -158,6 +144,17 @@ matches:
     replace: "🍵"
 
 
+# 挨拶
+  - trigger: ";osewa"
+    replace: "お世話になっております。"
+  - trigger: ";ariga"
+    replace: "ありがとうございます。"
+  - trigger: ";yoro"
+    replace: "よろしくお願いいたします。"
+  - trigger: ";otu"
+    replace: "お疲れ様です。"
+
+
 ## ChatGPT
   - trigger: ";efix"
     replace: "Please fix the following English text: "
@@ -185,6 +182,41 @@ matches:
 
   - trigger: ";lorem"
     replace: "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Donec sed odio operae, eu vulputate felis rhoncus. Salutantibus vitae elit libero, a pharetra augue. Nihil hic munitissimus habendi senatus locus, nihil horum? A communi observantia non est recedendum."
+
+
+# math
+# Multiplication
+  - regex: ";mul\\((?P<num1>.*),(?P<num2>.*)\\)"
+    replace: "{{result}}"
+    vars:
+      - name: result
+        type: shell
+        params:
+          cmd: "expr $ESPANSO_NUM1 '*' $ESPANSO_NUM2"
+# Division
+  - regex: ";div\\((?P<num1>.*),(?P<num2>.*)\\)"
+    replace: "{{result}}"
+    vars:
+      - name: result
+        type: shell
+        params:
+          cmd: "expr $ESPANSO_NUM1 / $ESPANSO_NUM2"
+# Power
+  - regex: ";pow\\((?P<num1>.*),(?P<num2>.*)\\)"
+    replace: "{{result}}"
+    vars:
+      - name: result
+        type: shell
+        params:
+          cmd: "echo $[$ESPANSO_NUM1 ** $ESPANSO_NUM2]"
+# Square Root
+  - regex: ";sqrt\\((?P<num>.*)\\)"
+    replace: "{{result}}"
+    vars:
+      - name: result
+        type: shell
+        params:
+          cmd: "echo $[$ESPANSO_NUM ** 0.5]"
 
 
 # markdown
@@ -224,7 +256,7 @@ matches:
   - trigger: ";fr"
     replace: "\\frac{$|$}{}"
 
-  - trigger: ";sq"
+  - trigger: ";sq{"
     replace: "\\sqrt{$|$}"
 
   - trigger: ";bl"
@@ -463,6 +495,16 @@ matches:
         type: shell
         params:
           cmd: "eval $ESPANSO_COMMAND"
+
+
+# Lookup word definition using Free Dictionary API
+  - regex: ";def\\((?P<word>.*)\\)"
+    replace: "{{definition}}"
+    vars:
+      - name: definition
+        type: shell
+        params:
+          cmd: "curl -s https://api.dictionaryapi.dev/api/v2/entries/en/$ESPANSO_WORD | grep -o '\"definition\":\"[^\"]*\"' | head -n 1 | sed 's/\"definition\":\"\\([^\"]*\\)\"/\\1/'"
 
 
 # date & time
