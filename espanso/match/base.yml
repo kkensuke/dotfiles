@@ -1,0 +1,531 @@
+# espanso match file
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+
+imports:
+  - "params.yml"
+
+
+global_vars:
+  - name: "today"
+    type: date
+    params:
+      format: "%Y/%m/%d"
+  - name: "day1"
+    type: shell
+    params:
+      cmd: "date -v+1d '+%Y/%m/%d'"
+  - name: "day2"
+    type: shell
+    params:
+      cmd: "date -v+2d '+%Y/%m/%d'"
+  - name: "day3"
+    type: shell
+    params:
+      cmd: "date -v+3d '+%Y/%m/%d'"
+  - name: "day4"
+    type: shell
+    params:
+      cmd: "date -v+4d '+%Y/%m/%d'"
+  - name: "day5"
+    type: shell
+    params:
+      cmd: "date -v+5d '+%Y/%m/%d'"
+  - name: "day6"
+    type: shell
+    params:
+      cmd: "date -v+6d '+%Y/%m/%d'"
+
+
+matches:
+# Espanso
+  - trigger: ";trg"
+    replace: "  - trigger: \"\"\n  replace: \"\"$|$"
+
+
+# 挨拶
+  - trigger: ";osewa"
+    replace: "お世話になっております。"
+
+  - trigger: ";ariga"
+    replace: "ありがとうございます。"
+
+  - trigger: ";yoro"
+    replace: "よろしくお願いいたします。"
+
+  - trigger: ";otu"
+    replace: "お疲れ様です。"
+
+
+# Private
+  - trigger: ";name"
+    replace: "{{name}}"
+  - trigger: ";Name"
+    replace: "{{Name}}"
+
+  - trigger: ";ng"
+    replace: "{{email1}}"
+  - trigger: ";kam"
+    replace: "{{email2}}"
+  - trigger: ";ecc"
+    replace: "{{email3}}"
+  - trigger: ";ken"
+    replace: "{{email4}}"
+  - trigger: ";ice"
+    replace: "{{email5}}"
+
+  - trigger: ";35"
+    replace: "{{uid}}"
+  - trigger: ";rigaku"
+    replace: "{{major}}"
+  - trigger: ";166"
+    replace: "{{post}}"
+  - trigger: ";tou"
+    replace: "{{address1}}"
+  - trigger: ";kago"
+    replace: "{{address2}}"
+  - trigger: ";09"
+    replace: "{{phone1}}"
+  - trigger: ";08"
+    replace: "{{phone2}}"
+  - trigger: ";07"
+    replace: "{{phone3}}"
+  - trigger: "vmix"
+    replace: "{{q1}}"
+  - trigger: "ken-"
+    replace: "{{q2}}"
+
+
+# symbol
+  - trigger: ";ctrl"
+    replace: "⌃"
+  - trigger: ";cmd"
+    replace: "⌘"
+  - trigger: ";shift"
+    replace: "⇧"
+  - trigger: ";opt"
+    replace: "⌥"
+  - trigger: ";kall"
+    replace: "⌃⌥⇧⌘"
+
+
+# Emoji
+  - triggers: [";ok",";emoji"]
+    replace: "👍"
+  - triggers: [";ok",";emoji"]
+    replace: "✅"
+  - triggers: [";up",";emoji"]
+    replace: "⬆️"
+  - triggers: [";down",";emoji"]
+    replace: "⬇️"
+  - triggers: [";pc",";emoji"]
+    replace: "🧑‍💻"
+  - triggers: [";pc",";emoji"]
+    replace: "💻"
+  - triggers: [";bow",";emoji"]
+    replace: "🙇"
+  - triggers: [";bow",";emoji"]
+    replace: "🙇‍♂️"
+  - triggers: [";smile",";emoji"]
+    replace: "😊"
+  - triggers: [";sw",";emoji"]
+    replace: "😅"
+  - triggers: [";sw",";emoji"]
+    replace: "💦"
+  - triggers: [";lol",";emoji"]
+    replace: "😂"
+  - triggers: [";tear",";emoji"]
+    replace: "🥲"
+  - triggers: [";die",";emoji"]
+    replace: "😇"
+  - triggers: [";glass",";emoji"]
+    replace: "😎"
+  - triggers: [";dbt",";emoji"]
+    replace: "🧐"
+  - triggers: [":think",":emoji"]
+    replace: "🤔"
+  - triggers: [";cry",";emoji"]
+    replace: "😭"
+  - triggers: [";exp",";emoji"]
+    replace: "🤯"
+  - triggers: [";sleep",";emoji"]
+    replace: "😪"
+  - triggers: [";sleep",";emoji"]
+    replace: "😴"
+  - triggers: [";sheep",";emoji"]
+    replace: "🐑"
+  - triggers: [";ocha",";emoji"]
+    replace: "🍵"
+
+
+## ChatGPT
+  - trigger: ";efix"
+    replace: "Please fix the following English text: "
+  - trigger: ";ejt"
+    replace: "Please translate the following text into Japanese: "
+  - trigger: ";jet"
+    replace: "以下のテキストを英語に翻訳してください: "
+  - trigger: ";summ"
+    replace: "Please summarize the following text: "
+  - trigger: ";how"
+    replace: "Please explain how to $|$"
+  - trigger: ";mail"
+    replace: "Please write an email about the following topic politely: "
+  - trigger: ";jmail"
+    replace: "以下の内容のメールを丁寧に書いてください: "
+  - trigger: ";essay"
+    replace: "Please write an essay on the following topic: "
+  - trigger: ";jessay"
+    replace: "以下のトピックについてエッセイを書いてください: "
+
+
+# programming
+  - trigger: ";local"
+    replace: "localhost:3000/"
+
+  - trigger: ";lorem"
+    replace: "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Donec sed odio operae, eu vulputate felis rhoncus. Salutantibus vitae elit libero, a pharetra augue. Nihil hic munitissimus habendi senatus locus, nihil horum? A communi observantia non est recedendum."
+
+
+# markdown
+  - trigger: "- ["
+    replace: "- [ ] "
+
+  - trigger: ";-b"
+    replace: "- {bdg-primary-line}`P$|$` "
+
+  - trigger: ";adm"
+    replace: |
+            :::{admonition} {bdg-primary-line}`P$|$`
+            :class:
+            
+            :::
+
+  - trigger: ";br"
+    replace: "<br/>"
+
+  - trigger: "``js"
+    replace: "```javascript\n$|$\n```"
+
+  - trigger: "``pt"
+    replace: "```plaintext\n$|$\n```"
+
+  - trigger: "``sh"
+    replace: "```shell\n$|$\n```"
+
+  - trigger: "``ts"
+    replace: "```typescript\n$|$\n```"
+
+  - trigger: "``y"
+    replace: "```yaml\n$|$\n```"
+
+
+# Latex
+  - trigger: ";fr"
+    replace: "\\frac{$|$}{}"
+
+  - trigger: ";sq"
+    replace: "\\sqrt{$|$}"
+
+  - trigger: ";bl"
+    replace: "\\boldsymbol{$|$}"
+
+  - trigger: ";cd"
+    replace: "\\cdot"
+
+  - trigger: ";align"
+    replace: |
+            \begin{align}
+            $|$
+            \end{align}
+
+  - trigger: ";lfig"
+    replace: |
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=10cm]{$|$.pdf}
+                \caption{}
+                \label{fig:}
+            \end{figure}
+
+  - trigger: ";lmini"
+    replace: |
+            \begin{figure}[H]
+                \begin{minipage}[b]{0.5\columnwidth}
+                    \centering
+                    \includegraphics[width=7cm]{.pdf}
+                \end{minipage}
+                \hspace{0\columnwidth}
+                \begin{minipage}[b]{0.5\columnwidth}
+                    \centering
+                    \includegraphics[width=7cm]{.pdf}
+                \end{minipage}
+                \caption{}
+                \label{fig:}
+            \end{figure}
+
+  - trigger: ";ldef"
+    replace: |
+            \begin{screen}
+            \begin{definition}
+                $|$
+                \begin{align}
+                \end{align}
+            \end{definition}
+            \end{screen}
+
+  - trigger: ";lth"
+    replace: |
+            \begin{screen}
+            \begin{theorem}
+            %    $|$
+            %    \begin{align}
+            %    \end{align}
+            \end{theorem}
+            \end{screen}
+
+  - trigger: ";llem"
+    replace: |
+            \begin{screen}
+            \begin{lemma}
+            %    $|$
+            %    \begin{align}
+            %    \end{align}
+            \end{lemma}
+            \end{screen}
+
+  - regex: ";lit"
+    replace: |
+            \begin{itemize}
+            %    \item $|$
+            \end{itemize}
+
+  - regex: ";lem"
+    replace: |
+            \begin{enumerate}
+            %    \item $|$
+            \end{enumerate}
+
+  - trigger: ""
+    replace: ""
+
+
+# Python
+  - trigger: ";np"
+    replace: "import numpy as np"
+
+  - trigger: ";mat"
+    replace: "import matplotlib.pyplot as plt"
+
+  - trigger: ";pn"
+    replace: "import pennylane as qml"
+
+  - trigger: ";split"
+    replace: "from sklearn.model_selection import train_test_split"
+
+  - trigger: ";raise"
+    replace: |
+            valid_types = {"a$|$", "b", "c"}
+            if x not in valid_types:
+                raise ValueError(f"Invalid ~ type. Must be one of {valid_types}")
+
+  - trigger: ";class"
+    replace: |
+            class Name:
+                def __init__(self, , ):
+                    self. = 
+                    self. = 
+            
+                def method(self):
+                    pass
+
+  - trigger: ";open"
+    replace: |
+            with open('example.txt$|$', 'r') as file:
+                content = file.read()
+                print(content)
+            
+            with open('example.txt', 'w') as file:
+                file.write('New content')
+
+  - trigger: ";pkl"
+    replace: |
+            import pickle
+            
+            # Function to save data to a file using pickle
+            def save_data(data, filename):
+                try:
+                    with open(filename, 'wb') as f:
+                        pickle.dump(data, f)
+                    print(f"Data saved to {filename} successfully.")
+                except IOError:
+                    print(f"Error saving data to {filename}.")
+            
+            # Function to load data from a file using pickle
+            def load_data(filename):
+                try:
+                    with open(filename, 'rb') as f:
+                        data = pickle.load(f)
+                    print(f"Data loaded from {filename} successfully.")
+                    return data
+                except IOError:
+                    print(f"Error loading data from {filename}.")
+                    return None
+            
+            # Save data
+            save_data(example_data, 'example_data.pkl')
+            
+            # Load data
+            loaded_data = load_data('example_data.pkl')
+
+  - trigger: ";nest"
+    replace: |
+            import itertools
+            
+            list1 = [1, 2, 3]
+            list2 = ['a', 'b']
+            
+            for item1, item2 in itertools.product(list1, list2):
+                print(item1, item2)
+
+  - trigger: ";time"
+    replace: |
+            import time
+            
+            def execution_time_decorator(num_runs=10):
+                def decorator(func):
+                    def wrapper(*args, **kwargs):
+                        total_time = 0.0
+                        for _ in range(num_runs):
+                            start_time = time.time()  # Record the start time
+                            result = func(*args, **kwargs)  # Call the original function
+                            end_time = time.time()  # Record the end time
+                            total_time += end_time - start_time  # Add to the total time
+                        average_time = total_time / num_runs  # Calculate the average time
+                        print(f"Average execution time of {func.__name__} over {num_runs} runs: {average_time} seconds")
+                        return result
+                    return wrapper
+                return decorator
+            
+            # Example usage
+            @execution_time_decorator
+            def example_function(n):
+                total = 0
+                for i in range(n):
+                    total += i
+                return total
+            
+            # Call the decorated function
+            example_function(1000000)
+
+  - trigger: ";plot"
+    replace: |
+            plt.plot(, , color="black", linestyle='dashed', marker="o")
+            plt.xlabel("", fontsize=18)
+            plt.ylabel("$\partial_{\\theta} C$", fontsize=18)
+            plt.xticks(fontsize=18)
+            plt.yticks(fontsize=18)
+            # plt.ylim([1e-7, 1e-0])
+            plt.legend(bbox_to_anchor=(1, 1), loc="upper left", fontsize=18)
+            plt.title(f"", fontsize=18)
+            # plt.savefig(f"{}", bbox_inches="tight")
+            plt.show()
+
+  - trigger: ";3d"
+    replace: |
+            mesh_X, mesh_Y = np.meshgrid(self.X, self.Y)
+            fig = plt.figure()
+            ax = fig.add_subplot(111, projection='3d')
+            ax.plot_surface(mesh_X, mesh_Y, Z, cmap='viridis')
+            ax.set_xlabel('X')
+            ax.set_ylabel('Y')
+            ax.set_zlabel('Z')
+            ax.view_init(40, 40)
+            ax.set_box_aspect(None, zoom=0.8)
+            plt.show()
+
+
+# Print the output of a shell command
+  - trigger: ";shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+
+# call shell script from everywhere. Use like ;(command)
+  - regex: ";\\((?P<command>.*)\\)"
+    replace: "{{result}}"
+    vars:
+      - name: result
+        type: shell
+        params:
+          cmd: "eval $ESPANSO_COMMAND"
+
+
+# date & time
+  - trigger: ";date"
+    replace: "{{today}}"
+
+  - trigger: ";tmr"
+    replace: "{{day1}}"
+
+  - trigger: ";now"
+    replace: "{{now}}"
+    vars:
+      - name: now
+        type: date
+        params:
+          format: "%Y/%m/%d/%H:%M"
+
+
+# Outputs public IP address
+  - trigger: ";ip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl 'https://api.ipify.org'"
+
+
+# Form
+  - trigger: ";form"
+    form: |
+      Hey [[name]],
+      Happy Birthday!
+#      [[text]]
+#    form_fields:
+#      text:
+#        multiline: true
+
+  - trigger: ";todo"
+    form: "Task: [[task]], Due Date: [[day]] [[time]]"
+    form_fields:
+      day:
+        type: choice
+        values: |
+                {{today}}
+                {{day1}}
+                {{day2}}
+                {{day3}}
+                {{day4}}
+                {{day5}}
+                {{day6}}
+      time:
+        type: choice
+        values:
+          - "9:00"
+          - "10:00"
+          - "11:00"
+          - "12:00"
+          - "13:00"
+          - "14:00"
+          - "15:00"
+          - "16:00"
+          - "17:00"
+          - "18:00"
+          - "19:00"
+          - "20:00"

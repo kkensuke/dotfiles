@@ -150,6 +150,7 @@ defaults write com.apple.Mail DisableReplyAnimations -bool true
 
 ## Screenshot ##
 defaults write com.apple.screencapture name "screenshot"
+defaults write com.apple.screencapture show-thumbnail -bool false
 defaults write com.apple.screencapture include-date -bool false
 defaults write com.apple.screencapture disable-shadow -bool true
 defaults write com.apple.screencapture showsCursor -bool true
