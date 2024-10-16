@@ -170,10 +170,6 @@ matches:
     replace: "Please write an email about the following topic politely: "
   - trigger: ";jmail"
     replace: "以下の内容のメールを丁寧に書いてください: "
-  - trigger: ";essay"
-    replace: "Please write an essay on the following topic: "
-  - trigger: ";jessay"
-    replace: "以下のトピックについてエッセイを書いてください: "
 
 
 # programming
@@ -185,32 +181,32 @@ matches:
 
 
 # math
-# Multiplication
-  - regex: ";mul\\((?P<num1>.*),(?P<num2>.*)\\)"
+# Multiplication ;m(num1,num2)
+  - regex: ";m\\((?P<num1>.*),(?P<num2>.*)\\)"
     replace: "{{result}}"
     vars:
       - name: result
         type: shell
         params:
           cmd: "expr $ESPANSO_NUM1 '*' $ESPANSO_NUM2"
-# Division
-  - regex: ";div\\((?P<num1>.*),(?P<num2>.*)\\)"
+# Division ;d(num1,num2)
+  - regex: ";d\\((?P<num1>.*),(?P<num2>.*)\\)"
     replace: "{{result}}"
     vars:
       - name: result
         type: shell
         params:
           cmd: "expr $ESPANSO_NUM1 / $ESPANSO_NUM2"
-# Power
-  - regex: ";pow\\((?P<num1>.*),(?P<num2>.*)\\)"
+# Power ;p(num1,num2)
+  - regex: ";p\\((?P<num1>.*),(?P<num2>.*)\\)"
     replace: "{{result}}"
     vars:
       - name: result
         type: shell
         params:
           cmd: "echo $[$ESPANSO_NUM1 ** $ESPANSO_NUM2]"
-# Square Root
-  - regex: ";sqrt\\((?P<num>.*)\\)"
+# Square Root ;s(num1,num2)
+  - regex: ";s\\((?P<num>.*)\\)"
     replace: "{{result}}"
     vars:
       - name: result
@@ -220,9 +216,6 @@ matches:
 
 
 # markdown
-  - trigger: "- ["
-    replace: "- [ ] "
-
   - trigger: ";-b"
     replace: "- {bdg-primary-line}`P$|$` "
 
@@ -236,27 +229,12 @@ matches:
   - trigger: ";br"
     replace: "<br/>"
 
-  - trigger: "``js"
-    replace: "```javascript\n$|$\n```"
-
-  - trigger: "``pt"
-    replace: "```plaintext\n$|$\n```"
-
-  - trigger: "``sh"
-    replace: "```shell\n$|$\n```"
-
-  - trigger: "``ts"
-    replace: "```typescript\n$|$\n```"
-
-  - trigger: "``y"
-    replace: "```yaml\n$|$\n```"
-
 
 # Latex
   - trigger: ";fr"
     replace: "\\frac{$|$}{}"
 
-  - trigger: ";sq{"
+  - trigger: ";lsq"
     replace: "\\sqrt{$|$}"
 
   - trigger: ";bl"
@@ -465,7 +443,8 @@ matches:
 
   - trigger: ";3d"
     replace: |
-            mesh_X, mesh_Y = np.meshgrid(self.X, self.Y)
+            Z = 
+            mesh_X, mesh_Y = np.meshgrid(X, Y)
             fig = plt.figure()
             ax = fig.add_subplot(111, projection='3d')
             ax.plot_surface(mesh_X, mesh_Y, Z, cmap='viridis')
@@ -475,6 +454,16 @@ matches:
             ax.view_init(40, 40)
             ax.set_box_aspect(None, zoom=0.8)
             plt.show()
+
+
+# time
+  - trigger: ";now"
+    replace: "{{now}}"
+    vars:
+      - name: now
+        type: date
+        params:
+          format: "%Y/%m/%d/%H:%M"
 
 
 # Print the output of a shell command
@@ -497,7 +486,7 @@ matches:
           cmd: "eval $ESPANSO_COMMAND"
 
 
-# Lookup word definition using Free Dictionary API
+# Lookup word definition using Free Dictionary API ;def(word)
   - regex: ";def\\((?P<word>.*)\\)"
     replace: "{{definition}}"
     vars:
@@ -505,22 +494,6 @@ matches:
         type: shell
         params:
           cmd: "curl -s https://api.dictionaryapi.dev/api/v2/entries/en/$ESPANSO_WORD | grep -o '\"definition\":\"[^\"]*\"' | head -n 1 | sed 's/\"definition\":\"\\([^\"]*\\)\"/\\1/'"
-
-
-# date & time
-  - trigger: ";date"
-    replace: "{{today}}"
-
-  - trigger: ";tmr"
-    replace: "{{day1}}"
-
-  - trigger: ";now"
-    replace: "{{now}}"
-    vars:
-      - name: now
-        type: date
-        params:
-          format: "%Y/%m/%d/%H:%M"
 
 
 # Outputs public IP address
