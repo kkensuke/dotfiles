@@ -15,6 +15,7 @@ xcode-select --install
 
 # CLI
 brew install coreutils
+brew install gcc
 brew install gh
 brew install git-filter-repo
 brew install tree
