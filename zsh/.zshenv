@@ -13,6 +13,10 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 
+# for c++
+export "PATH=/usr/local/bin:$PATH"
+
+
 # fzf
 # https://github.com/junegunn/fzf#respecting-gitignore
 # https://zenn.dev/megeton/articles/c408511c66f45d
