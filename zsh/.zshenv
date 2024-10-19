@@ -13,7 +13,7 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 
-# for c++
+# c++
 export "PATH=/usr/local/bin:$PATH"
 
 
