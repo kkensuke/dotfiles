@@ -15,6 +15,7 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 
 # c++
 export "PATH=/usr/local/bin:$PATH"
+export CPATH=/opt/homebrew/include/
 
 
 # fzf

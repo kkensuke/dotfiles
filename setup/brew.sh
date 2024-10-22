@@ -16,6 +16,7 @@ xcode-select --install
 # CLI
 brew install coreutils
 brew install gcc
+brew install libomp
 brew install gh
 brew install git-filter-repo
 brew install tree
@@ -23,6 +24,10 @@ brew install zsh-autosuggestions
 brew install zsh-completions
 brew install zsh-git-prompt
 brew install zsh-syntax-highlighting
+
+# C++
+sudo ln -s /opt/homebrew/bin/gcc-14 /usr/local/bin/gcc
+sudo ln -s /opt/homebrew/bin/g++-14 /usr/local/bin/g++
 
 # GUI
 brew install --cask appcleaner
