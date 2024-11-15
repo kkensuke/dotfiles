@@ -1,44 +1,64 @@
 {
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
+    // Window Settings
+    "window.titleBarStyle": "custom",
+    "window.commandCenter": false,
+
+    // Workbench Settings
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Monokai",
+    "workbench.settings.openDefaultKeybindings": true,
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.colorCustomizations": {
+        "editor.findMatchHighlightBackground": "#04ff32",
+        "editor.findMatchBorder": "#04ff32"
+    },
+
+    // Editor Core Settings
     "editor.autoClosingBrackets": "beforeWhitespace",
     "editor.autoClosingQuotes": "beforeWhitespace",
     "editor.bracketPairColorization.enabled": true,
-    // "editor.fontFamily": "UDEV Gothic",
     "editor.guides.bracketPairs": true,
     "editor.inlineSuggest.enabled": true,
+    "editor.linkedEditing": true,
     "editor.tabSize": 4,
+    "editor.trimAutoWhitespace": false,
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+        "strings": "on"
+    },
+
+    // Editor Visual Settings
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.size": "fit",
+    "editor.minimap.showSlider": "always",
+
+    // Language-specific Tab Settings
     "[tex]": {
-        "editor.tabSize": 4,
+        "editor.tabSize": 4
     },
     "[html]": {
-        "editor.tabSize": 2,
+        "editor.tabSize": 2
     },
     "[javascript]": {
-        "editor.tabSize": 2,
+        "editor.tabSize": 2
     },
     "[typescript]": {
-        "editor.tabSize": 2,
+        "editor.tabSize": 2
     },
     "[typescriptreact]": {
-        "editor.tabSize": 2,
+        "editor.tabSize": 2
     },
     "[python]": {
-        "editor.tabSize": 4,
+        "editor.tabSize": 4
     },
-    "editor.trimAutoWhitespace": false,
-    "files.trimTrailingWhitespace": false,
-    "editor.unicodeHighlight.allowedCharacters": {
-        "：": true,
-        "（": true,
-        "）": true,
-        "　": true
-    },
-    "editor.wordWrap": "on",
 
-
+    // File Management
     "files.autoSave": "onFocusChange",
     "files.autoSaveDelay": 0,
+    "files.trimTrailingWhitespace": false,
+    "files.associations": {
+        "*.css": "tailwindcss"
+    },
     "files.exclude": {
         "**/.DS_Store": false,
         "**/.git": false,
@@ -47,80 +67,41 @@
         "**/CVS": false,
         "**/Thumbs.db": false
     },
-    
-    
-    // tailwindcss
-    "files.associations": {
-        "*.css": "tailwindcss"
-        },
-    "editor.quickSuggestions": {
-    "strings": "on"
-    },
 
+    // Explorer Settings
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
 
+    // Security
     "security.workspace.trust.untrustedFiles": "open",
 
-
-    // Controls the sizing of editor tabs.
-    //  - fit: Always keep tabs large enough to show the full editor label.
-    //  - shrink: Allow tabs to get smaller when the available space is not enough to show all tabs at once.
-    "workbench.editor.tabSizing": "shrink",
-    "workbench.colorCustomizations": {
-        // "textBlockQuote.background":"#016362", //Blockquote
-        "editor.findMatchHighlightBackground": "#04ff32", //Other SEARCH MATCHES
-        "editor.findMatchBorder": "#04ff32",
+    // Unicode Settings
+    "editor.unicodeHighlight.allowedCharacters": {
+        "：": true,
+        "（": true,
+        "）": true,
+        "　": true
     },
-    "workbench.iconTheme": "material-icon-theme",
 
+    // Git and GitHub Settings
+    "git.openRepositoryInParentFolders": "always",
+    "git.confirmSync": false,
+    "github.copilot.enable": {
+        "*": true
+    },
+    "github.copilot.editor.enableAutoCompletions": true,
 
-    // indent-rainbow
-    "indentRainbow.ignoreErrorLanguages": ["*"],
-
-
-    // cSpell
-    "cSpell.ignoreRegExpList": ["[０-９Ａ-Ｚａ-ｚぁ-んァ-ノ-ヶ亜-熙纊-黑]+"],
-    "cSpell.userWords": [
-        "Ansatz",
-        "biggl",
-        "CNOT",
-        "Deutsch",
-        "eigensolver",
-        "Frobenius",
-        "Hadamard",
-        "Ising",
-        "mathcal",
-        "NAND",
-        "Neumann",
-        "NISQ",
-        "pennylane",
-        "Petz",
-        "QAOA",
-        "qubit",
-        "qubits",
-        "Rényi",
-        "unitarity"
+    // Python and Jupyter Settings
+    "python.defaultInterpreterPath": "/Users/kensuke/venv",
+    "python.venvPath": "/Users/kensuke/venv",
+    "python.venvFolders": [
+        "venv"
     ],
+    "jupyter.askForKernelRestart": false,
 
-
-    // japanese-proofreading
-    "japanese-proofreading.textlint.ハイフン(-)": false,
-    "japanese-proofreading.textlint.丸かっこ（）": false,
-    "japanese-proofreading.textlint.全角文字と半角文字の間": false,
-    "japanese-proofreading.textlint.助詞の連続": true,
-    "japanese-proofreading.textlint.ひらく漢字": false,
-
-
-    // code-runner
-    "code-runner.runInTerminal": true,
-
-
-    // google-translate
-    "vscodeGoogleTranslate.preferredLanguage": "Japanese",
-
-
-    // markdown
+    // Markdown Settings
     "markdown.math.enabled": false,
-    "markdown.validate.enabled": true, // link check
+    "markdown.validate.enabled": true,
     "markdown.updateLinksOnFileMove.enabled": "always",
     "markdown.extension.list.indentationSize": "inherit",
     "markdown.extension.katex.macros": {
@@ -202,7 +183,6 @@
         "\\rmX"             : "\\mathrm{X}",
         "\\rmY"             : "\\mathrm{Y}",
         "\\rmZ"             : "\\mathrm{Z}",
-
         "\\const"           : "\\mathrm{const}",
         "\\hc"              : "\\mathrm{h.c.}",
         "\\lhs"             : "\\mathrm{(LHS)}",
@@ -210,11 +190,9 @@
         "\\Haar"            : "\\mathrm{Haar}",
         "\\poly"            : "\\mathrm{poly}",
         "\\SWAP"            : "\\mathrm{SWAP}",
-
         "\\E"               : "\\operatorname{E}",
         "\\Var"             : "\\operatorname{Var}",
         "\\Cov"             : "\\operatorname{Cov}",
-
         "\\combi"           : "{}_{#1}\\mathrm{C}_{#2}",
         "\\fa"              : "{}^\\forall}",
         "\\ex"              : "{}^\\exists",
@@ -240,7 +218,6 @@
         "\\lap"             : "\\nabla^2",
         "\\div"             : "\\nabla\\cdot",
         "\\curl"            : "\\nabla\\times",
-
         "\\Tr"              : "\\operatorname{Tr}",
         "\\tr"              : "\\operatorname{tr}",
         "\\rank"            : "\\operatorname{rank}",
@@ -251,69 +228,39 @@
         "\\dv"              : "\\frac{\\mathrm{d}{#1}}{\\mathrm{d}{#2}}",
         "\\pd"              : "\\partial",
         "\\pdv"             : "\\frac{\\partial{#1}}{\\partial{#2}}",
-
         "\\braket"          : "\\left\\langle{#1}|{#2}\\right\\rangle",
         "\\ketbra"          : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#2}\\right|",
         "\\dyad"            : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#1}\\right|",
         "\\ev"              : "\\left\\langle{#1}\\right\\rangle",
         "\\expval"          : "\\left\\langle{#2}|{#1}|{#2}\\right\\rangle",
         "\\mel"             : "\\left\\langle{#1}\\middle|{#2}\\middle|{#3}\\right\\rangle",
-
-        "\\pmqty"         : "\\begin{pmatrix}#1\\end{pmatrix}",
+        "\\pmqty"           : "\\begin{pmatrix}#1\\end{pmatrix}",
         "\\bmqty"           : "\\begin{bmatrix}#1\\end{bmatrix}",
-        "\\vmqty"           : "\\begin{vmatrix}#1\\end{vmatrix}",
+        "\\vmqty"           : "\\begin{vmatrix}#1\\end{vmatrix}"
     },
-
-
-    // MyST markdown
     "myst.preview.extensions": [
         "amsmath",
         "colon_fence",
         "deflist",
         "dollarmath",
-        "tasklist",
+        "tasklist"
     ],
 
-
-    // git
-    "git.openRepositoryInParentFolders": "always",
-    "git.confirmSync": false,
-    "github.copilot.enable": {
-        "*": true,
-        "plaintext": true,
-        "markdown": true,
-        "scminput": false,
-        "yaml": true,
-        "python": true,
-        "javascript": true
-    },
-
-
-    // python
-    "python.defaultInterpreterPath": "/Users/kensuke/venv/bin/python",
-    "python.venvPath": "/Users/kensuke/venv/",
-    "python.venvFolders": [
-        "venv"
-    ],
-    // jupyter
-    "jupyter.askForKernelRestart": false,
-
-
-    // latex
+    // LaTeX Settings
     "latex-workshop.latex.tools": [
         {
             "name": "pdflatex",
             "command": "pdflatex",
             "args": [
-              "-synctex=1",
-              "-interaction=nonstopmode",
-              "-file-line-error",
-              "%DOC%"
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
             ],
             "env": {}
         },
         {
-            "name":"ptex2pdf",
+            "name": "ptex2pdf",
             "command": "ptex2pdf",
             "args": [
                 "-l",
@@ -341,70 +288,82 @@
                 "--output_safechars",
                 "%DOCFILE%"
             ]
-        },
+        }
     ],
     "latex-workshop.latex.recipes": [
         {
             "name": "ptex2pdf*3",
-            "tools":[
+            "tools": [
                 "ptex2pdf",
                 "ptex2pdf",
-                "ptex2pdf",
+                "ptex2pdf"
             ]
         },
         {
             "name": "ptex2pdf -> pbibtex -> ptex2pdf * 2",
-            "tools":[
+            "tools": [
                 "ptex2pdf",
                 "pbibtex",
                 "ptex2pdf",
-                "ptex2pdf",
-
+                "ptex2pdf"
             ]
         },
         {
             "name": "ptex2pdf -> biber -> ptex2pdf * 2",
-            "tools":[
+            "tools": [
                 "ptex2pdf",
                 "biber",
                 "ptex2pdf",
-                "ptex2pdf",
-
+                "ptex2pdf"
             ]
-        },
-        {
-            "name": "pdflatex -> bibtex -> pdflatex * 2",
-            "tools": [
-              "pdflatex",
-              "pbibtex",
-              "pdflatex",
-              "pdflatex"
-            ]
-        },
+        }
     ],
-    "latex-workshop.latex.clean.fileTypes":
-    [
+    "latex-workshop.latex.clean.fileTypes": [
         "*.bbl", "*.blg", "*.idx", "*.ind", "*.lof", "*.lot", "*.out", "*.toc", "*.acn", "*.acr", "*.alg",
         "*.glg", "*.glo", "*.gls", "*.ist", "*.fls", "*.log", "*.fdb_latexmk", "*.synctex.gz",
-        "_minted*", "*.nav", "*.snm", "*.vrb",
+        "_minted*", "*.nav", "*.snm", "*.vrb"
     ],
     "latex-workshop.latex.autoClean.run": "onBuilt",
     "latex-workshop.latex.autoBuild.run": "onFileChange",
     "latex-workshop.synctex.afterBuild.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.view.pdf.invert": 1,
+    "latex-workshop.view.pdf.invert": 0.9,
     "latex-workshop.hover.preview.mathjax.extensions": [
         "physics",
         "boldsymbol",
         "cases"
     ],
 
+    // Code Runner Settings
+    "clang.executable": "clang++",
+    "code-runner.runInTerminal": true,
+    "clang.cxxflags": ["-std=c++14"],
+    "code-runner.executorMap": {
+        "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "cpp": "cd $dir && g++ -O2 -std=c++14 $fileName && ./a.out"
+    },
 
-    // Ltex
-    "ltex.Language": "ja-JP",
+    // Spell Checker Settings
+    "cSpell.ignoreRegExpList": ["[０-９Ａ-Ｚａ-ｚぁ-んァ-ノ-ヶ亜-熙纊-黑]+"],
+    "cSpell.userWords": [
+        "Ansatz", "biggl", "CNOT", "Deutsch", "eigensolver", "Frobenius",
+        "Hadamard", "Ising", "mathcal", "NAND", "Neumann", "NISQ",
+        "pennylane", "Petz", "QAOA", "qubit", "qubits", "Rényi", "unitarity"
+    ],
+
+    // Japanese Language Settings
+    "japanese-proofreading.textlint.ハイフン(-)": false,
+    "japanese-proofreading.textlint.丸かっこ（）": false,
+    "japanese-proofreading.textlint.全角文字と半角文字の間": false,
+    "japanese-proofreading.textlint.助詞の連続": true,
+    "japanese-proofreading.textlint.ひらく漢字": false,
+    "vscodeGoogleTranslate.preferredLanguage": "Japanese",
+
+    // Indent Rainbow Settings
+    "indentRainbow.ignoreErrorLanguages": ["*"],
+
+    // Additional Tool Settings
     "go.toolsManagement.autoUpdate": true,
-    "window.titleBarStyle": "custom",
-    "workbench.colorTheme": "Monokai",
-    "editor.linkedEditing": true,
-    "github.copilot.editor.enableAutoCompletions": true,
+    "hediet.vscode-drawio.resizeImages": null,
+    "cmake.options.statusBarVisibility": "visible"
 }

@@ -155,21 +155,21 @@ matches:
     replace: "お疲れ様です。"
 
 
-## ChatGPT
+## LLM prompts
   - trigger: ";efix"
-    replace: "Please fix the following English text: "
+    replace: "Please fix the following English text: '$|$'"
   - trigger: ";ejt"
-    replace: "Please translate the following text into Japanese: "
+    replace: "Please translate the following text into Japanese: '$|$'"
   - trigger: ";jet"
-    replace: "以下のテキストを英語に翻訳してください: "
-  - trigger: ";summ"
-    replace: "Please summarize the following text: "
+    replace: "以下のテキストを英語に翻訳してください: '$|$'"
+  - trigger: ";sum"
+    replace: "Please summarize the following text: '$|$'"
   - trigger: ";how"
     replace: "Please explain how to $|$"
   - trigger: ";mail"
-    replace: "Please write an email about the following topic politely: "
+    replace: "Please write an email about the following topic politely: '$|$'"
   - trigger: ";jmail"
-    replace: "以下の内容のメールを丁寧に書いてください: "
+    replace: "以下の内容のメールを丁寧に書いてください: '$|$'"
 
 
 # programming
@@ -216,7 +216,7 @@ matches:
 
 
 # markdown
-  - trigger: ";-b"
+  - trigger: ";bg"
     replace: "- {bdg-primary-line}`P$|$` "
 
   - trigger: ";adm"
