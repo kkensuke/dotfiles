@@ -21,7 +21,6 @@ alias gst='git status'
 gacpm() { git add -A && git commit -m "$1" && git push origin main }
 gacp() { git add -A && git commit -m "$2" && git push origin "$1" }
 
-gini() { gacpm "🎉 Initial commit"}
 gnew() { gacpm "✨ NEW: $@" }
 gimp() { gacpm "👌 IMPROVE: $@" }
 gprg() { gacpm "🚧 PROGRESS: $@" }
