@@ -43,8 +43,7 @@ gsec() { gacpm "👮 SECURITY: $@" }
 gty() {
 NORMAL='\033[0;39m'
 GREEN='\033[0;32m'
-echo "$GREEN gini$NORMAL — 🎉 Initial commit
-$GREEN gnew$NORMAL — ✨ NEW
+echo "$GREEN gnew$NORMAL — ✨ NEW
 $GREEN gimp$NORMAL — 👌 IMPROVE
 $GREEN gprg$NORMAL — 🚧 PROGRESS
 $GREEN gmtn$NORMAL — 🔧 MAINTAIN
