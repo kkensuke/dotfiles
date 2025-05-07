@@ -1,0 +1,183 @@
+matches:
+# --- Open terminal, files, or directories ---
+  - trigger: ";tml"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "open -a Terminal.app"
+
+  - trigger: ";dotfile"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "open -a Terminal.app; echo 'code ~/github/dotfiles/zsh/'"
+          # following commands deletes some letters from the file when you open it
+          # cmd: "code ~/github/dotfiles/"
+          # cmd: "eval 'code ~/github/dotfiles/espanso/'"
+          # cmd: |
+          #   osascript -e '
+          #   set targetFolderPath to "/Users/<username>/github/dotfiles/espanso/"
+          #   tell application "Visual Studio Code"
+          #       activate
+          #       open targetFolderPath
+          #   end tell
+          #   '
+
+  - trigger: ";espanso"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "open -a Terminal.app; echo 'code ~/github/dotfiles/espanso/'"
+
+  - trigger: ";quantum"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "open ~/github/qc/"
+
+
+# --- File Creation ---
+  - trigger: ";newfile"
+    replace: "{{output}}"
+    vars:
+      - name: uuid
+        type: shell
+        params:
+          cmd: "uuidgen"
+      - name: output
+        type: shell
+        params:
+          cmd: "cd ~/Desktop; touch {{uuid}}.md; open -a CotEditor.app {{uuid}}.md"
+
+  - regex: ";url\\((?P<name>.*)\\)"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "cd ~/Desktop; echo \"[InternetShortcut]\nURL={{clipboard}}\" > \"{{name}}\".url"
+
+  - trigger: ";memo"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo '- {{now}}: {{clipboard}}' >> ~/Desktop/memo.md"
+
+
+# --- Move to a tab if it exists, otherwise open a new tab ---
+  - trigger: ";gai"
+    replace: "{{output}}"
+    vars:
+      - name: "url"
+        type: echo
+        params:
+          echo: aistudio.google.com
+      - name: output
+        type: shell
+        params:
+          cmd: "{{tabchange}}"
+
+  - trigger: ";gpt"
+    replace: "{{output}}"
+    vars:
+      - name: "url"
+        type: echo
+        params:
+          echo: chatgpt.com
+      - name: output
+        type: shell
+        params:
+          cmd: "{{tabchange}}"
+
+  - trigger: ";you"
+    replace: "{{output}}"
+    vars:
+      - name: "url"
+        type: echo
+        params:
+          echo: youtube.com
+      - name: output
+        type: shell
+        params:
+          cmd: "{{tabchange}}"
+
+  - trigger: ";slack"
+    replace: "{{output}}"
+    vars:
+      - name: "url"
+        type: echo
+        params:
+          echo: app.slack.com
+      - name: output
+        type: shell
+        params:
+          cmd: "{{tabchange}}"
+
+  - trigger: ";github"
+    replace: "{{output}}"
+    vars:
+      - name: "url"
+        type: echo
+        params:
+          echo: github.com
+      - name: output
+        type: shell
+        params:
+          cmd: "{{tabchange}}"
+
+  - trigger: ";amazon"
+    replace: "{{output}}"
+    vars:
+      - name: "url"
+        type: echo
+        params:
+          echo: amazon.co.jp
+      - name: output
+        type: shell
+        params:
+          cmd: "{{tabchange}}"
+
+
+# --- always open in new tab ---
+  - trigger: ";ggs"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "open 'https://www.google.com/search?q={{clipboard}}'"
+
+  - trigger: ";claude"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "open \"https://claude.ai/\""
+
+  - trigger: ";fast"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "open \"https://fast.com/\""
+
+  - trigger: ";Espanso"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "open \"https://espanso.org/docs/get-started/\""
+
