@@ -3,6 +3,10 @@
 
 
 global_vars:
+  - name: global_vars
+    type: echo
+    params:
+      echo: "This is a normal global variable"
   - name: "clipboard"
     type: "clipboard"
   - name: today
@@ -16,6 +20,8 @@ global_vars:
 
 
 matches:
+  - trigger: ";global_vars"
+    replace: "{{global_vars}}"
   - trigger: ";date"
     replace: "{{today}}"
   - trigger: ";now"

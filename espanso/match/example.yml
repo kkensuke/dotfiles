@@ -1,0 +1,36 @@
+matches:
+# --- Shell Execution ---
+  - trigger: ";shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+# ——— Get IP Address ———
+  - trigger: ";ip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl -s 'https://api.ipify.org'"
+
+# ——— Execute arbitrary shell command ———
+  # - regex: ";\\((?P<command>.*)\\)"
+  #   replace: "{{result}}"
+  #   vars:
+  #     - name: result
+  #       type: shell
+  #       params:
+  #         cmd: "eval $ESPANSO_COMMAND"
+
+# ——— Dictionary Lookup ———
+  - regex: ";def" # Dictionary lookup
+    replace: "{{definition}}"
+    vars:
+      - name: definition
+        type: shell
+        params:
+          cmd: "curl -s https://api.dictionaryapi.dev/api/v2/entries/en/{{clipboard}} | grep -o '\"definition\":\"[^\"]*\"' | head -n 1 | sed 's/\"definition\":\"\\([^\"]*\\)\"/\\1/'"

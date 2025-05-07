@@ -1,16 +1,18 @@
 matches:
-# --- General ---
   - trigger: ";local"
     replace: "localhost:3000/"
 
-  - trigger: ";uuid"
-    replace: "{{output}}"
+# ——— Shorten Clipboard URL ———
+  - trigger: ";short"
+    replace: "{{short_url}}"
     vars:
-      - name: output
+      - name: short_url
         type: shell
         params:
-          cmd: "uuidgen"
+          cmd: >
+            curl -s "https://tinyurl.com/api-create.php?url={{clipboard}}"
 
+# ——— Generate Password ———
   - trigger: ";genpw"
     replace: "{{output}}"
     vars:
@@ -24,36 +26,11 @@ matches:
           # macOS/Linux with /dev/urandom
           cmd: "head /dev/urandom | LC_ALL=C tr -dc A-Za-z0-9 | head -c {{length}}; echo ''"
 
-# --- Shell Execution ---
-  - trigger: ";shell"
+# ——— Generate UUID ———
+  - trigger: ";uuid"
     replace: "{{output}}"
     vars:
       - name: output
         type: shell
         params:
-          cmd: "echo 'Hello from your shell'"
-
-  # - regex: ";\\((?P<command>.*)\\)" # Execute arbitrary shell command
-  #   replace: "{{result}}"
-  #   vars:
-  #     - name: result
-  #       type: shell
-  #       params:
-  #         cmd: "eval $ESPANSO_COMMAND"
-
-# --- Web Lookups ---
-  - regex: ";def\\((?P<word>.*)\\)" # Dictionary lookup
-    replace: "{{definition}}"
-    vars:
-      - name: definition
-        type: shell
-        params:
-          cmd: "curl -s https://api.dictionaryapi.dev/api/v2/entries/en/$ESPANSO_WORD | grep -o '\"definition\":\"[^\"]*\"' | head -n 1 | sed 's/\"definition\":\"\\([^\"]*\\)\"/\\1/'"
-
-  - trigger: ";ip"
-    replace: "{{output}}"
-    vars:
-      - name: output
-        type: shell
-        params:
-          cmd: "curl -s 'https://api.ipify.org'"
+          cmd: "uuidgen"

@@ -3,14 +3,12 @@ matches:
     replace: "Please fix the following English text: "
   - trigger: ";jfix"
     replace: "以下の文章を校正してください： "
+
   - trigger: ";eprf"
     replace: "Please review the following guidelines and then proofread the sentence provided at the end:\n\n{{english_guideline}}\n\nSentence to proofread:"
   - trigger: ";jprf"
     replace: "次のガイドラインを確認し、最後に与えられる文章を校正してください：\n\n{{japanese_guideline}}\n\n校正する文章："
-  - trigger: ";ejt"
-    replace: "Please translate the following text into Japanese: "
-  - trigger: ";jet"
-    replace: "以下のテキストを英語に翻訳してください: "
+
   - trigger: ";summarize"
     replace: "Please summarize the following text or attached document in a concise manner: "
   - trigger: ";how"
@@ -29,3 +27,47 @@ matches:
     replace: "Explain what the following code does in detail: $|$"
   - trigger: ";compare"
     replace: "Compare and contrast the following theories or models: $|$"
+
+  - trigger: ";ejt"
+    replace: "Please translate the following text into Japanese: "
+  - trigger: ";jet"
+    replace: "以下のテキストを英語に翻訳してください: "
+
+
+# ——— Translate Clipboard → Japanese (via Google Gemini) ———
+  - trigger: ";transja"
+    replace: "{{translation}}"
+    vars:
+      - name: translation
+        type: shell
+        params:
+          cmd: >
+            curl -s \
+              "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
+              -H 'Content-Type: application/json' \
+              -X POST \
+              -d '{
+                    "contents": [{
+                      "parts": [{"text": "Translate the following to Japanese. Provide ONLY the translated text, no explanations or markdown: {{clipboard}}"}]
+                    }]
+                  }' \
+            | jq -r '.candidates[0].content.parts[0].text | split("\n")[0]'
+
+# ——— Translate Clipboard → English (via Google Gemini) ———
+  - trigger: ";transen"
+    replace: "{{translation}}"
+    vars:
+      - name: translation
+        type: shell
+        params:
+          cmd: >
+            curl -s \
+              "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
+              -H 'Content-Type: application/json' \
+              -X POST \
+              -d '{
+                    "contents": [{
+                      "parts": [{"text": "Translate the following to English. Provide ONLY the translated text, no explanations or markdown: {{clipboard}}"}]
+                    }]
+                  }' \
+            | jq -r '.candidates[0].content.parts[0].text | split("\n")[0]'
