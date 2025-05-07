@@ -2,12 +2,6 @@
 # For a complete introduction, visit the official docs at: https://espanso.org/docs/
 
 
-imports:
-  - "params.yml"
-  - "japanese_guideline.yml"
-  - "english_guideline.yml"
-
-
 global_vars:
   - name: "clipboard"
     type: "clipboard"
