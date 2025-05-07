@@ -1,0 +1,12 @@
+[[ -f $ZDOTDIR/settings/prompt.sh ]]         && . $ZDOTDIR/settings/prompt.sh
+[[ -f $ZDOTDIR/settings/extensions.sh ]]     && . $ZDOTDIR/settings/extensions.sh
+[[ -f $ZDOTDIR/settings/.fzf.zsh ]]          && . $ZDOTDIR/settings/.fzf.zsh
+[[ -f $ZDOTDIR/aliases/basic.sh ]]           && . $ZDOTDIR/aliases/basic.sh
+[[ -f $ZDOTDIR/aliases/mac.sh ]]             && . $ZDOTDIR/aliases/mac.sh
+[[ -f $ZDOTDIR/aliases/git.sh ]]             && . $ZDOTDIR/aliases/git.sh
+[[ -f $ZDOTDIR/aliases/python.sh ]]          && . $ZDOTDIR/aliases/python.sh
+[[ -f $ZDOTDIR/aliases/latex.sh ]]           && . $ZDOTDIR/aliases/latex.sh
+[[ -f $ZDOTDIR/aliases/encryption.sh ]]      && . $ZDOTDIR/aliases/encryption.sh
+[[ -f $ZDOTDIR/aliases/others.sh ]]          && . $ZDOTDIR/aliases/others.sh
+
+

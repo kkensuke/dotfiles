@@ -1,0 +1,6 @@
+Sometimes, the following error occurs.
+
+zsh compinit: insecure directories, run compaudit for list.
+Ignore insecure directories and continue [y] or abort compinit [n]? compauditcompinit: initialization aborted
+
+In this case, run `compaudit`, and give permission to the directories it shows, like `chmod 755 /opt/homebrew/share`

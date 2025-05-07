@@ -1,0 +1,391 @@
+{
+    // =========================================================================
+    // VS Code Application & Window Configuration
+    // =========================================================================
+
+    // --- Window ---
+    "window.titleBarStyle": "custom", // Use custom title bar (macOS style on Windows/Linux)
+    "window.commandCenter": false, // Hide the Command Center (experimental search bar)
+
+    // --- Workbench Appearance ---
+    "workbench.iconTheme": "material-icon-theme", // Set the icon theme
+    "workbench.colorTheme": "Monokai", // Set the color theme
+    "workbench.activityBar.location": "top", // Move activity bar (Explorer, Search, etc.) to the top
+    "workbench.editor.tabSizing": "shrink", // Tabs shrink to fit available space
+    "workbench.settings.openDefaultKeybindings": true, // Easily access default keybindings JSON
+    "workbench.colorCustomizations": { // Customize specific theme colors
+        "editor.findMatchHighlightBackground": "#04ff32",
+        "editor.findMatchBorder": "#04ff32",
+        "editorWhitespace.foreground": "#909090"
+    },
+
+    // --- Explorer ---
+    "explorer.confirmDelete": false, // Don't ask for confirmation when deleting files
+    "explorer.confirmDragAndDrop": false, // Don't ask for confirmation when moving files via drag/drop
+    "explorer.confirmPasteNative": false, // Don't ask for confirmation when pasting native files/folders
+
+    // --- File Management ---
+    "files.autoSave": "onFocusChange", // Auto-save files when focus moves away from the editor
+    "files.autoSaveDelay": 0, // Delay for autosave (0 means immediate on focus change)
+    "files.trimTrailingWhitespace": false, // Do not trim trailing whitespace on save
+    "files.exclude": { // Hide these files/folders from the explorer
+        "**/.DS_Store": false, // Show .DS_Store (Note: original was false, meaning show)
+        "**/.git": false, // Show .git
+        "**/.hg": false, // Show .hg
+        "**/.svn": false, // Show .svn
+        "**/CVS": false, // Show CVS
+        "**/Thumbs.db": false // Show Thumbs.db
+    },
+    "files.associations": { // Associate file patterns with specific languages/modes
+        "*.css": "tailwindcss"
+    },
+
+    // --- Security ---
+    "security.workspace.trust.untrustedFiles": "open", // How to handle files in untrusted workspaces
+
+    // =========================================================================
+    // Editor Configuration (Global)
+    // =========================================================================
+
+    // --- Core Editing Behavior ---
+    "editor.wordWrap": "on", // Wrap lines that exceed the viewport width
+    "editor.tabSize": 4, // Default number of spaces for a tab
+    "editor.trimAutoWhitespace": false, // remove trailing auto inserted whitespace.
+    "editor.linkedEditing": true, // Sync tag renaming in HTML/XML
+    "editor.autoClosingBrackets": "beforeWhitespace", // Auto-close brackets only if cursor is before whitespace
+    "editor.autoClosingQuotes": "beforeWhitespace", // Auto-close quotes only if cursor is before whitespace
+
+    // --- Suggestions & IntelliSense ---
+    "editor.inlineSuggest.enabled": true, // Show inline suggestions (e.g., from Copilot)
+    "editor.quickSuggestions": { // Configure when quick suggestions (IntelliSense) appear
+        "strings": "on" // Show suggestions within strings
+    },
+
+    // --- Visual Aids & Display ---
+    "editor.renderWhitespace": "all", // Show all whitespace characters
+    "editor.bracketPairColorization.enabled": true, // Colorize matching bracket pairs
+    "editor.guides.bracketPairs": true, // Show guides for bracket pairs
+    "editor.unicodeHighlight.allowedCharacters": { // Allow specific non-basic ASCII characters without highlighting
+        "：": true,
+        "（": true,
+        "）": true,
+        "　": true
+    },
+
+    // --- Minimap ---
+    "editor.minimap.enabled": false, // Disable the minimap
+    "editor.minimap.renderCharacters": false, // Render actual characters in minimap (if enabled)
+    "editor.minimap.size": "fit", // Size of the minimap (if enabled)
+    "editor.minimap.showSlider": "always", // Visibility of the minimap slider (if enabled)
+
+    // =========================================================================
+    // Language Specific Overrides
+    // =========================================================================
+    // These override the global editor settings for specific languages.
+    "[html]": {
+        "editor.tabSize": 2
+    },
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+    "[typescript]": {
+        "editor.tabSize": 2
+    },
+    "[typescriptreact]": {
+        "editor.tabSize": 2
+    },
+    "[python]": {
+        "editor.tabSize": 4
+    },
+    "[tex]": {
+        "editor.tabSize": 4
+    },
+
+    // =========================================================================
+    // Source Control (Git & GitHub)
+    // =========================================================================
+
+    // --- Git ---
+    "git.openRepositoryInParentFolders": "always", // Allow opening repos located in parent folders
+    "git.confirmSync": false, // Don't ask for confirmation before syncing (pull/push)
+
+    
+    // --- GitHub Copilot ---
+    "github.copilot.enable": { // Enable/disable Copilot for specific languages/contexts
+        "*": true,
+        "markdown": true,
+        "scminput": false, // Disable in source control commit message input
+        "plaintext": true
+    },
+    "github.copilot.editor.enableAutoCompletions": true, // Allow Copilot to provide suggestions automatically
+    "github.copilot.chat.codesearch.enabled": true, // Enable Copilot Chat's code search feature
+    "github.copilot.selectedCompletionModel": "", // Let Copilot choose the best model (or specify one)
+
+    // =========================================================================
+    // Language & Tooling Specific Settings
+    // =========================================================================
+
+    // --- Python & Jupyter ---
+    "python.defaultInterpreterPath": "/Users/kensuke/venv", // Default Python interpreter path
+    "python.venvPath": "/Users/kensuke/venv", // Path where virtual environments are typically found
+    "python.venvFolders": [ // Folder names recognized as containing virtual environments
+        "venv"
+    ],
+    "jupyter.askForKernelRestart": false, // Don't prompt when kernel restart is recommended
+    
+    
+    // --- TypeScript / JavaScript ---
+    "typescript.updateImportsOnFileMove.enabled": "always", // Automatically update imports when TS/JS files are moved/renamed
+    
+    
+    // --- C / C++ (Includes Code Runner settings for C/C++) ---
+    "clang.executable": "clang++", // Path to clang++ executable (used by Clang extensions)
+    "clang.cxxflags": ["-std=c++14"], // C++ flags for Clang extensions
+    "code-runner.executorMap": { // How Code Runner executes different file types
+        "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "cpp": "cd $dir && g++ -O2 -std=c++14 $fileName && ./a.out"
+    },
+    "code-runner.runInTerminal": true, // Execute code within the integrated terminal
+
+    
+    // --- Go ---
+    "go.toolsManagement.autoUpdate": true, // Automatically update Go tools
+
+    
+    // --- Markdown (Including MyST & KaTeX) ---
+    "markdown.validate.enabled": true, // Enable built-in Markdown linting
+    "markdown.updateLinksOnFileMove.enabled": "always", // Update Markdown links when files are moved/renamed
+    "markdown.extension.list.indentationSize": "inherit", // Use editor tab size for list indentation
+    "markdown.math.enabled": false, // Disable built-in math rendering (likely using an extension like KaTeX)
+    "markdown.extension.katex.macros": { // Custom KaTeX macros for Markdown previews
+        // ... (macros remain the same) ...
+        "\\bbA"             : "\\mathbb{A}",
+        "\\bbB"             : "\\mathbb{B}",
+        "\\bbC"             : "\\mathbb{C}",
+        "\\bbD"             : "\\mathbb{D}",
+        "\\bbE"             : "\\mathbb{E}",
+        "\\bbF"             : "\\mathbb{F}",
+        "\\bbG"             : "\\mathbb{G}",
+        "\\bbH"             : "\\mathbb{H}",
+        "\\bbI"             : "\\mathbb{I}",
+        "\\bbJ"             : "\\mathbb{J}",
+        "\\bbK"             : "\\mathbb{K}",
+        "\\bbL"             : "\\mathbb{L}",
+        "\\bbM"             : "\\mathbb{M}",
+        "\\bbN"             : "\\mathbb{N}",
+        "\\bbO"             : "\\mathbb{O}",
+        "\\bbP"             : "\\mathbb{P}",
+        "\\bbQ"             : "\\mathbb{Q}",
+        "\\bbR"             : "\\mathbb{R}",
+        "\\bbS"             : "\\mathbb{S}",
+        "\\bbT"             : "\\mathbb{T}",
+        "\\bbU"             : "\\mathbb{U}",
+        "\\bbV"             : "\\mathbb{V}",
+        "\\bbW"             : "\\mathbb{W}",
+        "\\bbX"             : "\\mathbb{X}",
+        "\\bbY"             : "\\mathbb{Y}",
+        "\\bbZ"             : "\\mathbb{Z}",
+        "\\calA"            : "\\mathcal{A}",
+        "\\calB"            : "\\mathcal{B}",
+        "\\calC"            : "\\mathcal{C}",
+        "\\calD"            : "\\mathcal{D}",
+        "\\calE"            : "\\mathcal{E}",
+        "\\calF"            : "\\mathcal{F}",
+        "\\calG"            : "\\mathcal{G}",
+        "\\calH"            : "\\mathcal{H}",
+        "\\calI"            : "\\mathcal{I}",
+        "\\calJ"            : "\\mathcal{J}",
+        "\\calK"            : "\\mathcal{K}",
+        "\\calL"            : "\\mathcal{L}",
+        "\\calM"            : "\\mathcal{M}",
+        "\\calN"            : "\\mathcal{N}",
+        "\\calO"            : "\\mathcal{O}",
+        "\\calP"            : "\\mathcal{P}",
+        "\\calQ"            : "\\mathcal{Q}",
+        "\\calR"            : "\\mathcal{R}",
+        "\\calS"            : "\\mathcal{S}",
+        "\\calT"            : "\\mathcal{T}",
+        "\\calU"            : "\\mathcal{U}",
+        "\\calV"            : "\\mathcal{V}",
+        "\\calW"            : "\\mathcal{W}",
+        "\\calX"            : "\\mathcal{X}",
+        "\\calY"            : "\\mathcal{Y}",
+        "\\calZ"            : "\\mathcal{Z}",
+        "\\rmA"             : "\\mathrm{A}",
+        "\\rmB"             : "\\mathrm{B}",
+        "\\rmC"             : "\\mathrm{C}",
+        "\\rmD"             : "\\mathrm{D}",
+        "\\rmE"             : "\\mathrm{E}",
+        "\\rmF"             : "\\mathrm{F}",
+        "\\rmG"             : "\\mathrm{G}",
+        "\\rmH"             : "\\mathrm{H}",
+        "\\rmI"             : "\\mathrm{I}",
+        "\\rmJ"             : "\\mathrm{J}",
+        "\\rmK"             : "\\mathrm{K}",
+        "\\rmL"             : "\\mathrm{L}",
+        "\\rmM"             : "\\mathrm{M}",
+        "\\rmN"             : "\\mathrm{N}",
+        "\\rmO"             : "\\mathrm{O}",
+        "\\rmP"             : "\\mathrm{P}",
+        "\\rmQ"             : "\\mathrm{Q}",
+        "\\rmR"             : "\\mathrm{R}",
+        "\\rmS"             : "\\mathrm{S}",
+        "\\rmT"             : "\\mathrm{T}",
+        "\\rmU"             : "\\mathrm{U}",
+        "\\rmV"             : "\\mathrm{V}",
+        "\\rmW"             : "\\mathrm{W}",
+        "\\rmX"             : "\\mathrm{X}",
+        "\\rmY"             : "\\mathrm{Y}",
+        "\\rmZ"             : "\\mathrm{Z}",
+        "\\const"           : "\\mathrm{const}",
+        "\\hc"              : "\\mathrm{h.c.}",
+        "\\lhs"             : "\\mathrm{(LHS)}",
+        "\\rhs"             : "\\mathrm{(RHS)}",
+        "\\Haar"            : "\\mathrm{Haar}",
+        "\\poly"            : "\\mathrm{poly}",
+        "\\SWAP"            : "\\mathrm{SWAP}",
+        "\\E"               : "\\operatorname{E}",
+        "\\Var"             : "\\operatorname{Var}",
+        "\\Cov"             : "\\operatorname{Cov}",
+        "\\combi"           : "{}_{#1}\\mathrm{C}_{#2}",
+        "\\fa"              : "{}^\\forall}",
+        "\\ex"              : "{}^\\exists",
+        "\\bs"              : "\\boldsymbol",
+        "\\T"               : "^\\mathsf{T}",
+        "\\dg"              : "^\\dagger",
+        "\\vt"              : "\\,\\|\\,",
+        "\\ot"              : "^{\\otimes {#1}}",
+        "\\kten"            : "\\ket{#1}\\otimes\\ket{#2}",
+        "\\bten"            : "\\bra{#1}\\otimes\\bra{#2}",
+        "\\pqty"            : "\\left({#1}\\right)",
+        "\\bqty"            : "\\left[{#1}\\right]",
+        "\\vqty"            : "\\left\\lvert{#1}\\right\\rvert",
+        "\\Bqty"            : "\\left\\{{#1}\\right\\}",
+        "\\abs"             : "\\left|{#1}\\right|",
+        "\\norm"            : "\\left\\|{#1}\\right\\|",
+        "\\eval"            : "\\left.{#1}\\right|_{#2}",
+        "\\order"           : "\\mathcal{O}\\left({#1}\\right)",
+        "\\comm"            : "\\left[{#1},{#2}\\right]",
+        "\\acomm"           : "\\left\\{{#1},{#2}\\right\\}",
+        "\\pb"              : "\\left\\{{#1},{#2}\\right\\}",
+        "\\grad"            : "\\nabla",
+        "\\lap"             : "\\nabla^2",
+        "\\div"             : "\\nabla\\cdot",
+        "\\curl"            : "\\nabla\\times",
+        "\\Tr"              : "\\operatorname{Tr}",
+        "\\tr"              : "\\operatorname{tr}",
+        "\\rank"            : "\\operatorname{rank}",
+        "\\erf"             : "\\operatorname{erf}",
+        "\\Res"             : "\\operatorname{Res}",
+        "\\Re"              : "\\operatorname{Re}",
+        "\\Im"              : "\\operatorname{Im}",
+        "\\dv"              : "\\frac{\\mathrm{d}{#1}}{\\mathrm{d}{#2}}",
+        "\\pd"              : "\\partial",
+        "\\pdv"             : "\\frac{\\partial{#1}}{\\partial{#2}}",
+        "\\braket"          : "\\left\\langle{#1}|{#2}\\right\\rangle",
+        "\\ketbra"          : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#2}\\right|",
+        "\\dyad"            : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#1}\\right|",
+        "\\ev"              : "\\left\\langle{#1}\\right\\rangle",
+        "\\expval"          : "\\left\\langle{#2}|{#1}|{#2}\\right\\rangle",
+        "\\mel"             : "\\left\\langle{#1}\\middle|{#2}\\middle|{#3}\\right\\rangle",
+        "\\pmqty"           : "\\begin{pmatrix}#1\\end{pmatrix}",
+        "\\bmqty"           : "\\begin{bmatrix}#1\\end{bmatrix}",
+        "\\vmqty"           : "\\begin{vmatrix}#1\\end{vmatrix}"
+    },
+    "myst.preview.extensions": [ // Extensions for MyST Markdown preview
+        "amsmath",
+        "colon_fence",
+        "deflist",
+        "dollarmath",
+        "tasklist"
+    ],
+
+    // --- LaTeX (LaTeX Workshop Extension) ---
+    "latex-workshop.latex.tools": [ // Define compilation tools
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": ["-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"],
+            "env": {}
+        },
+        {
+            "name": "ptex2pdf",
+            "command": "ptex2pdf",
+            "args": ["-l", "-ot", "-interaction=nonstopmode", "-kanji=utf8 -synctex=1", "%DOC%"]
+        },
+        {
+            "name": "pbibtex",
+            "command": "pbibtex",
+            "args": ["%DOCFILE%"] // "-kanji=utf8" commented out
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": ["--bblencoding=utf8", "-u", "-U", "--output_safechars", "%DOCFILE%"]
+        }
+    ],
+    "latex-workshop.latex.recipes": [ // Define sequences of tools (build recipes)
+        {"name": "pdflatex*3", "tools": ["pdflatex", "pdflatex", "pdflatex"]},
+        {"name": "pdflatex -> pbibtex -> pdflatex * 2", "tools": ["pdflatex", "pbibtex", "pdflatex", "pdflatex"]},
+        {"name": "pdflatex -> biber -> pdflatex * 2", "tools": ["pdflatex", "biber", "pdflatex", "pdflatex"]},
+        {"name": "ptex2pdf*3", "tools": ["ptex2pdf", "ptex2pdf", "ptex2pdf"]},
+        {"name": "ptex2pdf -> pbibtex -> ptex2pdf * 2", "tools": ["ptex2pdf", "pbibtex", "ptex2pdf", "ptex2pdf"]},
+        {"name": "ptex2pdf -> biber -> ptex2pdf * 2", "tools": ["ptex2pdf", "biber", "ptex2pdf", "ptex2pdf"]}
+    ],
+    "latex-workshop.latex.clean.fileTypes": [ // Files to remove during 'Clean up auxiliary files'
+        "*.bbl", "*.blg", "*.idx", "*.ind", "*.lof", "*.lot", "*.out", "*.toc", "*.acn", "*.acr", "*.alg",
+        "*.glg", "*.glo", "*.gls", "*.ist", "*.fls", "*.log", "*.fdb_latexmk", "*.synctex.gz",
+        "_minted*", "*.nav", "*.snm", "*.vrb"
+    ],
+    "latex-workshop.latex.autoClean.run": "onBuilt", // Run clean after a successful build
+    "latex-workshop.latex.autoBuild.run": "onFileChange", // Trigger build automatically when a LaTeX file changes
+    "latex-workshop.synctex.afterBuild.enabled": true, // Enable SyncTeX forward search after build
+    "latex-workshop.view.pdf.viewer": "tab", // Open PDF preview in a VS Code tab
+    "latex-workshop.view.pdf.invert": 1, // Invert PDF colors (value might depend on viewer/theme, 1 often works)
+    "latex-workshop.hover.preview.mathjax.extensions": [ // MathJax extensions for hover previews
+        "physics",
+        "boldsymbol",
+        "cases"
+    ],
+
+    // =========================================================================
+    // Extension Settings (Miscellaneous)
+    // =========================================================================
+
+    // --- Spell Checker (cSpell) ---
+    "cSpell.ignoreRegExpList": [ // Regular expressions for text to ignore
+        "[０-９Ａ-Ｚａ-ｚぁ-んァ-ノ-ヶ亜-熙纊-黑]+" // Ignore full-width alphanumeric and Japanese characters
+    ],
+    "cSpell.userWords": [ // Custom dictionary words
+        "Ansatz", "CNOT", "Deutsch", "eigensolver", "Frobenius", "Hadamard",
+        "Ising", "mathcal", "NAND", "ndarray", "Neumann", "NISQ", "nlayers", "nqubits",
+        "pennylane", "Petz", "QAOA", "qubit", "qubits", "Rényi", "unitarity"
+        // Add more custom words here
+    ],
+    "cSpell.enabledNotifications": { // Disable specific informational notifications from cSpell
+        "Average Word Length too Long": false,
+        "Lines too Long": false,
+        "Maximum Word Length Exceeded": false
+    },
+
+    
+    // --- Japanese Language Tools ---
+    "japanese-proofreading.textlint.ハイフン(-)": false, // Textlint rule configuration
+    "japanese-proofreading.textlint.丸かっこ（）": false,
+    "japanese-proofreading.textlint.全角文字と半角文字の間": false,
+    "japanese-proofreading.textlint.助詞の連続": true,
+    "japanese-proofreading.textlint.ひらく漢字": false,
+    "vscodeGoogleTranslate.preferredLanguage": "Japanese", // Preferred target language for Google Translate extension
+
+    
+    // --- Indent Rainbow ---
+    "indentRainbow.ignoreErrorLanguages": ["*"], // Prevent indent error highlighting in all languages
+
+    
+    // --- Draw.io Integration ---
+    "hediet.vscode-drawio.resizeImages": null, // Configuration for Draw.io image resizing
+
+    
+    // --- CMake Tools ---
+    "cmake.options.statusBarVisibility": "visible" // Show CMake status bar items
+}
