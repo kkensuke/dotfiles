@@ -214,7 +214,7 @@ matches:
         type: shell
         params:
           cmd: "open -a Terminal.app; echo 'code ~/github/dotfiles/zsh/'"
-          # following commands deletes 5 letters from the file when you open it
+          # following commands deletes some letters from the file when you open it
           # cmd: "code ~/github/dotfiles/"
           # cmd: "eval 'code ~/github/dotfiles/espanso/'"
           # cmd: |
@@ -241,6 +241,14 @@ matches:
         type: shell
         params:
           cmd: "open ~/github/qc/"
+
+  - trigger: ";memo"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo '- {{today}}: {{clipboard}}' >> ~/Desktop/memo.md"
 
 # --- File Creation ---
   - trigger: ";newfile"
