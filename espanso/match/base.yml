@@ -5,10 +5,14 @@
 global_vars:
   - name: "clipboard"
     type: "clipboard"
-  - name: "today"
+  - name: today
     type: date
     params:
       format: "%Y/%m/%d"
+  - name: now
+    type: date
+    params:
+      format: "%Y/%m/%d/%H:%M"
 
 
 matches:
@@ -56,13 +60,10 @@ matches:
 # =========================================
 #  Time & Date
 # =========================================
+  - trigger: ";date"
+    replace: "{{today}}"
   - trigger: ";now"
     replace: "{{now}}"
-    vars:
-      - name: now
-        type: date
-        params:
-          format: "%Y/%m/%d/%H:%M"
 
 # =========================================
 #  Symbols & Emojis
@@ -248,7 +249,7 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "echo '- {{today}}: {{clipboard}}' >> ~/Desktop/memo.md"
+          cmd: "echo '- {{now}}: {{clipboard}}' >> ~/Desktop/memo.md"
 
 # --- File Creation ---
   - trigger: ";newfile"
