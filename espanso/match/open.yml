@@ -63,7 +63,7 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "cd ~/Desktop; echo \"[InternetShortcut]\nURL={{clipboard}}\" > \"{{name}}\".url"
+          cmd: "cd ~/Desktop; echo '[InternetShortcut]\nURL={{clipboard}}' > {{name}}.url"
 
   - trigger: ";memo"
     replace: "{{output}}"

@@ -9,10 +9,7 @@ matches:
       - name: output
         type: shell
         params:
-          # macOS,Linux:
           cmd: "uuidgen"
-          # Windows (requires PowerShell):
-          # cmd: "powershell -command \"[guid]::NewGuid().ToString()\""
 
   - trigger: ";genpw"
     replace: "{{output}}"

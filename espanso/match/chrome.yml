@@ -96,7 +96,7 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "open \"https://claude.ai/\""
+          cmd: "open 'https://claude.ai/'"
 
   - trigger: ";fast"
     replace: "{{output}}"
@@ -104,7 +104,7 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "open \"https://fast.com/\""
+          cmd: "open 'https://fast.com/'"
 
   - trigger: ";Espanso"
     replace: "{{output}}"
@@ -112,4 +112,4 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "open \"https://espanso.org/docs/get-started/\""
+          cmd: "open 'https://espanso.org/docs/get-started/'"
