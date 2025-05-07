@@ -214,8 +214,17 @@ matches:
         type: shell
         params:
           cmd: "open -a Terminal.app; echo 'code ~/github/dotfiles/zsh/'"
-          # cmd: "code ~/github/dotfiles/" # this command deletes 5 letters from the file when you open it
-          # cmd: "eval 'code ~/github/dotfiles/espanso/'" # this command deletes 5 letters from the file when you open it
+          # following commands deletes 5 letters from the file when you open it
+          # cmd: "code ~/github/dotfiles/"
+          # cmd: "eval 'code ~/github/dotfiles/espanso/'"
+          # cmd: |
+          #   osascript -e '
+          #   set targetFolderPath to "/Users/kensuke/github/dotfiles/espanso/"
+          #   tell application "Visual Studio Code"
+          #       activate
+          #       open targetFolderPath
+          #   end tell
+          #   '
 
   - trigger: ";espanso"
     replace: "{{output}}"
@@ -393,7 +402,7 @@ matches:
           cmd: "head /dev/urandom | LC_ALL=C tr -dc A-Za-z0-9 | head -c {{length}}; echo ''"
 
 # --- Shell Execution ---
-  - trigger: ";shell" # Example shell command
+  - trigger: ";shell"
     replace: "{{output}}"
     vars:
       - name: output
@@ -401,13 +410,13 @@ matches:
         params:
           cmd: "echo 'Hello from your shell'"
 
-  - regex: ";\\((?P<command>.*)\\)" # Execute arbitrary shell command
-    replace: "{{result}}"
-    vars:
-      - name: result
-        type: shell
-        params:
-          cmd: "eval $ESPANSO_COMMAND" # Be careful with 'eval'
+  # - regex: ";\\((?P<command>.*)\\)" # Execute arbitrary shell command
+  #   replace: "{{result}}"
+  #   vars:
+  #     - name: result
+  #       type: shell
+  #       params:
+  #         cmd: "eval $ESPANSO_COMMAND"
 
 # --- Web Lookups ---
   - regex: ";def\\((?P<word>.*)\\)" # Dictionary lookup
