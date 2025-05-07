@@ -34,3 +34,63 @@ matches:
         type: shell
         params:
           cmd: "uuidgen"
+
+# ——— Generate Random Number ———
+  - trigger: ";dice"
+    replace: "{{roll}}"
+    vars:
+      - name: roll
+        type: shell
+        params:
+          cmd: "shuf -i 1-6 -n 1"
+
+# --- Uppercase ---
+  - trigger: ";uppercase"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          # macOS/Linux
+          cmd: "echo \"{{clipboard}}\" | tr '[:lower:]' '[:upper:]'"
+
+# --- Lowercase ---
+  - trigger: ";lowercase"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          # macOS/Linux
+          cmd: "echo \"{{clipboard}}\" | tr '[:upper:]' '[:lower:]'"
+
+# --- Remove Spaces ---
+  - trigger: ";nospace"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          # You could also use: cmd: "echo \"{{clipboard}}\" | sed 's/ //g'"
+          # cmd: "echo \"{{clipboard}}\" | tr -d ' '"
+          cmd: "echo \"{{clipboard}}\" | sed 's/[ 　]//g'"
+
+# --- Character Count ---
+  - trigger: ";charct"
+    replace: "{{count}} characters"
+    vars:
+      - name: count
+        type: shell
+        params:
+          # Counts characters, trims whitespace from wc output
+          cmd: "echo -n \"{{clipboard}}\" | wc -m | tr -d '[:space:]'"
+
+# --- Word Count ---
+  - trigger: ";wordct"
+    replace: "{{count}} words"
+    vars:
+      - name: count
+        type: shell
+        params:
+          # Counts words, trims whitespace from wc output
+          cmd: "echo -n \"{{clipboard}}\" | wc -w | tr -d '[:space:]'"

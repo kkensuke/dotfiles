@@ -16,9 +16,9 @@ matches:
     replace: "👍"
   - triggers: [";ok",";emoji"]
     replace: "✅"
-  - triggers: [";up",";emoji"]
+  - triggers: [";arrup",";emoji"]
     replace: "⬆️"
-  - triggers: [";down",";emoji"]
+  - triggers: [";arrdown",";emoji"]
     replace: "⬇️"
   - triggers: [";pc",";emoji"]
     replace: "🧑‍💻"
