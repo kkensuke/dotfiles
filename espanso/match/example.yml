@@ -25,12 +25,3 @@ matches:
   #       type: shell
   #       params:
   #         cmd: "eval $ESPANSO_COMMAND"
-
-# ——— Dictionary Lookup ———
-  - regex: ";def" # Dictionary lookup
-    replace: "{{definition}}"
-    vars:
-      - name: definition
-        type: shell
-        params:
-          cmd: "curl -s https://api.dictionaryapi.dev/api/v2/entries/en/{{clipboard}} | grep -o '\"definition\":\"[^\"]*\"' | head -n 1 | sed 's/\"definition\":\"\\([^\"]*\\)\"/\\1/'"

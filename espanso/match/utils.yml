@@ -76,7 +76,7 @@ matches:
           cmd: "echo \"{{clipboard}}\" | sed 's/[ 　]//g'"
 
 # --- Character Count ---
-  - trigger: ";charct"
+  - trigger: ";chars"
     replace: "{{count}} characters"
     vars:
       - name: count
@@ -86,7 +86,7 @@ matches:
           cmd: "echo -n \"{{clipboard}}\" | wc -m | tr -d '[:space:]'"
 
 # --- Word Count ---
-  - trigger: ";wordct"
+  - trigger: ";words"
     replace: "{{count}} words"
     vars:
       - name: count

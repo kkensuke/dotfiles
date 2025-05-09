@@ -71,3 +71,39 @@ matches:
                     }]
                   }' \
             | jq -r '.candidates[0].content.parts[0].text | split("\n")[0]'
+
+  - trigger: ";grammar"
+    replace: "{{corrected}}"
+    vars:
+      - name: corrected
+        type: shell
+        params:
+          cmd: >
+            curl -s \
+              "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
+              -H 'Content-Type: application/json' \
+              -X POST \
+              -d '{
+                    "contents": [{
+                      "parts": [{"text": "Correct the grammar and spelling of the following text. Respond in the SAME LANGUAGE as the original text.　Provide ONLY the corrected text, no explanations: {{clipboard}}"}]
+                    }]
+                  }' \
+            | jq -r '.candidates[0].content.parts[0].text'
+
+  - trigger: ";bullet"
+    replace: "{{bullets}}"
+    vars:
+      - name: bullets
+        type: shell
+        params:
+          cmd: >
+            curl -s \
+              "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
+              -H 'Content-Type: application/json' \
+              -X POST \
+              -d '{
+                    "contents": [{
+                      "parts": [{"text": "Convert the following text into a clear, concise bullet point list. Respond in the SAME LANGUAGE as the original text.: {{clipboard}}"}]
+                    }]
+                  }' \
+            | jq -r '.candidates[0].content.parts[0].text'
