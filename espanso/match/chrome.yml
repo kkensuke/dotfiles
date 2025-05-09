@@ -90,6 +90,14 @@ matches:
         params:
           cmd: "open 'https://www.google.com/search?q={{clipboard}}'"
 
+  - trigger: ";scholar"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "open 'https://scholar.google.com/scholar?q={{clipboard}}'"
+
   - trigger: ";claude"
     replace: "{{output}}"
     vars:

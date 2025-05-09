@@ -18,7 +18,7 @@ matches:
   - trigger: ";jmail"
     replace: "以下の内容のメールを丁寧に書いてください: "
   - trigger: ";ext"
-    replace: "Extract the contents in markdown format with hyphen (-) bullet list. Use '##' for each header and 2 blank lines before headers and no blank line after headers: "
+    replace: "Extract the essence of the contents in markdown format with hyphen (-) bullet list. Use '##' for each header and 2 blank lines before headers and no blank line after headers: "
   - trigger: ";expeq"
     replace: "Please explain the following concept with relevant equations: "
   - trigger: ";plot"
