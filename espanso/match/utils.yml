@@ -44,6 +44,15 @@ matches:
         params:
           cmd: "shuf -i 1-6 -n 1"
 
+  - trigger: ";speak"
+    replace: "{{output}}"
+    label: "Speak Clipboard Content"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "osascript -e 'say \"{{clipboard}}\"'"
+
 # --- Uppercase ---
   - trigger: ";uppercase"
     replace: "{{output}}"
