@@ -56,7 +56,7 @@ matches:
         params:
           cmd: "cd ~/Desktop; touch {{uuid}}.md; open -a CotEditor.app {{uuid}}.md"
 
-  - regex: ";url\\((?P<name>.*)\\)"
+  - regex: ";url(?P<name>.*);" # input: ;urlname; → output: name.url
     replace: "{{output}}"
     vars:
       - name: output

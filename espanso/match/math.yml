@@ -164,32 +164,32 @@ matches:
     replace: "⋯"
 
 # --- Basic Calculations (Regex) ---
-# Multiplication ;m(num1,num2)
-  - regex: ";m\\((?P<num1>.*),(?P<num2>.*)\\)"
+# Multiplication: 7*8 => ;m7,8;
+  - regex: ";m(?P<num1>.*),(?P<num2>.*);"
     replace: "{{result}}"
     vars:
       - name: result
         type: shell
         params:
           cmd: "expr $ESPANSO_NUM1 '*' $ESPANSO_NUM2"
-# Division ;d(num1,num2)
-  - regex: ";d\\((?P<num1>.*),(?P<num2>.*)\\)"
+# Division: 7/8 => ;d7,8;
+  - regex: ";d(?P<num1>.*),(?P<num2>.*);"
     replace: "{{result}}"
     vars:
       - name: result
         type: shell
         params:
           cmd: "expr $ESPANSO_NUM1 / $ESPANSO_NUM2"
-# Power ;p(num1,num2)
-  - regex: ";p\\((?P<num1>.*),(?P<num2>.*)\\)"
+# Power: 7^8 => ;p7,8;
+  - regex: ";p(?P<num1>.*),(?P<num2>.*);"
     replace: "{{result}}"
     vars:
       - name: result
         type: shell
         params:
           cmd: "echo $[$ESPANSO_NUM1 ** $ESPANSO_NUM2]"
-# Square Root ;s(num1,num2)
-  - regex: ";s\\((?P<num>.*)\\)"
+# Square Root: √7 => ;s7;
+  - regex: ";s(?P<num>.*);"
     replace: "{{result}}"
     vars:
       - name: result
