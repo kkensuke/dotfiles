@@ -60,7 +60,6 @@ matches:
       - name: output
         type: shell
         params:
-          # macOS/Linux
           cmd: "echo \"{{clipboard}}\" | tr '[:lower:]' '[:upper:]'"
 
 # --- Lowercase ---
@@ -70,7 +69,6 @@ matches:
       - name: output
         type: shell
         params:
-          # macOS/Linux
           cmd: "echo \"{{clipboard}}\" | tr '[:upper:]' '[:lower:]'"
 
 # --- Remove Spaces ---
@@ -80,9 +78,8 @@ matches:
       - name: output
         type: shell
         params:
-          # You could also use: cmd: "echo \"{{clipboard}}\" | sed 's/ //g'"
-          # cmd: "echo \"{{clipboard}}\" | tr -d ' '"
-          cmd: "echo \"{{clipboard}}\" | sed 's/[ 　]//g'"
+          cmd: "echo \"{{clipboard}}\" | tr -d ' 　'"
+          # cmd: "echo \"{{clipboard}}\" | sed 's/[ 　]//g'"
 
 # --- Character Count ---
   - trigger: ";chars"
