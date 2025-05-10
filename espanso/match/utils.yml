@@ -15,6 +15,15 @@ matches:
         params:
           cmd: "echo '{{finder_path}}' | sed 's/ /\\\\ /g' | tr -d '\n' | pbcopy; pbpaste"
 
+# --- Make repo summary ---
+  - trigger: ";repotext"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "python3 ~/github/tools/repo_to_text/repo_to_text_CJK.py -o ~/Desktop/output.txt {{clipboard}}"
+
 # --- Capslock no delay ---
   - trigger: ";nodl"
     replace: "{{output}}"
