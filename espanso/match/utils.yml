@@ -15,14 +15,14 @@ matches:
         params:
           cmd: "echo {{finder_path}} | sed 's/ /\\\\ /g'"
 
-# ——— Shorten Clipboard URL ———
-  - trigger: ";short"
-    replace: "{{short_url}}"
+# --- Capslock no delay ---
+  - trigger: ";nodl"
+    replace: "{{output}}"
     vars:
-      - name: short_url
+      - name: output
         type: shell
         params:
-          cmd: "curl -s 'https://tinyurl.com/api-create.php?url={{clipboard}}'"
+          cmd: "hidutil property --set '{\"CapsLockDelayOverride\":10}'"
 
 # --- Speak Clipboard Content ---
   - trigger: ";speak"
@@ -46,6 +46,15 @@ matches:
         type: shell
         params:
           cmd: "echo \"{{clipboard}}\" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/{{separator}}/g' | sed -E 's/^{{separator}}+|{{separator}}+$//g' | tr '[:upper:]' '[:lower:]'"
+
+# ——— Shorten Clipboard URL ———
+  - trigger: ";short"
+    replace: "{{short_url}}"
+    vars:
+      - name: short_url
+        type: shell
+        params:
+          cmd: "curl -s 'https://tinyurl.com/api-create.php?url={{clipboard}}'"
 
 # --- Uppercase ---
   - trigger: ";uppercase"
