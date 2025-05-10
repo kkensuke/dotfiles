@@ -9,8 +9,7 @@ matches:
       - name: short_url
         type: shell
         params:
-          cmd: >
-            curl -s "https://tinyurl.com/api-create.php?url={{clipboard}}"
+          cmd: "curl -s 'https://tinyurl.com/api-create.php?url={{clipboard}}'"
 
 # ——— Generate Password ———
   - trigger: ";genpw"
@@ -60,7 +59,7 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "echo \"{{clipboard}}\" | tr '[:lower:]' '[:upper:]'"
+          cmd: "echo {{clipboard}} | tr '[:lower:]' '[:upper:]'"
 
 # --- Lowercase ---
   - trigger: ";lowercase"
@@ -69,7 +68,7 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "echo \"{{clipboard}}\" | tr '[:upper:]' '[:lower:]'"
+          cmd: "echo {{clipboard}} | tr '[:upper:]' '[:lower:]'"
 
 # --- Remove Spaces ---
   - trigger: ";nospace"
@@ -78,8 +77,8 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "echo \"{{clipboard}}\" | tr -d ' 　'"
-          # cmd: "echo \"{{clipboard}}\" | sed 's/[ 　]//g'"
+          cmd: "echo {{clipboard}} | tr -d ' 　'"
+          # cmd: "echo {{clipboard}} | sed 's/[ 　]//g'"
 
 # --- Character Count ---
   - trigger: ";chars"
@@ -89,7 +88,7 @@ matches:
         type: shell
         params:
           # Counts characters, trims whitespace from wc output
-          cmd: "echo -n \"{{clipboard}}\" | wc -m | tr -d '[:space:]'"
+          cmd: "echo -n {{clipboard}} | wc -m | tr -d '[:space:]'"
 
 # --- Word Count ---
   - trigger: ";words"
@@ -99,4 +98,4 @@ matches:
         type: shell
         params:
           # Counts words, trims whitespace from wc output
-          cmd: "echo -n \"{{clipboard}}\" | wc -w | tr -d '[:space:]'"
+          cmd: "echo -n {{clipboard}} | wc -w | tr -d '[:space:]'"
