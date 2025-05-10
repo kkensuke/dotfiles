@@ -24,38 +24,6 @@ matches:
         params:
           cmd: "curl -s 'https://tinyurl.com/api-create.php?url={{clipboard}}'"
 
-# ——— Generate Password ———
-  - trigger: ";genpw"
-    replace: "{{output}}"
-    vars:
-      - name: length
-        type: echo
-        params:
-          echo: "25" # must be string
-      - name: output
-        type: shell
-        params:
-          # macOS/Linux with /dev/urandom
-          cmd: "head /dev/urandom | LC_ALL=C tr -dc A-Za-z0-9 | head -c {{length}}; echo ''"
-
-# ——— Generate UUID ———
-  - trigger: ";uuid"
-    replace: "{{output}}"
-    vars:
-      - name: output
-        type: shell
-        params:
-          cmd: "uuidgen"
-
-# ——— Generate Random Number ———
-  - trigger: ";dice"
-    replace: "{{roll}}"
-    vars:
-      - name: roll
-        type: shell
-        params:
-          cmd: "shuf -i 1-6 -n 1"
-
 # --- Speak Clipboard Content ---
   - trigger: ";speak"
     replace: "{{output}}"
@@ -66,6 +34,7 @@ matches:
           cmd: "osascript -e 'say \"{{clipboard}}\"'"
 
 # --- Slugify Clipboard Text ---
+# Converts clipboard text like "This is an Example!" to "this_is_an_example"
   - trigger: ";slugify"
     replace: "{{slug}}"
     vars:
@@ -76,7 +45,6 @@ matches:
       - name: slug
         type: shell
         params:
-          # Converts clipboard text like "This is an Example!" to "this_is_an_example"
           cmd: "echo \"{{clipboard}}\" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/{{separator}}/g' | sed -E 's/^{{separator}}+|{{separator}}+$//g' | tr '[:upper:]' '[:lower:]'"
 
 # --- Uppercase ---
