@@ -18,6 +18,14 @@ matches:
           # following commands deletes some letters from the file when you open it
           # cmd: "code ~/github/dotfiles/zsh/"
 
+  - trigger: ";notion"
+    replace: "{{output}}\n"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "open -a Terminal.app; echo 'code ~/github/notion/'"
+
   - trigger: ";espanso"
     replace: "{{output}}\n"
     vars:
@@ -26,6 +34,14 @@ matches:
         params:
           cmd: "open -a Terminal.app; echo 'code ~/github/dotfiles/espanso/'"
 
+  - trigger: ";blog"
+    replace: "{{output}}\n"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "open -a Terminal.app; echo 'code ~/website/nextjs-blog-tutorial/'"
+
   - trigger: ";quantum"
     replace: "{{output}}"
     vars:
@@ -33,7 +49,6 @@ matches:
         type: shell
         params:
           cmd: "open ~/github/qc/"
-
 
 # --- File Creation ---
   - trigger: ";newfile"

@@ -2,7 +2,7 @@ matches:
   - trigger: ";fr"
     replace: "\\frac{$|$}{}"
 
-  - trigger: ";bl"
+  - trigger: ";bold"
     replace: "\\boldsymbol{$|$}"
 
   - trigger: ";align"
