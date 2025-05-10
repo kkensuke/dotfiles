@@ -9,8 +9,6 @@ matches:
       - name: finder_path
         type: shell
         params:
-          # Gets the full POSIX path of the currently selected item(s) in Finder.
-          # If multiple items are selected, it returns a list of paths.
           cmd: "osascript -e 'tell application \"Finder\" to get the POSIX path of (selection as alias)'"
       - name: escaped_path
         type: shell
@@ -78,8 +76,7 @@ matches:
       - name: slug
         type: shell
         params:
-          # Converts clipboard text like "This is an Example!" to "this-is-an-example"
-          # This version is fairly robust for ASCII.
+          # Converts clipboard text like "This is an Example!" to "this_is_an_example"
           cmd: "echo \"{{clipboard}}\" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/{{separator}}/g' | sed -E 's/^{{separator}}+|{{separator}}+$//g' | tr '[:upper:]' '[:lower:]'"
 
 # --- Uppercase ---
@@ -117,7 +114,6 @@ matches:
       - name: count
         type: shell
         params:
-          # Counts characters, trims whitespace from wc output
           cmd: "echo -n {{clipboard}} | wc -m | tr -d '[:space:]'"
 
 # --- Word Count ---
@@ -127,5 +123,4 @@ matches:
       - name: count
         type: shell
         params:
-          # Counts words, trims whitespace from wc output
           cmd: "echo -n {{clipboard}} | wc -w | tr -d '[:space:]'"
