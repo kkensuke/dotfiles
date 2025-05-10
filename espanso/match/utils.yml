@@ -4,16 +4,16 @@ matches:
 
 # --- Copy Finder Path ---
   - trigger: ";clippath"
-    replace: "{{escaped_path}}"
+    replace: "{{output}}"
     vars:
       - name: finder_path
         type: shell
         params:
           cmd: "osascript -e 'tell application \"Finder\" to get the POSIX path of (selection as alias)'"
-      - name: escaped_path
+      - name: output
         type: shell
         params:
-          cmd: "echo {{finder_path}} | sed 's/ /\\\\ /g'"
+          cmd: "echo '{{finder_path}}' | sed 's/ /\\\\ /g' | tr -d '\n' | pbcopy; pbpaste"
 
 # --- Capslock no delay ---
   - trigger: ";nodl"
