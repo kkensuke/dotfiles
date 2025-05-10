@@ -2,6 +2,21 @@ matches:
   - trigger: ";local"
     replace: "localhost:3000/"
 
+# --- Copy Finder Path ---
+  - trigger: ";clippath"
+    replace: "{{escaped_path}}"
+    vars:
+      - name: finder_path
+        type: shell
+        params:
+          # Gets the full POSIX path of the currently selected item(s) in Finder.
+          # If multiple items are selected, it returns a list of paths.
+          cmd: "osascript -e 'tell application \"Finder\" to get the POSIX path of (selection as alias)'"
+      - name: escaped_path
+        type: shell
+        params:
+          cmd: "echo {{finder_path}} | sed 's/ /\\\\ /g'"
+
 # ——— Shorten Clipboard URL ———
   - trigger: ";short"
     replace: "{{short_url}}"
@@ -43,14 +58,29 @@ matches:
         params:
           cmd: "shuf -i 1-6 -n 1"
 
+# --- Speak Clipboard Content ---
   - trigger: ";speak"
     replace: "{{output}}"
-    label: "Speak Clipboard Content"
     vars:
       - name: output
         type: shell
         params:
           cmd: "osascript -e 'say \"{{clipboard}}\"'"
+
+# --- Slugify Clipboard Text ---
+  - trigger: ";slugify"
+    replace: "{{slug}}"
+    vars:
+      - name: separator
+        type: echo
+        params:
+          echo: "_"
+      - name: slug
+        type: shell
+        params:
+          # Converts clipboard text like "This is an Example!" to "this-is-an-example"
+          # This version is fairly robust for ASCII.
+          cmd: "echo \"{{clipboard}}\" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/{{separator}}/g' | sed -E 's/^{{separator}}+|{{separator}}+$//g' | tr '[:upper:]' '[:lower:]'"
 
 # --- Uppercase ---
   - trigger: ";uppercase"
