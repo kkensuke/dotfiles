@@ -50,6 +50,26 @@ matches:
         params:
           cmd: "open ~/github/qc/"
 
+  - trigger: ";cdgh"
+    replace: "{{output}}\n"
+    vars:
+      - name: available
+        type: shell
+        params:
+          cmd: "ls ~/github/"
+      - name: "form"
+        type: form
+        params:
+          layout: "GitHub Repo Name : [[repo_name]]"
+          fields:
+            repo_name:
+              type: choice
+              values: "{{available}}"
+      - name: output
+        type: shell
+        params:
+          cmd: "open -a Terminal.app; echo 'code ~/github/{{form.repo_name}}'"
+
 # --- File Creation ---
   - trigger: ";newfile"
     replace: "{{output}}"

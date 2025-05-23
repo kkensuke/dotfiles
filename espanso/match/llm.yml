@@ -21,10 +21,14 @@ matches:
     replace: "Extract the essence of the contents in markdown format with hyphen (-) bullet list. Use '##' for each header and 2 blank lines before headers and no blank line after headers: "
   - trigger: ";expeq"
     replace: "Please explain the following concept with relevant equations: "
-  - trigger: ";plot"
-    replace: "Generate a Python script to plot the following function or data: $|$"
   - trigger: ";expc"
     replace: "Explain what the following code does in detail: $|$"
+  - trigger: ";refactor"
+    replace: "Please refactor the following code to improve readability, performance, and follow best practices: "
+  - trigger: ";pros"
+    replace: "What are the pros and cons of "
+  - trigger: ";plot"
+    replace: "Generate a Python script to plot the following function or data: $|$"
   - trigger: ";compare"
     replace: "Compare and contrast the following theories or models: $|$"
 
@@ -72,6 +76,7 @@ matches:
                   }' \
             | jq -r '.candidates[0].content.parts[0].text | split("\n")[0]'
 
+# ——— Grammar Check Clipboard (via Google Gemini) ———
   - trigger: ";grammar"
     replace: "{{corrected}}"
     vars:
@@ -90,6 +95,7 @@ matches:
                   }' \
             | jq -r '.candidates[0].content.parts[0].text'
 
+# ——— Bullet Point List (via Google Gemini) ———
   - trigger: ";bullet"
     replace: "{{bullets}}"
     vars:
@@ -107,3 +113,39 @@ matches:
                     }]
                   }' \
             | jq -r '.candidates[0].content.parts[0].text'
+
+# --- Context-aware AI prompts for various tasks ---
+  - trigger: ";analyze"
+    replace: |
+            Please analyze the following {{form.format}} and provide:
+            1. Key insights
+            2. Potential issues or concerns
+            3. Recommendations for improvement, especially in terms of {{form.aspect}}
+            
+            {{form.format}} to analyze:
+            ```
+            {{clipboard}}
+            ```
+    vars:
+      - name: "form"
+        type: form
+        params:
+          layout: "Type: [[format]] Aspect: [[aspect]]"
+          fields:
+            format:
+              type: choice
+              values:
+                - code
+                - data
+                - document
+                - proposal
+                - research paper
+                - design
+            aspect:
+              type: choice
+              values:
+                - performance
+                - readability
+                - efficiency
+                - clarity
+                - accessibility
