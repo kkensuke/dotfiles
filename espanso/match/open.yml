@@ -50,6 +50,7 @@ matches:
         params:
           cmd: "open ~/github/qc/"
 
+# --- Select and open a directory in github/ ---
   - trigger: ";cdgh"
     replace: "{{output}}\n"
     vars:
@@ -98,3 +99,20 @@ matches:
         type: shell
         params:
           cmd: "echo '- {{now}}: {{clipboard}}' >> ~/Desktop/memo.md"
+
+# --- Turn webpage into markdown from url ---
+  - trigger: ";tomd"
+    replace: |
+            - Webpage to Markdown Conversion by https://urltomarkdown.herokuapp.com/
+            - Source URL: {{clipboard}}
+            - Conversion Timestamp: {{now}}
+            
+            ===================================================
+            
+            {{output}}
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            curl "https://urltomarkdown.herokuapp.com/?url={{clipboard}}"
