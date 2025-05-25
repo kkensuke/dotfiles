@@ -114,38 +114,25 @@ matches:
                   }' \
             | jq -r '.candidates[0].content.parts[0].text'
 
-# --- Context-aware AI prompts for various tasks ---
-  - trigger: ";analyze"
-    replace: |
-            Please analyze the following {{form.format}} and provide:
-            1. Key insights
-            2. Potential issues or concerns
-            3. Recommendations for improvement, especially in terms of {{form.aspect}}
-            
-            {{form.format}} to analyze:
-            ```
-            {{clipboard}}
-            ```
+# --- Call Gemini with general instructions ---
+  - trigger: ";gemini"
+    replace: "{{output}}\n"
     vars:
       - name: "form"
         type: form
         params:
-          layout: "Type: [[format]] Aspect: [[aspect]]"
-          fields:
-            format:
-              type: choice
-              values:
-                - code
-                - data
-                - document
-                - proposal
-                - research paper
-                - design
-            aspect:
-              type: choice
-              values:
-                - performance
-                - readability
-                - efficiency
-                - clarity
-                - accessibility
+          layout: "Instruction:\n[[instruction]]"
+      - name: output
+        type: shell
+        params:
+          cmd: >
+            curl -s \
+              "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
+              -H 'Content-Type: application/json' \
+              -X POST \
+              -d '{
+                    "contents": [{
+                      "parts": [{"text": "{{form.instruction}}: {{clipboard}}"}]
+                    }]
+                  }' \
+            | jq -r '.candidates[0].content.parts[0].text'
