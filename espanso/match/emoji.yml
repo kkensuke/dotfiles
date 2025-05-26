@@ -16,10 +16,22 @@ matches:
     replace: "👍"
   - triggers: [";ok",";emoji"]
     replace: "✅"
-  - triggers: [";arrup",";emoji"]
-    replace: "⬆️"
-  - triggers: [";arrdown",";emoji"]
+  - triggers: [";leftarrow",";emoji"]
+    replace: "⬅️"
+  - triggers: [";downarrow",";emoji"]
     replace: "⬇️"
+  - triggers: [";uparrow",";emoji"]
+    replace: "⬆️"
+  - triggers: [";rightarrow",";emoji"]
+    replace: "➡️"
+  - triggers: [";zh",";emoji"]
+    replace: "←"
+  - triggers: [";zj",";emoji"]
+    replace: "↓"
+  - triggers: [";zk",";emoji"]
+    replace: "↑"
+  - triggers: [";zl",";emoji"]
+    replace: "→"
   - triggers: [";pc",";emoji"]
     replace: "🧑‍💻"
   - triggers: [";pc",";emoji"]
