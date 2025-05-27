@@ -12,10 +12,14 @@ matches:
     replace: "⌃⌥⇧⌘"
 
 # --- emoji ---
-  - triggers: [";ok",";emoji"]
+  - triggers: [";good",";emoji"]
     replace: "👍"
-  - triggers: [";ok",";emoji"]
+  - triggers: [";good",";emoji"]
     replace: "✅"
+  - triggers: [";bad",";emoji"]
+    replace: "👎"
+  - triggers: [";bad",";emoji"]
+    replace: "❌"
   - triggers: [";leftarrow",";emoji"]
     replace: "⬅️"
   - triggers: [";downarrow",";emoji"]
