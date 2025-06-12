@@ -74,6 +74,12 @@ matches:
     replace: "Ω"
 
 # --- Math Operators & Relations ---
+  - trigger: ";squared"
+    replace: "²"
+  - trigger: ";sqrt"
+    replace: "√"
+  - trigger: ";cubed"
+    replace: "³"
   - trigger: ";pm" # Plus-minus
     replace: "±"
   - trigger: ";cdot" # Centered dot
