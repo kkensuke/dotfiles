@@ -46,8 +46,7 @@ matches:
         type: shell
         params:
           cmd: >
-            curl -s \
-              "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
+            curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
               -H 'Content-Type: application/json' \
               -X POST \
               -d '{
@@ -65,8 +64,7 @@ matches:
         type: shell
         params:
           cmd: >
-            curl -s \
-              "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
+            curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
               -H 'Content-Type: application/json' \
               -X POST \
               -d '{
@@ -84,8 +82,7 @@ matches:
         type: shell
         params:
           cmd: >
-            curl -s \
-              "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
+            curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
               -H 'Content-Type: application/json' \
               -X POST \
               -d '{
@@ -103,8 +100,7 @@ matches:
         type: shell
         params:
           cmd: >
-            curl -s \
-              "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
+            curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
               -H 'Content-Type: application/json' \
               -X POST \
               -d '{
@@ -126,8 +122,7 @@ matches:
         type: shell
         params:
           cmd: >
-            curl -s \
-              "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
+            curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
               -H 'Content-Type: application/json' \
               -X POST \
               -d '{

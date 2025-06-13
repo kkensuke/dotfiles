@@ -42,20 +42,6 @@ matches:
         params:
           cmd: "osascript -e 'say \"{{clipboard}}\"'"
 
-# --- Slugify Clipboard Text ---
-# Converts clipboard text like "This is an Example!" to "this_is_an_example"
-  - trigger: ";slugify"
-    replace: "{{slug}}"
-    vars:
-      - name: separator
-        type: echo
-        params:
-          echo: "_"
-      - name: slug
-        type: shell
-        params:
-          cmd: "echo \"{{clipboard}}\" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/{{separator}}/g' | sed -E 's/^{{separator}}+|{{separator}}+$//g' | tr '[:upper:]' '[:lower:]'"
-
 # ——— Shorten Clipboard URL ———
   - trigger: ";short"
     replace: "{{short_url}}"
@@ -65,57 +51,63 @@ matches:
         params:
           cmd: "curl -s 'https://tinyurl.com/api-create.php?url={{clipboard}}'"
 
-# --- Uppercase ---
-  - trigger: ";uppercase"
-    replace: "{{output}}"
+# --- QR Code ASCII ---
+  - trigger: ";qrascii"
+    replace: "{{qr_ascii}}"
     vars:
-      - name: output
+      - name: qr_ascii
         type: shell
         params:
-          cmd: "echo {{clipboard}} | tr '[:lower:]' '[:upper:]'"
+          cmd: "curl -s 'https://qrenco.de/{{clipboard}}'"
 
-# --- Lowercase ---
-  - trigger: ";lowercase"
-    replace: "{{output}}"
+# -- definition lookup ---
+  - trigger: ";definition"
+    replace: "{{definition}}"
     vars:
-      - name: output
+      - name: definition
         type: shell
         params:
-          cmd: "echo {{clipboard}} | tr '[:upper:]' '[:lower:]'"
+          cmd: >
+            curl -s "https://api.dictionaryapi.dev/api/v2/entries/en/{{clipboard}}" |
+            jq -r '.[0] | "\(.word): \n" + (.meanings[0].definitions | map("- " + .definition) | join("\n"))'
 
-# --- Pascal Case ---
-  - trigger: ";pascalcase"
-    replace: "{{output}}"
+# --- Currency Conversion ---
+  - trigger: ";currency"
+    replace: "{{conversion}}"
     vars:
-      - name: output
+      - name: form
+        type: form
+        params:
+          layout: |
+                  Amount: [[amount]]
+                  From: [[from]]
+                  To: [[to]]
+          fields:
+            from:
+              type: choice
+              values:
+                - "USD"
+                - "JPY"
+                - "CHF"
+                - "EUR" 
+                - "GBP"
+                - "CNY"
+                - "KRW"
+                - "CAD"
+                - "AUD"
+            to:
+              type: choice
+              values:
+                - "JPY"
+                - "USD"
+                - "EUR"
+                - "CHF"
+                - "GBP" 
+                - "CNY"
+                - "KRW"
+                - "CAD"
+                - "AUD"
+      - name: conversion
         type: shell
         params:
-          cmd: "echo {{clipboard}} | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2));}1'"
-
-# --- Remove Spaces ---
-  - trigger: ";nospace"
-    replace: "{{output}}"
-    vars:
-      - name: output
-        type: shell
-        params:
-          cmd: "echo {{clipboard}} | tr -d ' 　'"
-          # cmd: "echo {{clipboard}} | sed 's/[ 　]//g'"
-
-# --- Character Count ---
-  - trigger: ";chars"
-    replace: "{{count}} characters"
-    vars:
-      - name: count
-        type: shell
-        params:
-          cmd: "echo -n {{clipboard}} | wc -m | tr -d '[:space:]'"
-
-# --- Word Count ---
-  - trigger: ";words"
-    replace: "{{count}} words"
-    vars:
-      - name: count
-        type: shell
-        params:
-          cmd: "echo -n {{clipboard}} | wc -w | tr -d '[:space:]'"
+          cmd: "curl -s 'https://api.exchangerate-api.com/v4/latest/{{form.from}}' | jq -r '.rates.{{form.to}} * {{form.amount}} | round * 100 / 100' | xargs printf '{{form.amount}} {{form.from}} = %.2f {{form.to}}\\n'"
