@@ -37,6 +37,27 @@ matches:
   - trigger: ";jet"
     replace: "以下のテキストを英語に翻訳してください: "
 
+# --- Call Gemini with general instructions ---
+  - trigger: ";gemini"
+    replace: "{{output}}\n"
+    vars:
+      - name: "form"
+        type: form
+        params:
+          layout: "Instruction:\n[[instruction]]"
+      - name: output
+        type: shell
+        params:
+          cmd: >
+            curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
+              -H 'Content-Type: application/json' \
+              -X POST \
+              -d '{
+                    "contents": [{
+                      "parts": [{"text": "{{form.instruction}}: {{clipboard}}"}]
+                    }]
+                  }' \
+            | jq -r '.candidates[0].content.parts[0].text'
 
 # ——— Translate Clipboard → Japanese (via Google Gemini) ———
   - trigger: ";transja"
@@ -106,28 +127,6 @@ matches:
               -d '{
                     "contents": [{
                       "parts": [{"text": "Convert the following text into a clear, concise bullet point list. Respond in the SAME LANGUAGE as the original text.: {{clipboard}}"}]
-                    }]
-                  }' \
-            | jq -r '.candidates[0].content.parts[0].text'
-
-# --- Call Gemini with general instructions ---
-  - trigger: ";gemini"
-    replace: "{{output}}\n"
-    vars:
-      - name: "form"
-        type: form
-        params:
-          layout: "Instruction:\n[[instruction]]"
-      - name: output
-        type: shell
-        params:
-          cmd: >
-            curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
-              -H 'Content-Type: application/json' \
-              -X POST \
-              -d '{
-                    "contents": [{
-                      "parts": [{"text": "{{form.instruction}}: {{clipboard}}"}]
                     }]
                   }' \
             | jq -r '.candidates[0].content.parts[0].text'

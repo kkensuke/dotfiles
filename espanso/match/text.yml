@@ -23,6 +23,24 @@ matches:
           cmd: "echo {{clipboard}} | tr -d ' 　'"
           # cmd: "echo {{clipboard}} | sed 's/[ 　]//g'"
 
+# --- Character Count ---
+  - trigger: ";chars"
+    replace: "{{count}} characters"
+    vars:
+      - name: count
+        type: shell
+        params:
+          cmd: "echo -n {{clipboard}} | wc -m | tr -d '[:space:]'"
+
+# --- Word Count ---
+  - trigger: ";words"
+    replace: "{{count}} words"
+    vars:
+      - name: count
+        type: shell
+        params:
+          cmd: "echo -n {{clipboard}} | wc -w | tr -d '[:space:]'"
+
 # === Text Case Style Converter (Form) ===
   - trigger: ";cases"
     replace: "{{output}}"
@@ -60,21 +78,3 @@ matches:
                 echo "$text" | tr '[:upper:]' '[:lower:]' | tr -s ' ' '_'
                 ;;
             esac
-
-# --- Character Count ---
-  - trigger: ";chars"
-    replace: "{{count}} characters"
-    vars:
-      - name: count
-        type: shell
-        params:
-          cmd: "echo -n {{clipboard}} | wc -m | tr -d '[:space:]'"
-
-# --- Word Count ---
-  - trigger: ";words"
-    replace: "{{count}} words"
-    vars:
-      - name: count
-        type: shell
-        params:
-          cmd: "echo -n {{clipboard}} | wc -w | tr -d '[:space:]'"
