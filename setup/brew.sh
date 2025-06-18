@@ -15,10 +15,12 @@ xcode-select --install
 
 # CLI
 brew install coreutils
+brew install duf
 brew install gcc
 brew install libomp
 brew install gh
 brew install git-filter-repo
+brew install scc
 brew install tree
 brew install zsh-autosuggestions
 brew install zsh-completions

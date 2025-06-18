@@ -13,47 +13,6 @@ matches:
   - trigger: ";lorem"
     replace: "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Donec sed odio operae, eu vulputate felis rhoncus. Salutantibus vitae elit libero, a pharetra augue. Nihil hic munitissimus habendi senatus locus, nihil horum? A communi observantia non est recedendum."
 
-# --- Slugify Clipboard Text ---
-# Converts clipboard text like "This is an Example!" to "this_is_an_example"
-  - trigger: ";slugify"
-    replace: "{{slug}}"
-    vars:
-      - name: separator
-        type: echo
-        params:
-          echo: "_"
-      - name: slug
-        type: shell
-        params:
-          cmd: "echo \"{{clipboard}}\" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/{{separator}}/g' | sed -E 's/^{{separator}}+|{{separator}}+$//g' | tr '[:upper:]' '[:lower:]'"
-
-# --- Uppercase ---
-  - trigger: ";uppercase"
-    replace: "{{output}}"
-    vars:
-      - name: output
-        type: shell
-        params:
-          cmd: "echo {{clipboard}} | tr '[:lower:]' '[:upper:]'"
-
-# --- Lowercase ---
-  - trigger: ";lowercase"
-    replace: "{{output}}"
-    vars:
-      - name: output
-        type: shell
-        params:
-          cmd: "echo {{clipboard}} | tr '[:upper:]' '[:lower:]'"
-
-# --- Pascal Case ---
-  - trigger: ";pascalcase"
-    replace: "{{output}}"
-    vars:
-      - name: output
-        type: shell
-        params:
-          cmd: "echo {{clipboard}} | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2));}1'"
-
 # --- Remove Spaces ---
   - trigger: ";nospace"
     replace: "{{output}}"
@@ -63,6 +22,44 @@ matches:
         params:
           cmd: "echo {{clipboard}} | tr -d ' 　'"
           # cmd: "echo {{clipboard}} | sed 's/[ 　]//g'"
+
+# === Text Case Style Converter (Form) ===
+  - trigger: ";cases"
+    replace: "{{output}}"
+    vars:
+      - name: form
+        type: form
+        params:
+          layout: "Convert clipboard to: [[style]]"
+          fields:
+            style:
+              type: choice
+              values: ["UPPERCASE", "lowercase", "PascalCase", "camelCase", "kebab-case", "snake_case"]
+      - name: output
+        type: shell
+        params:
+          cmd: |
+            text="{{clipboard}}"
+            case "{{form.style}}" in
+              "UPPERCASE")
+                echo "$text" | tr '[:lower:]' '[:upper:]'
+                ;;
+              "lowercase")
+                echo "$text" | tr '[:upper:]' '[:lower:]'
+                ;;
+              "PascalCase")
+                echo "$text" | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2));}1' | tr -d ' '
+                ;;
+              "camelCase")
+                echo "$text" | awk '{for(i=2;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2));}1' | tr -d ' '
+                ;;
+              "kebab-case")
+                echo "$text" | tr '[:upper:]' '[:lower:]' | tr -s ' ' '-'
+                ;;
+              "snake_case")
+                echo "$text" | tr '[:upper:]' '[:lower:]' | tr -s ' ' '_'
+                ;;
+            esac
 
 # --- Character Count ---
   - trigger: ";chars"

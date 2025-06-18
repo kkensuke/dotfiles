@@ -131,3 +131,21 @@ matches:
                     }]
                   }' \
             | jq -r '.candidates[0].content.parts[0].text'
+
+# --- Rephrase Clipboard (via Google Gemini) ---
+  - trigger: ";rephrase"
+    replace: "{{alternatives}}"
+    vars:
+      - name: alternatives
+        type: shell
+        params:
+          cmd: >
+            curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{GEMINI_API_KEY}}" \
+              -H 'Content-Type: application/json' \
+              -X POST \
+              -d '{
+                    "contents": [{
+                      "parts": [{"text": "Rephrase the following scientific sentence in three different ways. The first should prioritize clarity and simplicity. The second should be more formal and concise for a publication. The third should be impactful for an abstract or introduction. Provide the results as a bulleted list.\n\nSentence: {{clipboard}}"}]
+                    }]
+                  }' \
+            | jq -r '.candidates[0].content.parts[0].text'
