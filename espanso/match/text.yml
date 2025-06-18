@@ -41,8 +41,8 @@ matches:
         params:
           cmd: "echo -n {{clipboard}} | wc -w | tr -d '[:space:]'"
 
-# === Text Case Style Converter (Form) ===
-  - trigger: ";cases"
+# --- Text Case Style Converter (Form) ---
+  - trigger: ";case"
     replace: "{{output}}"
     vars:
       - name: form
