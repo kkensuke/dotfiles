@@ -51,15 +51,6 @@ matches:
         params:
           cmd: "curl -s 'https://tinyurl.com/api-create.php?url={{clipboard}}'"
 
-# --- QR Code ASCII ---
-  - trigger: ";qrascii"
-    replace: "{{qr_ascii}}"
-    vars:
-      - name: qr_ascii
-        type: shell
-        params:
-          cmd: "curl -s 'https://qrenco.de/{{clipboard}}'"
-
 # -- definition lookup ---
   - trigger: ";definition"
     replace: "{{definition}}"
