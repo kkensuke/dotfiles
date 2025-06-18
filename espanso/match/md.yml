@@ -18,5 +18,5 @@ matches:
             
             :::
 
-  - trigger: ";br"
+  - trigger: ";break"
     replace: "<br/>"

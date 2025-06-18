@@ -5,7 +5,7 @@ matches:
     replace: "|ψ⟩"
   - trigger: ";bra"
     replace: "⟨ψ|"
-  - trigger: ";braket"
+  - trigger: ";inner"
     replace: "⟨φ|ψ⟩"
   - trigger: ";expect"
     replace: "⟨ψ|Â|ψ⟩"

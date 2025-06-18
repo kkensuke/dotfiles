@@ -52,7 +52,7 @@ matches:
           fields:
             style:
               type: choice
-              values: ["UPPERCASE", "lowercase", "PascalCase", "camelCase", "kebab-case", "snake_case"]
+              values: ["UPPERCASE", "lowercase", "PascalCase", "camelCase", "Title Case", "kebab-case", "snake_case"]
       - name: output
         type: shell
         params:
@@ -70,6 +70,9 @@ matches:
                 ;;
               "camelCase")
                 echo "$text" | awk '{out=tolower($1); for(i=2;i<=NF;i++){out=out toupper(substr($i,1,1)) tolower(substr($i,2))}; print out}'
+                ;;
+              "Title Case")
+                echo "$text" | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2));}1'
                 ;;
               "kebab-case")
                 echo "$text" | tr '[:upper:]' '[:lower:]' | tr -s ' ' '-'
