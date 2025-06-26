@@ -8,4 +8,5 @@
 [[ -f $ZDOTDIR/aliases/latex.sh ]]           && . $ZDOTDIR/aliases/latex.sh
 [[ -f $ZDOTDIR/aliases/encryption.sh ]]      && . $ZDOTDIR/aliases/encryption.sh
 [[ -f $ZDOTDIR/aliases/others.sh ]]          && . $ZDOTDIR/aliases/others.sh
+[[ -f $ZDOTDIR/.api_keys ]]                  && . $ZDOTDIR/.api_keys
 [[ -f $HOME/.local/bin/env ]]                && . $HOME/.local/bin/env

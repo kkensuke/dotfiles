@@ -80,7 +80,7 @@ alias fire='open /Applications/Firefox.app'
 
 ## make ##
 alias m='mkdir'
-alias test='touch ~/Desktop/asdf.ipynb; code ~/Desktop/asdf.ipynb'
+alias testpy='touch ~/Desktop/asdf.ipynb; code ~/Desktop/asdf.ipynb'
 tc() { touch $1 && c $1 }
 mkc() { mkdir $1 && cd $1}
 repotext() { python3 ~/github/tools/repo_to_text/repo_to_text_CJK.py $1 -o ~/Desktop/output.txt}
