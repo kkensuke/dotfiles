@@ -18,6 +18,10 @@ alias deac='deactivate'
 alias jl='jupyter-lab'
 alias opj='fire ~/My\ Drive/app/github/jupyterbook/myjb/_build/html/index.html'
 
+# tools
+repotext() { python3 ~/github/tools/repo_to_text/repo_to_text_CJK.py $1 -o ~/Desktop/output.txt}
+yttext() {acv; python ~/github/tools/yt_dlp_transcript/yt_dlp_transcript.py $1 -o ~/Desktop/output.md; deac}
+
 # build and publish jupyter-book
 jbg(){
     cd ~/My\ Drive/app/github/jb-public/"$1"/

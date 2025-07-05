@@ -14,7 +14,7 @@
     "workbench.editor.tabSizing": "shrink", // Tabs shrink to fit available space
     "workbench.settings.openDefaultKeybindings": true, // Easily access default keybindings JSON
     "workbench.colorCustomizations": { // Customize specific theme colors
-        "editor.findMatchHighlightBackground": "#04ff32",
+        "editor.findMatchHighlightBackground": "#00ff2f85",
         "editor.findMatchBorder": "#04ff32",
         "editorWhitespace.foreground": "#909090"
     },
@@ -29,12 +29,18 @@
     "files.autoSaveDelay": 0, // Delay for autosave (0 means immediate on focus change)
     "files.trimTrailingWhitespace": false, // Do not trim trailing whitespace on save
     "files.exclude": { // Hide these files/folders from the explorer
-        "**/.DS_Store": false, // Show .DS_Store (Note: original was false, meaning show)
-        "**/.git": false, // Show .git
-        "**/.hg": false, // Show .hg
-        "**/.svn": false, // Show .svn
-        "**/CVS": false, // Show CVS
-        "**/Thumbs.db": false // Show Thumbs.db
+        "**/.DS_Store": true,
+        "**/.git": true,
+        "**/.hg": false,
+        "**/.svn": false,
+        "**/CVS": false,
+        "**/Thumbs.db": false
+    },
+    "search.exclude": {
+        "**/.git": true,
+        "**/node_modules": true,
+        "**/dist": true,
+        "**/.venv": true
     },
     "files.associations": { // Associate file patterns with specific languages/modes
         "*.css": "tailwindcss"
@@ -86,13 +92,13 @@
         "editor.tabSize": 2
     },
     "[javascript]": {
-        "editor.tabSize": 2
+        "editor.tabSize": 4
     },
     "[typescript]": {
-        "editor.tabSize": 2
+        "editor.tabSize": 4
     },
     "[typescriptreact]": {
-        "editor.tabSize": 2
+        "editor.tabSize": 4
     },
     "[python]": {
         "editor.tabSize": 4
@@ -384,8 +390,10 @@
     
     // --- Draw.io Integration ---
     "hediet.vscode-drawio.resizeImages": null, // Configuration for Draw.io image resizing
-
     
     // --- CMake Tools ---
-    "cmake.options.statusBarVisibility": "visible" // Show CMake status bar items
+    "cmake.options.statusBarVisibility": "visible",
+    "diffEditor.ignoreTrimWhitespace": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "github.copilot.nextEditSuggestions.enabled": true // Show CMake status bar items
 }
