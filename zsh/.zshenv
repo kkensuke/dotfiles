@@ -16,10 +16,3 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 # c++
 export "PATH=/usr/local/bin:$PATH"
 export CPATH=/opt/homebrew/include/
-
-
-# fzf
-# https://github.com/junegunn/fzf#respecting-gitignore
-# https://zenn.dev/megeton/articles/c408511c66f45d
-export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow'
-export FZF_DEFAULT_OPTS='--height 40% --reverse --border --preview "head -100 {}"'
