@@ -22,6 +22,7 @@ brew install gh
 brew install git-filter-repo
 brew install scc
 brew install tree
+brew install uv
 brew install zsh-autosuggestions
 brew install zsh-completions
 brew install zsh-git-prompt
