@@ -85,6 +85,7 @@ tc() { touch $1 && c $1 }
 mkc() { mkdir $1 && cd $1}
 
 ## others ##
+alias cl='clear'
 alias mat='cmatrix'
 alias his='history'
 alias rl='echo ""; exec ${SHELL} -l' #reload

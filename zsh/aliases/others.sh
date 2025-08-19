@@ -10,8 +10,3 @@ bindkey "^j" replace_buffer_with_its_output
 url(){
     echo "[InternetShortcut]\nURL=$1" > "$2".url
 }
-
-
-timer(){
-    sleep $((60 * $1)); osascript -e 'display alert "Time is up!"'
-}
