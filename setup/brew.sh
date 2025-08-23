@@ -14,11 +14,13 @@ exec ${SHELL} -l
 xcode-select --install
 
 # CLI
+brew install bat
 brew install coreutils
 brew install duf
 brew install gcc
 brew install libomp
 brew install gh
+brew install git-delta
 brew install git-filter-repo
 brew install scc
 brew install tree
@@ -29,32 +31,25 @@ brew install zsh-git-prompt
 brew install zsh-syntax-highlighting
 
 # C++
-sudo ln -s /opt/homebrew/bin/gcc-14 /usr/local/bin/gcc
-sudo ln -s /opt/homebrew/bin/g++-14 /usr/local/bin/g++
+#sudo ln -s /opt/homebrew/bin/gcc-14 /usr/local/bin/gcc
+#sudo ln -s /opt/homebrew/bin/g++-14 /usr/local/bin/g++
 
 # GUI
 brew install --cask appcleaner
-brew install --cask bitwarden
-brew install --cask cheatsheet
 brew install --cask cloudflare-warp
 brew install --cask coconutbattery
 brew install --cask coteditor
 brew install --cask clipy
 brew install --cask drawio
-brew install --cask db-browser-for-sqlite
+brew install --cask espanso
 brew install --cask firefox
 brew install --cask google-drive
-brew install --cask grammarly
-brew install --cask imageoptim
 brew install --cask mathpix-snipping-tool
 brew install --cask MonitorControl
-brew install --cask notion
 brew install --cask rectangle
-brew install --cask shotcut
 brew install --cask shottr
 brew install --cask syntax-highlight
 brew install --cask visual-studio-code
-brew install --cask vlc
 brew install --cask zoom
 brew install --cask zotero
 

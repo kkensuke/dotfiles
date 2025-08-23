@@ -1,5 +1,6 @@
 # zsh-git-prompt
 source /opt/homebrew/opt/zsh-git-prompt/zshrc.sh
+#ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[green]%}%{✚%G%}"
 
 # zsh-syntax-highlighting
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -1,5 +1,6 @@
-# ref: https://github.com/mathiasbynens/dotfiles/blob/main
+export ZDOTDIR="$HOME/My Drive/app/github/dotfiles/zsh"
 
+# ref: https://github.com/mathiasbynens/dotfiles/blob/main
 # https://www.cyberciti.biz/faq/apple-mac-osx-terminal-color-ls-output-option/
 export CLICOLOR=true
 # export LSCOLORS=GxFxCxDxBxegedabagaced
@@ -7,12 +8,12 @@ export LS_COLORS='no=00:fi=00:di=00;96:ln=01;35:*.tar=01;31:*.tgz=01;31:*.arj=01
 
 export LANG=ja_JP.UTF-8
 
-export ZDOTDIR="$HOME/My Drive/app/github/dotfiles/zsh"
 
+# Volta
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 
-# c++
+# C++
 export "PATH=/usr/local/bin:$PATH"
 export CPATH=/opt/homebrew/include/

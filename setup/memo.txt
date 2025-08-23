@@ -1,3 +1,22 @@
+## Order
+- Sign in to iCloud
+- Install Chrome via Safari
+- Install Google Drive
+- It maybe better to use iCloud Drive instead of Google Drive
+- Register Gmail
+- execute the each contents of brew.sh
+- After executing `xcode-select --install`, it does not proceed to brew install. So, execute them manually
+- Change the settings of Dock
+- trackpad speed, 
+- keyboard: Input source is only `Japanese - Romaji`, Yen to backslash
+
+
+
+
+
+
+
+## Zsh
 Sometimes, the following error occurs.
 
 zsh compinit: insecure directories, run compaudit for list.

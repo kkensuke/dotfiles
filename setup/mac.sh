@@ -21,15 +21,25 @@ osascript -e 'tell application "System Preferences" to quit'
 sudo nvram SystemAudioVolume=" "
 sudo nvram StartupMute=%01
 
-# deactivate the CapsLockDelay
-hidutil property --set '{"CapsLockDelayOverride":0}'
-
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Disable Notifcations
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
 
+
+## Keyboard
+# deactivate the CapsLockDelay
+hidutil property --set '{"CapsLockDelayOverride":0}'
+
+# Deley until repeat and Key repeat rate
+defaults write -g InitialKeyRepeat -int 15
+defaults write -g KeyRepeat -int 2
+
+
+## Trackpad
+# Cursor speed
+defaults write -g com.apple.trackpad.scaling 5
 
 
 ## Dock ##
@@ -39,11 +49,18 @@ defaults delete com.apple.dock persistent-apps
 # delete an array of items located on the Documents side of the Dock
 defaults delete com.apple.dock persistent-others
 
+# Disable show-process-indicators (dot below the icons)
+defaults write com.apple.dock show-process-indicators -bool false
+defaults write com.apple.dock show-recents -bool false
+
+# Showing the Dock
+defaults write com.apple.dock autohide-time-modifier -int 0
+
 # change the size of icons in the dock
 defaults write com.apple.dock "tilesize" -int 43
 
 # put favorite apps in the dock
-apps=("/System/Applications/System Settings" "/System/Applications/Utilities/Terminal" "/Applications/CotEditor" "/Applications/Visual Studio Code" "/Applications/Firefox" "/Applications/Zotero" "/System/Applications/Mail")
+apps=("/System/Applications/System Settings" "/System/Applications/Utilities/Terminal" "/Applications/CotEditor" "/Applications/Visual Studio Code" "/Applications/Google Chrome" "/Applications/Firefox" "/Applications/Zotero" "/System/Applications/Mail")
 
 for app in "${apps[@]}"
 do
@@ -89,6 +106,9 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # set coteditor as default editor for any .txt file
 defaults write com.apple.LaunchServices LSHandlers -array-add '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.coteditor.CotEditor;}'
 
+# Spring Loading
+defaults write NSGlobalDomain com.apple.springing.delay -float 0
+
 # Show Library folder
 chflags nohidden ~/Library
 
@@ -98,53 +118,10 @@ chmod 000 ~/{Documents,Movies,Music,Pictures}
 
 
 
-## DisableAllAnimations ##
-# opening and closing windows and popovers
-defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
-
-# smooth scrolling
-defaults write NSGlobalDomain NSScrollAnimationEnabled -bool false
-
-# showing and hiding sheets, resizing preference windows, zooming windows
-# float 0 doesn't work
-defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
-
-# opening and closing Quick Look windows
-defaults write NSGlobalDomain QLPanelAnimationDuration -float 0
-
-# rubberband scrolling (doesn't affect web views)
-defaults write NSGlobalDomain NSScrollViewRubberbanding -bool false
-
-# resizing windows before and after showing the version browser
-# also disabled by NSWindowResizeTime -float 0.001
-defaults write NSGlobalDomain NSDocumentRevisionsWindowTransformAnimation -bool false
-
-# showing a toolbar or menu bar in full screen
-defaults write NSGlobalDomain NSToolbarFullScreenAnimationDuration -float 0
-
-# scrolling column views
-defaults write NSGlobalDomain NSBrowserColumnAnimationSpeedMultiplier -float 0
-
-# showing the Dock
-defaults write com.apple.dock autohide-time-modifier -float 0
-defaults write com.apple.dock autohide-delay -float 0
-
-# showing and hiding Mission Control, command+numbers
-defaults write com.apple.dock expose-animation-duration -float 0
-
+## Others
 # showing and hiding Launchpad
 defaults write com.apple.dock springboard-show-duration -float 0
 defaults write com.apple.dock springboard-hide-duration -float 0
-
-# changing pages in Launchpad
-defaults write com.apple.dock springboard-page-duration -float 0
-
-# at least AnimateInfoPanes
-defaults write com.apple.finder DisableAllAnimations -bool true
-
-# sending messages and opening windows for replies
-defaults write com.apple.Mail DisableSendAnimations -bool true
-defaults write com.apple.Mail DisableReplyAnimations -bool true
 
 
 
