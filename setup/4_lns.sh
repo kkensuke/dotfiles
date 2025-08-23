@@ -22,4 +22,4 @@ ln -sf ~/My\ Drive/app/github/espanso/ ~/Library/Application\ Support/
 
 # others
 ln -sf ~/My\ Drive/app/github ~/github
-ln -sf ~/My\ Drive/app/github/latex-template ~/.latex-template
+#ln -sf ~/My\ Drive/app/github/latex-template ~/.latex-template

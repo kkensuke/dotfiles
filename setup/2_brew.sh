@@ -10,9 +10,6 @@ set -u
 # reload
 exec ${SHELL} -l
 
-# install to use git
-xcode-select --install
-
 # CLI
 brew install bat
 brew install coreutils
