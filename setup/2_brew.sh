@@ -22,9 +22,11 @@ brew install libomp
 brew install gh
 brew install git-delta
 brew install git-filter-repo
+brew install ghostscript
 brew install neovim
 brew install rename
 brew install scc
+brew install sqlite
 brew install tree
 brew install uv
 brew install yt-dlp
