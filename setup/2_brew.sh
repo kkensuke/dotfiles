@@ -29,6 +29,7 @@ brew install scc
 brew install sqlite
 brew install tree
 brew install uv
+brew install volta
 brew install yt-dlp
 brew install zsh-autosuggestions
 brew install zsh-completions
@@ -40,6 +41,7 @@ brew install zsh-syntax-highlighting
 #sudo ln -s /opt/homebrew/bin/g++-14 /usr/local/bin/g++
 
 # GUI
+brew install --cask anki
 brew install --cask appcleaner
 brew install --cask cloudflare-warp
 brew install --cask coconutbattery
@@ -48,13 +50,16 @@ brew install --cask clipy
 brew install --cask drawio
 brew install --cask espanso
 brew install --cask firefox
+brew install --cask google-chrome
 brew install --cask google-drive
+brew install --cask keycastr
 brew install --cask mathpix-snipping-tool
 brew install --cask MonitorControl
 brew install --cask rectangle
 brew install --cask shottr
 brew install --cask syntax-highlight
 brew install --cask visual-studio-code
+brew install --cask timac/vpnstatus/vpnstatus
 brew install --cask zoom
 brew install --cask zotero
 
