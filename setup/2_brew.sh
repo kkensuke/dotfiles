@@ -12,16 +12,22 @@ exec ${SHELL} -l
 
 # CLI
 brew install bat
+brew install cmatrix
 brew install coreutils
 brew install duf
+brew install fd
+brew install fzf
 brew install gcc
 brew install libomp
 brew install gh
 brew install git-delta
 brew install git-filter-repo
+brew install neovim
+brew install rename
 brew install scc
 brew install tree
 brew install uv
+brew install yt-dlp
 brew install zsh-autosuggestions
 brew install zsh-completions
 brew install zsh-git-prompt
