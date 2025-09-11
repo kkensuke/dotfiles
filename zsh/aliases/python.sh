@@ -20,7 +20,8 @@ alias opj='fire ~/My\ Drive/app/github/jupyterbook/myjb/_build/html/index.html'
 
 # tools
 repotext() { python ~/github/tools/repo_to_text/repo_to_text_CJK.py $1 -o ~/Desktop/output.txt}
-yttext() {acv; python ~/github/tools/yt_dlp_transcript/yt_dlp_transcript.py $1 -o ~/Desktop/output.md; deac}
+text() {cd ~/Desktop; acv; python ~/github/tools/yt_dlp_transcript/yt_dlp_transcript.py $1; deac}
+textn() {cd ~/Desktop; acv; python ~/github/tools/yt_dlp_transcript/yt_dlp_transcript.py $1  --no-summary; deac}
 calc() { python -c "import math; print($*)"}
 
 # build and publish jupyter-book
