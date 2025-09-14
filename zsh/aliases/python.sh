@@ -19,10 +19,34 @@ alias jl='jupyter-lab'
 alias opj='fire ~/My\ Drive/app/github/jupyterbook/myjb/_build/html/index.html'
 
 # tools
-repotext() { python ~/github/tools/repo_to_text/repo_to_text_CJK.py $1 -o ~/Desktop/output.txt}
-text() {cd ~/Desktop; acv; python ~/github/tools/yt_dlp_transcript/yt_dlp_transcript.py $1; deac}
-textn() {cd ~/Desktop; acv; python ~/github/tools/yt_dlp_transcript/yt_dlp_transcript.py $1  --no-summary; deac}
 calc() { python -c "import math; print($*)"}
+repotext() { python ~/github/tools/repo_to_text/repo_to_text_CJK.py $1 -o ~/Desktop/output.txt}
+text() {
+  if [ $# -lt 2 ]; then
+    echo "Usage: text {en|ja|no} URL"
+    return 2
+  fi
+
+  lang="$1"; shift
+  url="$*"
+
+  cd ~/Desktop
+  acv || { echo "activating venv failed"; return 1; }
+
+  case "$lang" in
+    en) opts=(--summary-lang en) ;;
+    ja) opts=(--summary-lang ja) ;;
+    no) opts=(--no-summary) ;;
+    *) echo "Unknown option: $lang"; echo "Usage: text {en|ja|no} URL"; deac; return 2 ;;
+  esac
+
+  python ~/github/tools/yt_dlp_transcript/yt_dlp_transcript.py "$url" "${opts[@]}"
+  rc=$?
+
+  deac
+  return $rc
+}
+
 
 # build and publish jupyter-book
 jbg(){
