@@ -21,7 +21,7 @@ alias opj='fire ~/My\ Drive/app/github/jupyterbook/myjb/_build/html/index.html'
 # tools
 calc() { python -c "import math; print($*)"}
 repotext() { python ~/github/tools/repo_to_text/repo_to_text_CJK.py $1 -o ~/Desktop/output.txt}
-text() {
+you() {
   if [ $# -lt 2 ]; then
     echo "Usage: text {en|ja|no} URL"
     return 2
