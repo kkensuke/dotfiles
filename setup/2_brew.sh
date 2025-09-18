@@ -47,6 +47,7 @@ brew install --cask cloudflare-warp
 brew install --cask coconutbattery
 brew install --cask coteditor
 brew install --cask clipy
+brew install --cask cryptomator
 brew install --cask drawio
 brew install --cask espanso
 brew install --cask firefox
