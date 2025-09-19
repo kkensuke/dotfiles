@@ -77,7 +77,7 @@ alias lno='umount "/Users/kensuke/cryptomator-mounts"'
 alias vs='code .'
 alias vj='code ~/Library/Application\ Support/Code/User/settings.json'
 alias cpvj='cp -fv ~/myLibrary/Application\ Support/Code/User/settings.json ~/My\ Drive/app/github/dotfiles/vscode/settings.json'
-alias fire='open /Applications/Firefox.app'
+alias google=open -a 'Google\ Chrome'
 
 ## make ##
 alias m='mkdir'
@@ -92,6 +92,5 @@ alias his='history'
 alias rl='echo ""; exec ${SHELL} -l' #reload
 alias -s md=glow
 alias -s py=python
-alias -s {html,pdf}=fire
+alias -s {html,pdf}=google
 alias sshadd='ssh-add ~/.ssh/id_ed25519'
-alias filterrepo='sh ~/filter-repo.sh'
