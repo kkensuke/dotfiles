@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# This script might not be compatible with the Cryptomator GUI app.
+
 # config - adjust these
 CLI_BIN="/Applications/cryptomator-cli.app/Contents/MacOS/cryptomator-cli"
 MOUNT_POINT="$HOME/cryptomator-mounts"
