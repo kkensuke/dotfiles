@@ -40,7 +40,7 @@ you() {
     *) echo "Unknown option: $lang"; echo "Usage: text {en|ja|no} URL"; deac; return 2 ;;
   esac
 
-  python ~/github/tools/yt_dlp_transcript/main.py "$url" "${opts[@]}"
+  python ~/github/tools/yt_dlp_transcript/all.py "$url" "${opts[@]}"
   rc=$?
 
   deac
