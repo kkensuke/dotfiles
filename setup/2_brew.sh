@@ -51,6 +51,7 @@ brew install --cask cryptomator
 brew install --cask drawio
 brew install --cask espanso
 brew install --cask firefox
+brew install --cask iina
 brew install --cask google-chrome
 brew install --cask google-drive
 brew install --cask keycastr

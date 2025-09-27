@@ -22,22 +22,31 @@ alias opj='fire ~/My\ Drive/app/github/jupyterbook/myjb/_build/html/index.html'
 calc() { python -c "import math; print($*)"}
 repotext() { python ~/github/tools/repo_to_text/repo_to_text_CJK.py $1 -o ~/Desktop/output.txt}
 you() {
-  if [ $# -lt 2 ]; then
-    echo "Usage: text {en|ja|no} URL"
+  if [ $# -lt 1 ]; then
+    echo "Usage: you [lang] URL"
+    echo "  lang: en|ja|no|auto (default: auto)"
     return 2
   fi
 
-  lang="$1"; shift
-  url="$*"
+  # If only one argument, treat it as URL with auto language
+  if [ $# -eq 1 ]; then
+    lang="auto"
+    url="$1"
+  else
+    # Two or more arguments: first is language, rest is URL
+    lang="$1"; shift
+    url="$*"
+  fi
 
   cd ~/Desktop
-  acv || { echo "activating venv failed"; return 1; }
+  source ~/venv_ytdlp/bin/activate || { echo "activating venv failed"; return 1; }
 
   case "$lang" in
     en) opts=(--summary-lang en) ;;
     ja) opts=(--summary-lang ja) ;;
     no) opts=(--no-summary) ;;
-    *) echo "Unknown option: $lang"; echo "Usage: text {en|ja|no} URL"; deac; return 2 ;;
+    auto) opts=(--summary-lang auto) ;;
+    *) echo "Unknown option: $lang"; echo "Usage: you [lang] URL"; echo "  lang: en|ja|no|auto (default: auto)"; deac; return 2 ;;
   esac
 
   python ~/github/tools/yt_dlp_transcript/all.py "$url" "${opts[@]}"
