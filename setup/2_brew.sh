@@ -41,6 +41,7 @@ brew install zsh-syntax-highlighting
 #sudo ln -s /opt/homebrew/bin/g++-14 /usr/local/bin/g++
 
 # GUI
+brew install --cask nikitabobko/tap/aerospace
 brew install --cask anki
 brew install --cask appcleaner
 brew install --cask cloudflare-warp
