@@ -63,6 +63,7 @@ brew install --cask shottr
 brew install --cask syntax-highlight
 brew install --cask visual-studio-code
 brew install --cask timac/vpnstatus/vpnstatus
+brew install --cask xbar
 brew install --cask zoom
 brew install --cask zotero
 
