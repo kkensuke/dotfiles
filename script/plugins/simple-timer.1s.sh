@@ -185,10 +185,8 @@ echo "Start 1h  | bash='$SCRIPT_PATH' param1='start' param2='1h' terminal=false 
 echo "Start 30m  | bash='$SCRIPT_PATH' param1='start' param2='30m' terminal=false refresh=true"
 
 echo "Start 3m  | bash='$SCRIPT_PATH' param1='start' param2='3m' terminal=false refresh=true"
-echo "Set Custom Timer... | bash='$SCRIPT_PATH' param1='custom' terminal=false refresh=true"
+echo "Set Custom Timer | bash='$SCRIPT_PATH' param1='custom' terminal=false refresh=true"
 if [ "$RUNNING" -eq 1 ]; then
   echo "Stop      | bash='$SCRIPT_PATH' param1='stop' terminal=false refresh=true"
 fi
 echo "Reset     | bash='$SCRIPT_PATH' param1='reset' terminal=false refresh=true"
-echo "---"
-echo "Simple Timer (xbar) - fixed-width digits"

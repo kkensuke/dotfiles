@@ -16,12 +16,3 @@ else
   # Charging
   echo "⚡ ${WATTAGE}W ${BATTERY}%"
 fi
-
-# Menu items
-echo "---"
-echo "Battery: ${BATTERY}%"
-if [ -n "$WATTAGE" ]; then
-  echo "Charging: ${WATTAGE}W"
-else
-  echo "Status: On Battery"
-fi
