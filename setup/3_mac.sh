@@ -123,6 +123,9 @@ chmod 000 ~/{Documents,Movies,Music,Pictures}
 defaults write com.apple.dock springboard-show-duration -float 0
 defaults write com.apple.dock springboard-hide-duration -float 0
 
+# Change the spacing between icons in menu bar
+defaults -currentHost write -globalDomain NSStatusItemSpacing -int 6
+
 
 
 ## Screenshot ##

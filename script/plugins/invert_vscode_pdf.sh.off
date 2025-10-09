@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# <xbar.title>VSCode PDF Invert</xbar.title>
+# <xbar.version>v1.0</xbar.version>
+# <xbar.author>Your Name</xbar.author>
+# <xbar.desc>Toggle VSCode PDF invert mode</xbar.desc>
+
+# Path configuration
+VSCODE_SETTINGS="$HOME/myLibrary/Application Support/Code/User/settings.json"
+
+# Check VSCode PDF Invert status
+if grep -q '"latex-workshop.view.pdf.invert": 1' "$VSCODE_SETTINGS" 2>/dev/null; then
+    PDF_STATUS="🌙"
+    PDF_TEXT="PDF Light"
+else
+    PDF_STATUS="☀️"
+    PDF_TEXT="PDF Dark"
+fi
+
+# Menu bar display
+echo "$PDF_STATUS"
+echo "---"
+echo "➡️ $PDF_TEXT | bash='$0' param1=toggle terminal=false refresh=true"
+
+# Action handler
+if [ "$1" = "toggle" ]; then
+    if grep -q '"latex-workshop.view.pdf.invert": 1' "$VSCODE_SETTINGS"; then
+        sed -i '' 's/"latex-workshop.view.pdf.invert": 1/"latex-workshop.view.pdf.invert": 0/' "$VSCODE_SETTINGS"
+    elif grep -q '"latex-workshop.view.pdf.invert": 0' "$VSCODE_SETTINGS"; then
+        sed -i '' 's/"latex-workshop.view.pdf.invert": 0/"latex-workshop.view.pdf.invert": 1/' "$VSCODE_SETTINGS"
+    fi
+fi

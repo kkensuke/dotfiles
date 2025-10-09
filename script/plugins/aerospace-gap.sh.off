@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# <xbar.title>Aerospace Gap Toggle</xbar.title>
+# <xbar.version>v1.0</xbar.version>
+# <xbar.author>Your Name</xbar.author>
+# <xbar.desc>Toggle Aerospace right gap</xbar.desc>
+
+# Path configuration
+AEROSPACE_CONFIG="$HOME/github/dotfiles/home/.aerospace.toml"
+
+# Check Aerospace Gap status
+if grep -q "outer.right =      130" "$AEROSPACE_CONFIG" 2>/dev/null; then
+    GAP_STATUS="Gap"
+    GAP_TEXT="➡️ 0"
+elif grep -q "outer.right =      0" "$AEROSPACE_CONFIG" 2>/dev/null; then
+    GAP_STATUS="Gap"
+    GAP_TEXT="➡️ 130"
+fi
+
+# Menu bar display
+echo "$GAP_STATUS"
+echo "---"
+echo "Gap: $GAP_TEXT | bash='$0' param1=toggle terminal=false refresh=true"
+
+# Action handler
+if [ "$1" = "toggle" ]; then
+    if grep -q "outer.right =      130" "$AEROSPACE_CONFIG"; then
+        sed -i '' 's/outer.right =      130/outer.right =      0/' "$AEROSPACE_CONFIG" && /opt/homebrew/bin/aerospace reload-config;
+    elif grep -q "outer.right =      0" "$AEROSPACE_CONFIG"; then
+        sed -i '' 's/outer.right =      0/outer.right =      130/' "$AEROSPACE_CONFIG" && /opt/homebrew/bin/aerospace reload-config;
+    else
+        echo "No matching configuration found."
+    fi
+fi
