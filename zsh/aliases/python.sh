@@ -89,9 +89,9 @@ mkvenv() {
             echo "Error: Project path '$project_path' does not exist."
             return 1
         fi
-        symlink_path="$project_path/venv"
+        symlink_path="$project_path/.venv"
     else
-        symlink_path="./venv"
+        symlink_path="./.venv"
     fi
     
     # Create symlink if it doesn't exist
