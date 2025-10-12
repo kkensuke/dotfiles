@@ -1,4 +1,4 @@
-export ZDOTDIR="$HOME/My Drive/app/github/dotfiles/zsh"
+export ZDOTDIR="$HOME/Desktop/github/dotfiles/zsh"
 
 # ref: https://github.com/mathiasbynens/dotfiles/blob/main
 # https://www.cyberciti.biz/faq/apple-mac-osx-terminal-color-ls-output-option/

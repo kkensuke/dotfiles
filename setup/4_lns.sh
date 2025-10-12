@@ -5,21 +5,20 @@ set -u
 
 
 # dotfiles
-cd ~/My\ Drive/app/github/dotfiles/home/
+cd ~/Desktop/github/dotfiles/home/
 for i in .[a-z]*
 do
-	ln -sf ~/My\ Drive/app/github/dotfiles/home/"$i" ~/"$i"
+	ln -sf ~/Desktop/github/dotfiles/home/"$i" ~/"$i"
 done
 
-# ssh
-ln -sf ~/My Drive/backup/ssh ~/ssh
 
 # .zshenv
-ln -sf ~/My\ Drive/app/github/dotfiles/zsh/.zshenv ~/.zshenv
+ln -sf ~/Desktop/github/dotfiles/zsh/.zshenv ~/.zshenv
 
-# espnaso
-ln -sf ~/My\ Drive/app/github/espanso/ ~/Library/Application\ Support/
+# espanso
+ln -sf ~/Desktop/github/espanso/ ~/Library/Application\ Support/
 
 # others
-ln -sf ~/My\ Drive/app/github ~/github
-#ln -sf ~/My\ Drive/app/github/latex-template ~/.latex-template
+ln -sf ~/Desktop/github ~/github
+ln -sf ~/Desktop/github/dotfiles/script/plugins /Users/kensuke/Library/Application\ Support/xbar/
+#ln -sf ~/Desktop/github/latex-template ~/.latex-template
