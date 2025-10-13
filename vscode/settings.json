@@ -6,6 +6,7 @@
     // --- Window ---
     "window.titleBarStyle": "custom", // Use custom title bar (macOS style on Windows/Linux)
     "window.commandCenter": false, // Hide the Command Center (experimental search bar)
+    "window.openFilesInNewWindow": "on", // Open files in a new window
 
     // --- Workbench Appearance ---
     "workbench.iconTheme": "material-icon-theme", // Set the icon theme
@@ -13,6 +14,7 @@
     "workbench.activityBar.location": "top", // Move activity bar (Explorer, Search, etc.) to the top
     "workbench.editor.tabSizing": "shrink", // Tabs shrink to fit available space
     "workbench.settings.openDefaultKeybindings": true, // Easily access default keybindings JSON
+    "workbench.secondarySideBar.defaultVisibility": "hidden", // Hide secondary sidebar by default
     "workbench.colorCustomizations": { // Customize specific theme colors
         "editor.findMatchHighlightBackground": "#00ff2f85",
         "editor.findMatchBorder": "#04ff32",
@@ -20,6 +22,7 @@
     },
 
     // --- Explorer ---
+    "explorer.sortOrder": "type", // Sort files by type (extension)
     "explorer.confirmDelete": false, // Don't ask for confirmation when deleting files
     "explorer.confirmDragAndDrop": false, // Don't ask for confirmation when moving files via drag/drop
     "explorer.confirmPasteNative": false, // Don't ask for confirmation when pasting native files/folders
@@ -34,13 +37,15 @@
         "**/.hg": false,
         "**/.svn": false,
         "**/CVS": false,
-        "**/Thumbs.db": false
+        "**/Thumbs.db": false,
+        "**/._*": true // files generated in Cryptomator vault
     },
     "search.exclude": {
         "**/.git": true,
         "**/node_modules": true,
         "**/dist": true,
-        "**/.venv": true
+        "**/*venv*": true,
+        "**/._*": true // files generated in Cryptomator vault
     },
     "files.associations": { // Associate file patterns with specific languages/modes
         "*.css": "tailwindcss"
@@ -71,6 +76,8 @@
     "editor.renderWhitespace": "all", // Show all whitespace characters
     "editor.bracketPairColorization.enabled": true, // Colorize matching bracket pairs
     "editor.guides.bracketPairs": true, // Show guides for bracket pairs
+    "editor.scrollBeyondLastLine": false, // Don't allow scrolling beyond the last line
+    "editor.padding.bottom": 100, // Add padding below the last line
     "editor.unicodeHighlight.allowedCharacters": { // Allow specific non-basic ASCII characters without highlighting
         "：": true,
         "（": true,
@@ -126,16 +133,19 @@
     "github.copilot.editor.enableAutoCompletions": true, // Allow Copilot to provide suggestions automatically
     "github.copilot.chat.codesearch.enabled": true, // Enable Copilot Chat's code search feature
     "github.copilot.selectedCompletionModel": "", // Let Copilot choose the best model (or specify one)
+    "github.copilot.nextEditSuggestions.enabled": true,
 
     // =========================================================================
     // Language & Tooling Specific Settings
     // =========================================================================
 
     // --- Python & Jupyter ---
-    "python.defaultInterpreterPath": "/Users/kensuke/venv", // Default Python interpreter path
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+    "python.analysis.inlayHints.variableTypes": true,
     "python.venvPath": "/Users/kensuke/venv", // Path where virtual environments are typically found
     "python.venvFolders": [ // Folder names recognized as containing virtual environments
-        "venv"
+        "**/venv",
+        "**/.venv"
     ],
     "jupyter.askForKernelRestart": false, // Don't prompt when kernel restart is recommended
     
@@ -247,15 +257,9 @@
         "\\hc"              : "\\mathrm{h.c.}",
         "\\lhs"             : "\\mathrm{(LHS)}",
         "\\rhs"             : "\\mathrm{(RHS)}",
-        "\\Haar"            : "\\mathrm{Haar}",
-        "\\poly"            : "\\mathrm{poly}",
-        "\\SWAP"            : "\\mathrm{SWAP}",
         "\\E"               : "\\operatorname{E}",
         "\\Var"             : "\\operatorname{Var}",
         "\\Cov"             : "\\operatorname{Cov}",
-        "\\combi"           : "{}_{#1}\\mathrm{C}_{#2}",
-        "\\fa"              : "{}^\\forall}",
-        "\\ex"              : "{}^\\exists",
         "\\bs"              : "\\boldsymbol",
         "\\T"               : "^\\mathsf{T}",
         "\\dg"              : "^\\dagger",
@@ -271,13 +275,7 @@
         "\\norm"            : "\\left\\|{#1}\\right\\|",
         "\\eval"            : "\\left.{#1}\\right|_{#2}",
         "\\order"           : "\\mathcal{O}\\left({#1}\\right)",
-        "\\comm"            : "\\left[{#1},{#2}\\right]",
-        "\\acomm"           : "\\left\\{{#1},{#2}\\right\\}",
-        "\\pb"              : "\\left\\{{#1},{#2}\\right\\}",
         "\\grad"            : "\\nabla",
-        "\\lap"             : "\\nabla^2",
-        "\\div"             : "\\nabla\\cdot",
-        "\\curl"            : "\\nabla\\times",
         "\\Tr"              : "\\operatorname{Tr}",
         "\\tr"              : "\\operatorname{tr}",
         "\\rank"            : "\\operatorname{rank}",
@@ -293,7 +291,6 @@
         "\\dyad"            : "\\left|{#1}\\right\\rangle\\!\\left\\langle{#1}\\right|",
         "\\ev"              : "\\left\\langle{#1}\\right\\rangle",
         "\\expval"          : "\\left\\langle{#2}|{#1}|{#2}\\right\\rangle",
-        "\\mel"             : "\\left\\langle{#1}\\middle|{#2}\\middle|{#3}\\right\\rangle",
         "\\pmqty"           : "\\begin{pmatrix}#1\\end{pmatrix}",
         "\\bmqty"           : "\\begin{bmatrix}#1\\end{bmatrix}",
         "\\vmqty"           : "\\begin{vmatrix}#1\\end{vmatrix}"
@@ -393,7 +390,10 @@
     
     // --- CMake Tools ---
     "cmake.options.statusBarVisibility": "visible",
+
+    
+    // --- Others ---
     "diffEditor.ignoreTrimWhitespace": true,
-    "python.analysis.inlayHints.variableTypes": true,
-    "github.copilot.nextEditSuggestions.enabled": true // Show CMake status bar items
+    "geminicodeassist.displayInlineContextHint": false,
+    "geminicodeassist.project": "plucky-courage-mdpsm",
 }
