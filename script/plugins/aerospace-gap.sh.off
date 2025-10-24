@@ -6,7 +6,7 @@
 # <xbar.desc>Toggle Aerospace right gap</xbar.desc>
 
 # Path configuration
-AEROSPACE_CONFIG="$HOME/github/dotfiles/home/.aerospace.toml"
+AEROSPACE_CONFIG="$DOTFILES/home/.aerospace.toml"
 
 # Check Aerospace Gap status
 if grep -q "outer.right =      130" "$AEROSPACE_CONFIG" 2>/dev/null; then

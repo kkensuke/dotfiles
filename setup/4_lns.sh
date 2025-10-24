@@ -11,7 +11,6 @@ do
 	ln -sf ~/Desktop/github/dotfiles/home/"$i" ~/"$i"
 done
 
-
 # .zshenv
 ln -sf ~/Desktop/github/dotfiles/zsh/.zshenv ~/.zshenv
 

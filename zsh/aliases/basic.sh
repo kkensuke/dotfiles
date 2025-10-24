@@ -23,7 +23,7 @@ alias d='cd ~/Desktop'
 alias h='cd ~'
 alias /='cd /'
 alias github='cd ~/Desktop/github'
-alias s='cd ~/Desktop/github/dotfiles; open .'
+alias s='cd $DOTFILES; open .'
 
 # Change working directory to the top-most Finder window location.
 cdf() { cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" }
@@ -71,13 +71,12 @@ alias -g NO='&>/dev/null'
 ## open apps ##
 alias o='open'
 alias hr='open .'
-alias c='open /Applications/CotEditor.app'
-#alias no='sh ~/Desktop/github/dotfiles/script/cryptomator-dir1.sh'
+alias c='open -a CotEditor.app'
+#alias no='sh $DOTFILES/script/cryptomator-dir1.sh'
 #alias lno='umount "/Users/kensuke/cryptomator-mounts"'
 alias vs='code .'
-alias vj='code ~/Library/Application\ Support/Code/User/settings.json'
-alias cpvj='cp -fv ~/myLibrary/Application\ Support/Code/User/settings.json ~/Desktop/github/dotfiles/vscode/settings.json'
-alias google=open -a 'Google\ Chrome'
+alias vj='code $DOTFILES/vscode/settings.json'
+alias ggl=open -a 'Google\ Chrome'
 
 ## make ##
 alias m='mkdir'

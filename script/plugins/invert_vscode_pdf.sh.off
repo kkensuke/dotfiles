@@ -6,7 +6,7 @@
 # <xbar.desc>Toggle VSCode PDF invert mode</xbar.desc>
 
 # Path configuration
-VSCODE_SETTINGS="$HOME/myLibrary/Application Support/Code/User/settings.json"
+VSCODE_SETTINGS="$DOTFILES/vscode/settings.json"
 
 # Check VSCode PDF Invert status
 if grep -q '"latex-workshop.view.pdf.invert": 1' "$VSCODE_SETTINGS" 2>/dev/null; then
