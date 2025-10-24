@@ -22,7 +22,7 @@ alias cb='cd -'
 alias d='cd ~/Desktop'
 alias h='cd ~'
 alias /='cd /'
-alias github='cd ~/Desktop/github'
+alias github='cd $GITHUB'
 alias s='cd $DOTFILES; open .'
 
 # Change working directory to the top-most Finder window location.

@@ -106,7 +106,7 @@ mkvenv() {
 
 # tools
 calc() { python -c "import math; print($*)"}
-repotext() { python ~/Desktop/github/tools/repo_to_text/repo_to_text_CJK.py $1 -o ~/Desktop/output.txt}
+repotext() { python $GITHUB/tools/repo_to_text/repo_to_text_CJK.py $1 -o ~/Desktop/output.txt}
 you() {
     if [ $# -lt 1 ]; then
         echo "Usage: you [lang] URL"
@@ -135,7 +135,7 @@ you() {
         *) echo "Unknown option: $lang"; echo "Usage: you [lang] URL"; echo "  lang: en|ja|no|auto (default: auto)"; deac; return 2 ;;
     esac
 
-    python ~/Desktop/github/tools/yt_dlp_transcript/all.py "$url" "${opts[@]}"
+    python $GITHUB/tools/yt_dlp_transcript/all.py "$url" "${opts[@]}"
     rc=$?
 
     deac
