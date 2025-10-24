@@ -33,7 +33,6 @@
     "files.trimTrailingWhitespace": false, // Do not trim trailing whitespace on save
     "files.exclude": { // Hide these files/folders from the explorer
         "**/.DS_Store": true,
-        "**/.git": true,
         "**/.hg": false,
         "**/.svn": false,
         "**/CVS": false,
