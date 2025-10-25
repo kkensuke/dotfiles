@@ -24,12 +24,13 @@ brew install git-delta
 brew install git-filter-repo
 brew install ghostscript
 brew install neovim
+brew install node
+brew install pnpm
 brew install rename
 brew install scc
 brew install sqlite
 brew install tree
 brew install uv
-brew install volta
 brew install yt-dlp
 brew install zsh-autosuggestions
 brew install zsh-completions
