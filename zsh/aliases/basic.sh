@@ -71,12 +71,12 @@ alias -g NO='&>/dev/null'
 ## open apps ##
 alias o='open'
 alias hr='open .'
-alias c='open -a CotEditor.app'
+alias vs='code .'
 #alias no='sh $DOTFILES/script/cryptomator-dir1.sh'
 #alias lno='umount "/Users/kensuke/cryptomator-mounts"'
-alias vs='code .'
+alias c='open -a CotEditor.app'
 alias vj='code $DOTFILES/vscode/settings.json'
-alias ggl=open -a 'Google\ Chrome'
+alias ggl="open -a 'Google Chrome.app'"
 
 ## make ##
 alias m='mkdir'
@@ -88,6 +88,7 @@ mkc() { mkdir $1 && cd $1}
 alias cl='clear'
 alias mat='cmatrix'
 alias his='history'
+alias hg='history 0 | grep'
 alias rl='echo ""; exec ${SHELL} -l' #reload
 alias -s md=glow
 alias -s py=python
