@@ -64,9 +64,9 @@ alias -g C='| pbcopy'
 alias -g G='| grep'
 alias -g H='| head'
 alias -g T='| tail'
-alias -g EO='>/dev/null'
+alias -g NO='>/dev/null'
 alias -g NE='2>/dev/null'
-alias -g NO='&>/dev/null'
+alias -g N='&>/dev/null'
 
 ## open apps ##
 alias o='open'
