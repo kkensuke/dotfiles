@@ -12,6 +12,12 @@ alias acv='source ~/venv/bin/activate'
 alias deac='deactivate'
 
 
+GREEN='\033[0;32m'
+CYAN='\033[0;36m'
+BOLD='\033[1m'
+NC='\033[0m'
+
+
 mkuv() {
     if [ -z "$1" ]; then
         echo "Usage: mkuv <project_name>"
@@ -34,73 +40,54 @@ mkuv() {
         return 1
     fi
     
-    # Create ~/venvs/ directory if it doesn't exist
-    mkdir -p "$HOME/venvs"
-    
-    # Create venv
-    echo "Creating venv at $venv_dir..."
-    uv venv "$venv_dir"
-    
     # Create project (directory is automatically created)
-    echo "Initializing uv project..."
+    echo "\nInitializing uv project ..."
     uv init "$project_name"
     
     # Move to project directory
     cd "$project_name"
     
+    # Create ~/venvs/ directory if it doesn't exist
+    # mkdir -p "$HOME/venvs"
+    # Create venv
+    uv venv "$venv_dir" &>/dev/null || return 1
+    echo "\n✓ Venv created at \`${CYAN}$venv_dir${NC}\`"
     # Create symlink
-    echo "Creating symlink to venv..."
     ln -s "$venv_dir" .venv
+    echo "✓ Symlink created: .venv -> $venv_dir"
+    echo "  Activate with: ${GREEN}source .venv/bin/activate${NC}"
     
+    # Create other common directories
     mkdir -p notebooks
-    
-    echo "✓ Project '$project_name' created successfully!"
-    echo "  - venv: $venv_dir"
-    echo "  - project: $PWD"
+
+    echo "\n✓ Project \`${CYAN}$(pwd)${NC}\` created successfully!"
 }
 
 
 mkvenv() {
     if [ -z "$1" ]; then
-        echo "Usage: mkvenv <venv_name_in_venvs> [project_path]"
+        echo "Usage: mkvenv <venv_name>"
         return 1
     fi
     
     local venv_name="$1"
-    local project_path="$2"
     local venv_dir="$HOME/venvs/$venv_name"
     
-    # Check if venv directory already exists
     if [ -d "$venv_dir" ]; then
-        echo "Error: venv directory '$venv_dir' already exists."
+        echo "Error: venv: '$venv_dir' already exists."
         return 1
     fi
 
+    # Create ~/venvs/ directory if it doesn't exist
+    # mkdir -p "$HOME/venvs"
     # Create venv
-    echo "Creating venv at $venv_dir..."
-    uv venv "$venv_dir"
+    uv venv "$venv_dir" &>/dev/null || return 1
+    echo "✓ Venv \`${CYAN}$venv_dir${NC}\` created successfully!"
     
-    echo "✓ Venv '$venv_name' created successfully at $venv_dir!"
-    
-    # Determine symlink location
-    local symlink_path
-    if [ -n "$project_path" ]; then
-        if [ ! -d "$project_path" ]; then
-            echo "Error: Project path '$project_path' does not exist."
-            return 1
-        fi
-        symlink_path="$project_path/.venv"
-    else
-        symlink_path="./.venv"
-    fi
-    
-    # Create symlink if it doesn't exist
-    if [ -e "$symlink_path" ]; then
-        echo "Warning: '$symlink_path' already exists. Skipping symlink creation."
-    else
-        ln -s "$venv_dir" "$symlink_path"
-        echo "✓ Symlink created at $symlink_path pointing to $venv_dir"
-    fi
+    # Force create symlink
+    ln -sf "$venv_dir" ".venv" || return 1
+    echo "✓ Symlink created: .venv -> $venv_dir"
+    echo "  Activate with: ${GREEN}source .venv/bin/activate${NC}"
 }
 
 
