@@ -82,7 +82,7 @@ mkvenv() {
     # mkdir -p "$HOME/venvs"
     # Create venv
     uv venv "$venv_dir" &>/dev/null || return 1
-    echo "✓ Venv \`${CYAN}$venv_dir${NC}\` created successfully!"
+    echo "\n✓ Venv created at \`${CYAN}$venv_dir${NC}\`"
     
     # Force create symlink
     ln -sf "$venv_dir" ".venv" || return 1

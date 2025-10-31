@@ -29,9 +29,10 @@
 
     // --- File Management ---
     "files.autoSave": "onFocusChange", // Auto-save files when focus moves away from the editor
-    "files.autoSaveDelay": 0, // Delay for autosave (0 means immediate on focus change)
+    "files.autoSaveDelay": 1000, // Delay for autosave (0 means immediate on focus change)
     "files.trimTrailingWhitespace": false, // Do not trim trailing whitespace on save
     "files.exclude": { // Hide these files/folders from the explorer
+        "**/.git": false,
         "**/.DS_Store": true,
         "**/.hg": false,
         "**/.svn": false,
@@ -161,11 +162,7 @@
         "cpp": "cd $dir && g++ -O2 -std=c++14 $fileName && ./a.out"
     },
     "code-runner.runInTerminal": true, // Execute code within the integrated terminal
-
     
-    // --- Go ---
-    "go.toolsManagement.autoUpdate": true, // Automatically update Go tools
-
     
     // --- Markdown (Including MyST & KaTeX) ---
     "markdown.validate.enabled": true, // Enable built-in Markdown linting
@@ -262,7 +259,6 @@
         "\\bs"              : "\\boldsymbol",
         "\\T"               : "^\\mathsf{T}",
         "\\dg"              : "^\\dagger",
-        "\\vt"              : "\\,\\|\\,",
         "\\ot"              : "^{\\otimes {#1}}",
         "\\kten"            : "\\ket{#1}\\otimes\\ket{#2}",
         "\\bten"            : "\\bra{#1}\\otimes\\bra{#2}",
@@ -383,9 +379,6 @@
     // --- Indent Rainbow ---
     "indentRainbow.ignoreErrorLanguages": ["*"], // Prevent indent error highlighting in all languages
 
-    
-    // --- Draw.io Integration ---
-    "hediet.vscode-drawio.resizeImages": null, // Configuration for Draw.io image resizing
     
     // --- CMake Tools ---
     "cmake.options.statusBarVisibility": "visible",
