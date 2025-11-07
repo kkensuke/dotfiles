@@ -124,16 +124,15 @@
 
     
     // --- GitHub Copilot ---
-    "github.copilot.enable": { // Enable/disable Copilot for specific languages/contexts
+    "github.copilot.enable": {
         "*": true,
-        "markdown": true,
-        "scminput": false, // Disable in source control commit message input
-        "plaintext": true
+        "plaintext": true,
+        "markdown": false,
+        "scminput": false
     },
     "github.copilot.editor.enableAutoCompletions": true, // Allow Copilot to provide suggestions automatically
     "github.copilot.chat.codesearch.enabled": true, // Enable Copilot Chat's code search feature
-    "github.copilot.selectedCompletionModel": "", // Let Copilot choose the best model (or specify one)
-    "github.copilot.nextEditSuggestions.enabled": true,
+    "github.copilot.selectedCompletionModel": "",
 
     // =========================================================================
     // Language & Tooling Specific Settings
@@ -340,6 +339,7 @@
     "latex-workshop.synctex.afterBuild.enabled": true, // Enable SyncTeX forward search after build
     "latex-workshop.view.pdf.viewer": "tab", // Open PDF preview in a VS Code tab
     "latex-workshop.view.pdf.invert": 1, // Invert PDF colors (value might depend on viewer/theme, 1 often works)
+    // "latex-workshop.view.pdf.color.dark.backgroundColor":"black", // Background color for dark mode PDF viewer
     "latex-workshop.hover.preview.mathjax.extensions": [ // MathJax extensions for hover previews
         "physics",
         "boldsymbol",
@@ -388,4 +388,5 @@
     "diffEditor.ignoreTrimWhitespace": true,
     "geminicodeassist.displayInlineContextHint": false,
     "geminicodeassist.project": "plucky-courage-mdpsm",
+    "github.copilot.nextEditSuggestions.enabled": true,
 }

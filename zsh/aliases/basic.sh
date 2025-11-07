@@ -33,8 +33,15 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 alias rf='rm -rf'
 alias v='vi'
-resizepdf169() {gs -o "resized_$1" -sDEVICE=pdfwrite -dDEVICEWIDTHPOINTS=1920 -dDEVICEHEIGHTPOINTS=1080 -dPDFFitPage -dFIXEDMEDIA -dCompatibilityLevel=1.4 $1}
-resizepdf43() {gs -o "resized_$1" -sDEVICE=pdfwrite -dDEVICEWIDTHPOINTS=1024 -dDEVICEHEIGHTPOINTS=768 -dPDFFitPage -dFIXEDMEDIA -dCompatibilityLevel=1.4 $1}
+resizepdf169() {
+    gs -o "resized_$1" -sDEVICE=pdfwrite -dDEVICEWIDTHPOINTS=1920 -dDEVICEHEIGHTPOINTS=1080 -dPDFFitPage -dFIXEDMEDIA -dCompatibilityLevel=1.4 $1
+}
+resizepdf43() {
+    gs -o "resized_$1" -sDEVICE=pdfwrite -dDEVICEHEIGHTPOINTS=768 -dPDFFitPage -dFIXEDMEDIA -dCompatibilityLevel=1.4 $1
+}
+resizepdfA4() {
+    gs -o "resized_$1" -sDEVICE=pdfwrite -sPAPERSIZE=a4 -dPDFFitPage -dFIXEDMEDIA -dCompatibilityLevel=1.4 "$1"
+}
 
 ## search ##
 alias grep='grep --color'
