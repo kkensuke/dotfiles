@@ -4,8 +4,8 @@
 
 timer() {
     if [ $# -eq 0 ]; then
-        echo "Usage: timer_enhanced <minutes> [message]"
-        echo "Example: timer_enhanced 25 'Break time!'"
+        echo "Usage: timer <minutes> [message]"
+        echo "Example: timer 25 'Break time!'"
         return 1
     fi
     
