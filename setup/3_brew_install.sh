@@ -17,6 +17,7 @@ brew install gh
 brew install git-delta
 brew install git-filter-repo
 brew install ghostscript
+brew install mas
 brew install neovim
 brew install node
 brew install pnpm
@@ -67,8 +68,13 @@ brew install --cask zotero
 
 
 # app store
+# LINE
+mas install 539883307
 # hand-mirror
-# unsplash
+mas install 1502839586
+# kindle
+mas install 302584613
+
 
 # register gh alias
 ----------------------------------------------------
