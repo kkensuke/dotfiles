@@ -56,6 +56,12 @@ defaults write com.apple.dock show-recents -bool false
 # Showing the Dock
 defaults write com.apple.dock "autohide-delay" -float "0"
 
+# animation
+defaults write com.apple.dock "mineffect" -string "scale"
+
+# Minimize windows into application icon
+defaults write com.apple.dock minimize-to-application -bool true
+
 # change the size of icons in the dock
 defaults write com.apple.dock "tilesize" -int 43
 
