@@ -54,7 +54,7 @@ defaults write com.apple.dock show-process-indicators -bool false
 defaults write com.apple.dock show-recents -bool false
 
 # Showing the Dock
-defaults write com.apple.dock autohide-time-modifier -int 0
+defaults write com.apple.dock "autohide-delay" -float "0"
 
 # change the size of icons in the dock
 defaults write com.apple.dock "tilesize" -int 43
