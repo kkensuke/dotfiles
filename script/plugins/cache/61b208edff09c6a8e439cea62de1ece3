@@ -1,0 +1,412 @@
+HTTP/2.0 200 OK
+Age: 0
+Alt-Svc: h3=":443"; ma=86400
+Cache-Control: public, max-age=600
+Cf-Cache-Status: DYNAMIC
+Cf-Ray: 9cf5199038426874-NRT
+Content-Type: application/json
+Date: Tue, 17 Feb 2026 11:56:09 GMT
+Etag: "i2mraQ"
+Expires: Tue, 17 Feb 2026 12:06:09 GMT
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=TSxSXse%2FtS4V8Lk%2BhNCCeI8PE8r1RxjGXype3HAmqyWjpAc7zUNilC7mlc1NF8JiMjGyuN92XekiSk%2Fchll%2BsJSB7LOVWUYkwcIbkc4ZRXCB4IaKLw%3D%3D"}]}
+Server: cloudflare
+Server-Timing: cfCacheStatus;desc="DYNAMIC"
+Server-Timing: cfEdge;dur=9,cfOrigin;dur=244
+Vary: accept-encoding
+X-Cloud-Trace-Context: a627fd2f5d3984582d3cb2c512527051
+
+{
+	"version": "v2.1.7-beta-44-gc3757f5",
+	"lastUpdated": "05 Aug 24 22:10 BST",
+	"plugins": [
+		{
+			"files": [
+				{
+					"path": "Network/netinfo.60s.sh",
+					"filename": "netinfo.60s.sh",
+					"content": "#!/bin/bash\n#\n# \u003cxbar.title\u003eNetwork Info\u003c/xbar.title\u003e\n# \u003cxbar.version\u003ev1.01\u003c/xbar.version\u003e\n# \u003cxbar.author\u003eRaymond Kuiper\u003c/xbar.author\u003e\n# \u003cxbar.author.github\u003eq1x\u003c/xbar.author.github\u003e\n# \u003cxbar.desc\u003eProvides network status information about your Mac: Internal and external IPv4+IPv6 addresses, Whois information and Speedtest.net results.\u003c/xbar.desc\u003e\n# \u003cxbar.dependencies\u003espeedtest-cli\u003c/xbar.dependencies\u003e\n# \u003cxbar.image\u003ehttp://i.imgur.com/zFv3RvI.png\u003c/xbar.image\u003e\n#\n#\n# This bitbar plugin was based on the original \"external-ip\" Bitbar plugin by Mat Ryer.\n# A lot of new functionality has been added, including adding support for speedtest.net and listing internal interface information.\n#\n\n# Set path and Speedtest tmp file\nPATH=/usr/local/bin:$PATH\nSPEEDTEST=\"/tmp/speedtest.txt\"\n\n\n# Function to notify the user via Aple Script\nnotify () {\n    osascript -e \"display notification \\\"$1\\\" with title \\\"Netinfo\\\"\"\n}\n\n# If called with parameter \"copy\", copy the second parameter to the clipboard\nif [ \"$1\" = \"copy\" ]; then\n  # Copy to clipboard\n  echo \"$2\" | pbcopy\n  notify \"Copied $2 to clipboard\"\n  exit 0\nfi\n\n# If called with parameter \"speedtest\", run speedtest-cli\nif [ \"$1\" = \"speedtest\" ]; then\n  # test if speedtest-cli is found\n  if [[ \"$(command -v speedtest-cli)\" != \"\" ]]; then\n    # Perform a speedtest\n    if speedtest-cli --simple --share \u003e \"$SPEEDTEST\"; then\n      notify \"Speedtest is finished\"\n    else\n      notify \"Speedtest failed\"\n    fi\n  else\n     notify \"Speedtest-cli not found!\"\n  fi\n  exit 0\nfi\n\n# Get external IPs\nEXTERNAL_IP4=$(curl -4 --connect-timeout 3 -s http://v4.ipv6-test.com/api/myip.php || echo None)\nEXTERNAL_IP6=$(curl -6 --connect-timeout 3 -s http://v6.ipv6-test.com/api/myip.php || echo None)\n\n# Perform whois lookup on the external IPv4 address.\n[[ \"$EXTERNAL_IP4\" == \"None\" ]] \u0026\u0026 WHOIS=\"\" || WHOIS=$(whois \"$EXTERNAL_IP4\" | awk '/descr: / {$1=\"\"; print $0 }' | head -n 1)\n\n# Find interfaces\nINTERFACES=$(ifconfig | grep UP | grep -Eo '(^en[0-9]*|^utun[0-9]*)' | sort -n)\n\n# Start building output\n[[ \"$EXTERNAL_IP4\" == \"None\" \u0026\u0026 \"$EXTERNAL_IP6\" == \"None\" ]]  \u0026\u0026 echo \"❌\" || echo \"🌐\"\necho \"---\"\necho \"🔄 Refresh | color=black refresh=true\"\necho \"---\"\necho \"Public: \"\necho \"IPv4: ${EXTERNAL_IP4}${WHOIS} | terminal=false bash='$0' param1=copy param2=$EXTERNAL_IP4\"\necho \"IPv6: ${EXTERNAL_IP6} | terminal=false bash='$0' param1=copy param2=$EXTERNAL_IP6\"\necho \"---\"\necho \"📈 Perform Speedtest | terminal=false refresh=true bash='$0' param1=speedtest\"\n\n# Pretty format the last speedtest if the tmp file is found\nif [[ -e \"$SPEEDTEST\" ]]; then\n     LAST=$(stat -f \"%Sm\" -t \"%Y-%m-%d %H:%M:%S\" \"$SPEEDTEST\")\n     PING=$(awk '/Ping: / { $1=\"\"; print $0 }' \"$SPEEDTEST\")\n     UP=$(awk '/Upload: / { $1=\"\"; print $0 }' \"$SPEEDTEST\")\n     DOWN=$(awk '/Download: / { $1=\"\"; print $0 }' \"$SPEEDTEST\")\n     LINK=$(awk '/Share results: / { $1=\"\"; $2=\"\"; print $0 }' \"$SPEEDTEST\")\n     echo \"Last checked: $LAST\"\n     [[ \"$PING\" != \"\" ]] \u0026\u0026 echo \"⏱$PING ▼$DOWN ▲$UP | href=$LINK\"|| echo \"No results...\"\nelse\n     echo \"Last checked: Never\"\nfi\n\n# Loop through the interfaces and output MAC, IPv4 and IPv6 information\necho \"---\"\nfor INT in $INTERFACES; do\n     echo \"$INT:\"\n     ifconfig \"$INT\" | awk \"/ether/ { print \\\"MAC: \\\" \\$2 \\\" | terminal=false bash='$0' param1=copy param2=\\\" \\$2 }; /inet / { print \\\"IPv4: \\\" \\$2 \\\" | terminal=false bash='$0' param1=copy param2=\\\" \\$2 };  /inet6/ { print \\\"IPv6: \\\" \\$2 \\\" | terminal=false bash='$0' param1=copy param2=\\\" \\$2 }\" | sed -e 's/%utun[0-9]*//g' -e 's/%en[0-9]*//g' | sort\n     echo \"---\"\ndone\n\n# EoF\n"
+				}
+			],
+			"path": "Network/netinfo.60s.sh",
+			"filename": "netinfo.60s.sh",
+			"dir": "Network",
+			"docsPlugin": "Network/netinfo.60s.sh.html",
+			"docsCategory": "Network.html",
+			"pathSegments": [
+				"Network"
+			],
+			"categoryPathSegments": [
+				{
+					"path": "Network",
+					"text": "Network",
+					"isLast": true
+				}
+			],
+			"title": "Network Info",
+			"version": "v1.01",
+			"author": "Raymond Kuiper",
+			"authors": [
+				{
+					"name": "Raymond Kuiper",
+					"githubUsername": "q1x",
+					"imageURL": "https://avatars.githubusercontent.com/u/1175880?v=4",
+					"bio": "",
+					"primary": true
+				}
+			],
+			"desc": "Provides network status information about your Mac: Internal and external IPv4+IPv6 addresses, Whois information and Speedtest.net results.",
+			"imageURL": "https://xbarapp.com/docs/plugins/Network/netinfo.60s.sh.png",
+			"dependencies": [
+				"speedtest-cli"
+			],
+			"aboutURL": "",
+			"lastUpdated": "2024-08-05T22:10:18.257103+01:00",
+			"vars": null,
+			"processingNotes": null
+		},
+		{
+			"files": [
+				{
+					"path": "System/mfa-yubikey.1d.sh",
+					"filename": "mfa-yubikey.1d.sh",
+					"content": "#!/bin/bash\n#\n# \u003cxbar.title\u003eYubiKey MFA\u003c/xbar.title\u003e\n# \u003cxbar.version\u003ev1.0.2\u003c/xbar.version\u003e\n# \u003cxbar.author\u003eBryan Dodd\u003c/xbar.author\u003e\n# \u003cxbar.author.github\u003ebryandodd\u003c/xbar.author.github\u003e\n# \u003cxbar.desc\u003eGenerate TOTP codes from YubiKey OATH, and customize with Nerd Font glyphs, grouping, or hiding.\u003c/xbar.desc\u003e\n# \u003cxbar.dependencies\u003ebash,ykman\u003c/xbar.dependencies\u003e\n# \u003cxbar.image\u003ehttps://github.com/bryandodd/xbar/raw/main/images/yubikey-2.png\u003c/xbar.image\u003e\n# \u003cxbar.abouturl\u003ehttps://github.com/bryandodd/xbar/tree/main/yubikey-support\u003c/xbar.abouturl\u003e\n\n# Dependencies:\n#   yubikey-manager (https://github.com/Yubico/yubikey-manager)\n#       brew install ykman\n\n# Settings:\n# 1. If your YubiKey has been configured to require a password for OATH use, change \"ykPassRequired\"\n#    to TRUE. If set to TRUE, \"ykPassword\" must also be supplied for proper operation. \n# 2. If \"ykPassRequired\" was set to TRUE, set \"ykPassword\" to the plain-text string of your password.\n#    Note -- If you change the single-apostrophe to double-apostrophe, you must ESCAPE your string.\n#            For example, if your password contains a \"!\" character, you must escape it with \"\\!\"\n# 3. By default, keys are read directly from YubiKey and output in alphabetical order (such is YubiKey's\n#    default). If you prefer to override the order, display only select codes, or group codes into\n#    categories, set \"ykOrderOverride\" to TRUE. When set to TRUE, you must supply at minimum\n#    \"groupPrimaryList\", but see the seven (7) \"group\" variables below:\n#\n#        * groupPrimaryName:     Category name, used only if \"groupSecondaryEnable\" is TRUE.\n#        * groupPrimaryColor:    Category name display color.\n#        * groupPrimaryList:     List of codes you wish to have made available. The format should be exactly\n#                                the same as the output from running: \"ykman oath accounts list\"\n#                                It should appear as ISSUER:ACCOUNT. Do not separate array entries with commas.\n#\n#        * groupSecondaryEnable: Enables multi-group support for manual override. (Split codes into two groups)\n#        * groupSecondaryName:   Category name, used only if \"groupSecondaryEnable\" is TRUE.\n#        * groupSecondaryColor:  Category name display color.\n#        * groupSecondaryList:   See explanation of \"groupPrimaryList\" above.\n# 4. To use Nerd Font glyphs in conjunction with OATH key names, set \"iconEnable\" to TRUE. When enabled,\n#    values specified in the `iconArray` will be used to \"look up\" which glyphs should be used with each OATH \n#    code from the YubiKey.\n\n# Other Notes and Comments:\n# *  Tested and works well with Nerd Fonts. My preference is 'JetBrains Mono Nerd Font' but this\n#    can easily be changed to your own liking. See \"FONT\" variable below.\n#\n# *  Tested and works well with YubiKey OATH codes regardless of their \"touch\" setting. If your code\n#    has been configured to require touch, no additional prompts will display on-screen, but your\n#    YubiKey will begin to flash after clicking the name of the code you wish to retreive. Tap your\n#    key as usual and the value will be recorded to the macOS clipboard. \n# \n# *  If you're experiencing issues with dependencies not being located correctly, check the \"PATH\"\n#    variable below. For homebrew users, you could also consider adding the prefix to the script's\n#    path. Example:  PATH=\"/usr/local/bin:/usr/bin:$(brew --prefix)/bin\"\n\nykPassRequired=false\nykPassword='YUBIKEY-OATH-PASSWORD'\nykOrderOverride=false\niconEnable=true\nsubmenuEnable=false\n\nFONT=( \"size=13 font='JetBrainsMonoNerdFontComplete-Regular'\" )\nLABELFONT=( \"size=14 font='JetBrainsMonoNerdFontComplete-Bold-Italic'\" )\nPATH=/usr/local/bin:/usr/bin\n\n# oath list collection from yubikey\nykOathList=\"\"\n\n# Optional: manually control ordering / grouping of codes\ngroupPrimaryName=\" Work Codes\"\ngroupPrimaryColor=\"blue\"\ngroupPrimaryList=(\n    \"AWS [Prod]:usera@example.com\"\n    \"O365:usera@example.com\"\n    \"VPN:usera\"\n    \"LastPass:useralpha\"\n)\n\ngroupSecondaryEnable=true\ngroupSecondaryName=\" Personal Codes\"\ngroupSecondaryColor=\"yellow\"\ngroupSecondaryList=(\n    \"AWS [Personal]:usera@email.com\"\n    \"Synology:usera@email.com\"\n    \"GitHub:useralpha\"\n    \"Outlook:usera@email.com\"\n)\n\niconArray=(\n    \"AWS:\"\n    \"O365:\"\n    \"LastPass:聾\"\n    \"VPN:嬨\"\n    \"Synology:\"\n    \"GitHub:\"\n    \"Outlook:\"\n)\n\n## Do not edit below this line unless you know what you're doing or have at least made a backup\n## before experimenting. :) \n\n# on-click action - copy to macOS clipboard\nif [ \"$1\" = 'copyCode' ]; then\n    if [ \"$ykPassRequired\" = true ]\n    then\n        ykman oath accounts code -p $ykPassword -s \"$2\" | pbcopy\n    else\n        ykman oath accounts code -s \"$2\" | pbcopy\n    fi\nfi\n\n# get list from yubikey if not manually specifying\nif [ \"$ykOrderOverride\" = false ]\nthen\n    if [ \"$ykPassRequired\" = true ]\n    then\n        ykOathList=$(ykman oath accounts list -p $ykPassword)\n    else\n        ykOathList=$(ykman oath accounts list)\n    fi\nfi\n\n# xbar start\necho \"YubiKey MFA\"\necho \"---\"\n\nykTest=$(ykman list)\nif [ -z \"$ykTest\" ]\nthen\n    echo \"YubiKey not detected.\"\n    echo \"Insert key and click to reload.| terminal=false refresh=true\"\nelse\n    if [ \"$ykOrderOverride\" = false ]\n    then\n        echo \"$ykOathList\" | while read line ; do\n            ykOathItem=$line\n            issuer=$(echo $ykOathItem | cut -d':' -f 1)\n            if [ \"$iconEnable\" = true ]\n            then\n                iconFound=false\n                for iconSet in \"${iconArray[@]}\"; do\n                    searchTerm=\"${iconSet%%:*}\"\n                    icon=\"${iconSet##*:}\"                    \n                    if [[ \"$issuer\" == *\"$searchTerm\"* ]]; then\n                        if [ \"$submenuEnable\" = true ]; then icon=\"-- $icon\"; fi;\n                        echo \"$icon $issuer| $FONT bash='$0' param1=copyCode param2='$ykOathItem' terminal=false\"\n                        iconFound=true\n                    fi\n                done\n                nest=\"\"\n                if [ \"$submenuEnable\" = true ]; then nest=\"--\"; fi;\n                if [ \"$iconFound\" = false ]; then echo \"${nest} $issuer| $FONT bash='$0' param1=copyCode param2='$ykOathItem' terminal=false\"; fi\n            else\n                if [ \"$submenuEnable\" = true ]; then issuer=\"-- $issuer\"; fi;\n                echo \"$issuer| $FONT bash='$0' param1=copyCode param2='$ykOathItem' terminal=false\"\n            fi\n        done\n    else\n        if [ \"$groupSecondaryEnable\" = true ]; then echo \"$groupPrimaryName | $LABELFONT color=$groupPrimaryColor\"; fi;\n        for ykItem in \"${groupPrimaryList[@]}\"\n        do\n            issuer=$(echo $ykItem | cut -d':' -f 1)\n            if [ \"$iconEnable\" = true ]\n            then\n                iconFound=false\n                for iconSet in \"${iconArray[@]}\"; do\n                    searchTerm=\"${iconSet%%:*}\"\n                    icon=\"${iconSet##*:}\"\n                    if [[ \"$issuer\" == *\"$searchTerm\"* ]]; then\n                        if [ \"$submenuEnable\" = true ]; then icon=\"-- $icon\"; fi;\n                        echo \"$icon $issuer| $FONT bash='$0' param1=copyCode param2='$ykItem' terminal=false\"\n                        iconFound=true\n                    fi\n                done\n                nest=\"\"\n                if [ \"$submenuEnable\" = true ]; then nest=\"--\"; fi;\n                if [ \"$iconFound\" = false ]; then echo \"${nest} $issuer| $FONT bash='$0' param1=copyCode param2='$ykItem' terminal=false\"; fi\n            else\n                if [ \"$submenuEnable\" = true ]; then issuer=\"-- $issuer\"; fi;\n                echo \"$issuer| $FONT bash='$0' param1=copyCode param2='$ykItem' terminal=false\"\n            fi\n        done\n\n        if [ \"$groupSecondaryEnable\" = true ]\n        then\n            echo \"---\"\n            echo \"$groupSecondaryName | $LABELFONT color=$groupSecondaryColor\"\n            for ykItem in \"${groupSecondaryList[@]}\"\n            do\n                issuer=$(echo $ykItem | cut -d':' -f 1)\n                if [ \"$iconEnable\" = true ]\n                then\n                    iconFound=false\n                    for iconSet in \"${iconArray[@]}\"; do\n                        searchTerm=\"${iconSet%%:*}\"\n                        icon=\"${iconSet##*:}\"\n                        if [[ \"$issuer\" == *\"$searchTerm\"* ]]; then\n                            if [ \"$submenuEnable\" = true ]; then icon=\"-- $icon\"; fi;\n                            echo \"$icon $issuer| $FONT bash='$0' param1=copyCode param2='$ykItem' terminal=false\"\n                            iconFound=true\n                        fi\n                    done\n                    nest=\"\"\n                    if [ \"$submenuEnable\" = true ]; then nest=\"--\"; fi;\n                    if [ \"$iconFound\" = false ]; then echo \"${nest} $issuer| $FONT bash='$0' param1=copyCode param2='$ykItem' terminal=false\"; fi\n                else\n                    if [ \"$submenuEnable\" = true ]; then issuer=\"-- $issuer\"; fi;\n                    echo \"$issuer| $FONT bash='$0' param1=copyCode param2='$ykItem' terminal=false\"\n                fi\n            done\n        fi\n    fi\nfi\n\necho \"---\""
+				}
+			],
+			"path": "System/mfa-yubikey.1d.sh",
+			"filename": "mfa-yubikey.1d.sh",
+			"dir": "System",
+			"docsPlugin": "System/mfa-yubikey.1d.sh.html",
+			"docsCategory": "System.html",
+			"pathSegments": [
+				"System"
+			],
+			"categoryPathSegments": [
+				{
+					"path": "System",
+					"text": "System",
+					"isLast": true
+				}
+			],
+			"title": "YubiKey MFA",
+			"version": "v1.0.2",
+			"author": "Bryan Dodd",
+			"authors": [
+				{
+					"name": "Bryan Dodd",
+					"githubUsername": "bryandodd",
+					"imageURL": "https://avatars.githubusercontent.com/u/5007471?v=4",
+					"bio": "",
+					"primary": true
+				}
+			],
+			"desc": "Generate TOTP codes from YubiKey OATH, and customize with Nerd Font glyphs, grouping, or hiding.",
+			"imageURL": "https://xbarapp.com/docs/plugins/System/mfa-yubikey.1d.sh.png",
+			"dependencies": [
+				"bash",
+				"ykman"
+			],
+			"aboutURL": "https://github.com/bryandodd/xbar/tree/main/yubikey-support",
+			"lastUpdated": "2024-08-05T22:10:24.852854+01:00",
+			"vars": null,
+			"processingNotes": null
+		},
+		{
+			"files": [
+				{
+					"path": "Cryptocurrency/okx_ticker.10s.py",
+					"filename": "okx_ticker.10s.py",
+					"content": "#!/usr/bin/env python3\n# coding: utf-8\n# yc@2021/06/30\n\n# \u003cxbar.title\u003eOKX Ticker\u003c/xbar.title\u003e\n# \u003cxbar.version\u003ev1.0\u003c/xbar.version\u003e\n# \u003cxbar.author\u003eyc\u003c/xbar.author\u003e\n# \u003cxbar.author.github\u003eichuan\u003c/xbar.author.github\u003e\n# \u003cxbar.desc\u003eShow price ticker from OKX. Currencies can be configured.\u003c/xbar.desc\u003e\n# \u003cxbar.image\u003ehttps://i.imgur.com/mykIv6O.png\u003c/xbar.image\u003e\n# \u003cxbar.dependencies\u003epython\u003c/xbar.dependencies\u003e\n# \u003cxbar.abouturl\u003ehttps://www.okx.com/about.html\u003c/xbar.abouturl\u003e\n# \u003cxbar.var\u003estring(VAR_CURRENCIES=\"btc,eth\"): Currencies, separated with comma.\u003c/xbar.var\u003e\n# \u003cxbar.var\u003estring(VAR_FONT_NAME=\"\"): Font name.\u003c/xbar.var\u003e\n\nimport re\nimport os\nimport json\nfrom datetime import datetime\nfrom decimal import Decimal\nfrom urllib.request import urlopen, Request\n\n\nHTTP_TIMEOUT = 10\nDEFAULT_CURRENCIES = \"btc,eth\"\n\n\ndef normalize_decimal(val, precision=2):\n    if type(val) is not Decimal:\n        val = Decimal(val)\n    mul = pow(10, precision)\n    val = Decimal(int(val * mul)) / mul\n    return format(val.normalize(), \"f\")\n\n\ndef get_update_time(timestamp):\n    updated_at = datetime.utcfromtimestamp(int(timestamp) // 1000)\n    delta = (datetime.utcnow() - updated_at).total_seconds()\n    if delta \u003c 1:\n        return \"just now\"\n    ret = []\n    h, s = divmod(int(delta), 3600)\n    if h:\n        ret.append(\"{} hours\".format(h))\n    m, s = divmod(s, 60)\n    if m:\n        ret.append(\"{} minutes\".format(m))\n    if s:\n        ret.append(\"{} seconds\".format(s))\n    return \"{} ago\".format(\" \".join(ret))\n\n\ndef http_get_json(url):\n    req = Request(\n        url,\n        headers={\n            \"User-Agent\": \"curl/7.55\",\n            \"Cache-Control\": \"max-age=0\",\n            \"accept\": \"*/*\",\n        },\n    )\n    return json.load(urlopen(req, timeout=HTTP_TIMEOUT))\n\n\ndef get_ticker_info(currency):\n    url = \"https://www.okx.com/api/v5/market/ticker?instId={}-USDT\".format(currency)\n    try:\n        resp = http_get_json(url)[\"data\"][0]\n        updated_at = get_update_time(resp[\"ts\"])\n        change_24h = (\n            (float(resp[\"last\"]) - float(resp[\"open24h\"]))\n            / float(resp[\"open24h\"])\n            * 100\n        )\n        return {\n            \"currency\": currency,\n            \"title\": \"${} ({}%)\".format(\n                normalize_decimal(resp[\"last\"]),\n                normalize_decimal(change_24h),\n            ),\n            \"updated_at\": updated_at,\n            \"24h_high_low\": \"{} / {}\".format(resp[\"high24h\"], resp[\"low24h\"]),\n        }\n    except Exception as e:\n        return {\n            \"currency\": currency,\n            \"title\": \"ERR\",\n            \"error\": str(e),\n        }\n\n\ndef get_extra_parameters():\n    params = []\n    font_name = os.environ.get(\"VAR_FONT_NAME\")\n    if font_name:\n        params.append('font=\"{}\"'.format(font_name.replace('\"', '\\\\\"')))\n    return \" \".join(params)\n\n\ndef main():\n    currencies = os.environ.get(\"VAR_CURRENCIES\", DEFAULT_CURRENCIES)\n    currencies = [i.upper() for i in re.split(r\"\\s*,\\s*\", currencies) if i]\n    infos = [get_ticker_info(i) for i in currencies]\n    titles = [\"{currency}: {title}\".format(**i) for i in infos]\n    title = \"{} | color=white size=12 {}\".format(\n        \"    \".join(titles), get_extra_parameters()\n    )\n    last_updates = [\n        \"--{}: {}\".format(i[\"currency\"], i[\"updated_at\"])\n        for i in infos\n        if \"updated_at\" in i\n    ]\n    high_lows = [\n        \"--{}: {}\".format(i[\"currency\"], i[\"24h_high_low\"])\n        for i in infos\n        if \"24h_high_low\" in i\n    ]\n    print(title)\n    print(\"---\")\n    if last_updates:\n        print(\"Last update\")\n        for i in last_updates:\n            print(i)\n    if high_lows:\n        print(\"24 hours high/low\")\n        for i in high_lows:\n            print(i)\n    for i in infos:\n        if \"error\" in i:\n            print(\"{}: {} | color=red\".format(i[\"currency\"], i[\"error\"]))\n    print(\"Open www.okx.com | href=https://www.okx.com/\")\n\n\nif __name__ == \"__main__\":\n    main()\n"
+				}
+			],
+			"path": "Cryptocurrency/okx_ticker.10s.py",
+			"filename": "okx_ticker.10s.py",
+			"dir": "Cryptocurrency",
+			"docsPlugin": "Cryptocurrency/okx_ticker.10s.py.html",
+			"docsCategory": "Cryptocurrency.html",
+			"pathSegments": [
+				"Cryptocurrency"
+			],
+			"categoryPathSegments": [
+				{
+					"path": "Cryptocurrency",
+					"text": "Cryptocurrency",
+					"isLast": true
+				}
+			],
+			"title": "OKX Ticker",
+			"version": "v1.0",
+			"author": "yc",
+			"authors": [
+				{
+					"name": "yc",
+					"githubUsername": "ichuan",
+					"imageURL": "https://avatars.githubusercontent.com/u/328225?v=4",
+					"bio": "",
+					"primary": true
+				}
+			],
+			"desc": "Show price ticker from OKX. Currencies can be configured.",
+			"imageURL": "https://xbarapp.com/docs/plugins/Cryptocurrency/okx_ticker.10s.py.png",
+			"dependencies": [
+				"python"
+			],
+			"aboutURL": "https://www.okx.com/about.html",
+			"lastUpdated": "2024-08-05T22:10:00.394978+01:00",
+			"vars": [
+				{
+					"type": "string",
+					"name": "VAR_CURRENCIES",
+					"label": "Currencies",
+					"default": "btc,eth",
+					"desc": "Currencies, separated with comma.",
+					"options": null
+				},
+				{
+					"type": "string",
+					"name": "VAR_FONT_NAME",
+					"label": "Font name",
+					"default": "",
+					"desc": "Font name.",
+					"options": null
+				}
+			],
+			"processingNotes": null
+		},
+		{
+			"files": [
+				{
+					"path": "System/Battery/trackpad-system_profiler.1m.rb",
+					"filename": "trackpad-system_profiler.1m.rb",
+					"content": "#!/usr/bin/env ruby\n# \u003cxbar.title\u003eBattery Apple Bluetooth Trackpad\u003c/xbar.title\u003e\n# \u003cxbar.version\u003e1.0\u003c/xbar.version\u003e\n# \u003cxbar.author\u003eMaxime Bertheau\u003c/xbar.author\u003e\n# \u003cxbar.author.github\u003emaxoumime\u003c/xbar.author.github\u003e\n# \u003cxbar.desc\u003eShow battery percentage for Bluetooth Trackpad\u003c/xbar.desc\u003e\n# \u003cxbar.image\u003ehttp://i.imgur.com/1FlcPYx.png\u003c/xbar.image\u003e\n#\n# A lot of thanks to @alexandregz, I just changed \"Keyboard\" to \"Trackpad\" :grin:\n# Works fine with Apple Trackpad\n#\n\nrequire 'yaml'\n\noutput = YAML.load(`system_profiler SPBluetoothDataType`);\n\noutput['Bluetooth']['Devices (Paired, Configured, etc.)'].each do |device|\n        puts \"Trackpad: \"+device[1]['Battery Level'].to_s if device[1]['Minor Type'].eql?('Trackpad') \u0026\u0026 device[1].has_key?('Battery Level')\nend\n"
+				}
+			],
+			"path": "System/Battery/trackpad-system_profiler.1m.rb",
+			"filename": "trackpad-system_profiler.1m.rb",
+			"dir": "System/Battery",
+			"docsPlugin": "System/Battery/trackpad-system_profiler.1m.rb.html",
+			"docsCategory": "System/Battery.html",
+			"pathSegments": [
+				"System",
+				"Battery"
+			],
+			"categoryPathSegments": [
+				{
+					"path": "System",
+					"text": "System",
+					"isLast": false
+				},
+				{
+					"path": "System/Battery",
+					"text": "Battery",
+					"isLast": true
+				}
+			],
+			"title": "Battery Apple Bluetooth Trackpad",
+			"version": "1.0",
+			"author": "Maxime Bertheau",
+			"authors": [
+				{
+					"name": "Maxime Bertheau",
+					"githubUsername": "maxoumime",
+					"imageURL": "https://avatars.githubusercontent.com/u/3897798?v=4",
+					"bio": "I build things.",
+					"primary": true
+				}
+			],
+			"desc": "Show battery percentage for Bluetooth Trackpad",
+			"imageURL": "https://xbarapp.com/docs/plugins/System/Battery/trackpad-system_profiler.1m.rb.png",
+			"dependencies": null,
+			"aboutURL": "",
+			"lastUpdated": "2024-08-05T22:10:22.209429+01:00",
+			"vars": null,
+			"processingNotes": null
+		},
+		{
+			"files": [
+				{
+					"path": "Cryptocurrency/miner_stat_fetch.1m.py",
+					"filename": "miner_stat_fetch.1m.py",
+					"content": "#!/usr/bin/env PYTHONIOENCODING=UTF-8 /usr/bin/python3\n\n# Metadata allows your plugin to show up in the app, and website.\n#\n#  \u003cxbar.title\u003eMiner Stat Fetch\u003c/xbar.title\u003e\n#  \u003cxbar.version\u003ev1.0\u003c/xbar.version\u003e\n#  \u003cxbar.author\u003eJoris Van Duyse\u003c/xbar.author\u003e\n#  \u003cxbar.author.github\u003ejorisvanduyse\u003c/xbar.author.github\u003e\n#  \u003cxbar.desc\u003eChech your miner staticstics! And configer to your wishes\u003c/xbar.desc\u003e\n#  \u003cxbar.image\u003ehttps://i.imgur.com/540C9xe.png\u003c/xbar.image\u003e\n#  \u003cxbar.dependencies\u003epython\u003c/xbar.dependencies\u003e\n#  \u003cxbar.abouturl\u003ehttps://github.com/jorisvanduyse/MinerFetch_xbar\u003c/xbar.abouturl\u003e\n\n# Variables become preferences in the app:\n#\n#  \u003cxbar.var\u003estring(VAR_POOLADRESS=\"\"): Your wallets pool adress.\u003c/xbar.var\u003e\n#  \u003cxbar.var\u003eselect(VAR_COINTAG=\"eth\"): What coin do you mine? [eth, rvn, xmr]\u003c/xbar.var\u003e\n#  \u003cxbar.var\u003eselect(VAR_VALUTASYMBOL=\"EUR\"): What is your preferred valuta? [EUR, USD, GBP]\u003c/xbar.var\u003e\n#  \u003cxbar.var\u003estring(VAR_WALLET=\"\"): Your wallet adress.\u003c/xbar.var\u003e\n#  \u003cxbar.var\u003enumber(VAR_HARDWAREHASHRATE=\"\"): Your expected MH/s, this sets the color (if enabled).\u003c/xbar.var\u003e\n#  \u003cxbar.var\u003eboolean(VAR_SHOWCURRENT=true): Show your current hashrate\u003c/xbar.var\u003e\n#  \u003cxbar.var\u003eboolean(VAR_SHOWAVG=true): Show your average hashrate\u003c/xbar.var\u003e\n#  \u003cxbar.var\u003eboolean(VAR_SHOWHOURLYINCOME=true): Show your hourly income bar\u003c/xbar.var\u003e\n#  \u003cxbar.var\u003eboolean(VAR_SHOWCOLORS=true): Show colors in the top bar\u003c/xbar.var\u003e\n#  \u003cxbar.var\u003eboolean(VAR_SOLOOPERARION=false): Do you mine solo?\u003c/xbar.var\u003e\n\n# All necessary python packages\nimport json\nfrom json.decoder import JSONDecodeError\nimport requests\nimport sys\n\n# Read all the settings given by the user in the xbar program\njson_file_name = str(sys.argv[0]) + \".vars.json\"\nwith open(json_file_name) as json_file:\n    json_object = json.load(json_file)\n    json_file.close()\ntry:\n    wallet = json_object['VAR_WALLET'].strip()\n    show_current = json_object['VAR_SHOWCURRENT']\n    show_avg = json_object['VAR_SHOWAVG']\n    mining_pool = json_object['VAR_POOLADRESS'].strip()\n    coin_tag = json_object[\"VAR_COINTAG\"]\n    valuta_symbol = json_object[\"VAR_VALUTASYMBOL\"]\n    hardware_hashrate = json_object[\"VAR_HARDWAREHASHRATE\"]\n    show_colors = json_object[\"VAR_SHOWCOLORS\"]\n    show_hourly_income = json_object[\"VAR_SHOWHOURLYINCOME\"]\n    solo_operation = json_object[\"VAR_SOLOOPERARION\"]\nexcept KeyError:\n    print(\"Failed to load settings, set them in xbar\")\n\ntop_screen_content = []\nsub_menu_content = []\n\nformated_hashrate = ''\nformated_current_hashrate = ''\nformated_income_last_60_eur = ''\n\nsubmenu_income_last_60_eur = ''\nsubmenu_current_hashrate = ''\nsubmenu_hashrate = ''\n\ndef format_hashrate(prefix: str, hashrate: int):\n    # decide the right unit to indicate the fload with (like MH/s or KH/s etc.)\n    factor = 1000\n    counter = 0\n    format_hash_dict = {1000 : \" H/s \", 1000_000 : \" KH/s \", 1000_000_000 : \" MH/s \", 1000_000_000_000 : \" GH/s \", 1000_000_000_000_000 : \" TH/s \"}\n    while hashrate / factor \u003e 1:\n        factor *= 1000\n\n    recalculated_hashrate = hashrate / factor * 1000\n    \n    # decide how many decimals should be used\n    if recalculated_hashrate / 100 \u003e 1:   \n        recalculated_hashrate = \"%.0f\" % recalculated_hashrate\n    elif recalculated_hashrate / 10 \u003e 1:\n        recalculated_hashrate = \"%.1f\" % recalculated_hashrate\n    elif recalculated_hashrate / 1 \u003e 1:\n        recalculated_hashrate = \"%.2f\" % recalculated_hashrate\n\n    # throw them together to return a string\n    formated_hashrate = prefix + str(recalculated_hashrate) + format_hash_dict[factor]\n    return formated_hashrate\n\n# create the api call like : https://eth.2miners.com/api/acconts/MYWALLETADDRES\nsolo_url_add = ''\nif solo_operation is True:\n    solo_url_add = \"solo-\"\nurl = \"https://\" + solo_url_add + coin_tag + '.' + mining_pool + \"/api/accounts/\" + wallet\nbrowsable_url = \"https://\" + coin_tag + '.' + mining_pool + \"/account/\" + wallet\n\n\ntry:\n    resp = requests.get(url=url)\n    pool_data = resp.json()\nexcept JSONDecodeError:\n    print(\"Failed to find wallet address\")\n\n# get api info from coinbase about latest currency value\ncoinbase_api_call = \"https://api.coinbase.com/v2/prices/\" + coin_tag + '-' + valuta_symbol + \"/spot\"\ncoinbase_resp = requests.get(coinbase_api_call)\nif coinbase_resp.status_code == 200:\n    found_coinbase_data = True\n    coinbase_data = coinbase_resp.json()[\"data\"]\n    coinbase_value = float(coinbase_data[\"amount\"])\nelse:\n    found_coinbase_data = False\n\n\n# Format the value CurrentHashrate\nhashrate = int(pool_data['currentHashrate'])\nformated_hashrate = format_hashrate(\"Current: \", hashrate)\nif show_current is True:\n    top_screen_content.append(formated_hashrate)\nelse:\n    sub_menu_content.append(formated_hashrate)\n\n\n# Format the value AverageHashrate\nhashrate = int(pool_data['hashrate'])\nformated_hashrate = format_hashrate(\" AVG: \", hashrate)\nif show_avg is True:\n    top_screen_content.append(formated_hashrate)\nelse:\n    sub_menu_content.append(formated_hashrate)\n\n# Income calculation\nif found_coinbase_data is True:\n    income = list(pool_data['sumrewards'])\n    income_last_60 = dict(income[0])\n    income_last_60_eth = income_last_60['reward']\n    income_last_60_eur = income_last_60_eth * coinbase_value / 1000_000_000\n    formated_income_last_60_eur = \"Last Hour: \" + str(\"%.2f\" % income_last_60_eur) + ' ' + valuta_symbol\nelse:\n    formated_income_last_60_eur =\"no coinbase data because: \" + str(coinbase_resp)\n\nif show_hourly_income is True:\n    top_screen_content.append(formated_income_last_60_eur)\nelse:\n    sub_menu_content.append(formated_income_last_60_eur)\n\n# Output the content in the top screen\nfinal_output = ''\nif show_colors is True:\n    if hashrate \u003c hardware_hashrate:\n        for item in top_screen_content:\n            final_output = final_output + item\n        print(final_output + \" | color=red\")\n    elif hashrate \u003e hardware_hashrate:\n        for item in top_screen_content:\n            final_output = final_output + item\n        print(final_output + \" | color=green\")\nelse:\n    for item in top_screen_content:\n        final_output = final_output + item\n    print(final_output)\n    \nprint(\"---\")\n# Output the content in the sub menu\nfor item in sub_menu_content:\n    print(item)\n\nif found_coinbase_data is True:\n    print(coin_tag.upper() + \" value: \" + str(coinbase_value) + ' ' + valuta_symbol)\nelse:\n    print(\"no coinbase data because: \" + str(coinbase_resp))\n\n#Doesn't work yet, no reall apparent reason\n##print(\"Open \" + mining_pool + \"| href=python=browsable_url\")\nprint(\"---\")\nprint(\"Refresh |refresh=true\")\nprint(\"Support my work | href=https://paypal.me/jorisduyse\")\n"
+				}
+			],
+			"path": "Cryptocurrency/miner_stat_fetch.1m.py",
+			"filename": "miner_stat_fetch.1m.py",
+			"dir": "Cryptocurrency",
+			"docsPlugin": "Cryptocurrency/miner_stat_fetch.1m.py.html",
+			"docsCategory": "Cryptocurrency.html",
+			"pathSegments": [
+				"Cryptocurrency"
+			],
+			"categoryPathSegments": [
+				{
+					"path": "Cryptocurrency",
+					"text": "Cryptocurrency",
+					"isLast": true
+				}
+			],
+			"title": "Miner Stat Fetch",
+			"version": "v1.0",
+			"author": "Joris Van Duyse",
+			"authors": [
+				{
+					"name": "Joris Van Duyse",
+					"githubUsername": "jorisvanduyse",
+					"imageURL": "https://avatars.githubusercontent.com/u/64415571?v=4",
+					"bio": "Passion for Mobile and Web development! Will dare to enter the operations realm once in a while.",
+					"primary": true
+				}
+			],
+			"desc": "Chech your miner staticstics! And configer to your wishes",
+			"imageURL": "https://xbarapp.com/docs/plugins/Cryptocurrency/miner_stat_fetch.1m.py.png",
+			"dependencies": [
+				"python"
+			],
+			"aboutURL": "https://github.com/jorisvanduyse/MinerFetch_xbar",
+			"lastUpdated": "2024-08-05T22:10:00.232805+01:00",
+			"vars": [
+				{
+					"type": "string",
+					"name": "VAR_POOLADRESS",
+					"label": "Pooladress",
+					"default": "",
+					"desc": "Your wallets pool adress.",
+					"options": null
+				},
+				{
+					"type": "select",
+					"name": "VAR_COINTAG",
+					"label": "Cointag",
+					"default": "eth",
+					"desc": "What coin do you mine?",
+					"options": [
+						"eth",
+						"rvn",
+						"xmr"
+					]
+				},
+				{
+					"type": "select",
+					"name": "VAR_VALUTASYMBOL",
+					"label": "Valutasymbol",
+					"default": "EUR",
+					"desc": "What is your preferred valuta?",
+					"options": [
+						"EUR",
+						"USD",
+						"GBP"
+					]
+				},
+				{
+					"type": "string",
+					"name": "VAR_WALLET",
+					"label": "Wallet",
+					"default": "",
+					"desc": "Your wallet adress.",
+					"options": null
+				},
+				{
+					"type": "number",
+					"name": "VAR_HARDWAREHASHRATE",
+					"label": "Hardwarehashrate",
+					"default": "",
+					"desc": "Your expected MH/s, this sets the color (if enabled).",
+					"options": null
+				},
+				{
+					"type": "boolean",
+					"name": "VAR_SHOWCURRENT",
+					"label": "Showcurrent",
+					"default": "true",
+					"desc": "Show your current hashrate",
+					"options": null
+				},
+				{
+					"type": "boolean",
+					"name": "VAR_SHOWAVG",
+					"label": "Showavg",
+					"default": "true",
+					"desc": "Show your average hashrate",
+					"options": null
+				},
+				{
+					"type": "boolean",
+					"name": "VAR_SHOWHOURLYINCOME",
+					"label": "Showhourlyincome",
+					"default": "true",
+					"desc": "Show your hourly income bar",
+					"options": null
+				},
+				{
+					"type": "boolean",
+					"name": "VAR_SHOWCOLORS",
+					"label": "Showcolors",
+					"default": "true",
+					"desc": "Show colors in the top bar",
+					"options": null
+				},
+				{
+					"type": "boolean",
+					"name": "VAR_SOLOOPERARION",
+					"label": "Solooperarion",
+					"default": "false",
+					"desc": "Do you mine solo?",
+					"options": null
+				}
+			],
+			"processingNotes": null
+		},
+		{
+			"files": [
+				{
+					"path": "Web/rss.15m.php",
+					"filename": "rss.15m.php",
+					"content": "#!/usr/bin/env -S PATH=\"${PATH}:/opt/homebrew/bin:/usr/local/bin\" php\n\u003c?php\n// \u003cxbar.title\u003eSimple RSS reader\u003c/xbar.title\u003e\n// \u003cxbar.version\u003e1.0.1\u003c/xbar.version\u003e\n// \u003cxbar.author\u003eAleš Farčnik, Kenichi Shimizu (Issue #1851)\u003c/xbar.author\u003e\n// \u003cxbar.author.github\u003ealesf, KenSmz\u003c/xbar.author.github\u003e\n// \u003cxbar.desc\u003eSimple RSS \"reader\" that will list latest feed items and link to them.\u003c/xbar.desc\u003e\n// \u003cxbar.image\u003ehttp://i.imgur.com/JDdgcGH.png\u003c/xbar.image\u003e\n// \u003cxbar.dependencies\u003ephp \u003e= 5.4\u003c/xbar.dependencies\u003e\n\ndefine('FEED_URL', 'http://feedpress.me/sixcolors?type=xml');\ndefine('ITEM_LIMIT', 25);\n\n// You should not need to change anything below this part\n\n// TODO:\n// - multiple feeds\n// - keep older items in log file for some time\n\ndefine('FEED_LOG', dirname(__FILE__).'/.rss.log');\ndefine('SCRIPT_PATH', __FILE__);\ndefine('PHP_PATH', exec(\"which php\"));\n\n$feed_image = \"iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRT\".\n    \"b2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAATBJREFUeNqc0b1KQzEYxvFQq4i2kwiCD\".\n    \"jo4dZIKQm+hm5tUUHDxBnQSF1cXh1IR3AqdBK+gLl5BURz82hy0Iq2lYkHqP/BGHsKxFgM/Tv\".\n    \"vk5D3Jm7Rzro8OHtHABc7x6oYc/QSfqCH33wLBF8rIDiowj2Ws4wQvCYVuh92NH6NW7D4q8oa\".\n    \"VpAVH2EMRk5KP4zChSG5QD/xtVDAr82voRcfJ/tXEd5SiIjpfDhMjmEETc0hbPoZVu85LXNlX\".\n    \"Czafx5k1/GdMYAet6Gsl6Yk2tvbbLSziLjpO6MmG5L4vU7rIbysl/9vy8rFccVPyLR/uS1CXP\".\n    \"uxGt5Ox/FTyqrMt6plDo/yCD8mLlm9K1kjZVnW07NmxGwhjyZ43ki34Att4QhcHuJYXHuT3tD\".\n    \"2fJct8CzAAqHZ3QQFiFvsAAAAASUVORK5CYII=\";\n\nif (isset($argv[1])) {\n    $log_data = @file_get_contents(FEED_LOG);\n    $log_data = json_decode($log_data, true);\n\n    if ($argv[1] == 'MARK_ALL_AS_READ') {\n        foreach ($log_data as \u0026$log_item) {\n            $log_item['visited'] = true;\n        }\n        file_put_contents(FEED_LOG, json_encode($log_data));\n        exit();\n    }\n    exec('open ' . $log_data[$argv[1]]['link']);\n    $log_data[$argv[1]]['visited'] = true;\n    file_put_contents(FEED_LOG, json_encode($log_data));\n    exit();\n}\n\nclass RSSParser\n{\n    protected $url;\n    protected $feed;\n    protected $feed_type;\n    protected $feed_channel;\n    protected $feed_items;\n    protected $feed_guid;\n\n    protected $log_data;\n\n    public $title;\n    public $items;\n    public $unread_no = 0;\n\n    public function __construct($url)\n    {\n        $this-\u003eload($url);\n    }\n\n    private function loadLogData()\n    {\n        $log_data = @file_get_contents(FEED_LOG);\n        if ($log_data) {\n            $this-\u003elog_data = json_decode($log_data, true);\n        }\n    }\n\n    public function load($url)\n    {\n        $this-\u003eloadLogData();\n\n        $feed_data = @file_get_contents(FEED_URL);\n\n        if ($feed_data === '') {\n            $this-\u003etitle = 'No new items at this time.';\n            return;\n        }\n\n        $this-\u003efeed = new DOMDocument();\n        $this-\u003efeed-\u003eloadXML($feed_data);\n\n        if ($this-\u003efeed-\u003egetElementsByTagName('channel')-\u003eitem(0)) {\n            $this-\u003efeed_type = 'rss';\n            $this-\u003efeed_channel = $this-\u003efeed-\u003egetElementsByTagName('channel')-\u003eitem(0);\n            $this-\u003efeed_items = $this-\u003efeed-\u003egetElementsByTagName('channel')\n                -\u003eitem(0)-\u003egetElementsByTagName('item');\n            $this-\u003efeed_guid = 'guid';\n        } else {\n            $this-\u003efeed_type = 'atom';\n            $this-\u003efeed_channel = $this-\u003efeed;\n            $this-\u003efeed_items = $this-\u003efeed-\u003egetElementsByTagName('entry');\n            $this-\u003efeed_guid = 'id';\n        }\n\n        $this-\u003esetTitle();\n        $this-\u003esetItems();\n    }\n\n    public function setTitle()\n    {\n        $this-\u003etitle = $this-\u003egetItemElement($this-\u003efeed_channel, 'title');\n    }\n\n    public function setItems()\n    {\n        $item_count = 1;\n        foreach ($this-\u003efeed_items as $item) {\n            if ($item_count \u003e ITEM_LIMIT) {\n                break;\n            }\n            $title = $this-\u003egetItemElement($item, 'title');\n            $guid = $this-\u003egetItemElement($item, $this-\u003efeed_guid);\n            $link = $this-\u003egetItemElement($item, 'link');\n\n            $this-\u003eitems[$guid] = [\n                'title' =\u003e $title,\n                'link' =\u003e $link,\n                'guid' =\u003e $guid\n            ];\n            if (!isset($this-\u003elog_data[$guid])) {\n                $this-\u003eitems[$guid]['visited'] = false;\n                $this-\u003eunread_no++;\n            } else {\n                $this-\u003eitems[$guid] = $this-\u003elog_data[$guid];\n                if (!$this-\u003eitems[$guid]['visited']) {\n                    $this-\u003eunread_no++;\n                }\n            }\n            $item_count++;\n        }\n\n        if (!empty($this-\u003eitems)) {\n            file_put_contents(FEED_LOG, json_encode($this-\u003eitems));\n        }\n    }\n\n    public function getUnreadCnt()\n    {\n        return $this-\u003eunread_no ? $this-\u003eunread_no : '';\n    }\n\n    private function getItemElement($item, $element)\n    {\n        if (!$item) {\n            return '';\n        }\n        if ($this-\u003efeed_type == 'rss') {\n            return trim($item-\u003egetElementsByTagName($element)-\u003eitem(0)-\u003efirstChild-\u003enodeValue);\n        }\n\n        if ($this-\u003efeed_type == 'atom') {\n            if ($element == 'link') {\n                return trim($item-\u003egetElementsByTagName($element)-\u003eitem(0)-\u003egetAttribute('href'));\n            }\n            return trim($item-\u003egetElementsByTagName($element)-\u003eitem(0)-\u003enodeValue);\n        }\n    }\n}\n\n/**\n * BitBar display\n */\nclass BitBar\n{\n    public function divider()\n    {\n        echo \"---\\n\";\n    }\n\n    public function icon($icon, $text = '')\n    {\n        if ($text) {\n            echo \"{$text} \";\n        }\n        echo \"| size=10 templateImage={$icon}\\n\";\n    }\n\n    public function println($text)\n    {\n        echo \"{$text}\";\n        echo \"\\n\";\n    }\n\n    public function rssItem($title, $guid, $unread = false)\n    {\n        if ($unread) {\n            echo \"● \";\n        }\n        echo \"$title | length=65 terminal=false refresh=true \";\n        echo \"bash=\".PHP_PATH.\" param1=\\\"\".SCRIPT_PATH.\"\\\" param2=$guid\\n\";\n    }\n\n    public function rssItems($items)\n    {\n        if (empty($items)) {\n            return false;\n        }\n        foreach ($items as $item) {\n            $this-\u003erssItem($item['title'], $item['guid'], !$item['visited']);\n        };\n    }\n\n    public function markAsRead()\n    {\n        echo \"Mark all as read | terminal=false refresh=true \";\n        echo \"bash=\".PHP_PATH.\" param1=\\\"\".SCRIPT_PATH.\"\\\" param2=MARK_ALL_AS_READ\\n\";\n    }\n\n    public function refresh()\n    {\n        echo \"Refresh | refresh=true\";\n    }\n}\n\n$parser = new RSSParser(FEED_URL);\n$bb = new BitBar();\n\n$bb-\u003eicon($feed_image, $parser-\u003egetUnreadCnt());\n$bb-\u003edivider();\n$bb-\u003eprintln($parser-\u003etitle);\n$bb-\u003edivider();\n$bb-\u003erssItems($parser-\u003eitems);\n$bb-\u003edivider();\n$bb-\u003emarkAsRead();\n$bb-\u003erefresh();\n"
+				}
+			],
+			"path": "Web/rss.15m.php",
+			"filename": "rss.15m.php",
+			"dir": "Web",
+			"docsPlugin": "Web/rss.15m.php.html",
+			"docsCategory": "Web.html",
+			"pathSegments": [
+				"Web"
+			],
+			"categoryPathSegments": [
+				{
+					"path": "Web",
+					"text": "Web",
+					"isLast": true
+				}
+			],
+			"title": "Simple RSS reader",
+			"version": "1.0.1",
+			"author": "Aleš Farčnik,  Kenichi Shimizu (Issue #1851)",
+			"authors": [
+				{
+					"name": "alesf",
+					"githubUsername": "alesf",
+					"imageURL": "https://avatars.githubusercontent.com/u/1148574?v=4",
+					"bio": "",
+					"primary": true
+				},
+				{
+					"name": "Kenichi Shimizu",
+					"githubUsername": "KenSmz",
+					"imageURL": "https://avatars.githubusercontent.com/u/23569683?v=4",
+					"bio": "",
+					"primary": false
+				}
+			],
+			"desc": "Simple RSS \"reader\" that will list latest feed items and link to them.",
+			"imageURL": "https://xbarapp.com/docs/plugins/Web/rss.15m.php.png",
+			"dependencies": [
+				"php \u003e= 5.4"
+			],
+			"aboutURL": "",
+			"lastUpdated": "2024-08-05T22:10:35.4056+01:00",
+			"vars": null,
+			"processingNotes": null
+		}
+	]
+}
