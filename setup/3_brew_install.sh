@@ -4,12 +4,6 @@ set -e
 set -u
 
 
-# Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# reload
-exec ${SHELL} -l
-
 # CLI
 brew install bat
 brew install cmatrix
@@ -57,6 +51,7 @@ brew install --cask iina
 brew install --cask jupyter-notebook-viewer
 brew install --cask google-chrome
 brew install --cask google-drive
+brew install --cask keyboardcleantool
 brew install --cask keycastr
 brew install --cask mathpix-snipping-tool
 brew install --cask MonitorControl
