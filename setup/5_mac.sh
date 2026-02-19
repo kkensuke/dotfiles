@@ -10,6 +10,7 @@ set -u
 # - https://github.com/sobolevn/dotfiles
 # - https://github.com/webpro/dotfiles
 # - https://apple.stackexchange.com/questions/14001/how-to-turn-off-all-animations-on-os-x
+# - https://macos-defaults.com/
 
 
 echo 'Configuring your mac. Hang tight.'
@@ -39,7 +40,7 @@ defaults write -g KeyRepeat -int 2
 
 ## Trackpad
 # Cursor speed
-defaults write -g com.apple.trackpad.scaling 5
+defaults write -g com.apple.trackpad.scaling -float "3"
 
 
 ## Dock ##
@@ -131,6 +132,9 @@ defaults write com.apple.dock springboard-hide-duration -float 0
 
 # Change the spacing between icons in menu bar
 defaults -currentHost write -globalDomain NSStatusItemSpacing -int 6
+
+# Click in the scroll bar to (false: Jump to the next page, true: Jump to the spot that's clicked)
+defaults write -g "AppleScrollerPagingBehavior" -bool true
 
 
 

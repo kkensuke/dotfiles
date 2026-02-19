@@ -59,6 +59,7 @@ brew install --cask MonitorControl
 brew install --cask qlmarkdown
 brew install --cask rectangle
 brew install --cask shottr
+brew install --cask stay
 brew install --cask syntax-highlight
 brew install --cask visual-studio-code
 brew install --cask timac/vpnstatus/vpnstatus
