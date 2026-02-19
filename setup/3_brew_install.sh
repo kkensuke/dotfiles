@@ -40,14 +40,12 @@ brew install zsh-syntax-highlighting
 brew install --cask nikitabobko/tap/aerospace
 brew install --cask anki
 brew install --cask appcleaner
-brew install --cask cloudflare-warp
 brew install --cask coconutbattery
 brew install --cask coteditor
 brew install --cask clipy
 brew install --cask cryptomator
 brew install --cask drawio
 brew install --cask espanso
-brew install --cask firefox
 brew install --cask iina
 brew install --cask jupyter-notebook-viewer
 brew install --cask google-chrome
