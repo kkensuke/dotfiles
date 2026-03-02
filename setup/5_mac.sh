@@ -67,7 +67,7 @@ defaults write com.apple.dock minimize-to-application -bool true
 defaults write com.apple.dock "tilesize" -int 43
 
 # put favorite apps in the dock
-apps=("/System/Applications/System Settings" "/System/Applications/Utilities/Terminal" "/Applications/CotEditor" "/Applications/Visual Studio Code" "/Applications/Google Chrome" "/Applications/Firefox" "/Applications/Zotero" "/System/Applications/Mail")
+apps=("/System/Applications/Utilities/Terminal" "/Applications/CotEditor" "/Applications/Visual Studio Code" "/Applications/Google Chrome" "/Applications/Zotero" "/System/Applications/Mail")
 
 for app in "${apps[@]}"
 do
@@ -120,8 +120,8 @@ defaults write NSGlobalDomain com.apple.springing.delay -float 0
 chflags nohidden ~/Library
 
 # Stop using default folders
-chflags hidden ~/{Documents,Movies,Music,Pictures}
-chmod 000 ~/{Documents,Movies,Music,Pictures}
+chflags hidden ~/{Documents,Movies,Music}
+chmod 000 ~/{Documents,Movies,Music}
 
 
 
