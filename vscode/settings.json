@@ -83,11 +83,7 @@
         "（": true,
         "）": true,
         "　": true
-    },
-
-    // --- Minimap ---
-    "editor.minimap.enabled": false, // Disable the minimap
-    "editor.minimap.renderCharacters": false, // Render actual characters in minimap (if enabled)
+    }, // Render actual characters in minimap (if enabled)
     "editor.minimap.size": "fit", // Size of the minimap (if enabled)
     "editor.minimap.showSlider": "always", // Visibility of the minimap slider (if enabled)
 

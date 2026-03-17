@@ -46,6 +46,7 @@ brew install --cask clipy
 brew install --cask cryptomator
 brew install --cask drawio
 brew install --cask espanso
+brew install --cask handy
 brew install --cask iina
 brew install --cask jupyter-notebook-viewer
 brew install --cask google-chrome
@@ -57,6 +58,7 @@ brew install --cask MonitorControl
 brew install --cask qlmarkdown
 brew install --cask rectangle
 brew install --cask shottr
+brew install --cask stats
 brew install --cask stay
 brew install --cask syntax-highlight
 brew install --cask visual-studio-code
