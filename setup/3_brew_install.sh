@@ -18,6 +18,7 @@ brew install git-delta
 brew install git-filter-repo
 brew install ghostscript
 brew install mas
+brew install mole
 brew install neovim
 brew install node
 brew install pnpm
