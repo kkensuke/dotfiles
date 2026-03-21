@@ -41,6 +41,7 @@ brew install zsh-syntax-highlighting
 brew install --cask nikitabobko/tap/aerospace
 brew install --cask anki
 brew install --cask appcleaner
+brew install --cask betterdisplay
 brew install --cask coconutbattery
 brew install --cask coteditor
 brew install --cask clipy
