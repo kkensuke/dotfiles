@@ -1,0 +1,1 @@
+/Users/kkensuke/Desktop/github/dotfiles/script/Open in Preview.workflow

@@ -95,6 +95,7 @@ mkc() { mkdir $1 && cd $1}
 alias cl='clear'
 alias mat='cmatrix'
 alias his='history'
+alias lg='ls G'
 alias hg='history 0 | grep'
 alias rl='echo ""; exec ${SHELL} -l' #reload
 alias -s md=glow
