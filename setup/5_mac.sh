@@ -37,10 +37,42 @@ hidutil property --set '{"CapsLockDelayOverride":0}'
 defaults write -g InitialKeyRepeat -int 15
 defaults write -g KeyRepeat -int 2
 
+# Capitalize
+defaults write -g "NSAutomaticCapitalizationEnabled" -bool false
+
+# Double-space to period
+defaults write -g "NSAutomaticPeriodSubstitutionEnabled" -bool false
+
+# Smart quotes and dashes
+defaults write -g "NSAutomaticDashSubstitutionEnabled" -bool false
+defaults write -g "NSAutomaticQuoteSubstitutionEnabled" -bool false
+
+
+defaults write -g KB_DoubleQuoteOption -string '"abc"'
+defaults write -g KB_SingleQuoteOption -string "'abc'"
+
+# Full-width numeric characters (true: Full-width, false: Half-width)
+defaults write com.apple.inputmethod.Kotoeri "JIMPrefFullWidthNumeralCharactersKey" -bool false
+
+# Shift key action (0: Katakana, 1: Romaji)
+defaults write com.apple.inputmethod.Kotoeri "JIMPrefShiftKeyActionKey" -int 0
+
 
 ## Trackpad
 # Cursor speed
 defaults write -g com.apple.trackpad.scaling -float "3"
+
+# Tap to click
+defaults write com.apple.AppleMultitouchTrackpad "Clicking" -bool true
+
+# Click (0: light, 1: medium, 2: firm)
+defaults write com.apple.AppleMultitouchTrackpad "FirstClickThreshold" -int 0
+defaults write com.apple.AppleMultitouchTrackpad "SecondClickThreshold" -int 0
+
+
+## Menu bar
+# Change the spacing between icons in menu bar
+defaults -currentHost write -g NSStatusItemSpacing -int 6
 
 
 ## Dock ##
@@ -106,6 +138,9 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # icnv - Icon View
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
+# Auto adjust column width
+defaults write com.apple.finder "_FXEnableColumnAutoSizing" -bool true
+
 # Avoid creating .DS_Store files
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
@@ -129,9 +164,6 @@ chmod 000 ~/{Documents,Movies,Music}
 # showing and hiding Launchpad
 defaults write com.apple.dock springboard-show-duration -float 0
 defaults write com.apple.dock springboard-hide-duration -float 0
-
-# Change the spacing between icons in menu bar
-defaults -currentHost write -globalDomain NSStatusItemSpacing -int 6
 
 # Click in the scroll bar to (false: Jump to the next page, true: Jump to the spot that's clicked)
 defaults write -g "AppleScrollerPagingBehavior" -bool true
