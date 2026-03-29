@@ -45,7 +45,7 @@ resizepdfA4() {
 
 ## search ##
 alias grep='grep --color'
-dif(){ diff --color -u $1 $2 }
+diff(){ git diff --no-index $1 $2 }
 fb() { find . -size +$2M -type f -name $1 -exec ls -lhS "{}" \; | awk '{print $5,$9}' }
 # fd() { find . -name "*.$1" -type f -delete }
 # `rn txt old_`: This command will remove 'old_' from all .txt filenames in the current directory.
