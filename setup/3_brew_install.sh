@@ -9,6 +9,7 @@ brew install bat
 brew install cmatrix
 brew install coreutils
 brew install duf
+brew install duti
 brew install fd
 brew install fzf
 brew install gcc

@@ -93,7 +93,20 @@ mkvenv() {
 
 # tools
 calc() { python -c "import math; print($*)"}
-repotext() { python $GITHUB/tools/repo_to_text/repo_to_text_CJK.py $1 -o ~/Desktop/output.txt}
+
+repotext() {
+    local repo_path="$1"
+    shift # Remove the first argument (repo path) from the argument list
+
+    if [ $# -eq 0 ]; then
+        # If there are no additional arguments (normal usage)
+        python "$GITHUB/tools/repo_to_text/repo_to_text_CJK.py" "$repo_path" -o ~/Desktop/output.txt
+    else
+        # If there are additional arguments, pass them all to the -e (exclude) option
+        python "$GITHUB/tools/repo_to_text/repo_to_text_CJK.py" "$repo_path" -o ~/Desktop/output.txt -e "$@"
+    fi
+}
+
 you() {
     if [ $# -lt 1 ]; then
         echo "Usage: you [lang] URL"
