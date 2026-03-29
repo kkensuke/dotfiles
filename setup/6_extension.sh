@@ -5,6 +5,7 @@ EDITOR_ID="com.microsoft.VSCode"
 # Basic text types
 duti -s $EDITOR_ID public.plain-text all
 duti -s $EDITOR_ID public.text all
+duti -s $EDITOR_ID public.data all
 duti -s $EDITOR_ID public.source-code all
 
 # Common file extensions
