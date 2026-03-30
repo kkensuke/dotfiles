@@ -126,6 +126,7 @@
         "markdown": true,
         "scminput": false
     },
+    "github.copilot.nextEditSuggestions.enabled": true,
     "github.copilot.editor.enableAutoCompletions": true, // Allow Copilot to provide suggestions automatically
     "github.copilot.chat.codesearch.enabled": true, // Enable Copilot Chat's code search feature
     "github.copilot.selectedCompletionModel": "",
@@ -381,8 +382,6 @@
     
     // --- Others ---
     "diffEditor.ignoreTrimWhitespace": true,
-    "geminicodeassist.displayInlineContextHint": false,
-    "geminicodeassist.project": "plucky-courage-mdpsm",
-    "github.copilot.nextEditSuggestions.enabled": true,
     "hediet.vscode-drawio.resizeImages": null,
+    "extensions.ignoreRecommendations": true,
 }
