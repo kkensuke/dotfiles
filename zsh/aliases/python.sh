@@ -6,9 +6,6 @@ alias pin='pip install'
 alias puin='pip uninstall'
 alias pf='pip list --format=freeze'
 alias pfr='pip list --format=freeze > requirements.txt'
-
-# venv
-alias acv='source ~/venv/bin/activate'
 alias deac='deactivate'
 
 
@@ -88,6 +85,12 @@ mkvenv() {
     ln -sf "$venv_dir" ".venv" || return 1
     echo "✓ Symlink created: .venv -> $venv_dir"
     echo "  Activate with: ${GREEN}source .venv/bin/activate${NC}"
+}
+
+
+uvinstall() {
+    uv add --dev ipykernel jupyter_server
+    uv add numpy  matplotlib
 }
 
 

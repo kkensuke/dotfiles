@@ -137,8 +137,8 @@
 
     // --- Python & Jupyter ---
     "python.analysis.inlayHints.variableTypes": true,
-    "python.defaultInterpreterPath": "",
-    "python.venvPath": "/Users/kensuke/venv", // Path where virtual environments are typically found
+    "python.defaultInterpreterPath": "/Users/kkensuke/venvs/venv/bin/python3", // Default Python interpreter path
+    "python.venvPath": "/Users/kkensuke/venvs/venv", // Path where virtual environments are typically found
     "python.venvFolders": [ // Folder names recognized as containing virtual environments
         "**/venv",
         "**/.venv"
