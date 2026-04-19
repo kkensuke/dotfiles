@@ -6,7 +6,9 @@ alias pin='pip install'
 alias puin='pip uninstall'
 alias pf='pip list --format=freeze'
 alias pfr='pip list --format=freeze > requirements.txt'
+alias acv='source .venv/bin/activate'
 alias deac='deactivate'
+alias js='jupyter server'
 
 
 GREEN='\033[0;32m'

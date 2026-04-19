@@ -384,4 +384,5 @@
     "diffEditor.ignoreTrimWhitespace": true,
     "hediet.vscode-drawio.resizeImages": null,
     "extensions.ignoreRecommendations": true,
+    "editor.minimap.renderCharacters": false,
 }
