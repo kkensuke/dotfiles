@@ -11,6 +11,10 @@ alias hide='defaults write com.apple.finder AppleShowAllFiles -bool false && kil
 alias dhide='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
 alias dshow='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
 
+# Hide/show the files and folders
+alias hidden='chflags hidden'
+alias nohidden='chflags nohidden'
+
 # sleep setting
 alias sleepon='sudo pmset -a disablesleep 0'
 alias sleepoff='sudo pmset -a disablesleep 1'
