@@ -104,7 +104,12 @@
         "editor.tabSize": 4
     },
     "[python]": {
-        "editor.tabSize": 4
+        "editor.tabSize": 4,
+        "editor.rulers": [72, 79] // Show vertical rulers at 72 and 79 characters for Python
+    },
+    "[markdown]": {
+        "editor.tabSize": 4,
+        "editor.rulers": [100]
     },
     "[tex]": {
         "editor.tabSize": 4

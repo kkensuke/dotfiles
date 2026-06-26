@@ -106,6 +106,9 @@ do
 	defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$app.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
 done
 
+# Do not reorder Spaces by most recently used (Eg. when opening a link in vscode and switching to the browser, the browser space will be moved next to the vscode space if this is set to true)
+defaults write com.apple.dock mru-spaces -bool false
+
 
 
 ## Finder ##
