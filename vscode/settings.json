@@ -34,7 +34,6 @@
 
     // --- File Management ---
     "files.autoSave": "onFocusChange", // Auto-save files when focus moves away from the editor
-    "files.autoSaveDelay": 1000, // Delay for autosave (0 means immediate on focus change)
     "files.trimTrailingWhitespace": true, // Trim trailing whitespace on save
     "files.exclude": { // Hide these files/folders from the explorer
         "**/.git": false,
@@ -66,7 +65,7 @@
     // --- Core Editing Behavior ---
     "editor.wordWrap": "on", // Wrap lines that exceed the viewport width
     "editor.tabSize": 4, // Default number of spaces for a tab
-    "editor.lineNumbers": "off", // Show line numbers
+    "editor.lineNumbers": "off", // Disable line numbers
     "editor.folding": false, // Disable code folding
     "editor.glyphMargin": false, // Disable the glyph margin (used for breakpoints, etc.)
     "editor.trimAutoWhitespace": true, // remove trailing auto inserted whitespace.
@@ -84,6 +83,7 @@
     "editor.renderWhitespace": "all", // Show all whitespace characters
     "editor.bracketPairColorization.enabled": true, // Colorize matching bracket pairs
     "editor.guides.bracketPairs": true, // Show guides for bracket pairs
+    "editor.guides.bracketPairsHorizontal": "active",
     "editor.scrollBeyondLastLine": false, // Don't allow scrolling beyond the last line
     "editor.padding.bottom": 100, // Add padding below the last line
     "editor.unicodeHighlight.allowedCharacters": { // Allow specific non-basic ASCII characters without highlighting
