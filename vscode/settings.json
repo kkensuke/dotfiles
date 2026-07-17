@@ -344,11 +344,12 @@
     ],
     "latex-workshop.latex.clean.fileTypes": [ // Files to remove during 'Clean up auxiliary files'
         "*.bbl", "*.blg", "*.idx", "*.ind", "*.lof", "*.lot", "*.out", "*.toc", "*.acn", "*.acr", "*.alg",
-        "*.glg", "*.glo", "*.gls", "*.ist", "*.fls", "*.log", "*.fdb_latexmk", "*.synctex.gz",
+        "*.glg", "*.glo", "*.gls", "*.ist", "*.fls", "*.log", "*.fdb_latexmk",
         "_minted*", "*.nav", "*.snm", "*.vrb"
     ],
     "latex-workshop.latex.autoClean.run": "onBuilt", // Run clean after a successful build
     "latex-workshop.latex.autoBuild.run": "onFileChange", // Trigger build automatically when a LaTeX file changes
+    "latex-workshop.synctex.synctexjs.enabled": true, // Enable SyncTeX for forward and inverse search
     "latex-workshop.synctex.afterBuild.enabled": true, // Enable SyncTeX forward search after build
     "latex-workshop.view.pdf.viewer": "tab", // Open PDF preview in a VS Code tab
     "latex-workshop.view.pdf.invert": 1, // Invert PDF colors (value might depend on viewer/theme, 1 often works)
@@ -397,7 +398,9 @@
 
 
     // --- Others ---
-    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.ignoreTrimWhitespace": false,
     "hediet.vscode-drawio.resizeImages": null,
     "markdown-mermaid.controls.show": "always",
+    "workbench.experimental.modernUI": true,
+    "workbench.layoutControl.enabled": false,
 }

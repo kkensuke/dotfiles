@@ -4,7 +4,7 @@ set -e
 set -u
 
 
-# ref:
+# References:
 # - https://github.com/rootbeersoup/dotfiles
 # - https://github.com/skwp/dotfiles
 # - https://github.com/sobolevn/dotfiles
@@ -13,180 +13,215 @@ set -u
 # - https://macos-defaults.com/
 
 
-echo 'Configuring your mac. Hang tight.'
+echo 'Configuring your Mac. Hang tight.'
 osascript -e 'tell application "System Preferences" to quit'
 
 
 ## General ##
+
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 sudo nvram StartupMute=%01
 
-# Disable the “Are you sure you want to open this application?” dialog
+# Disable the quarantine warning shown when opening downloaded applications
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Disable Notifcations
+# Disable Notification Center
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
 
+# Do not automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
 
-## Keyboard
-# deactivate the CapsLockDelay
+
+## Keyboard ##
+
+# Remove the delay before Caps Lock is activated
 hidutil property --set '{"CapsLockDelayOverride":0}'
 
-# Deley until repeat and Key repeat rate
+# Set the delay before key repeat and the key repeat rate
 defaults write -g InitialKeyRepeat -int 15
 defaults write -g KeyRepeat -int 2
 
-# Capitalize
-defaults write -g "NSAutomaticCapitalizationEnabled" -bool false
+# Disable automatic capitalization
+defaults write -g NSAutomaticCapitalizationEnabled -bool false
 
-# Double-space to period
-defaults write -g "NSAutomaticPeriodSubstitutionEnabled" -bool false
+# Disable inserting a period after pressing Space twice
+defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
 
-# Smart quotes and dashes
-defaults write -g "NSAutomaticDashSubstitutionEnabled" -bool false
-defaults write -g "NSAutomaticQuoteSubstitutionEnabled" -bool false
+# Disable automatic smart dashes and smart quotes
+defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
+defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 
-
+# Use straight double and single quotation marks
 defaults write -g KB_DoubleQuoteOption -string '"abc"'
 defaults write -g KB_SingleQuoteOption -string "'abc'"
 
-# Full-width numeric characters (true: Full-width, false: Half-width)
-defaults write com.apple.inputmethod.Kotoeri "JIMPrefFullWidthNumeralCharactersKey" -bool false
+# Use half-width numeric characters in the Japanese input method
+# true: full-width numerals, false: half-width numerals
+defaults write com.apple.inputmethod.Kotoeri JIMPrefFullWidthNumeralCharactersKey -bool false
 
-# Shift key action (0: Katakana, 1: Romaji)
-defaults write com.apple.inputmethod.Kotoeri "JIMPrefShiftKeyActionKey" -int 0
-
-
-## Trackpad
-# Cursor speed
-defaults write -g com.apple.trackpad.scaling -float "3"
-
-# Tap to click
-defaults write com.apple.AppleMultitouchTrackpad "Clicking" -bool true
-
-# Click (0: light, 1: medium, 2: firm)
-defaults write com.apple.AppleMultitouchTrackpad "FirstClickThreshold" -int 0
-defaults write com.apple.AppleMultitouchTrackpad "SecondClickThreshold" -int 0
+# Configure the Shift-key action in the Japanese input method
+# 0: Katakana, 1: Romaji
+defaults write com.apple.inputmethod.Kotoeri JIMPrefShiftKeyActionKey -int 0
 
 
-## Menu bar
-# Change the spacing between icons in menu bar
+## Trackpad ##
+
+# Set the trackpad pointer-tracking speed
+defaults write -g com.apple.trackpad.scaling -float 3
+
+# Enable tap to click
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+
+# Set the force required for the first and second force-click stages
+# 0: light, 1: medium, 2: firm
+defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 0
+defaults write com.apple.AppleMultitouchTrackpad SecondClickThreshold -int 0
+
+
+## Menu Bar ##
+
+# Reduce the spacing between menu-bar status icons
 defaults -currentHost write -g NSStatusItemSpacing -int 6
 
 
 ## Dock ##
-# delete an array of items located on the Applications side of the Dock
+
+# Remove all application icons from the Dock
 defaults delete com.apple.dock persistent-apps
 
-# delete an array of items located on the Documents side of the Dock
+# Remove all folders, files, and shortcuts from the right side of the Dock
 defaults delete com.apple.dock persistent-others
 
-# Disable show-process-indicators (dot below the icons)
+# Hide the indicator dots below running applications
 defaults write com.apple.dock show-process-indicators -bool false
+
+# Hide recently used applications in the Dock
 defaults write com.apple.dock show-recents -bool false
 
-# Showing the Dock
-defaults write com.apple.dock "autohide-delay" -float "0"
+# Remove the delay before showing the auto-hidden Dock
+defaults write com.apple.dock autohide-delay -float 0
 
-# animation
-defaults write com.apple.dock "mineffect" -string "scale"
+# Use the scale effect when minimizing windows
+defaults write com.apple.dock mineffect -string scale
 
-# Minimize windows into application icon
+# Minimize windows into their application icons
 defaults write com.apple.dock minimize-to-application -bool true
 
-# change the size of icons in the dock
-defaults write com.apple.dock "tilesize" -int 43
+# Set the size of application icons in the Dock
+defaults write com.apple.dock tilesize -int 43
 
-# put favorite apps in the dock
-apps=("/System/Applications/Utilities/Terminal" "/Applications/CotEditor" "/Applications/Visual Studio Code" "/Applications/Google Chrome" "/Applications/Zotero" "/System/Applications/Mail")
+# Add the selected applications to the Dock
+apps=(
+	"/System/Applications/Utilities/Terminal"
+	"/Applications/CotEditor"
+	"/Applications/Visual Studio Code"
+	"/Applications/Google Chrome"
+	"/Applications/Zotero"
+	"/System/Applications/Mail"
+)
 
 for app in "${apps[@]}"
 do
-	defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$app.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+	defaults write com.apple.dock persistent-apps -array-add \
+		"<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$app.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
 done
 
-# Do not reorder Spaces by most recently used (Eg. when opening a link in vscode and switching to the browser, the browser space will be moved next to the vscode space if this is set to true)
-defaults write com.apple.dock mru-spaces -bool false
 
+## Finder
 
-
-## Finder ##
-# Keep folders on top when sorting by name:
+# Keep folders at the top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
-# Show Finder path bar:
+# Show the path bar at the bottom of Finder windows
 defaults write com.apple.finder ShowPathbar -bool true
 
-# Do not show status bar in Finder:
+# Hide the status bar at the bottom of Finder windows
 defaults write com.apple.finder ShowStatusBar -bool false
 
-# Show hidden files in Finder: cmd + shift + .
+# Always show hidden files in Finder
+# Keyboard shortcut to toggle visibility: Command-Shift-.
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
-# Show file extensions in Finder:
+# Always show filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-# Disable the warning when changing a file extension
+# Disable the warning shown when changing a filename extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# Disable the warning when opening unconfirmed apps
-defaults write com.apple.LaunchServices LSQuarantine -bool false
+# Use column view as the default Finder view
+# Flwv: Cover Flow view
+# Nlsv: List view
+# clmv: Column view
+# icnv: Icon view
+defaults write com.apple.finder FXPreferredViewStyle -string clmv
 
-# Use column view in all Finder windows by default
-# View modes:
-# Flwv - Cover Flow View
-# Nlsv - List View
-# clmv - Column View
-# icnv - Icon View
-defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+# Automatically resize columns in Finder's column view
+defaults write com.apple.finder _FXEnableColumnAutoSizing -bool true
 
-# Auto adjust column width
-defaults write com.apple.finder "_FXEnableColumnAutoSizing" -bool true
-
-# Avoid creating .DS_Store files
+# Prevent .DS_Store files from being created on network and USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# set coteditor as default editor for any .txt file
-defaults write com.apple.LaunchServices LSHandlers -array-add '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.coteditor.CotEditor;}'
+# Optionally set CotEditor as the default application for plain-text files
+# defaults write com.apple.LaunchServices LSHandlers -array-add \
+#     '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.coteditor.CotEditor;}'
 
-# Spring Loading
+# Open folders immediately when dragging an item over them
 defaults write NSGlobalDomain com.apple.springing.delay -float 0
 
-# Show Library folder
+# Make the user's Library folder visible
 chflags nohidden ~/Library
 
-# Stop using default folders
+# Optionally hide and restrict access to selected default folders
 chflags hidden ~/{Documents,Movies,Music}
 chmod 000 ~/{Documents,Movies,Music}
 
 
+## Other Settings
 
-## Others
-# showing and hiding Launchpad
+# Disable the Launchpad show and hide animations
 defaults write com.apple.dock springboard-show-duration -float 0
 defaults write com.apple.dock springboard-hide-duration -float 0
 
-# Click in the scroll bar to (false: Jump to the next page, true: Jump to the spot that's clicked)
-defaults write -g "AppleScrollerPagingBehavior" -bool true
+# Make a scroll-bar click jump directly to the clicked position
+# false: jump to the next page
+# true: jump to the clicked position
+defaults write -g AppleScrollerPagingBehavior -bool true
 
 
+## Screenshots
 
-## Screenshot ##
-defaults write com.apple.screencapture name "screenshot"
+# Set the screenshot filename prefix
+defaults write com.apple.screencapture name screenshot
+
+# Hide the floating thumbnail shown after taking a screenshot
 defaults write com.apple.screencapture show-thumbnail -bool false
+
+# Do not include the date and time in screenshot filenames
 defaults write com.apple.screencapture include-date -bool false
+
+# Disable shadows around captured windows
 defaults write com.apple.screencapture disable-shadow -bool true
+
+# Include the mouse pointer in screenshots
 defaults write com.apple.screencapture showsCursor -bool true
+
+# Save screenshots to the Desktop
 defaults write com.apple.screencapture location ~/Desktop/
-defaults write com.apple.screencapture type png # png, gif, jpeg, pdf, bmp, tiff, psd, jpeg 2000, etc.
-# defaults read com.apple.screencapture # See all settings about screenshot
+
+# Save screenshots in PNG format
+# Other supported formats may include GIF, JPEG, PDF, BMP, TIFF,
+# PSD, and JPEG 2000, depending on the macOS version
+defaults write com.apple.screencapture type png
+
+# Print the currently stored screenshot preferences
+# defaults read com.apple.screencapture
 
 
+## Restart Affected Applications
 
-## Restarting apps ##
-echo 'Restarting apps...'
+echo 'Restarting affected applications...'
 killall Finder
 killall Dock
 
