@@ -113,18 +113,18 @@ defaults write com.apple.dock tilesize -int 43
 
 # Add the selected applications to the Dock
 apps=(
-	"/System/Applications/Utilities/Terminal"
-	"/Applications/CotEditor"
-	"/Applications/Visual Studio Code"
-	"/Applications/Google Chrome"
-	"/Applications/Zotero"
-	"/System/Applications/Mail"
+    "/System/Applications/Utilities/Terminal"
+    "/Applications/CotEditor"
+    "/Applications/Visual Studio Code"
+    "/Applications/Google Chrome"
+    "/Applications/Zotero"
+    "/System/Applications/Mail"
 )
 
 for app in "${apps[@]}"
 do
-	defaults write com.apple.dock persistent-apps -array-add \
-		"<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$app.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+    defaults write com.apple.dock persistent-apps -array-add \
+        "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$app.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
 done
 
 
