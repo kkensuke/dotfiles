@@ -14,7 +14,8 @@ set -u
 
 
 echo 'Configuring your Mac. Hang tight.'
-osascript -e 'tell application "System Preferences" to quit'
+osascript -e 'tell application "System Settings" to quit'
+
 
 
 ## General ##
@@ -29,8 +30,6 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # Disable Notification Center
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
 
-# Do not automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
 
 
 ## Keyboard ##
@@ -65,6 +64,7 @@ defaults write com.apple.inputmethod.Kotoeri JIMPrefFullWidthNumeralCharactersKe
 defaults write com.apple.inputmethod.Kotoeri JIMPrefShiftKeyActionKey -int 0
 
 
+
 ## Trackpad ##
 
 # Set the trackpad pointer-tracking speed
@@ -79,10 +79,12 @@ defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 0
 defaults write com.apple.AppleMultitouchTrackpad SecondClickThreshold -int 0
 
 
+
 ## Menu Bar ##
 
 # Reduce the spacing between menu-bar status icons
 defaults -currentHost write -g NSStatusItemSpacing -int 6
+
 
 
 ## Dock ##
@@ -99,8 +101,14 @@ defaults write com.apple.dock show-process-indicators -bool false
 # Hide recently used applications in the Dock
 defaults write com.apple.dock show-recents -bool false
 
+# Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
+
 # Remove the delay before showing the auto-hidden Dock
 defaults write com.apple.dock autohide-delay -float 0
+
+# Disable the bouncing animation when opening applications
+defaults write com.apple.dock launchanim -bool false
 
 # Use the scale effect when minimizing windows
 defaults write com.apple.dock mineffect -string scale
@@ -128,7 +136,8 @@ do
 done
 
 
-## Finder
+
+## Finder ##
 
 # Keep folders at the top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
@@ -178,7 +187,26 @@ chflags hidden ~/{Documents,Movies,Music}
 chmod 000 ~/{Documents,Movies,Music}
 
 
-## Other Settings
+
+## Desktop, Windows & Spaces ##
+
+# Disable Stage Manager
+defaults write com.apple.WindowManager GloballyEnabled -bool false
+
+# Disable window tiling gestures
+defaults write com.apple.WindowManager EnableTilingByEdgeDrag -bool false
+defaults write com.apple.WindowManager EnableTopTilingByEdgeDrag -bool false
+defaults write com.apple.WindowManager EnableTilingOptionAccelerator -bool false
+
+# Hide widgets on the regular desktop
+defaults write com.apple.WindowManager StandardHideWidgets -bool true
+
+# Do not automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+
+
+## Other Settings ##
 
 # Disable the Launchpad show and hide animations
 defaults write com.apple.dock springboard-show-duration -float 0
@@ -190,7 +218,8 @@ defaults write com.apple.dock springboard-hide-duration -float 0
 defaults write -g AppleScrollerPagingBehavior -bool true
 
 
-## Screenshots
+
+## Screenshots ##
 
 # Set the screenshot filename prefix
 defaults write com.apple.screencapture name screenshot
@@ -219,7 +248,8 @@ defaults write com.apple.screencapture type png
 # defaults read com.apple.screencapture
 
 
-## Restart Affected Applications
+
+## Restart Affected Applications ##
 
 echo 'Restarting affected applications...'
 killall Finder
