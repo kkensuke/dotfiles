@@ -119,7 +119,10 @@
     },
     "[markdown]": {
         "editor.tabSize": 4,
-        "editor.rulers": [100]
+        "editor.rulers": [
+            100
+        ],
+        "diffEditor.ignoreTrimWhitespace": true
     },
     "[tex]": {
         "editor.tabSize": 4
