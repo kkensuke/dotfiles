@@ -11,3 +11,8 @@
 [[ -f $ZDOTDIR/aliases/timer.sh ]]           && . $ZDOTDIR/aliases/timer.sh
 [[ -f $ZDOTDIR/.api_keys ]]                  && . $ZDOTDIR/.api_keys
 [[ -f $HOME/.local/bin/env ]]                && . $HOME/.local/bin/env
+
+# Start new Apple Terminal sessions from the Desktop directory
+if [[ -o interactive && "$TERM_PROGRAM" == "Apple_Terminal" ]]; then
+  cd "$HOME/Desktop"
+fi
