@@ -39,19 +39,16 @@ brew install zsh-syntax-highlighting
 #sudo ln -s /opt/homebrew/bin/g++-14 /usr/local/bin/g++
 
 # GUI
-brew install --cask nikitabobko/tap/aerospace
+# brew install --cask nikitabobko/tap/aerospace
 brew install --cask anki
 brew install --cask appcleaner
-brew install --cask betterdisplay
 brew install --cask coconutbattery
-brew install --cask coteditor
+# brew install --cask coteditor
 brew install --cask clipy
 brew install --cask cryptomator
 brew install --cask drawio
 brew install --cask espanso
-brew install --cask handy
 brew install --cask iina
-brew install --cask jupyter-notebook-viewer
 brew install --cask google-chrome
 brew install --cask google-drive
 brew install --cask keyboardcleantool
@@ -66,7 +63,6 @@ brew install --cask stay
 brew install --cask syntax-highlight
 brew install --cask visual-studio-code
 brew install --cask timac/vpnstatus/vpnstatus
-brew install --cask xbar
 brew install --cask zoom
 brew install --cask zotero
 
