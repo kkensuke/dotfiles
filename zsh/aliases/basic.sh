@@ -5,11 +5,13 @@ alias ls='gls --color --group-directories-first -F'
 alias l='ls'
 alias la='ls -A'
 alias ll='ls -AhlS'
+alias lg='ls G'
 alias cat='bat'
+alias cl='clear'
 alias ds='du -d 1 -h 2>/dev/null | sort -h'
 alias pwd='sed "s/ /\\\ /g" <<< ${PWD/#$HOME/"~"}'
 alias p='pwd; pwd | pbcopy'
-alias path='echo -e ${PATH//:/\\n}'
+alias path='print -rl -- "${path[@]}"'
 tre() { tree -ahC -L "$2" -I '.git|venv|node_modules|.DS_Store' --dirsfirst "$1"}
 
 ## change directory ##
@@ -90,13 +92,15 @@ alias testpy='touch ~/Desktop/asdf.ipynb; code ~/Desktop/asdf.ipynb'
 tc() { touch $1 && c $1 }
 mkc() { mkdir $1 && cd $1}
 
-## others ##
-alias cl='clear'
-alias mat='cmatrix'
-alias his='history'
-alias lg='ls G'
+## history ##
+alias h='history'
+alias ha='history 0'
 alias hg='history 0 | grep'
+alias dhis='rf /Users/kkensuke/Desktop/github/dotfiles/zsh/.zsh_history; rl'
+
+## others ##
 alias rl='echo ""; exec ${SHELL} -l' #reload
+alias mat='cmatrix'
 alias -s md=glow
 alias -s py=python
 alias -s {html,pdf}=google
