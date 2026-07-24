@@ -406,4 +406,6 @@
     "markdown-mermaid.controls.show": "always",
     "workbench.experimental.modernUI": true,
     "workbench.layoutControl.enabled": false,
+    "workbench.browser.showInTitleBar": true,
+    "window.customTitleBarVisibility": "windowed",
 }
