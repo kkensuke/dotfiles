@@ -93,7 +93,7 @@ tc() { touch $1 && c $1 }
 mkc() { mkdir $1 && cd $1}
 
 ## history ##
-alias h='history'
+alias his='history'
 alias ha='history 0'
 alias hg='history 0 | grep'
 alias dhis='rf /Users/kkensuke/Desktop/github/dotfiles/zsh/.zsh_history; rl'

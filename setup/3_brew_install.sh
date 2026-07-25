@@ -4,7 +4,7 @@ set -e
 set -u
 
 
-# CLI
+## CLI
 brew install bat
 brew install cmatrix
 brew install coreutils
@@ -26,19 +26,21 @@ brew install pnpm
 brew install rename
 brew install scc
 brew install sqlite
+brew install superfile
 brew install tree
 brew install uv
 brew install yt-dlp
+brew install zoxide
 brew install zsh-autosuggestions
 brew install zsh-completions
 brew install zsh-git-prompt
 brew install zsh-syntax-highlighting
 
-# C++
+## C++
 #sudo ln -s /opt/homebrew/bin/gcc-14 /usr/local/bin/gcc
 #sudo ln -s /opt/homebrew/bin/g++-14 /usr/local/bin/g++
 
-# GUI
+## GUI
 # brew install --cask nikitabobko/tap/aerospace
 brew install --cask anki
 brew install --cask appcleaner
@@ -67,7 +69,13 @@ brew install --cask zoom
 brew install --cask zotero
 
 
-# app store
+## Fonts
+# Nerd Font version of `SF mono` (basic font in terminal) for superfile.
+# Choose `Liga SFMono Nerd Font` in Terminal > Preferences > Profiles > Text > Font.
+brew install --cask font-jetbrains-mono-nerd-font
+
+
+## App Store
 # LINE
 mas install 539883307
 # hand-mirror
@@ -76,7 +84,7 @@ mas install 1502839586
 mas install 302584613
 
 
-# register gh alias
+## Register gh alias
 ----------------------------------------------------
 gh alias set repo-delete 'api -X DELETE "repos/$1"'
 gh auth refresh -h github.com -s delete_repo
@@ -90,5 +98,5 @@ gh auth refresh -h github.com -s delete_repo
 gh auth login -s delete_repo
 ----------------------------------------------------
 
-# reload
+## reload
 exec ${SHELL} -l
