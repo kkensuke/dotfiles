@@ -80,8 +80,6 @@ alias -g N='&>/dev/null'
 alias o='open'
 alias hr='open .'
 alias vs='code .'
-#alias no='sh $DOTFILES/script/cryptomator-dir1.sh'
-#alias lno='umount "/Users/kensuke/cryptomator-mounts"'
 alias c='open -a CotEditor.app'
 alias vj='code $DOTFILES/vscode/settings.json'
 alias ggl="open -a 'Google Chrome.app'"
@@ -89,8 +87,6 @@ alias ggl="open -a 'Google Chrome.app'"
 ## make ##
 alias m='mkdir'
 alias testpy='touch ~/Desktop/asdf.ipynb; code ~/Desktop/asdf.ipynb'
-tc() { touch $1 && c $1 }
-mkc() { mkdir $1 && cd $1}
 
 ## history ##
 alias his='history'

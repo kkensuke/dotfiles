@@ -10,3 +10,14 @@ bindkey "^j" replace_buffer_with_its_output
 url(){
     echo "[InternetShortcut]\nURL=$1" > "$2".url
 }
+
+zipen() {
+  if [ $# -lt 1 ]; then
+    echo "Usage: zipen <file-or-folder>"
+    return 1
+  fi
+
+  local target="$1"
+  local base="$(basename "$target")"
+  zip -er "enc_${base}.zip" "$target"
+}
