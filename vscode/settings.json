@@ -13,7 +13,7 @@
     "workbench.colorTheme": "Monokai", // Set the color theme
     "workbench.activityBar.location": "top", // Move activity bar (Explorer, Search, etc.) to the top
     "workbench.editor.tabSizing": "shrink", // Tabs shrink to fit available space
-    "workbench.editor.enablePreview": false, // Disable preview mode for editors (always open in a new tab)
+    "workbench.editor.enablePreview": true, // Disable preview mode for editors (always open in a new tab)
     "workbench.editor.useModal": "off", // Disable modal editor behavior (some editors may still use modal behavior)
     "workbench.settings.openDefaultKeybindings": true, // Easily access default keybindings JSON
     "workbench.secondarySideBar.defaultVisibility": "hidden", // Hide secondary sidebar by default
@@ -65,7 +65,7 @@
     // --- Core Editing Behavior ---
     "editor.wordWrap": "on", // Wrap lines that exceed the viewport width
     "editor.tabSize": 4, // Default number of spaces for a tab
-    "editor.lineNumbers": "off", // Disable line numbers
+    "editor.lineNumbers": "on", // Disable line numbers
     "editor.folding": false, // Disable code folding
     "editor.glyphMargin": false, // Disable the glyph margin (used for breakpoints, etc.)
     "editor.trimAutoWhitespace": true, // remove trailing auto inserted whitespace.

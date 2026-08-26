@@ -11,3 +11,6 @@ export LS_COLORS='no=00:fi=00:di=00;96:ow=00;96:tw=00;96:st=00;96:ln=00;35:*.sh=
 # C++
 export "PATH=/usr/local/bin:$PATH"
 export CPATH=/opt/homebrew/include/
+
+# GPG
+export GPG_TTY=$(tty)

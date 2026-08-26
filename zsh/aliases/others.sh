@@ -21,3 +21,8 @@ zipen() {
   local base="$(basename "$target")"
   zip -er "enc_${base}.zip" "$target"
 }
+
+
+# Get charger wattage
+WATTAGE=$(system_profiler SPPowerDataType | grep "Wattage" | awk '{print $3}')
+alias wat='echo "⚡${WATTAGE}W"'
