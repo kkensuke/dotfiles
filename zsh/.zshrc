@@ -9,10 +9,5 @@
 [[ -f $ZDOTDIR/aliases/encrypt.sh ]]         && . $ZDOTDIR/aliases/encrypt.sh
 [[ -f $ZDOTDIR/aliases/others.sh ]]          && . $ZDOTDIR/aliases/others.sh
 [[ -f $ZDOTDIR/aliases/timer.sh ]]           && . $ZDOTDIR/aliases/timer.sh
-[[ -f $ZDOTDIR/.api_keys.sh ]]                  && . $ZDOTDIR/.api_keys.sh
+[[ -f $ZDOTDIR/ignore/.api_keys.sh ]]        && . $ZDOTDIR/ignore/.api_keys.sh
 [[ -f $HOME/.local/bin/env ]]                && . $HOME/.local/bin/env
-
-# Start new Apple Terminal sessions from the Desktop directory
-if [[ -o interactive && "$TERM_PROGRAM" == "Apple_Terminal" ]]; then
-  cd "$HOME/Desktop"
-fi
