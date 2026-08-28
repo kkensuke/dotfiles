@@ -70,12 +70,6 @@ brew install --cask zoom
 brew install --cask zotero
 
 
-## Fonts
-# Nerd Font version of `SF mono` (basic font in terminal) for superfile.
-# Choose `Liga SFMono Nerd Font` in Terminal > Preferences > Profiles > Text > Font.
-brew install --cask font-jetbrains-mono-nerd-font
-
-
 ## App Store
 # LINE
 mas install 539883307
