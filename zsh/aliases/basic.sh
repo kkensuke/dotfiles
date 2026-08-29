@@ -16,6 +16,7 @@ tre() { tree -ahC -L "$2" -I '.git|venv|node_modules|.DS_Store' --dirsfirst "$1"
 
 ## change directory ##
 cs() { cd $@ && la }
+alias cd='cs'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
