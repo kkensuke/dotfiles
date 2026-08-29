@@ -121,8 +121,7 @@ defaults write com.apple.dock tilesize -int 43
 
 # Add the selected applications to the Dock
 apps=(
-    "/System/Applications/Utilities/Terminal"
-    "/Applications/CotEditor"
+    "/System/Applications/Utilities/Ghostty"
     "/Applications/Visual Studio Code"
     "/Applications/Google Chrome"
     "/Applications/Zotero"
@@ -171,10 +170,6 @@ defaults write com.apple.finder _FXEnableColumnAutoSizing -bool true
 # Prevent .DS_Store files from being created on network and USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-
-# Optionally set CotEditor as the default application for plain-text files
-# defaults write com.apple.LaunchServices LSHandlers -array-add \
-#     '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.coteditor.CotEditor;}'
 
 # Open folders immediately when dragging an item over them
 defaults write NSGlobalDomain com.apple.springing.delay -float 0

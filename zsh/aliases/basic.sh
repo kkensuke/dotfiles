@@ -81,7 +81,6 @@ alias -g N='&>/dev/null'
 alias o='open'
 alias hr='open .'
 alias vs='code .'
-alias c='open -a CotEditor.app'
 alias vj='code $DOTFILES/vscode/settings.json'
 alias ggl="open -a 'Google Chrome.app'"
 
