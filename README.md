@@ -109,14 +109,14 @@ Zsh is configured through `ZDOTDIR`.
 
 `zsh/.zshenv` sets environment variables and paths, including:
 
-- `LANG=ja_JP.UTF-8`
+- `export LC_ALL=C.UTF-8`
 - `ZDOTDIR=$HOME/Desktop/github/dotfiles/zsh`
 - color settings for `ls`
 - Homebrew/C++ related paths
 
 `zsh/.zshrc` loads modular configuration files for prompt, completion, fzf, aliases, and other shell extensions.
 
-Keep secrets such as API keys in `zsh/.api_keys` and do not commit them.
+Keep secrets such as API keys in `zsh/.api_keys.zsh` and do not commit them.
 
 ## Homebrew
 
