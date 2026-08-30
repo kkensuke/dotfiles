@@ -4,24 +4,28 @@ set -e
 set -u
 
 
+export GITHUB="$HOME/Desktop/github"
+export DOTFILES="$HOME/Desktop/github/dotfiles"
+
+
 # dotfiles
-cd ~/Desktop/github/dotfiles/home/
+cd $DOTFILES/home/
 for i in .[a-z]*
 do
-	ln -sf ~/Desktop/github/dotfiles/home/"$i" ~/"$i"
+    ln -sf $DOTFILES/home/"$i" ~/"$i"
 done
 
 # .zshenv
-ln -sf ~/Desktop/github/dotfiles/zsh/.zshenv ~/.zshenv
+ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
 
 # espanso
-ln -sf ~/Desktop/github/espanso/ ~/Library/Application\ Support/
+ln -sf $GITHUB/espanso/ ~/Library/Application\ Support/
 
 # ghostty
-mkdir -p ~/.config/ghostty && ln -sf ~/Desktop/github/dotfiles/ghostty/config.ghostty ~/.config/ghostty/config.ghostty
+mkdir -p ~/.config/ghostty && ln -sf $DOTFILES/ghostty/config.ghostty ~/.config/ghostty/config.ghostty
 
 # others
-mkdir ~/Library/Application\ Support/xbar && ln -sf ~/Desktop/github/dotfiles/script/plugins ~/Library/Application\ Support/xbar/plugins
-# ln -sf ~/Desktop/github/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-ln -sf ~/Desktop/github/dotfiles/script/Open\ in\ VSCode.workflow ~/Library/Services/Open\ in\ VSCode.workflow
-ln -sf ~/Desktop/github/dotfiles/script/Open\ in\ Preview.workflow ~/Library/Services/Open\ in\ Preview.workflow
+mkdir ~/Library/Application\ Support/xbar && ln -sf $DOTFILES/script/plugins ~/Library/Application\ Support/xbar/plugins
+# ln -sf $DOTFILES/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+ln -sf $DOTFILES/script/Open\ in\ VSCode.workflow ~/Library/Services/Open\ in\ VSCode.workflow
+ln -sf $DOTFILES/script/Open\ in\ Preview.workflow ~/Library/Services/Open\ in\ Preview.workflow
