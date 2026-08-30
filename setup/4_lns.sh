@@ -17,9 +17,11 @@ ln -sf ~/Desktop/github/dotfiles/zsh/.zshenv ~/.zshenv
 # espanso
 ln -sf ~/Desktop/github/espanso/ ~/Library/Application\ Support/
 
+# ghostty
+mkdir -p ~/.config/ghostty && ln -sf ~/Desktop/github/dotfiles/ghostty/config.ghostty ~/.config/ghostty/config.ghostty
+
 # others
 mkdir ~/Library/Application\ Support/xbar && ln -sf ~/Desktop/github/dotfiles/script/plugins ~/Library/Application\ Support/xbar/plugins
 # ln -sf ~/Desktop/github/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ln -sf ~/Desktop/github/dotfiles/script/Open\ in\ VSCode.workflow ~/Library/Services/Open\ in\ VSCode.workflow
 ln -sf ~/Desktop/github/dotfiles/script/Open\ in\ Preview.workflow ~/Library/Services/Open\ in\ Preview.workflow
-ln -sf ~/myLibrary/Application\ Support/Zotero ~/Library/Application\ Support/Zotero
