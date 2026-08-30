@@ -8,6 +8,10 @@ font-thicken = true
 window-padding-x = 30
 window-padding-y = 30
 
+cursor-style = bar
+cursor-color = cell-foreground
+adjust-cursor-thickness = 3
+
 keybind = global:cmd+backquote=toggle_quick_terminal
 # Only the position setting is not enough. Set "never" as follows:
 window-save-state = never
