@@ -1,0 +1,8 @@
+# This file suppresses login messages such as:
+# "Last login: ..."
+
+# The presence of the .hushlogin file is what matters.
+# Its contents are not read or interpreted as configuration,
+# so the file can normally be left completely empty.
+
+# To show login messages again, delete this file:

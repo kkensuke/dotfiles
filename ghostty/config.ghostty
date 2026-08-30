@@ -1,6 +1,6 @@
-# theme = Ayu
+theme = Ayu
 # theme = Monokai Soda
-theme = Monokai Classic
+# theme = Monokai Classic
 
 font-size = 20
 font-thicken = true
