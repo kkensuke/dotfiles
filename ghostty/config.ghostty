@@ -14,6 +14,6 @@ keybind = global:cmd+backquote=toggle_quick_terminal
 # Only the position setting is not enough. Set "never" as follows:
 window-save-state = never
 quick-terminal-position = "bottom"
-# quick-terminal-size = 50%, 25%
+quick-terminal-size = 30%, 50%
 quick-terminal-animation-duration = 0
 quick-terminal-autohide = true
