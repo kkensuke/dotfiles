@@ -15,8 +15,6 @@ alias path='print -rl -- "${path[@]}"'
 tre() { tree -ahC -L "$2" -I '.git|venv|node_modules|.DS_Store' --dirsfirst "$1"}
 
 ## change directory ##
-cs() { cd $@ && la }
-alias cd='cs'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -96,6 +94,8 @@ alias dhis='rf /Users/kkensuke/Desktop/github/dotfiles/zsh/.zsh_history; rl'
 
 ## others ##
 alias rl='echo ""; exec ${SHELL} -l' #reload
+alias you='yt-transcript'
+alias yw='yt-transcript web'
 alias mat='cmatrix'
 alias -s md=glow
 alias -s py=python

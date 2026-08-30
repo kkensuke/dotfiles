@@ -1,13 +1,14 @@
-[[ -f $ZDOTDIR/settings/prompt.sh ]]         && . $ZDOTDIR/settings/prompt.sh
-[[ -f $ZDOTDIR/settings/extensions.sh ]]     && . $ZDOTDIR/settings/extensions.sh
-[[ -f $ZDOTDIR/settings/.fzf.zsh ]]          && . $ZDOTDIR/settings/.fzf.zsh
-[[ -f $ZDOTDIR/aliases/basic.sh ]]           && . $ZDOTDIR/aliases/basic.sh
-[[ -f $ZDOTDIR/aliases/mac.sh ]]             && . $ZDOTDIR/aliases/mac.sh
-[[ -f $ZDOTDIR/aliases/git.sh ]]             && . $ZDOTDIR/aliases/git.sh
-[[ -f $ZDOTDIR/aliases/python.sh ]]          && . $ZDOTDIR/aliases/python.sh
-[[ -f $ZDOTDIR/aliases/latex.sh ]]           && . $ZDOTDIR/aliases/latex.sh
-[[ -f $ZDOTDIR/aliases/encrypt.sh ]]         && . $ZDOTDIR/aliases/encrypt.sh
-[[ -f $ZDOTDIR/aliases/others.sh ]]          && . $ZDOTDIR/aliases/others.sh
-[[ -f $ZDOTDIR/aliases/timer.sh ]]           && . $ZDOTDIR/aliases/timer.sh
-[[ -f $ZDOTDIR/ignore/.api_keys.sh ]]        && . $ZDOTDIR/ignore/.api_keys.sh
-[[ -f $HOME/.local/bin/env ]]                && . $HOME/.local/bin/env
+source_if_exists() {
+    [[ -r "$1" ]] && source "$1"
+}
+
+
+for file in "$ZDOTDIR"/settings/*.zsh; do
+    source_if_exists "$file"
+done
+for file in "$ZDOTDIR"/aliases/*.zsh; do
+    source_if_exists "$file"
+done
+
+source_if_exists "$ZDOTDIR/ignore/.api_keys.zsh"
+source_if_exists "$HOME/.local/bin/env"
