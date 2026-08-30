@@ -1,3 +1,8 @@
+# theme = Ayu
+# theme = Monokai Soda
+theme = Monokai Classic
+
+font-size = 20
 font-thicken = true
 
 window-padding-x = 30
@@ -6,8 +11,9 @@ window-padding-y = 30
 window-save-state = always
 
 keybind = global:cmd+backquote=toggle_quick_terminal
-window-save-state = never # Only the position setting is not enough.
+# Only the position setting is not enough. Set "never" as follows:
+window-save-state = never
 quick-terminal-position = "bottom"
-quick-terminal-size = 50%, 25%
+# quick-terminal-size = 50%, 25%
 quick-terminal-animation-duration = 0
 quick-terminal-autohide = true
