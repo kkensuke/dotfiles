@@ -23,7 +23,7 @@ alias d='cd ~/Desktop'
 alias h='cd ~'
 alias /='cd /'
 alias github='cd $GITHUB'
-alias s='cd $DOTFILES; open .'
+alias s='cd $DOTFILES'
 
 # Change working directory to the top-most Finder window location.
 cdf() { cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" }

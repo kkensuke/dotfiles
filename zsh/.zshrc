@@ -10,5 +10,6 @@ for file in "$ZDOTDIR"/aliases/*.zsh; do
     source_if_exists "$file"
 done
 
-source_if_exists "$ZDOTDIR/ignore/.api_keys.zsh"
+source_if_exists "$ZDOTDIR/ignore/api_keys.zsh"
+source_if_exists "$ZDOTDIR/ignore/mypath.zsh"
 source_if_exists "$HOME/.local/bin/env"
