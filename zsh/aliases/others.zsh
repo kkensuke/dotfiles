@@ -11,6 +11,7 @@ url(){
     echo "[InternetShortcut]\nURL=$1" > "$2".url
 }
 
+
 zipen() {
   if [ $# -lt 1 ]; then
     echo "Usage: zipen <file-or-folder>"
@@ -26,3 +27,18 @@ zipen() {
 # Get charger wattage
 WATTAGE=$(system_profiler SPPowerDataType | grep "Wattage" | awk '{print $3}')
 alias wat='echo "⚡${WATTAGE}W"'
+
+
+# Switch the ghostty quick terminal window between full screen and normal size.
+ql() {
+  if [[ "${GHOSTTY_QUICK_TERMINAL:-}" != "1" ]]; then
+    print -u2 "ql: This function is only available in the ghostty quick terminal."
+    return 1
+  fi
+
+  osascript -e '
+    tell application "System Events"
+      key code 3 using {control down, command down}
+    end tell
+  '
+}
