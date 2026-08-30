@@ -121,7 +121,8 @@ defaults write com.apple.dock tilesize -int 43
 
 # Add the selected applications to the Dock
 apps=(
-    "/System/Applications/Utilities/Ghostty"
+    # "/System/Applications/Utilities/Terminal"
+    "/Applications/Ghostty"
     "/Applications/Visual Studio Code"
     "/Applications/Google Chrome"
     "/Applications/Zotero"
@@ -178,8 +179,8 @@ defaults write NSGlobalDomain com.apple.springing.delay -float 0
 chflags nohidden ~/Library
 
 # Optionally hide and restrict access to selected default folders
-chflags hidden ~/{Documents,Movies,Music}
-chmod 000 ~/{Documents,Movies,Music}
+# chflags hidden ~/{Documents,Movies,Music}
+# chmod 000 ~/{Documents,Movies,Music}
 
 
 

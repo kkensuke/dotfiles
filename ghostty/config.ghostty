@@ -8,8 +8,6 @@ font-thicken = true
 window-padding-x = 30
 window-padding-y = 30
 
-window-save-state = always
-
 keybind = global:cmd+backquote=toggle_quick_terminal
 # Only the position setting is not enough. Set "never" as follows:
 window-save-state = never

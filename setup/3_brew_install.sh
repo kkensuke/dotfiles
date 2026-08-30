@@ -81,7 +81,7 @@ mas install 302584613
 
 
 ## Register gh alias
-----------------------------------------------------
+# ----------------------------------------------------
 gh alias set repo-delete 'api -X DELETE "repos/$1"'
 gh auth refresh -h github.com -s delete_repo
 
@@ -92,7 +92,7 @@ gh auth refresh -h github.com -s delete_repo
 
 # Authenticate Git
 gh auth login -s delete_repo
-----------------------------------------------------
+# ----------------------------------------------------
 
 ## reload
 exec ${SHELL} -l
