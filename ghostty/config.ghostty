@@ -6,7 +6,9 @@ font-size = 20
 font-thicken = true
 
 window-padding-x = 30
-window-padding-y = 30
+window-padding-y = 20
+
+macos-titlebar-style = hidden
 
 cursor-style = bar
 cursor-color = cell-foreground

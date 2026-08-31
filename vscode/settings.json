@@ -26,6 +26,10 @@
         // "*.md": "vscode.markdown.preview.editor" // Open Markdown files in the built-in Markdown preview editor
     },
 
+    // Panel（Terminal / Problems / Output / Debug Console）position and behavior
+    "workbench.panel.defaultLocation": "right",
+    "workbench.panel.opensMaximized": "always",
+
     // --- Explorer ---
     "explorer.sortOrder": "type", // Sort files by type (extension)
     "explorer.confirmDelete": false, // Don't ask for confirmation when deleting files
@@ -313,6 +317,12 @@
         "tasklist"
     ],
 
+    // --- Markdown Preview Enhanced ---
+    "markdown-preview-enhanced.mathRenderingOption": "MathJax",
+    "markdown-preview-enhanced.breakOnSingleNewLine": false,
+    "markdown-preview-enhanced.previewTheme": "monokai.css",
+    "markdown-preview-enhanced.codeBlockTheme": "monokai.css",
+
     // --- LaTeX (LaTeX Workshop Extension) ---
     "latex-workshop.latex.tools": [ // Define compilation tools
         {
@@ -416,4 +426,5 @@
     "workbench.layoutControl.enabled": false,
     "workbench.browser.showInTitleBar": true,
     "window.customTitleBarVisibility": "windowed",
+    "terminal.integrated.initialHint": false,
 }
