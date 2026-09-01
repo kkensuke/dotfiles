@@ -9,7 +9,9 @@ brew install bat
 brew install cmatrix
 brew install coreutils
 brew install duf
+brew install dust
 brew install duti
+brew install fastfetch
 brew install fd
 brew install fzf
 brew install gcc
@@ -27,6 +29,7 @@ brew install rename
 brew install scc
 brew install sqlite
 brew install superfile
+brew install trash
 brew install tree
 brew install uv
 brew install yt-dlp
