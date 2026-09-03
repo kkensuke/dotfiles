@@ -14,3 +14,6 @@ export CPATH=/opt/homebrew/include/
 
 # GPG
 export GPG_TTY=$(tty)
+
+# uv
+export PATH="/Users/kkensuke/.local/bin:$PATH"

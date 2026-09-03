@@ -12,8 +12,7 @@
     "workbench.iconTheme": "material-icon-theme", // Set the icon theme
     "workbench.colorTheme": "Monokai", // Set the color theme
     "workbench.activityBar.location": "top", // Move activity bar (Explorer, Search, etc.) to the top
-    "workbench.editor.tabSizing": "shrink", // Tabs shrink to fit available space
-    "workbench.editor.enablePreview": true, // Disable preview mode for editors (always open in a new tab)
+    "workbench.editor.tabSizing": "shrink", // Disable preview mode for editors (always open in a new tab)
     "workbench.editor.useModal": "off", // Disable modal editor behavior (some editors may still use modal behavior)
     "workbench.settings.openDefaultKeybindings": true, // Easily access default keybindings JSON
     "workbench.secondarySideBar.defaultVisibility": "hidden", // Hide secondary sidebar by default
@@ -23,7 +22,8 @@
         "editorWhitespace.foreground": "#909090"
     },
     "workbench.editorAssociations": {
-        // "*.md": "vscode.markdown.preview.editor" // Open Markdown files in the built-in Markdown preview editor
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.md": "default"
     },
 
     // Panel（Terminal / Problems / Output / Debug Console）position and behavior
@@ -145,9 +145,9 @@
     "github.copilot.enable": {
         "*": true,
         "plaintext": true,
-        "markdown": true,
         "scminput": false,
-        "latex": true
+        "latex": true,
+        "markdown": true
     },
     "github.copilot.nextEditSuggestions.enabled": true,
     "github.copilot.editor.enableAutoCompletions": true, // Allow Copilot to provide suggestions automatically
@@ -159,14 +159,7 @@
     // =========================================================================
 
     // --- Python & Jupyter ---
-    "python.analysis.inlayHints.variableTypes": true,
-    "python.defaultInterpreterPath": "/Users/kkensuke/venvs/venv/bin/python3", // Default Python interpreter path
-    "python.venvPath": "/Users/kkensuke/venvs/venv", // Path where virtual environments are typically found
-    "python.venvFolders": [ // Folder names recognized as containing virtual environments
-        "**/venv",
-        "**/.venv"
-    ],
-    "jupyter.askForKernelRestart": false, // Don't prompt when kernel restart is recommended
+    "python.useEnvironmentsExtension": false,
 
 
     // --- TypeScript / JavaScript ---
