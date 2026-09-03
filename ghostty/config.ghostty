@@ -14,13 +14,11 @@ cursor-style = bar
 cursor-color = cell-foreground
 adjust-cursor-thickness = 3
 
-macos-non-native-fullscreen = true
 macos-non-native-fullscreen = visible-menu
 
 keybind = global:cmd+backquote=toggle_quick_terminal
 # Only the position setting is not enough. Set "never" as follows:
 window-save-state = never
 quick-terminal-position = "bottom"
-quick-terminal-size = 50%, 50%
+quick-terminal-size = 50%,50%
 quick-terminal-animation-duration = 0
-quick-terminal-autohide = true

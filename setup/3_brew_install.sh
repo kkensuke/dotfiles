@@ -11,6 +11,7 @@ brew install coreutils
 brew install duf
 brew install dust
 brew install duti
+brew install eza
 brew install fastfetch
 brew install fd
 brew install fzf
@@ -26,6 +27,7 @@ brew install neovim
 brew install node
 brew install pnpm
 brew install rename
+brew install ripgrep
 brew install scc
 brew install sqlite
 brew install superfile
