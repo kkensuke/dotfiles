@@ -50,8 +50,6 @@ brew install zsh-syntax-highlighting
 brew install --cask anki
 brew install --cask appcleaner
 brew install --cask coconutbattery
-# brew install --cask coteditor
-brew install --cask clipy
 brew install --cask cryptomator
 brew install --cask drawio
 brew install --cask espanso
@@ -64,6 +62,7 @@ brew install --cask keycastr
 brew install --cask mathpix-snipping-tool
 brew install --cask MonitorControl
 brew install --cask qlmarkdown
+brew install --cask raycast
 brew install --cask rectangle
 brew install --cask signal
 brew install --cask shottr
