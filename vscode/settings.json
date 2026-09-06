@@ -319,6 +319,7 @@
     "markdown-preview-enhanced.liveUpdate": true,
     // Set the following to a higher value (e.g., 1000ms) to reduce the frequency of live updates and improve experience.
     "markdown-preview-enhanced.liveUpdateDebounceMs": 1000,
+    "markdown-preview-enhanced.hideDefaultVSCodeMarkdownPreviewButtons": false,
 
     // --- LaTeX (LaTeX Workshop Extension) ---
     "latex-workshop.latex.tools": [ // Define compilation tools
