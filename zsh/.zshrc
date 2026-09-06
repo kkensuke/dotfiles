@@ -10,7 +10,7 @@ for file in "$ZDOTDIR"/aliases/*.zsh; do
     source_if_exists "$file"
 done
 
-for file in "$ZDOTDIR"/ignore/*.zsh; do
+for file in "$ZDOTDIR"/zsh_ignore/*.zsh; do
     source_if_exists "$file"
 done
 

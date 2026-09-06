@@ -90,7 +90,7 @@ alias testpy='touch ~/Desktop/asdf.ipynb; code ~/Desktop/asdf.ipynb'
 alias his='history'
 alias ha='history 0'
 alias hg='history 0 | grep'
-alias dhis='rf /Users/kkensuke/Desktop/github/dotfiles/zsh/.zsh_history; rl'
+alias dhis='rf $ZDOTDIR/.zsh_history; rl'
 
 ## others ##
 alias rl='echo ""; exec ${SHELL} -l' #reload

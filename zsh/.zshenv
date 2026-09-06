@@ -1,6 +1,7 @@
 export LC_ALL=C.UTF-8
 
-export ZDOTDIR="$HOME/Desktop/github/dotfiles/zsh"
+export ZDOTDIR="$HOME/github/dotfiles/zsh"
+export GIT_CONFIG_GLOBAL="$HOME/github/dotfiles/git/.gitconfig"
 
 # ref: https://github.com/mathiasbynens/dotfiles/blob/main
 # https://www.cyberciti.biz/faq/apple-mac-osx-terminal-color-ls-output-option/

@@ -31,7 +31,7 @@ This repository is organized around a Zsh-based shell setup, Homebrew-managed ap
 The setup scripts assume this repository is cloned to:
 
 ```zsh
-~/Desktop/github/dotfiles
+~/github/dotfiles
 ```
 
 If you clone it somewhere else, update hard-coded paths before running the scripts, especially in `zsh/.zshenv` and `setup/4_lns.sh`.
@@ -41,8 +41,8 @@ If you clone it somewhere else, update hard-coded paths before running the scrip
 ### 1. Clone this repository
 
 ```zsh
-git clone https://github.com/kkensuke/dotfiles.git ~/Desktop/github/dotfiles
-cd ~/Desktop/github/dotfiles
+git clone https://github.com/kkensuke/dotfiles.git ~/github/dotfiles
+cd ~/github/dotfiles
 ```
 
 ### 2. Install Xcode Command Line Tools
@@ -110,7 +110,7 @@ Zsh is configured through `ZDOTDIR`.
 `zsh/.zshenv` sets environment variables and paths, including:
 
 - `export LC_ALL=C.UTF-8`
-- `ZDOTDIR=$HOME/Desktop/github/dotfiles/zsh`
+- `ZDOTDIR=$HOME/github/dotfiles/zsh`
 - color settings for `ls`
 - Homebrew/C++ related paths
 

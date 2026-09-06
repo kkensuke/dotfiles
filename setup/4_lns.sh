@@ -4,8 +4,8 @@ set -e
 set -u
 
 
-export GITHUB="$HOME/Desktop/github"
-export DOTFILES="$HOME/Desktop/github/dotfiles"
+export GITHUB="$HOME/github"
+export DOTFILES="$HOME/github/dotfiles"
 
 
 # dotfiles
@@ -25,7 +25,11 @@ ln -sf $GITHUB/espanso/ ~/Library/Application\ Support/
 mkdir -p ~/.config/ghostty && ln -sf $DOTFILES/ghostty/config.ghostty ~/.config/ghostty/config.ghostty
 
 # others
-mkdir ~/Library/Application\ Support/xbar && ln -sf $DOTFILES/script/plugins ~/Library/Application\ Support/xbar/plugins
-# ln -sf $DOTFILES/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+mkdir -p ~/Library/Application\ Support/xbar && ln -sf $DOTFILES/script/plugins ~/Library/Application\ Support/xbar/
+
+# vscode
+ln -sf $DOTFILES/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+
+# Quick Actions
 ln -sf $DOTFILES/script/Open\ in\ VSCode.workflow ~/Library/Services/Open\ in\ VSCode.workflow
 ln -sf $DOTFILES/script/Open\ in\ Preview.workflow ~/Library/Services/Open\ in\ Preview.workflow
