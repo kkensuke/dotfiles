@@ -105,6 +105,7 @@
     // Language Specific Overrides
     // =========================================================================
     // These override the global editor settings for specific languages.
+    "editor.detectIndentation": false,
     "[html]": {
         "editor.tabSize": 2
     },
@@ -126,7 +127,7 @@
         "editor.rulers": [
             100
         ],
-        "diffEditor.ignoreTrimWhitespace": true
+        "diffEditor.ignoreTrimWhitespace": false
     },
     "[tex]": {
         "editor.tabSize": 4
@@ -145,9 +146,9 @@
     "github.copilot.enable": {
         "*": true,
         "plaintext": true,
+        "markdown": true,
         "scminput": false,
-        "latex": true,
-        "markdown": true
+        "latex": true
     },
     "github.copilot.nextEditSuggestions.enabled": true,
     "github.copilot.editor.enableAutoCompletions": true, // Allow Copilot to provide suggestions automatically
