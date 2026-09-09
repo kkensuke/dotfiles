@@ -5,7 +5,14 @@ set -u
 
 
 export GITHUB="$HOME/github"
-export DOTFILES="$HOME/github/dotfiles"
+export DOTFILES="$GITHUB/dotfiles"
+
+
+# Make symlinks for ignored files
+ln -sf /Users/kkensuke/Library/Mobile\ Documents/com~apple~CloudDocs/ignore $GITHUB/
+ln -sf $GITHUB/ignore/dotfiles_ignore/.gitconfig $GITHUB/dotfiles/git/.gitconfig
+ln -sf $GITHUB/ignore/dotfiles_ignore/zsh_ignore $GITHUB/dotfiles/zsh/
+ln -sf $GITHUB/ignore/espanso_ignore $GITHUB/espanso/
 
 
 # dotfiles
@@ -33,3 +40,6 @@ ln -sf $DOTFILES/vscode/settings.json ~/Library/Application\ Support/Code/User/s
 # Quick Actions
 ln -sf $DOTFILES/script/Open\ in\ VSCode.workflow ~/Library/Services/Open\ in\ VSCode.workflow
 ln -sf $DOTFILES/script/Open\ in\ Preview.workflow ~/Library/Services/Open\ in\ Preview.workflow
+
+# reload
+exec ${SHELL} -l
