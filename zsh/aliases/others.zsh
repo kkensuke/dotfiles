@@ -13,17 +13,30 @@ url(){
 
 
 zipen() {
-  if [ $# -lt 1 ]; then
-    echo "Usage: zipen <file-or-folder>"
+    if [ $# -lt 1 ]; then
+        echo "Usage: zipen <file-or-folder>"
     return 1
-  fi
+    fi
 
-  local target="$1"
-  local base="$(basename "$target")"
-  zip -er "enc_${base}.zip" "$target"
+    local target="$1"
+    local base="$(basename "$target")"
+    zip -er "enc_${base}.zip" "$target"
 }
 
 
 # Get charger wattage
 WATTAGE=$(system_profiler SPPowerDataType | grep "Wattage" | awk '{print $3}')
 alias wat='echo "⚡${WATTAGE}W"'
+
+
+ignore() {
+    if [ $# -lt 1 ]; then
+        echo "Usage: ignore <file-or-folder>"
+        return 1
+    fi
+
+    local REPO_NAME=$(basename "$(git rev-parse --show-toplevel)")
+    mkdir -p ~/github/ignore/$REPO_NAME
+    mv $1 ~/github/ignore/$REPO_NAME/
+    ln -sf ~/github/ignore/$REPO_NAME/$1 $1
+}
