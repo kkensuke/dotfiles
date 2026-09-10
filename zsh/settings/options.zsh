@@ -1,4 +1,5 @@
 setopt auto_cd
+setopt auto_param_keys
 setopt inc_append_history
 setopt share_history
 setopt hist_ignore_dups
