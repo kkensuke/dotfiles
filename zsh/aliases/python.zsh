@@ -11,10 +11,9 @@ alias deac='deactivate'
 alias js='jupyter server'
 
 
-GREEN='\033[0;32m'
-CYAN='\033[0;36m'
-BOLD='\033[1m'
-NC='\033[0m'
+GREEN=$'\033[0;32m'
+CYAN=$'\033[0;36m'
+NC=$'\033[0m'
 
 
 mkuv() {
@@ -64,35 +63,44 @@ mkuv() {
 
 
 mkvenv() {
-    if [ -z "$1" ]; then
-        echo "Usage: mkvenv <venv_name>"
+    local venv_name="${1:-$(basename "$PWD")}"
+    local venv_root="$HOME/venvs"
+    local venv_dir="$venv_root/$venv_name"
+
+    if [ -e ".venv" ] && [ ! -L ".venv" ]; then
+        echo "Error: .venv already exists and is not a symlink."
         return 1
     fi
 
-    local venv_name="$1"
-    local venv_dir="$HOME/venvs/$venv_name"
+    mkdir -p "$venv_root" || return 1
 
-    if [ -d "$venv_dir" ]; then
-        echo "Error: venv: '$venv_dir' already exists."
+    if [ -e "$venv_dir" ]; then
+        echo "Error: venv '$venv_dir' already exists."
         return 1
     fi
 
-    # Create ~/venvs/ directory if it doesn't exist
-    # mkdir -p "$HOME/venvs"
-    # Create venv
-    uv venv "$venv_dir" &>/dev/null || return 1
-    echo "\n✓ Venv created at \`${CYAN}$venv_dir${NC}\`"
+    uv venv "$venv_dir" >/dev/null 2>&1 || return 1
 
-    # Force create symlink
-    ln -sf "$venv_dir" ".venv" || return 1
-    echo "✓ Symlink created: .venv -> $venv_dir"
-    echo "  Activate with: ${GREEN}source .venv/bin/activate${NC}"
+    rm -f ".venv"
+    ln -s "$venv_dir" ".venv" || return 1
+
+    printf '\n✓ Venv created at `%s`\n' "${CYAN}${venv_dir}${NC}"
+    printf '✓ Symlink created: .venv -> %s\n' "$venv_dir"
+    printf '  Activate with: %ssource .venv/bin/activate%s\n' "$GREEN" "$NC"
 }
 
 
 uvinstall() {
-    uv add --dev ipykernel jupyter_server
-    uv add numpy  matplotlib
+    local project
+    project="$(basename "$PWD")"
+
+    uv add numpy matplotlib
+    uv add --dev ipykernel
+
+    uv run python -m ipykernel install \
+        --user \
+        --name "uv-$project" \
+        --display-name "Python ($project)"
 }
 
 
