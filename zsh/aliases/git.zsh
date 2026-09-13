@@ -16,6 +16,9 @@ alias gpo='git push origin'
 alias gpom='git push origin main'
 alias gst='git status'
 
+# Open the current repository in the browser
+alias repo='gh repo view --web'
+
 # EMOJI-LOG (https://github.com/ahmadawais/Emoji-Log)
 # See more in .gitmessage
 gacpm() { git add -A && git commit -m "$1" && git push origin main }
