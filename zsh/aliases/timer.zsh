@@ -505,30 +505,20 @@ timer() {
 
 
         # ----------------------------------------------------
-        # macOS notification
+        # macOS alert + sound
         # ----------------------------------------------------
 
-        if command -v osascript >/dev/null 2>&1; then
-
-            if [[ "${TIMER_SOUND:l}" == "true" ]]; then
-
-                /usr/bin/osascript - "$message" <<'APPLESCRIPT'
-on run argv
-    display notification (item 1 of argv) with title "Timer" sound name "Glass"
-end run
-APPLESCRIPT
-
-            else
-
-                /usr/bin/osascript - "$message" <<'APPLESCRIPT'
-on run argv
-    display notification (item 1 of argv) with title "Timer"
-end run
-APPLESCRIPT
-
-            fi
+        if [[ "${TIMER_SOUND:l}" == "true" ]]; then
+            /usr/bin/afplay /System/Library/Sounds/Glass.aiff &
         fi
 
+        if command -v osascript >/dev/null 2>&1; then
+            /usr/bin/osascript - "$message" <<'APPLESCRIPT'
+on run argv
+    display alert "Timer" message (item 1 of argv) giving up after 10
+end run
+APPLESCRIPT
+        fi
 
         # ----------------------------------------------------
         # Remove completed timer state
