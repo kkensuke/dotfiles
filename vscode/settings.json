@@ -55,8 +55,9 @@
         "**/*venv*": true,
         "**/._*": true // files generated in Cryptomator vault
     },
-    "files.associations": { // Associate file patterns with specific languages/modes
-        "*.css": "tailwindcss"
+    "files.associations": {
+        "*.css": "tailwindcss",
+        "*.toml": "rust"
     },
 
     // --- Security ---
