@@ -76,6 +76,4 @@ function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;
 
 # make a branch and checkout to it
 gcb() { git checkout -b "$1"; git push origin "$1" }
-# make changes -> gacp <branch> <comment>
-# delete a merged local&remote branch
-gbd() { gch master; gpl; git branch -d "$1"; git push origin :"$1" }
+
