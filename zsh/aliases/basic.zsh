@@ -95,8 +95,8 @@ alias dhis='rf $ZDOTDIR/.zsh_history; rl'
 ## others ##
 alias rl='echo ""; exec ${SHELL} -l' #reload
 alias lns='ln -sf'
-alias you='yt-transcript'
-alias yw='yt-transcript web'
+alias you='yttext'
+alias yw='yttext web'
 alias mat='cmatrix'
 alias -s md=glow
 alias -s py=python

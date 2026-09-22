@@ -11,7 +11,6 @@ brew install coreutils
 brew install duf
 brew install dust
 brew install duti
-brew install eza
 brew install fastfetch
 brew install fd
 brew install fzf
@@ -35,7 +34,6 @@ brew install trash
 brew install tree
 brew install uv
 brew install yt-dlp
-brew install zoxide
 brew install zsh-autosuggestions
 brew install zsh-completions
 brew install zsh-git-prompt
@@ -62,8 +60,6 @@ brew install --cask keycastr
 brew install --cask mathpix-snipping-tool
 brew install --cask MonitorControl
 brew install --cask qlmarkdown
-brew install --cask raycast
-brew install --cask rectangle
 brew install --cask signal
 brew install --cask shottr
 brew install --cask stats
@@ -71,6 +67,8 @@ brew install --cask stay
 brew install --cask syntax-highlight
 brew install --cask visual-studio-code
 brew install --cask timac/vpnstatus/vpnstatus
+brew trust    --tap abue-ammar/tinycast
+brew install --cask abue-ammar/tinycast/tinycast
 brew install --cask zoom
 brew install --cask zotero
 
