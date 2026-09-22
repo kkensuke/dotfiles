@@ -102,3 +102,16 @@ alias -s md=glow
 alias -s py=python
 alias -s {html,pdf}=google
 alias sshadd='ssh-add ~/.ssh/id_ed25519'
+
+alias() {
+  if (( $# == 1 )) && [[ $1 != -* ]]; then
+    if builtin alias -- "$1" 2>/dev/null; then
+      return
+    elif (( $+functions[$1] )); then
+      functions "$1"
+      return
+    fi
+  fi
+
+  builtin alias "$@"
+}

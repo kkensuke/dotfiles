@@ -427,4 +427,6 @@
     "workbench.browser.showInTitleBar": true,
     "window.customTitleBarVisibility": "windowed",
     "terminal.integrated.initialHint": false,
+    "security.workspace.trust.banner": "never",
+    "security.workspace.trust.enabled": false,
 }

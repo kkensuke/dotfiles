@@ -21,9 +21,6 @@ ln -sf $DOTFILES/zsh/.zshenv ~/.zshenv
 # espanso
 ln -sf $GITHUB/espanso/ ~/Library/Application\ Support/
 
-# ghostty
-mkdir -p ~/.config/ghostty && ln -sf $DOTFILES/ghostty/config.ghostty ~/.config/ghostty/config.ghostty
-
 # others
 mkdir -p ~/Library/Application\ Support/xbar && ln -sf $DOTFILES/script/plugins ~/Library/Application\ Support/xbar/
 
