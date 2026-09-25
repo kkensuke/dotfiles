@@ -12,7 +12,7 @@ alias ds='du -d 1 -h 2>/dev/null | sort -h'
 alias pwd='sed "s/ /\\\ /g" <<< ${PWD/#$HOME/"~"}'
 alias p='pwd; pwd | pbcopy'
 alias path='print -rl -- "${path[@]}"'
-tre() { tree -ahC -L "$2" -I '.git|venv|node_modules|.DS_Store' --dirsfirst "$1"}
+tre() { tree -ahL "$2" -I '.git|venv|.venv|node_modules|.DS_Store' --dirsfirst "$1"}
 
 ## change directory ##
 alias ..='cd ..'
