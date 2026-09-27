@@ -48,6 +48,7 @@ brew install zsh-syntax-highlighting
 brew install --cask anki
 brew install --cask appcleaner
 brew install --cask coconutbattery
+brew install --cask clipy
 brew install --cask cryptomator
 brew install --cask drawio
 brew install --cask espanso
@@ -57,18 +58,17 @@ brew install --cask google-chrome
 brew install --cask google-drive
 brew install --cask keyboardcleantool
 brew install --cask keycastr
+brew install --cask macshot
 brew install --cask mathpix-snipping-tool
 brew install --cask MonitorControl
 brew install --cask qlmarkdown
+brew install --cask rectangle
 brew install --cask signal
-brew install --cask shottr
+# brew install --cask shottr
 brew install --cask stats
-brew install --cask stay
 brew install --cask syntax-highlight
 brew install --cask visual-studio-code
 brew install --cask timac/vpnstatus/vpnstatus
-brew trust    --tap abue-ammar/tinycast
-brew install --cask abue-ammar/tinycast/tinycast
 brew install --cask zoom
 brew install --cask zotero
 
