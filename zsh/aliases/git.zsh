@@ -77,3 +77,43 @@ function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;
 # make a branch and checkout to it
 gcb() { git checkout -b "$1"; git push origin "$1" }
 
+
+check-git-push() {
+  emulate -L zsh
+
+  local root="${1:-.}" gitpath repo branch upstream state
+  local -i total=0 ok=0 dirty ahead behind
+
+  while IFS= read -r -d '' gitpath; do
+    repo="${gitpath:h}"
+    (( total++ ))
+
+    branch=$(git -C "$repo" symbolic-ref --short -q HEAD 2>/dev/null) ||
+      branch=DETACHED
+    upstream=$(git -C "$repo" rev-parse --abbrev-ref '@{u}' 2>/dev/null)
+
+    dirty=$(git -C "$repo" status --porcelain 2>/dev/null | wc -l)
+    state=""
+    (( dirty )) && state="✚$dirty"
+
+    if [[ -z "$upstream" ]]; then
+      state+="${state:+,}NO-UPSTREAM"
+    else
+      read behind ahead <<< "$(
+        git -C "$repo" rev-list --left-right --count "$upstream...HEAD"
+      )"
+      (( ahead ))  && state+="${state:+,}↑$ahead"
+      (( behind )) && state+="${state:+,}↓$behind"
+    fi
+
+    [[ -n "$state" ]] &&
+      print -r -- "${repo/#$HOME/~} % ($branch|$state)" ||
+      (( ok++ ))
+  done < <(
+    find "$root" \
+      \( -name .git -o -name node_modules -o -name .venv \) \
+      -prune -name .git -print0
+  )
+
+  print "\n✔ $ok / $total"
+}
