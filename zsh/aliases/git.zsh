@@ -78,7 +78,8 @@ function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;
 gcb() { git checkout -b "$1"; git push origin "$1" }
 
 
-check-git-push() {
+
+check-repo-status() {
   emulate -L zsh
 
   local root="${1:-.}" gitpath repo branch upstream state
@@ -116,4 +117,8 @@ check-git-push() {
   )
 
   print "\n✔ $ok / $total"
+}
+
+crs() {
+  check-repo-status ~/github
 }
