@@ -64,7 +64,7 @@ brew install --cask MonitorControl
 brew install --cask qlmarkdown
 brew install --cask rectangle
 brew install --cask signal
-# brew install --cask shottr
+brew install --cask shottr
 brew install --cask stats
 brew install --cask syntax-highlight
 brew install --cask visual-studio-code
