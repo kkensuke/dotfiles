@@ -29,6 +29,15 @@ WATTAGE=$(system_profiler SPPowerDataType | grep "Wattage" | awk '{print $3}')
 alias wat='echo "⚡${WATTAGE}W"'
 
 
+memo() {
+    if [ $# -lt 1 ]; then
+        printf 'Usage: memo <text>\n'
+        return 1
+    fi
+
+    printf '\n- %s\n' "$*" >> ~/MyDrive/temp/memo.md
+}
+
 ignore() {
     if [ $# -lt 1 ]; then
         echo "Usage: ignore <file-or-folder>"
