@@ -37,6 +37,9 @@ memo() {
 
     printf '\n- %s\n' "$*" >> ~/MyDrive/temp/memo.md
 }
+alias cm='cat ~/MyDrive/temp/memo.md'
+alias om='code ~/MyDrive/temp/memo.md'
+
 
 ignore() {
     if [ $# -lt 1 ]; then

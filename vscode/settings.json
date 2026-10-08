@@ -373,7 +373,7 @@
     "latex-workshop.synctex.synctexjs.enabled": true, // Enable SyncTeX for forward and inverse search
     "latex-workshop.synctex.afterBuild.enabled": true, // Enable SyncTeX forward search after build
     "latex-workshop.view.pdf.viewer": "tab", // Open PDF preview in a VS Code tab
-    "latex-workshop.view.pdf.invert": 1, // Invert PDF colors (value might depend on viewer/theme, 1 often works)
+    "latex-workshop.view.pdf.invert": 0.93, // Invert PDF colors (value might depend on viewer/theme, 1 often works)
     "latex-workshop.hover.preview.mathjax.extensions": [ // MathJax extensions for hover previews
         "physics",
         "boldsymbol",
