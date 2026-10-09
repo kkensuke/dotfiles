@@ -379,6 +379,10 @@
         "boldsymbol",
         "cases"
     ],
+    // Formatting settings for LaTeX files
+    "latex-workshop.formatting.latex": "tex-fmt",
+    "latex-workshop.formatting.tex-fmt.args": ["--nowrap", "--tabsize=4", "--format-tables"],
+    "latex-workshop.format.fixMath.enabled": true,
 
     // =========================================================================
     // Extension Settings (Miscellaneous)
