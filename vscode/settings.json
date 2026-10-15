@@ -21,10 +21,6 @@
         "editor.findMatchBorder": "#04ff32",
         "editorWhitespace.foreground": "#909090"
     },
-    "workbench.editorAssociations": {
-        "*.copilotmd": "vscode.markdown.preview.editor",
-        "*.md": "default"
-    },
 
     // Panel（Terminal / Problems / Output / Debug Console）position and behavior
     "workbench.panel.defaultLocation": "right",
@@ -433,4 +429,8 @@
     "terminal.integrated.initialHint": false,
     "security.workspace.trust.banner": "never",
     "security.workspace.trust.enabled": false,
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.md": "vscode.markdown.editor"
+    },
 }
