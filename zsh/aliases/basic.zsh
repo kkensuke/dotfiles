@@ -95,6 +95,7 @@ alias dhis='rf $ZDOTDIR/.zsh_history; rl'
 ## others ##
 alias rl='echo ""; exec ${SHELL} -l' #reload
 alias lns='ln -sf'
+alias nq='networkquality'
 alias you='yttext'
 alias yw='yttext web'
 alias mat='cmatrix'
