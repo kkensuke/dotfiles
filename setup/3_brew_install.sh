@@ -50,7 +50,7 @@ brew install --cask appcleaner
 brew install --cask coconutbattery
 brew install --cask clipy
 brew install --cask cryptomator
-brew install --cask drawio
+# brew install --cask drawio
 brew install --cask espanso
 brew install --cask iina
 brew install --cask ghostty
@@ -70,6 +70,7 @@ brew install --cask stats
 brew install --cask syntax-highlight
 brew install --cask visual-studio-code
 brew install --cask timac/vpnstatus/vpnstatus
+brew install --cask tinycast
 brew install --cask zoom
 brew install --cask zotero
 
