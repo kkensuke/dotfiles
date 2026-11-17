@@ -59,6 +59,7 @@ brew install --cask google-drive
 brew install --cask keyboardcleantool
 brew install --cask keycastr
 brew install --cask macshot
+brew install --cask markedit
 brew install --cask mathpix-snipping-tool
 brew install --cask MonitorControl
 brew install --cask qlmarkdown
